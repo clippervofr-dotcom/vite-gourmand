@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['utilisateur'] = ['nom' => 'Test']; // simule un utilisateur connecté
+?>
+
+
 <?php require 'includes/header.php'; ?>
 
 <main>

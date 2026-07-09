@@ -7,27 +7,28 @@
         </div>
         <div class="commande-box">
             <div class="commande-box-1">
+                <span class="bubulle">1</span>
                 <div class="titre-info-perso">
                     <img src="assets/images/info-client.png" alt="Informations client">
                 </div>
                 <div class="first-ligne-info">
                     <div class="infos-perso">
-                        <label for="nom">Nom</label>
-                        <input type="text" id="nom" placeholder="Votre Nom">
+                        <label for="nom-commande">Nom<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="text" id="nom-commande" placeholder="Votre Nom">
                     </div>
                     <div class="infos-perso">
-                        <label for="prénom">Prénom</label>
-                        <input type="text" id="prénom" placeholder="Votre Prénom">
+                        <label for="prénom-commande">Prénom<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="text" id="prénom-commande" placeholder="Votre Prénom">
                     </div>
                 </div>
                 <div class="second-ligne-info">
                     <div class="infos-perso">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Votre Email">
+                        <label for="email-commande">Email<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="email" id="email-commande" placeholder="Votre Email">
                     </div>
                     <div class="infos-perso">
-                        <label for="téléphone">Téléphone</label>
-                        <input type="tel" id="téléphone" placeholder="Votre Téléphone">
+                        <label for="téléphone-commande">Téléphone<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="tel" id="téléphone-commande" placeholder="Votre Téléphone">
                     </div>
                 </div>
                 <div class="third-ligne-info">
@@ -46,23 +47,29 @@
                 </div>
             </div>
             <div class="commande-box-2">
+                <span class="bubulle">2</span>
                 <div class="titre-choix-menu">
                     <img src="assets/images/votre-menu.png" alt="Votre menu">
                 </div>
                 <div class="first-ligne-choix-menu">
                     <select id="choix-menu">
                         <option value="">Sélectionnez votre menu</option>
+                        <option value="menu-noel">Menu de Noël</option>
+                        <option value="menu-paques">Menu de Pâques</option>
+                        <option value="menu-classique">Menu Classique</option>
+                        <option value="menu-vegetarien">Menu Végétarien</option>
+                        <option value="menu-evenementiel">Menu Événementiel</option>
                     </select>
                 </div>
                 <div class="second-ligne-choix-menu">
                     <div class="infos-menu">
-                        <label for="nbr-personnes">Nombre de personnes</label>
-                        <input type="number" id="nbr-personnes" placeholder="Nombre de personnes">
+                        <label for="nbr-personnes-commande">Nombre de personnes<span class="requis">*</span></label>
+                        <input type="number" id="nbr-personnes-commande" placeholder="Nombre de personnes">
                         <p class="explications-nbr-pers">Minimum : 10 personnes<br>
                             (selon le menu selectionné)</p>
                     </div>
                     <div class="location-materiel">
-                        <label class="checkbox-custom">
+                        <label class="checkbox-custom" id="checkbox-location">
                             <input type="checkbox" id="matériel">
                             <div class="checkbox-mark"></div>
                             <span>Je souhaite louer du matériel</span>
@@ -78,17 +85,36 @@
                 </div>
             </div>
             <div class="commande-box-3">
+                <span class="bubulle">3</span>
                 <div class="titre-recap-commande">
                     <img src="assets/images/recap.png" alt="Récapitulatif de la commande">
                 </div>
                 <div class="recap-commande-box">
                     <div class="recap-infos">
-                        <p>Menu : xxx</p>
-                        <p>Nombre de personnes : xxx</p>
-                        <p>Adresse : xxx</p>
-                        <p>Date de livraison : le xxx à xxhxx</p>
-                        <p>Forfait location de matériel : y/n</p>
-                        <p>Prix de la livraison : xx€</p>
+                        <div class="recap-liste">
+                            <p class="recap-intitule">Menu :</p>
+                            <p class="recap-resultat">xxxx</p>
+                        </div>
+                        <div class="recap-liste">
+                            <p class="recap-intitule">Nombre de personnes :</p>
+                            <p class="recap-resultat">xxxx</p>
+                        </div>
+                        <div class="recap-liste">
+                            <p class="recap-intitule">Adresse :</p>
+                            <p class="recap-resultat">xxxx</p>
+                        </div>
+                        <div class="recap-liste">
+                            <p class="recap-intitule">Date de livraison :</p>
+                            <p class="recap-resultat"> le xxx à xxhxx</p>
+                        </div>
+                        <div class="recap-liste">
+                            <p class="recap-intitule">Forfait location de matériel :</p>
+                            <p class="recap-resultat"> y/n</p>
+                        </div>
+                        <div class="recap-liste">
+                            <p class="recap-intitule">Prix de la livraison :</p>
+                            <p class="recap-resultat"> xx€</p>
+                        </div>
                     </div>
                     <div class="recap-prix">
                         <p>Total : xxx€</p>
@@ -99,6 +125,9 @@
                     <p>Un mail de confirmation vous sera envoyé après validation de la commande</p>
                 </div>
             </div>
+        </div>
+        <div>
+            <img src="assets/images/banniere-v&g.png" class="bottom-banner" alt="Banniere Vite & Gourmand">
         </div>
     </section>
 </main>

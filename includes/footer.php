@@ -13,5 +13,6 @@
     </div>
 
 </footer>
+<script src="assets/js/fonction.js"></script>
 </body>
 </html>

@@ -30,7 +30,14 @@
     --couleur-ombre-forte: rgba(61, 43, 26, 0.25);
     --couleur-test: #EFD9BA;
 }
-
+/*
+xxx-large clamp(2rem, 1.5rem + 2vw, 3rem);
+xx-large  clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
+x-large   clamp(1.25rem, 1rem + 1vw, 1.75rem);
+large     clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+small     clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
+x-small   clamp(0.5625rem, 0.5rem + 0.25vw, 0.6875rem);
+*/
 /* root + body + main */
 
 * {
@@ -83,7 +90,6 @@ nav a {
 nav ul {
     display: flex;
     list-style: none;
-    margin-left: auto;
 }
 
 .nav-links {
@@ -94,10 +100,12 @@ nav ul {
     margin-left: auto;
 }
 
-.nav-links-menu-contact {
+.nav-links-menus {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 
 }
 
@@ -105,7 +113,6 @@ nav ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
     gap: 15px;
 }
 
@@ -123,8 +130,23 @@ nav ul {
     cursor: pointer;
 }
 
+.profil-box {
+    position: relative;
+}
+
 .dropdown-profil {
     display: none;
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    z-index: 2;
+    width: max-content;
+    border: solid 1px #3D2B1A;
+    background-color: var(--couleur-fond);
+    padding: 0.5rem;
+    font-size: clamp(1rem, 0.875rem + 0.4vi, 1.125rem);
+    transition: all ease-in-out 0.2s;
+    font-family: 'Playfair Display', serif;
 }
 
 .dropdown-profil.active {
@@ -133,33 +155,26 @@ nav ul {
     gap: 5px;
 }
 
-.bouton-contact {
+.bouton-profil {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.boutons-header {
     color: var(--couleur-police-connexion);
     border-radius: 6px;
     border: 1.5px solid var(--couleur-tracer-connexion);
     padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    font-size: large;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
     transition: all ease-in-out 0.2s;
 }
 
-.bouton-contact:hover {
-    background-color: var(--couleur-hero-bouton);
-    color: var(--couleur-fond);
-}
-
-.bouton-menus-header {
-    color: var(--couleur-police-connexion);
-    border-radius: 6px;
-    border: 1.5px solid var(--couleur-tracer-connexion);
-    margin-left: 0;
-    padding: 8px 20px;
-    cursor: pointer;
-    font-size: large;
-    transition: all ease-in-out 0.2s;
-}
-
-.bouton-menus-header:hover {
+.boutons-header:hover {
     background-color: var(--couleur-hero-bouton);
     color: var(--couleur-fond);
 }
@@ -172,7 +187,7 @@ nav ul {
     gap: 10px;
     width: 440px;
     white-space: nowrap;
-    font-size: xx-large;
+    font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
 }
 
 .nav-logo img {
@@ -186,10 +201,11 @@ nav ul {
     border-radius: 6px;
     border: 1.5px solid var(--couleur-tracer-connexion);
     padding: 8px 20px;
-    display: inline-block;
-    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     white-space: nowrap;
-    font-size: large;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
     cursor: pointer;
     transition: all ease-in-out 0.2s;
 }
@@ -202,7 +218,7 @@ nav ul {
 /* footer + horaires + CGV + logo footer */
 
 footer {
-    background-color: var(--couleur-footer);
+    background: linear-gradient(180deg,rgba(252, 241, 227, 1) 0%, rgba(61, 43, 26, 1) 8%);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -226,15 +242,14 @@ footer img {
 
 .footer-horaires {
     color: var(--couleur-police-horaires);
-
     text-align: center;
-    font-size: small;
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
 }
 
 footer ul a {
     text-decoration: none;
     color: var(--couleur-police-ml-cgv);
-    font-size: small;
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
     cursor: pointer;
 }
 
@@ -280,7 +295,7 @@ footer ul a {
     font-family: 'Playfair Display', serif;
     background-color: var(--couleur-hero-bouton);
     color: #FFFFFF;
-    font-size: x-large;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
     border-radius: 50px;
     padding: 12px 30px;
     margin-bottom: 150px;
@@ -301,7 +316,7 @@ footer ul a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--couleur-fond);
+    background: linear-gradient(180deg,rgba(252, 241, 227, 1) 0%, rgba(245, 230, 206, 1) 100%);
     padding: 40px 40px;
 }
 
@@ -372,7 +387,7 @@ footer ul a {
 /* Avis + commentaires + etoiles */
 
 .avis {
-    background-color: var(--couleur-avis-filtre-banner);
+    background: linear-gradient(180deg,rgba(245, 230, 206, 1) 0%, rgba(252, 241, 227, 1) 100%);
     padding: 20px;
     text-align: center;
 }
@@ -413,7 +428,7 @@ footer ul a {
     box-shadow: 0 8px 20px var(--couleur-ombre-forte);
     padding: 20px 50px;
     border-radius: 6px;
-    font-size: x-large;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
 }
 
 .commentaires-texte {
@@ -423,13 +438,13 @@ footer ul a {
 
 .etoiles {
     color: var(--couleur-hero-bouton);
-    font-size: xx-large;
+    font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
     margin-bottom: 20px;
 }
 
 .auteur {
     color: var(--couleur-police-filtre);
-    font-size: large;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
     font-style: italic;
     margin-top: 10px;
 }
@@ -439,7 +454,8 @@ footer ul a {
     height: 80%;
 }
 
-/* Partenaires + texte + logo + carroussel */
+/* Partenaires + texte + logo + carousel */
+
 
 .partenaires {
     background: #FFFFFF;
@@ -505,7 +521,7 @@ footer ul a {
     padding-top: 100px;
     align-items: flex-start;
     flex-direction: column;
-    background-color: var(--couleur-avis-filtre-banner);
+    background: linear-gradient(270deg,rgba(252, 241, 227, 1) 0%, rgba(245, 230, 206, 1) 35%);
     width: 350px;
 }
 
@@ -566,13 +582,13 @@ footer ul a {
 
 .theme-individual span {
     font-family: 'Inter', sans-serif;
-    font-size: larger;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
     font-style: italic;
 }
 
 .prix {
     font-family: 'Inter', sans-serif;
-    font-size: large;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
     font-style: italic;
 }
 
@@ -638,7 +654,7 @@ footer ul a {
     border-radius: 2px;
 }
 
-/* cheked */
+/* checked */
 .checkbox-custom input:checked ~ .checkbox-mark:after {
     display: block;
     animation: splash 0.3s forwards;
@@ -717,7 +733,7 @@ footer ul a {
 
 .menus-box-titre-visible h3 {
     color: white;
-    font-size: x-large;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
 }
 
 .menus-box-texte {
@@ -788,6 +804,7 @@ footer ul a {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
 }
 
 .titre-info-perso, .titre-choix-menu, .titre-recap-commande {
@@ -795,6 +812,24 @@ footer ul a {
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+.bubulle {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: solid 1px var(--couleur-police-standard);
+    z-index: 2;
+    background-color: var(--couleur-hero-bouton);
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+    color: #FCF1E3;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
 }
 
 .first-ligne-info, .second-ligne-info {
@@ -845,8 +880,12 @@ footer ul a {
 .location-materiel {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 8px;
+}
+
+#checkbox-location {
+    display: flex;
+    justify-content: center;
 }
 
 .explications-location-materiel-forfait, .explications-nbr-pers {
@@ -854,18 +893,18 @@ footer ul a {
 }
 
 .explications-location-materiel-forfait p {
-    font-size: small;
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
 }
 
 .explications-location-materiel, .explications-nbr-pers {
     color: var(--couleur-hero-bouton);
-    font-size: small;
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
 }
 
 .new-adresse {
     display: flex;
     justify-content: flex-end;
-    font-size: x-small;
+    font-size: clamp(0.5625rem, 0.5rem + 0.25vw, 0.6875rem);
 }
 
 .new-adresse a {
@@ -912,12 +951,28 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-size: large;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+}
+
+.recap-liste {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.recap-intitule {
+    font-family: 'Playfair Display', serif;
+}
+
+.recap-resultat {
+    color: var(--couleur-hero-bouton);
 }
 
 .recap-prix {
-    font-size: xx-large;
+    font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
     color: var(--couleur-hero-bouton);
+    font-family: 'Playfair Display', serif;
 }
 
 .recap-commande-bouton-confirmation {
@@ -935,14 +990,133 @@ input::placeholder {
     border-radius: 50px;
     padding: 12px 40px;
     font-family: 'Playfair Display', serif;
-    font-size: x-large;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 12px var(--couleur-ombre-forte);
 }
 
 .recap-commande-bouton-confirmation p {
-    font-size: small;
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
     color: var(--couleur-police-email-confirm);
     text-align: center;
 }
+
+.bottom-banner {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    mix-blend-mode: multiply;
+}
+
+/* CGV + ML */
+
+.ml-content, .cgv-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+    padding: clamp(1rem, 2vw + 0.5rem, 4rem);
+}
+
+.titre-ml {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* connexion + inscription */
+
+.se-connecter-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.se-connecter-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.input-connexion {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 1em;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+}
+
+.btn-se-connecter {
+    background-color: var(--couleur-hero-bouton);
+    color: var(--couleur-fond);
+    border: solid 1px var(--couleur-police-standard);
+    border-radius: 50px;
+    padding: 12px 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    transition: all ease-in-out 0.2s;
+    margin-top: 1.5rem;
+}
+
+.btn-se-connecter:hover {
+    box-shadow: none;
+    opacity: 80%;
+}
+
+.pas-de-compte {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.infos-mr-mme {
+    display: flex;
+}
+
+.input-mr-mme {
+    width: 3rem;
+}
+
+.inscription-box {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    border: solid 1px var(--couleur-footer);
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 20px;
+}
+
+.inscription-box p {
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
+    text-align: center;
+}
+
+.info-inscription {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.requis {
+    color: var(--couleur-police-epuise);
+}
+
+.bouton

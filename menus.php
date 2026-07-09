@@ -265,6 +265,8 @@
                 -->
             </div>
             <a href="commande.php" class="bouton-commander">Commander</a>
+            <a href="connexion.php">connexion</a>
+            <a href="inscription.php">Inscription</a>
         </section>
     </main>
 </div>

@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,40 +29,65 @@
             <a href="index.php">Vite & Gourmand</a>
         </div>
         <div class="nav-links">
-            <div class="nav-links-menu-contact">
+            <div class="nav-links-menus">
                 <ul>
-                    <li><a href="menus.php" class="bouton-menus-header">Nos menus</a></li>
+                    <li><a href="menus.php" class="boutons-header">Nos menus</a></li>
                 </ul>
                 <ul>
-                    <li><a href="contact.php" class="bouton-contact">Faire un devis</a></li>
+                    <li><a href="contact.php" class="boutons-header">Faire un devis</a></li>
                 </ul>
-            </div>
 
-
-
-        <?php if (isset($_SESSION['utilisateur'])): ?>
-
-            <div class="nav-utilisateur">
-                <a href="panier.php">
-                 <img src="assets/images/panier.png" class="panier-logo" alt="Panier">
-                </a>
-                <div class="profil-box">
-                    <button class="bouton-profil">
-                        <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
-                    </button>
-                    <div class="dropdown-profil">
-                        <a href="profil.php">Mon profil</a>
-                        <a href="commandes.php">Mes commandes</a>
-                        <a href="deconnexion.php">Déconnexion</a>
+                <?php if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['role_id'] == 3): ?>
+                    <div class="nav-utilisateur">
+                        <div class="profil-box">
+                            <button class="bouton-profil" id="btn-profil">
+                                <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
+                            </button>
+                            <div class="dropdown-profil">
+                                <a href="administration.php">Administration</a>
+                                <a href="commandes-en-attente.php">Commandes</a>
+                                <a href="panel-statistiques.php">Voir Stats</a>
+                                <a href="deconnexion.php">Déconnexion</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                <?php elseif (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['role_id'] == 2): ?>
+                    <div class="nav-utilisateur">
+                        <div class="profil-box">
+                            <button class="bouton-profil" id="btn-profil">
+                                <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
+                            </button>
+                            <div class="dropdown-profil">
+                                <a href="espace-employe.php">Espace employé</a>
+                                <a href="commandes-en-cours.php">Commandes en cours</a>
+                                <a href="deconnexion.php">Déconnexion</a>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php elseif (isset($_SESSION['utilisateur'])): ?>
+
+                    <div class="nav-utilisateur">
+                        <a href="panier.php">
+                            <img src="assets/images/panier.png" class="panier-logo" alt="Panier">
+                        </a>
+                        <div class="profil-box">
+                            <button class="bouton-profil" id="btn-profil">
+                                <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
+                            </button>
+                            <div class="dropdown-profil">
+                                <a href="profil.php">Mon profil</a>
+                                <a href="mes-commandes.php">Mes commandes</a>
+                                <a href="deconnexion.php">Déconnexion</a>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php else: ?>
+                <a href="connexion.php" class="bouton-connexion">Connexion</a>
+                <?php endif; ?>
             </div>
         </div>
-        <?php else: ?>
-
-        <a href="connexion.php" class="bouton-connexion">Connexion</a>
-
-        <?php endif; ?>
-
     </nav>
 </header>

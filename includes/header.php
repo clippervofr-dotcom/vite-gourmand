@@ -15,26 +15,38 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/fondation.css">
+    <link rel="stylesheet" href="assets/css/header-footer-nav.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+
+    <?php if (!empty($css_pages)): ?>
+        <?php foreach ($css_pages as $css): ?>
+            <link rel="stylesheet" href="assets/css/<?= htmlspecialchars($css) ?>.css">
+        <?php endforeach; ?>
+    <?php endif; ?>
+
     <title>Vite & Gourmand</title>
 </head>
 
 <body>
 <header>
+    <img src="assets/images/header-banner-bgless.png" class="header-banner">
     <nav>
         <div class="nav-logo">
             <a href="index.php">
                 <img src="assets/images/logo1_background_less.png" alt="Vite & Gourmand"/>
             </a>
-            <a href="index.php">Vite & Gourmand</a>
         </div>
         <div class="nav-links">
-            <div class="nav-links-menus">
+            <button type="button" class="bouton-nav-hamburger" id="bouton-nav-hamburger">
+                <img src="assets/images/suite.png" alt="Menu">
+            </button>
+            <div class="nav-links-menus" id="nav-links-menus">
                 <ul>
                     <li><a href="menus.php" class="boutons-header">Nos menus</a></li>
                 </ul>
                 <ul>
-                    <li><a href="contact.php" class="boutons-header">Faire un devis</a></li>
+                    <li><button type="button" id="bouton-devis" class="boutons-header">Faire un devis</button></li>
                 </ul>
 
                 <?php if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['role_id'] == 3): ?>
@@ -90,4 +102,5 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
         </div>
     </nav>
+    <img src="assets/images/banner-delimitation.png" class="banner-delimitation">
 </header>

@@ -1,7 +1,9 @@
+<?php $css_pages = ['menus']; ?>
 <?php require 'includes/header.php'; ?>
 <div class="menus-page">
     <!-- SIDEBAR - FILTRES -->
-    <aside class="sidebar-menu">
+    <aside class="sidebar-menu" id="sidebar-menu">
+        <button type="button" class="sidebar-close" id="sidebar-close" aria-label="Fermer les filtres">&times;</button>
         <div class="theme">
             <img src="assets/images/theme.png" alt="Theme de menu">
             <div class="theme-checkbox">
@@ -157,6 +159,12 @@
         <div class="menu-titre-resultats">
             <img src="assets/images/menu-banner.png" alt="Bannière de menu">
             <h2>X Résultats</h2>
+            <div class="filtre-btn-box">
+                <button class="bouton-filtre" id="bouton-filtre">
+                    <img src="assets/images/filtre.png" alt="Filtrer">
+                </button>
+            </div>
+
         </div>
         <section class="menus-grid">
             <div class="menus-box">
@@ -265,8 +273,6 @@
                 -->
             </div>
             <a href="commande.php" class="bouton-commander">Commander</a>
-            <a href="connexion.php">connexion</a>
-            <a href="inscription.php">Inscription</a>
         </section>
     </main>
 </div>

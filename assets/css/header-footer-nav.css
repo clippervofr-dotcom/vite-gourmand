@@ -1,0 +1,289 @@
+/* header + nav + bouton connexion + logo header + border */
+header {
+    background-color: var(--couleur-header);
+    padding: 20px 40px;
+    position: relative;
+    overflow: hidden;
+
+    .header-banner {
+        position: absolute;
+        inset: 0;
+        width: 50%;
+        height: 100%;
+        margin-inline: auto;
+        object-fit: cover;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .banner-delimitation {
+        mix-blend-mode: multiply;
+        position: relative;
+        width: 100%;
+        display: block;
+        margin-bottom: -1.5rem;
+        filter: drop-shadow(0 6px 8px rgba(61, 43, 26, 0.15));
+    }
+}
+
+.border {
+    width: 100%;
+    display: block;
+    margin-bottom: -5px;
+    filter: drop-shadow(0 6px 8px rgba(61, 43, 26, 0.15));
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 8;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--couleur-police-standard);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.nav-links-menus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+    margin-top: 5.5em;
+}
+
+.nav-utilisateur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.panier-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.profil-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: transparent;
+    cursor: pointer;
+}
+
+.profil-box {
+    position: relative;
+}
+
+.dropdown-profil {
+    display: none;
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    z-index: 2;
+    width: max-content;
+    border: solid 1px #3D2B1A;
+    background-color: var(--couleur-fond);
+    padding: 0.5rem;
+    font-size: clamp(1rem, 0.875rem + 0.4vi, 1.125rem);
+    transition: all ease-in-out 0.2s;
+    font-family: 'Playfair Display', serif;
+}
+
+.dropdown-profil.active {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bouton-profil {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.boutons-header {
+    color: var(--couleur-police-connexion);
+    border-radius: 6px;
+    border: 1.5px solid var(--couleur-tracer-connexion);
+    padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+    transition: all ease-in-out 0.2s;
+    background-color: var(--couleur-header);
+}
+
+.boutons-header:hover {
+    background-color: var(--couleur-hero-bouton);
+    color: var(--couleur-fond);
+}
+
+.nav-logo {
+    font-family: 'Playfair Display', serif;
+    width: 440px;
+    white-space: nowrap;
+    font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
+}
+
+.nav-logo img {
+    height: 6rem;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.bouton-connexion {
+    color: var(--couleur-police-connexion);
+    border-radius: 6px;
+    border: 1.5px solid var(--couleur-tracer-connexion);
+    padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.bouton-connexion:hover {
+    background-color: var(--couleur-hero-bouton);
+    color: var(--couleur-fond);
+}
+
+.bouton-nav-hamburger {
+    display: none;
+
+    img {
+        width: 20%;
+        height: auto;
+    }
+}
+
+
+/* header responsive */
+
+@media (max-width: 900px) {
+    header {
+        overflow: visible;
+        padding: 20px 20px;
+
+        .header-banner {
+            display: none;
+        }
+    }
+
+    .nav-links-menus {
+        display: none;
+    }
+
+    .nav-links {
+        position: relative;
+    }
+
+    .nav-links-menus.active {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        z-index: 10;
+        width: max-content;
+        margin-top: 0;
+        border: solid 1px var(--couleur-footer);
+        background-color: var(--couleur-fond);
+        padding: 0.75rem;
+        box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+
+        .boutons-header,
+        .bouton-connexion {
+            border-radius: 0;
+            border: none;
+            padding: 0;
+            background-color: transparent;
+            font-family: 'Playfair Display', serif;
+        }
+    }
+
+    .bouton-nav-hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+
+}
+
+
+/* footer + logo footer + horaires */
+footer {
+    background: linear-gradient(180deg,rgba(252, 241, 227, 1) 0%, rgba(61, 43, 26, 1) 8%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    padding: 5px 40px;
+}
+
+footer ul {
+    text-align: center;
+    list-style: none;
+    cursor: pointer;
+}
+
+footer img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    align-items: center;
+}
+
+.footer-horaires {
+    color: var(--couleur-police-horaires);
+    text-align: center;
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+footer ul a {
+    text-decoration: none;
+    color: var(--couleur-police-ml-cgv);
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
+    cursor: pointer;
+}
+
+.cgv-ml-contact-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}

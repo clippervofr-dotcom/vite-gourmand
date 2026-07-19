@@ -40,5 +40,37 @@ if (mdp && mdpConfirm && messageErreur) {
     mdpConfirm.addEventListener('input', verifierMdp);
 }
 
+// ouverture-fermeture menu hamburger / header responsive
+
+const navlinksMenus = document.querySelector('#nav-links-menus');
+const btnNavHamburger = document.querySelector('#bouton-nav-hamburger');
+
+if (navlinksMenus && btnNavHamburger) {
+    btnNavHamburger.addEventListener('click', function () {
+        const estOuvert = navlinksMenus.classList.toggle('active');
+        btnNavHamburger.setAttribute('aria-expanded', estOuvert);
+
+        if (dropdownProfil) {
+            dropdownProfil.classList.remove('active');
+        }
+    });
+
+    document.addEventListener(('keydown'), function (event) {
+        if (event.key === 'Escape') {
+            navlinksMenus.classList.remove('active')
+        }
+    });
+
+    document.addEventListener('click', function (event) {
+        const clicDansHamburger = navlinksMenus.contains(event.target);
+        const clicSurBouton = btnNavHamburger.contains(event.target);
+
+        if (navlinksMenus.classList.contains('active') && !clicDansHamburger && !clicSurBouton) {
+            navlinksMenus.classList.remove('active');
+        }
+    });
+
+}
+
 
 

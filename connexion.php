@@ -22,13 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+$css_pages = ['forms'];
 include 'includes/header.php';
 ?>
 
     <main>
-        <div class="se-connecter-title">
-            <h1>Connexion</h1>
+        <div class="connexion-banner">
+            <img src="assets/images/banniere-v&g.png" alt="Banniere connexion" class="connexion-banner-img">
         </div>
+
 
         <?php if ($erreur): ?>
             <p class="erreur"><?= htmlspecialchars($erreur) ?></p>

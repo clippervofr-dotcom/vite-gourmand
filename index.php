@@ -1,3 +1,4 @@
+<?php $css_pages = ['home']; ?>
 <?php require 'includes/header.php'; ?>
 
 <main>

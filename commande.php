@@ -1,3 +1,4 @@
+<?php $css_pages = ['forms']; ?>
 <?php require 'includes/header.php'; ?>
 
 <main>
@@ -32,8 +33,10 @@
                     </div>
                 </div>
                 <div class="third-ligne-info">
+                    <label for="adresse-select">Adresse<span class="requis" aria-hidden="true">*</span></label>
                     <select id="adresse-select">
                         <option value="">Choisir une adresse enregistrée</option>
+                        <option value="adresse-enregistrer"></option>
                     </select>
                 </div>
                 <div class="new-adresse">
@@ -41,7 +44,7 @@
                 </div>
                 <div class="fourth-ligne-info">
                     <div class="infos-perso-date-heure">
-                        <label for="date-heure">Date et heure de la prestation</label>
+                        <label for="date-heure">Date et heure de la prestation<span class="requis" aria-hidden="true">*</span></label>
                         <input type="datetime-local" id="date-heure">
                     </div>
                 </div>
@@ -52,6 +55,7 @@
                     <img src="assets/images/votre-menu.png" alt="Votre menu">
                 </div>
                 <div class="first-ligne-choix-menu">
+                    <label for="choix-menu">Menu<span class="requis" aria-hidden="true">*</span></label>
                     <select id="choix-menu">
                         <option value="">Sélectionnez votre menu</option>
                         <option value="menu-noel">Menu de Noël</option>

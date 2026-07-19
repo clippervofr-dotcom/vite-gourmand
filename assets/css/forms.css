@@ -1,0 +1,466 @@
+/* ---- commandes ---- */
+.commande {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    gap: 5rem;
+    margin-top: 20px;
+}
+
+.commande-box {
+    gap: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.commande-box-1, .commande-box-2, .commande-box-3 {
+    background-color: var(--couleur-avis-filtre-banner);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.titre-info-perso, .titre-choix-menu, .titre-recap-commande {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.bubulle {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: solid 1px var(--couleur-police-standard);
+    z-index: 2;
+    background-color: var(--couleur-hero-bouton);
+    font-size: clamp(2.9rem, 1.5rem + 2vw, 3rem);
+    color: #FCF1E3;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+}
+
+.first-ligne-info, .second-ligne-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 32px;
+}
+
+.third-ligne-info {
+    margin-top: 20px;
+    margin-bottom: -20px;
+    padding: 5px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.first-ligne-choix-menu {
+    padding: 5px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.second-ligne-choix-menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.infos-perso, .infos-menu, .infos-perso-date-heure {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 5px 16px;
+}
+
+.infos-perso, .infos-perso-date-heure {
+    width: 100%;
+}
+
+.location-materiel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#checkbox-location {
+    display: flex;
+    justify-content: center;
+}
+
+.explications-location-materiel-forfait, .explications-nbr-pers {
+    text-align: center;
+}
+
+.explications-location-materiel-forfait p {
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
+}
+
+.explications-location-materiel, .explications-nbr-pers {
+    color: var(--couleur-hero-bouton);
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
+}
+
+.new-adresse {
+    display: flex;
+    justify-content: flex-end;
+    font-size: clamp(0.5625rem, 0.5rem + 0.25vw, 0.6875rem);
+}
+
+.new-adresse a {
+    text-decoration: none;
+    color: var(--couleur-hero-bouton);
+}
+
+#adresse-select, #choix-menu {
+    width: 100%;
+}
+
+/* modif des inputs et select du site */
+input, select {
+    border: 1.5px solid var(--couleur-hero-bouton);
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--couleur-police-standard);
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border-color: var(--couleur-hero-bouton);
+    box-shadow: 0 0 0 3px rgba(196, 112, 58, 0.2);
+}
+
+input::placeholder {
+    color: var(--couleur-police-ml-cgv);
+    font-style: italic;
+}
+
+.recap-commande-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 20px
+}
+
+.recap-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+}
+
+.recap-liste {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.recap-intitule {
+    font-family: 'Playfair Display', serif;
+}
+
+.recap-resultat {
+    color: var(--couleur-hero-bouton);
+}
+
+.recap-prix {
+    font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
+    color: var(--couleur-hero-bouton);
+    font-family: 'Playfair Display', serif;
+}
+
+.recap-commande-bouton-confirmation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.recap-commande-bouton-confirmation p {
+    font-size: clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
+    color: var(--couleur-police-email-confirm);
+    text-align: center;
+}
+/* commandes responsive */
+
+@media (max-width: 640px) {
+    .first-ligne-info,
+    .second-ligne-info,
+    .second-ligne-choix-menu {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .commande-box-1,
+    .commande-box-2,
+    .commande-box-3 {
+        padding: 16px;
+    }
+
+    .infos-perso,
+    .infos-menu,
+    .infos-perso-date-heure {
+        width: 100%;
+    }
+}
+
+/* ---- connexion ---- */
+.se-connecter-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.connexion-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    mix-blend-mode: multiply;
+}
+
+.input-connexion {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 1em;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+}
+
+.btn-se-connecter {
+    margin-top: 1.5rem;
+}
+
+.btn-se-connecter:hover {
+    box-shadow: none;
+}
+
+.pas-de-compte {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ---- formulaire contact + inscription ---- */
+.form-page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-inline: auto;
+    padding: 2rem;
+    background-color: var(--couleur-avis-filtre-banner);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 5em;
+    align-items: start;
+
+    @media (max-width: 640px) {
+        grid-template-columns: repeat(1, 1fr);
+        width: 80%;
+    }
+
+    & label {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+        
+        &:has(+ [required])::after {
+            content: "*";
+            padding-left: 1ch;
+            color: red;
+        }
+    }
+
+    & img,
+    & .form-description {
+        grid-column: 1 / -1;
+        margin-inline: auto;
+        width: 100%;
+    }
+}
+
+.form-nom,
+.form-prenom,
+.form-tel,
+.form-date,
+.form-email,
+.form-texte,
+.form-adresse,
+.form-ville,
+.form-code-postal,
+.form-civilite,
+.form-mdp,
+.form-mdp-confirm {
+    display: inherit;
+    
+    &.form-email,
+    &.form-texte,
+    &.form-civilite {
+        grid-column: 1 / -1;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+        box-sizing: content-box;
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+input[type="password"],
+textarea {
+    padding: 1em;
+    border-radius: 5px;
+    border: 1.5px solid var(--couleur-hero-bouton);
+    font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);
+}
+
+.form-checkbox {
+    grid-column: 1 / -1;
+    justify-self: center;
+    accent-color: black;
+    padding: 0.5em;
+}
+
+.form-submit {
+    display: inherit;
+    grid-column: 1 / -1;
+
+    & > p {
+        margin-inline: auto;
+        color: var(--couleur-police-email-confirm)
+    }
+
+    .form-submit-button {
+        background: var(--couleur-hero-bouton);
+        border: 2px solid var(--couleur-presentation-box-tracer);
+        border-radius: 12px;
+        padding: 1em;
+        font-weight: bold;
+        color: white;
+        font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+        transition: all ease-in-out 0.2s;
+        font-family: 'Playfair Display', serif;
+
+        &:hover {
+            opacity: 80%;
+            color: white;
+        }
+    }
+}
+
+#erreur-mdp {
+    min-height: 1em;
+    margin: 0;
+}
+
+
+/* modale devis */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(61, 43, 26, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 200;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    position: relative;
+    max-height: 90vh;
+    max-width: 90vw;
+    width: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    ms-overflow-style { display: none; }
+    scrollbar-width { display: none; }
+}
+
+.modal-box::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-overlay .form-page {
+    margin-top: 0;
+}
+
+.modal-box-petite {
+    background-color: var(--couleur-avis-filtre-banner);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    max-width: 400px;
+}
+
+.modal-box--small h2 {
+    color: var(--couleur-hero-bouton);
+    margin-bottom: 1rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.75rem;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--couleur-police-standard);
+}
+
+.modal-close:hover {
+    opacity: 80%;
+}
+
+
+/* responsive */
+
+@media (max-width: 900px) {
+
+    .titre-info-perso,
+    .titre-choix-menu,
+    .titre-recap-commande {
+        margin-top: 30px;
+    }
+
+    .bubulle {
+        left: -15px;
+    }
+}

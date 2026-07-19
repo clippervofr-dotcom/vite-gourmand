@@ -454,8 +454,7 @@ footer ul a {
     height: 80%;
 }
 
-/* Partenaires + texte + logo + carousel */
-
+/* Partenaires + texte + logo + carroussel */
 
 .partenaires {
     background: #FFFFFF;
@@ -654,7 +653,7 @@ footer ul a {
     border-radius: 2px;
 }
 
-/* checked */
+/* cheked */
 .checkbox-custom input:checked ~ .checkbox-mark:after {
     display: block;
     animation: splash 0.3s forwards;

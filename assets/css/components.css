@@ -1,0 +1,295 @@
+/* ------ elements sur plusieurs pages DRY ------ */
+.checkbox-custom {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+    gap: 15px;
+}
+
+.checkbox-custom input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 1.5em;
+    height: 1.5em;
+    top: 0;
+    left: 0;
+}
+
+.checkbox-custom .checkbox-mark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.5em;
+    width: 1.5em;
+    flex-shrink: 0;
+    background-color: #fdfcf0;
+    border: 4px solid #3D2B1A;
+    border-radius: 8% 92% 12% 88% / 87% 11% 89% 13%;
+    box-shadow: 3px 3px 0px #3D2B1A;
+    transition:
+            transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+            box-shadow 0.2s;
+}
+
+.checkbox-custom:hover .checkbox-mark {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.checkbox-custom input:checked ~ .checkbox-mark {
+    background-color: #da7b20;
+    border-radius: 92% 8% 88% 12% / 11% 87% 13% 89%;
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.checkbox-custom .checkbox-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 0.20em;
+    top: 0.02em;
+    width: 0.25em;
+    transform: translate(-50%, -50%) rotate(40deg);
+    height: 0.6em;
+    border: solid #FFFFFF;
+    border-width: 0 0.25em 0.25em 0;
+    border-radius: 2px;
+}
+
+.checkbox-custom input:checked ~ .checkbox-mark:after {
+    display: block;
+    animation: splash 0.3s forwards;
+}
+
+.checkbox-custom:active .checkbox-mark {
+    transform: scale(0.9) translateY(4px);
+    box-shadow: 0px 0px 0px #3D2B1A;
+}
+
+@keyframes splash {
+    0% {
+        transform: scale(0) rotate(40deg);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.2) rotate(40deg);
+    }
+    100% {
+        transform: scale(1) rotate(40deg);
+        opacity: 1;
+    }
+}
+
+.bottom-banner {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    mix-blend-mode: multiply;
+}
+
+.requis {
+    color: var(--couleur-police-epuise);
+}
+
+.bouton-confirmation,
+.btn-se-connecter {
+    background-color: var(--couleur-hero-bouton);
+    color: var(--couleur-fond);
+    border: solid 1px var(--couleur-police-standard);
+    border-radius: 50px;
+    padding: 12px 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    transition: all ease-in-out 0.2s;
+}
+
+.bouton-confirmation:hover,
+.btn-se-connecter:hover {
+    opacity: 80%;
+}
+
+/* ---- formulaire contact + inscription ---- */
+.form-page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-inline: auto;
+    padding: 2rem;
+    background-color: var(--couleur-avis-filtre-banner);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 5em;
+    align-items: start;
+
+    @media (max-width: 640px) {
+        grid-template-columns: repeat(1, 1fr);
+        width: 80%;
+    }
+
+    & label {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+        
+        &:has(+ [required])::after {
+            content: "*";
+            padding-left: 1ch;
+            color: red;
+        }
+    }
+
+    & img,
+    & .form-description {
+        grid-column: 1 / -1;
+        margin-inline: auto;
+        width: 100%;
+    }
+}
+
+.form-nom,
+.form-prenom,
+.form-tel,
+.form-date,
+.form-email,
+.form-texte,
+.form-adresse,
+.form-ville,
+.form-code-postal,
+.form-civilite,
+.form-mdp,
+.form-mdp-confirm {
+    display: inherit;
+    
+    &.form-email,
+    &.form-texte,
+    &.form-civilite {
+        grid-column: 1 / -1;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+        box-sizing: content-box;
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+input[type="password"],
+textarea {
+    padding: 1em;
+    border-radius: 5px;
+    border: 1.5px solid var(--couleur-hero-bouton);
+    font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);
+}
+
+.form-checkbox {
+    grid-column: 1 / -1;
+    justify-self: center;
+    accent-color: black;
+    padding: 0.5em;
+}
+
+.form-submit {
+    display: inherit;
+    grid-column: 1 / -1;
+
+    & > p {
+        margin-inline: auto;
+        color: var(--couleur-police-email-confirm)
+    }
+
+    .form-submit-button {
+        background: var(--couleur-hero-bouton);
+        border: 2px solid var(--couleur-presentation-box-tracer);
+        border-radius: 12px;
+        padding: 1em;
+        font-weight: bold;
+        color: white;
+        font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+        transition: all ease-in-out 0.2s;
+        font-family: 'Playfair Display', serif;
+
+        &:hover {
+            opacity: 80%;
+            color: white;
+        }
+    }
+}
+
+#erreur-mdp {
+    min-height: 1em;
+    margin: 0;
+}
+
+
+/* modale devis */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(61, 43, 26, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 200;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    ms-overflow-style { display: none; }
+    scrollbar-width { display: none; }
+}
+
+.modal-box::-webkit-scrollbar {
+    display: none;
+}
+
+.modal-overlay .form-page {
+    margin-top: 0;
+}
+
+.modal-box-petite {
+    background-color: var(--couleur-avis-filtre-banner);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    max-width: 400px;
+}
+
+.modal-box--small h2 {
+    color: var(--couleur-hero-bouton);
+    margin-bottom: 1rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.75rem;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--couleur-police-standard);
+}
+
+.modal-close:hover {
+    opacity: 80%;
+}
+

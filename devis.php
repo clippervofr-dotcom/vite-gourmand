@@ -1,4 +1,9 @@
-<div id="devis-modal" class="modal-overlay">
+
+<?php $css_pages = ['forms']; ?>
+<?php require 'includes/header.php'; ?>
+
+<main>
+    <div id="devis-modal" class="modal-overlay">
         <div class="modal-box">
             <button type="button" class="modal-close" id="devis-close" aria-label="Fermer la fenêtre">&times;</button>
 
@@ -48,7 +53,7 @@
 
                 <div class="form-submit">
                     <button class="form-submit-button" type="submit" id="form-submit-button"
-                        name="contact-submit-button">Envoyer</button>
+                        name="contact-submit-button">C'est parti !</button>
                 </div>
                 <p id="devis-erreur" class="erreur"></p>
             </form>
@@ -63,25 +68,11 @@
             <p>Votre demande de devis a bien été envoyée. Nous revenons vers vous très vite.</p>
         </div>
     </div>
-</div>
 
-<footer>
-    <ul class="cgv-ml-contact-footer">
-        <li><a href="contact.php">Contact</a></li>
-        <li><a href="cgv.php">Conditions Générales de Vente</a></li>
-        <li><a href="mentions-legales.php">Mentions Légales</a></li>
-    </ul>
-    <img src="assets/images/logo1_background_less.png" alt="Vite & Gourmand"/>
-    <div class="footer-horaires">
-        <p>Horaires :</p>
-        <p>Lundi - Vendredi: 9h00 - 18h00</p>
-        <p>Samedi:<br>9h00 - 13h00</p>
-        <p>Dimanche: Fermé</p>
+    <div>
+        <img src="assets/images/banniere-v&g.png" class="bottom-banner" alt="Banniere Vite & Gourmand">
     </div>
+</main>
 
-</footer>
-<script src="assets/js/fonction.js"></script>
-<script src="assets/js/forms.js"></script>
-<script src="assets/js/menus.js"></script>
-</body>
-</html>
+
+<?php require 'includes/footer.php'; ?>

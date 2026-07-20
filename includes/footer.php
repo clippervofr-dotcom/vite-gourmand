@@ -113,14 +113,6 @@
 <script src="assets/js/fonction.js"></script>
 <script src="assets/js/forms.js"></script>
 <script src="assets/js/menus.js"></script>
+
 </div>
 </html>
-
-
-btnVoirDetail.forEach(function (bouton) {
-    bouton.addEventListener('click', function () {
-        const menuId = bouton.dataset.menuId;
-        remplirModaleMenu(menuId);
-        menuDetailmodal.classList.add('active');
-    });
-});

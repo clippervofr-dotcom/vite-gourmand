@@ -198,3 +198,65 @@ if (btnMoins && btnPlus) {
     }
 }
 
+// modale tilt
+
+const menuDetailBox = document.querySelector("#menu-detail-modal .modal-box");
+
+if (menuDetailBox) {
+    const angleMax = 8;
+    const vitesseLissage = 0.3;
+
+    let rectCarte = null;
+    let rotateXCible = 0;
+    let rotateYCible = 0;
+    let rotateXActuel = 0;
+    let rotateYActuel = 0;
+    let animationEnCours = false;
+
+    function animer() {
+        rotateXActuel += (rotateXCible - rotateXActuel) * vitesseLissage;
+        rotateYActuel += (rotateYCible - rotateYActuel) * vitesseLissage;
+
+        menuDetailBox.style.transform = `perspective(1000px) rotateX(${rotateXActuel}deg) rotateY(${rotateYActuel}deg)`;
+
+        const ecartRestant = Math.abs(rotateXCible - rotateXActuel) + Math.abs(rotateYCible - rotateYActuel);
+
+        if (ecartRestant > 0.01) {
+            requestAnimationFrame(animer);
+        } else {
+            animationEnCours = false;
+        }
+    }
+
+    function lancerAnimation() {
+        if (!animationEnCours) {
+            animationEnCours = true;
+            requestAnimationFrame(animer);
+        }
+    }
+
+    menuDetailBox.addEventListener('mouseenter', function () {
+        rectCarte = menuDetailBox.getBoundingClientRect();
+    });
+
+    menuDetailBox.addEventListener('mousemove', function (event) {
+        if (!rectCarte) return;
+
+        const x = event.clientX - rectCarte.left;
+        const y = event.clientY - rectCarte.top;
+        const centreX = rectCarte.width / 2;
+        const centreY = rectCarte.height / 2;
+
+        rotateYCible = ((x - centreX) / centreX) * angleMax;
+        rotateXCible = ((y - centreY) / centreY) * -angleMax;
+
+        lancerAnimation();
+    });
+
+    menuDetailBox.addEventListener('mouseleave', function () {
+        rectCarte = null;
+        rotateXCible = 0;
+        rotateYCible = 0;
+        lancerAnimation();
+    });
+}

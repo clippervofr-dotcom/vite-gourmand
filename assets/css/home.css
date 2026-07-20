@@ -248,17 +248,17 @@ img.jose-img {
 
 .commentaires-mega-box {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     flex: 1;
     padding: 0 50px;
-    gap: 100px;
+    gap: 40px;
 }
 
 .commentaires-box {
     background-color: var(--couleur-avis-bouton);
     border: solid 1px var(--couleur-presentation-box-tracer);
     box-shadow: 0 8px 20px var(--couleur-ombre-forte);
-    padding: 20px 50px;
+    padding: 20px 24px;
     border-radius: 6px;
     font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
 }

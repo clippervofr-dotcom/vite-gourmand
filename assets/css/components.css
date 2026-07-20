@@ -118,7 +118,7 @@
 /* ---- formulaire contact + inscription ---- */
 .form-page {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
     margin-inline: auto;
     padding: 2rem;
@@ -128,7 +128,7 @@
     margin-top: 5em;
     align-items: start;
 
-    @media (max-width: 640px) {
+    @media (max-width: 900px) {
         grid-template-columns: repeat(1, 1fr);
         width: 80%;
     }
@@ -149,6 +149,15 @@
         grid-column: 1 / -1;
         margin-inline: auto;
         width: 100%;
+    }
+
+    @media (min-width: 900px) {
+        width: 50%;
+
+        .inscription-banner,
+        .banner-contact {
+            width: 50%;
+        }
     }
 }
 
@@ -175,7 +184,7 @@
     textarea {
         resize: vertical;
         min-height: 100px;
-        box-sizing: content-box;
+        box-sizing: border-box;
     }
 }
 
@@ -185,6 +194,7 @@ input[type="date"],
 input[type="tel"],
 input[type="password"],
 textarea {
+    width: 100%;
     padding: 1em;
     border-radius: 5px;
     border: 1.5px solid var(--couleur-hero-bouton);

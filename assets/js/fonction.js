@@ -69,7 +69,28 @@ if (navlinksMenus && btnNavHamburger) {
             navlinksMenus.classList.remove('active');
         }
     });
+}
 
+
+// carroussel mobile
+
+const btnSuivant = document.querySelector('#avis-suiv');
+const btnPrecedent = document.querySelector('#avis-prec');
+const commMegabox = document.querySelector('.commentaires-mega-box');
+
+if (btnSuivant && btnPrecedent && commMegabox) {
+    function largeurCarte() {
+        const premiereCarte = commMegabox.querySelector('.commentaires-box');
+        return premiereCarte ? premiereCarte.offsetWidth + 20 : 0;
+    }
+
+    btnSuivant.addEventListener('click', function () {
+        commMegabox.scrollBy({ left: largeurCarte(), behavior: 'smooth' });
+    });
+
+    btnPrecedent.addEventListener('click', function () {
+        commMegabox.scrollBy({ left: -largeurCarte(), behavior: 'smooth' });
+    });
 }
 
 

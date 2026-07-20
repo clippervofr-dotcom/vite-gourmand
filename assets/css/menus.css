@@ -106,11 +106,6 @@
         transform: translateX(0);
     }
 
-    .filtre-btn-box {
-        border: 1px solid var(--couleur-hero-bouton);
-        border-radius: 6px;
-    }
-
     .bouton-filtre {
         display: flex;
         align-items: center;

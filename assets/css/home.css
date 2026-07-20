@@ -54,6 +54,19 @@
     opacity: 80%;
 }
 
+/* hero responsive */
+
+@media (max-width: 640px) {
+    .hero {
+        min-height: 350px;
+    }
+    .hero img {
+        width: 100%;
+        margin-top: -60px;
+        margin-bottom: -30px;
+    }
+}
+
 /* presentation + images + arrow + bulle + texte */
 .presentation {
     display: flex;
@@ -75,7 +88,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: -130px;
 }
 
 .jose-img, .julie-img {
@@ -91,7 +103,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -100px;
 }
 
 .presentation-texte h2 {
@@ -127,6 +138,46 @@
     align-items: center;
 }
 
+/* presentation responsive */
+
+@media (max-width: 900px) {
+    .presentation {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .presentation-jose-img,
+    .presentation-julie-img,
+    .equipe-passion {
+        margin: 0;
+    }
+
+    .jose-img, .julie-img {
+        width: 60%;
+        height: auto;
+    }
+
+    .presentation-detail {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .presentation-produits-frais h3 {
+        rotate: 340deg;
+        justify-content: flex-start;
+    }
+
+    .presentation-livraison h3 {
+        rotate: 20deg;
+        justify-content: flex-end;
+    }
+    .equipe-passion {
+        padding-top: 20px;
+    }
+
+
+}
+
 /* Avis + commentaires + etoiles */
 .avis {
     background: linear-gradient(180deg,rgba(245, 230, 206, 1) 0%, rgba(252, 241, 227, 1) 100%);
@@ -136,6 +187,9 @@
 
 .avis-texte-img {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .avis h2 {
@@ -196,6 +250,52 @@
     height: 80%;
 }
 
+/* avis responsive */
+
+@media (max-width: 900px) {
+    .commentaires {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .commentaires img {
+        width: 80px;
+        align-self: center;
+    }
+
+    .bouton-avis-prec,
+    .bouton-avis-suiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    .commentaires-mega-box {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 0 20px;
+        width: 100%;
+        min-width: 0;
+        scrollbar-width: none;
+    }
+
+    .commentaires-mega-box::-webkit-scrollbar {
+        display: none;
+    }
+
+    .commentaires-box {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
+    }
+}
+
 /* Partenaires + texte + logo + carousel */
 .partenaires {
     background: #FFFFFF;
@@ -242,5 +342,18 @@
     }
     100% {
         transform: translateX(-50%);
+    }
+}
+
+/* partenaire responsive */
+
+@media (max-width: 640px) {
+    .partenaires-liste {
+        gap: 40px;
+    }
+
+    .partenaires-liste img {
+        width: 60px;
+        height: auto;
     }
 }

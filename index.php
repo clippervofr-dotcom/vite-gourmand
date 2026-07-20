@@ -25,16 +25,18 @@
             <div class="presentation-detail">
                 <div class="presentation-produits-frais">
                     <h3>Des produits frais</h3>
-                    <div class="presentation-produits-frais-deff-bulle">
+                    <picture class="presentation-produits-frais-deff-bulle">
+                        <source srcset="assets/images/produits-frais-texte-mobile.png" media="(max-width: 900px)">
                         <img src="assets/images/produits-frais-texte.png" alt="Des produits frais">
-                    </div>
+                    </picture>
                 </div>
 
                 <div class="presentation-livraison">
                     <h3>Livraison sur place</h3>
-                    <div class="presentation-livraison-deff-bulle">
+                    <picture class="presentation-livraison-deff-bulle">
+                        <source srcset="assets/images/livraison-texte-mobile.png" media="(max-width: 900px)">
                         <img src="assets/images/livraison-texte.png" alt="Livraison sur place">
-                    </div>
+                    </picture>
                 </div>
             </div>
         </div>
@@ -50,13 +52,13 @@
 
     <section class="avis">
         <div class="avis-texte-img">
-            <a href="precedent.php">
-                <img src="assets/images/arrow-left.png" alt="Flèche gauche pour faire défiler les avis">
-            </a>
+            <button type="button" class="bouton-avis-prec" id="avis-prec" aria-label="Avis précédent">
+                <img src="assets/images/arrow-left.png" alt="">
+            </button>
             <img src="assets/images/avis-clients.png" alt="Avis Clients">
-            <a href="suivant.php">
-                <img src="assets/images/arrow-right.png" alt="Flèche droite pour faire défiler les avis">
-            </a>
+            <button type="button" class="bouton-avis-suiv" id="avis-suiv" aria-label="Avis suivant">
+                <img src="assets/images/arrow-right.png" alt="">
+            </button>
         </div>
         <div class="commentaires">
             <img src="assets/images/avis1.png" alt="Avis Clients">

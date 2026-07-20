@@ -250,7 +250,10 @@ textarea {
 .modal-box {
     position: relative;
     max-height: 90vh;
+    max-width: 90vw;
+    width: 500px;
     overflow-y: auto;
+    overflow-x: hidden;
     ms-overflow-style { display: none; }
     scrollbar-width { display: none; }
 }
@@ -293,3 +296,25 @@ textarea {
     opacity: 80%;
 }
 
+/* modif des inputs et select du site */
+input, select {
+    border: 1.5px solid var(--couleur-hero-bouton);
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--couleur-police-standard);
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border-color: var(--couleur-hero-bouton);
+    box-shadow: 0 0 0 3px rgba(196, 112, 58, 0.2);
+}
+
+input::placeholder {
+    color: var(--couleur-police-ml-cgv);
+    font-style: italic;
+}

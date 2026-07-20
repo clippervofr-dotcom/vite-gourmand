@@ -1,66 +1,96 @@
+<!--modale faire un devis-->
+
 <div id="devis-modal" class="modal-overlay">
-        <div class="modal-box">
-            <button type="button" class="modal-close" id="devis-close" aria-label="Fermer la fenêtre">&times;</button>
+    <div class="modal-box">
+        <button type="button" class="modal-close" id="devis-close" aria-label="Fermer la fenêtre">&times;</button>
 
-            <form class="form-page" id="devis-form" action="" method="post">
-                <img src="assets/images/devis-banner.png" alt="Banner">
-                <p class="form-description">Parlons de votre événement<br>Demandez votre devis traiteur en quelques
-                    clics.</p>
-                
+        <form class="form-page" id="devis-form" action="" method="post">
+            <img src="assets/images/devis-banner.png" alt="Banner">
+            <p class="form-description">Parlons de votre événement<br>Demandez votre devis traiteur en quelques
+                clics.</p>
 
-                <div class="form-nom">
-                    <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="contact-nom" required>
-                </div>
 
-                <div class="form-prenom">
-                    <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="contact-prenom" required>
-                </div>
+            <div class="form-nom">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="contact-nom" required>
+            </div>
 
-                <div class="form-tel">
-                    <label for="tel">Téléphone :</label>
-                    <input type="tel" inputmode="numeric" pattern="[0-9]{10}" id="tel" name="contact-tel" required>
-                </div>
+            <div class="form-prenom">
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="contact-prenom" required>
+            </div>
 
-                <div class="form-date">
-                    <label for="date">Date :</label>
-                    <input type="date" id="date" name="contact-date" required>
-                </div>
+            <div class="form-tel">
+                <label for="tel">Téléphone :</label>
+                <input type="tel" inputmode="numeric" pattern="[0-9]{10}" id="tel" name="contact-tel" required>
+            </div>
 
-                <div class="form-email">
-                    <label for="email">Email :</label>
-                    <input type="email" id="email" name="contact-email" required>
-                </div>
+            <div class="form-date">
+                <label for="date">Date :</label>
+                <input type="date" id="date" name="contact-date" required>
+            </div>
 
-                <div class="form-texte">
-                    <label for="form-texte">Message :</label>
-                    <textarea class="form-texte" id="form-texte" name="contact-texte" required></textarea>
-                </div>
+            <div class="form-email">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="contact-email" required>
+            </div>
 
-                <div class="form-checkbox">
-                    <label class="checkbox-custom">
-                        <input type="checkbox" id="validation" required>
-                        <div class="checkbox-mark"></div>
-                        <span>J'accepte que l'on me contacte pour cette demande</span>
-                    </label>
-                </div>
+            <div class="form-texte">
+                <label for="form-texte">Message :</label>
+                <textarea class="form-texte" id="form-texte" name="contact-texte" required></textarea>
+            </div>
 
-                <div class="form-submit">
-                    <button class="form-submit-button" type="submit" id="form-submit-button"
-                        name="contact-submit-button">Envoyer</button>
-                </div>
-                <p id="devis-erreur" class="erreur"></p>
-            </form>
-        </div>
+            <div class="form-checkbox">
+                <label class="checkbox-custom">
+                    <input type="checkbox" id="validation" required>
+                    <div class="checkbox-mark"></div>
+                    <span>J'accepte que l'on me contacte pour cette demande</span>
+                </label>
+            </div>
+
+            <div class="form-submit">
+                <button class="form-submit-button" type="submit" id="form-submit-button"
+                        name="contact-submit-button">Envoyer
+                </button>
+            </div>
+            <p id="devis-erreur" class="erreur"></p>
+        </form>
     </div>
+</div>
 
-    <div id="devis-confirmation" class="modal-overlay">
-        <div class="modal-box modal-box-petite">
-            <button type="button" class="modal-close" id="confirmation-close"
-                aria-label="Fermer la fenêtre">&times;</button>
-            <h2>Merci !</h2>
-            <p>Votre demande de devis a bien été envoyée. Nous revenons vers vous très vite.</p>
+<div id="devis-confirmation" class="modal-overlay">
+    <div class="modal-box modal-box-petite">
+        <button type="button" class="modal-close" id="confirmation-close"
+                aria-label="Fermer la fenêtre">&times;
+        </button>
+        <h2>Merci !</h2>
+        <p>Votre demande de devis a bien été envoyée. Nous revenons vers vous très vite.</p>
+    </div>
+</div>
+
+<!-- modale cartes menus -->
+
+<div id="menu-detail-modal" class="modal-overlay">
+    <div class="modal-box">
+        <button type="button" class="modal-close" id="menu-detail-close" aria-label="Fermer la fenêtre">&times;</button>
+
+        <div class="menu-detail-content">
+            <img id="menu-detail-img" src="" alt="">
+            <h2 id="menu-detail-titre"></h2>
+            <p id="menu-detail-description"></p>
+            <p id="menu-detail-stock"></p>
+            <p id="menu-detail-prix"></p>
+
+            <div class="menu-detail-quantite">
+                <button type="button" class="btn-moins" id="menu-detail-btn-moins" aria-label="Diminuer la quantité">−</button>
+                <input type="number" id="menu-detail-input" value="0" min="0" aria-label="Quantité" inputmode="numeric" required>
+                <button type="button" class="btn-plus" id="menu-detail-btn-plus" aria-label="Augmenter la quantité">+</button>
+            </div>
+
+            <p id="menu-detail-prix-calcule"></p>
+
+            <p id="menu-detail-reduc"></p>
+            <button type="button" class="bouton-confirmation" id="menu-detail-ajouter">Ajouter au panier</button>
         </div>
     </div>
 </div>
@@ -83,5 +113,14 @@
 <script src="assets/js/fonction.js"></script>
 <script src="assets/js/forms.js"></script>
 <script src="assets/js/menus.js"></script>
-</body>
+</div>
 </html>
+
+
+btnVoirDetail.forEach(function (bouton) {
+    bouton.addEventListener('click', function () {
+        const menuId = bouton.dataset.menuId;
+        remplirModaleMenu(menuId);
+        menuDetailmodal.classList.add('active');
+    });
+});

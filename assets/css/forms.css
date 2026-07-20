@@ -130,29 +130,6 @@
     width: 100%;
 }
 
-/* modif des inputs et select du site */
-input, select {
-    border: 1.5px solid var(--couleur-hero-bouton);
-    border-radius: 8px;
-    padding: 10px 15px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    color: var(--couleur-police-standard);
-    outline: none;
-}
-
-input:focus, select:focus, textarea:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    border-color: var(--couleur-hero-bouton);
-    box-shadow: 0 0 0 3px rgba(196, 112, 58, 0.2);
-}
-
-input::placeholder {
-    color: var(--couleur-police-ml-cgv);
-    font-style: italic;
-}
-
 .recap-commande-box {
     display: flex;
     align-items: center;
@@ -226,6 +203,19 @@ input::placeholder {
     }
 }
 
+@media (max-width: 900px) {
+
+    .titre-info-perso,
+    .titre-choix-menu,
+    .titre-recap-commande {
+        margin-top: 30px;
+    }
+
+    .bubulle {
+        left: -15px;
+    }
+}
+
 /* ---- connexion ---- */
 .se-connecter-box {
     display: flex;
@@ -239,7 +229,7 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2em;
+    padding: 2em 0;
     mix-blend-mode: multiply;
 }
 
@@ -303,7 +293,16 @@ input::placeholder {
         margin-inline: auto;
         width: 100%;
     }
+
+    @media (min-width: 900px) {
+        .inscription-banner,
+        .banner-contact {
+            width: 50%;
+        }
+    }
 }
+
+
 
 .form-nom,
 .form-prenom,
@@ -318,7 +317,7 @@ input::placeholder {
 .form-mdp,
 .form-mdp-confirm {
     display: inherit;
-    
+
     &.form-email,
     &.form-texte,
     &.form-civilite {
@@ -383,84 +382,3 @@ textarea {
     margin: 0;
 }
 
-
-/* modale devis */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(61, 43, 26, 0.6);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 200;
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-.modal-box {
-    position: relative;
-    max-height: 90vh;
-    max-width: 90vw;
-    width: 500px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    ms-overflow-style { display: none; }
-    scrollbar-width { display: none; }
-}
-
-.modal-box::-webkit-scrollbar {
-    display: none;
-}
-
-.modal-overlay .form-page {
-    margin-top: 0;
-}
-
-.modal-box-petite {
-    background-color: var(--couleur-avis-filtre-banner);
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    max-width: 400px;
-}
-
-.modal-box--small h2 {
-    color: var(--couleur-hero-bouton);
-    margin-bottom: 1rem;
-}
-
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 1.75rem;
-    line-height: 1;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: var(--couleur-police-standard);
-}
-
-.modal-close:hover {
-    opacity: 80%;
-}
-
-
-/* responsive */
-
-@media (max-width: 900px) {
-
-    .titre-info-perso,
-    .titre-choix-menu,
-    .titre-recap-commande {
-        margin-top: 30px;
-    }
-
-    .bubulle {
-        left: -15px;
-    }
-}

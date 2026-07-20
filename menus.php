@@ -152,6 +152,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="filtrer-btn-box" id="filter-btn-box">
+            <button type="button" id="reset-filtrer-btn">Reset</button>
+            <button type="button" id="filtrer-btn">Valider</button>
+        </div>
     </aside>
 
     <!-- MENU -->
@@ -172,105 +177,45 @@
                 <div class="menus-box-titre-visible">
                     <h3>Menu de noël</h3>
                     <div class="menus-voir-detail-bouton">
-                        <a href="menus.detail.php" class="bouton-voir-detail">Voir le detail</a>
+                        <button type="button" class="bouton-voir-detail" data-menu-id="1">Voir le detail</button>
                     </div>
                 </div>
-                <!-- futur Clic JS
-                <div class="menus-box-texte">
-                    <h3>Menu de Noël</h3>
-                    <p>Découvrez notre Menu de Noël, une sélection de plats festifs préparés avec des ingrédients de qualité pour partager un moment gourmand et chaleureux en famille ou entre amis.</p>
-                    <p>30€ / pers. (10 pers. min)</p>
-                    <p class="stock">Stock : 50 disponibles</p>
-                    <div class="quantite">
-                        <div class="bouton-moins">
-                            <img src="assets/images/moins.png" alt="bouton moins">
-                        </div>
-                        <input type="number" value="0" min="0" id="quantite" class="quantite-input">
-                        <div class="bouton-plus">
-                            <img src="assets/images/plus.png" alt="bouton plus">
-                        </div>
-                    </div>
-                    <p class="reduc">✓ Réduction de 10% appliquée<br>
-                        si +5 personnes au-dessus du minimum</p>
-                </div>
-                -->
             </div>
             <div class="menus-box">
                 <img src="assets/images/paques.png" alt="Menu de paques">
                 <div class="menus-box-titre-visible">
                     <h3>Menu de Pâques</h3>
                     <div class="menus-voir-detail-bouton">
-                        <a href="menus.detail.php" class="bouton-voir-detail">Voir le detail</a>
+                        <button type="button" class="bouton-voir-detail" data-menu-id="2">Voir le detail</button>
                     </div>
                 </div>
-                <!-- futur Clic JS
-                <div class="menus-box-texte">
-                    <h3>Menu de Pâques</h3>
-                    <p>Une chasse aux œufs, c'est bien. Une chasse aux bons plats, c'est mieux !</p>
-                    <p>Savourez notre Menu de Pâques, une sélection de plats de saison aux saveurs printanières, idéale pour célébrer ce moment de convivialité.</p>
-                    <p>20€ / pers. (20 pers. min)</p>
-                    <p class="stock">Stock : 30 disponibles</p>
-                    <p class="reduc">✓ Réduction de 10% appliquée<br>
-                        si +5 personnes au-dessus du minimum</p>
-                </div>
-                -->
             </div>
             <div class="menus-box">
                 <img src="assets/images/classique.png" alt="Menu Classique">
                 <div class="menus-box-titre-visible">
                     <h3>Menu Classique</h3>
                     <div class="menus-voir-detail-bouton">
-                        <a href="menus.detail.php" class="bouton-voir-detail">Voir le detail</a>
+                        <button type="button" class="bouton-voir-detail" data-menu-id="3">Voir le detail</button>
                     </div>
                 </div>
-                <!-- futur Clic JS
-                <div class="menus-box-texte">
-                    <h3>Menu Classique</h3>
-                    <p>Découvrez notre Menu Classique, une sélection de plats traditionnels préparés avec des ingrédients de qualité pour partager un moment gourmand et chaleureux en famille ou entre amis.</p>
-                    <p>25€ / pers. (10 pers. min)</p>
-                    <p class="stock">Stock épuisé</p>
-                    <p class="reduc">✓ Réduction de 10% appliquée<br>
-                        si +5 personnes au-dessus du minimum</p>
-                </div>
-                -->
             </div>
             <div class="menus-box">
                 <img src="assets/images/vege3.png" alt="Menu végétarien">
                 <div class="menus-box-titre-visible">
                     <h3>Menu végétarien</h3>
                     <div class="menus-voir-detail-bouton">
-                        <a href="menus.detail.php" class="bouton-voir-detail">Voir le detail</a>
+                        <button type="button" class="bouton-voir-detail" data-menu-id="5">Voir le detail</button>
                     </div>
                 </div>
-                <!-- futur Clic JS
-                <div class="menus-box-texte">
-                    <h3>Menu végétarien</h3>
-                    <p>Découvrez notre Menu végétarien, une sélection de plats savoureux préparés avec des ingrédients de qualité pour partager un moment gourmand et chaleureux en famille ou entre amis.</p>
-                    <p>5€ / pers. (20 pers. min)</p>
-                    <p class="stock">Stock : 100 disponibles</p>
-                    <p class="reduc">✓ Réduction de 10% appliquée<br>
-                        si +5 personnes au-dessus du minimum</p>
-                </div>
-                -->
             </div>
             <div class="menus-box">
                 <img src="assets/images/evenement2.png" alt="Menu de noel">
                 <div class="menus-box-titre-visible">
                     <h3>Menu Evenementiel</h3>
                     <div class="menus-voir-detail-bouton">
-                        <a href="menus.detail.php" class="bouton-voir-detail">Voir le detail</a>
+                        <button type="button" class="bouton-voir-detail" data-menu-id="4">Voir le detail</button>
                     </div>
                 </div>
-                <!-- futur Clic JS
-                <div class="menus-box-texte">
-                    <h3>Menu Evenementiel</h3>
-                    <p>Découvrez notre Menu Evenementiel, une sélection de plats festifs préparés avec des ingrédients de qualité pour partager un moment gourmand et chaleureux en famille ou entre amis.</p>
-                    <p>50€ / pers. (30 pers. min)</p>
-                    <p class="stock">Stock : 100 disponibles</p>
-                    <p class="reduc">✓ Réduction de 10% appliquée<br>
-                        si +5 personnes au-dessus du minimum</p>
-                </div>
-                -->
             </div>
             <a href="commande.php" class="bouton-commander">Commander</a>
         </section>

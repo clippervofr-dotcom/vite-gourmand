@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </p>
             <?php endif; ?>
 
-            <img src="assets/images/inscription-banner.png" alt="Banner">
+            <img src="assets/images/inscription-banner.png" class="inscription-banner" alt="Banner">
             <p class="form-description">Quelques instants suffisent pour créer votre compte et savourer nos spécialités.</p>
 
             <div class="form-civilite">

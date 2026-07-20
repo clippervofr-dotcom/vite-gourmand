@@ -5,7 +5,7 @@
 <main>
     <form class="form-page" action="" method="post">
 
-        <img src="assets/images/contact-banner.png" alt="Banner">
+        <img src="assets/images/contact-banner.png" class="banner-contact" alt="Banner">
         <p class="form-description">Besoin d’informations ?<br>Écrivez-nous, nous vous répondrons avec plaisir.</p>
 
 

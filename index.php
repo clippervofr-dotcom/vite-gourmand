@@ -4,7 +4,7 @@
 <main>
     <section class="hero">
         <img src="assets/images/banniere-traiteur-2.png" alt="Traiteur depuis 25 ans à Bordeaux">
-        <a href="menus.php" class="bouton-menus">Voir nos menus</a>
+        <a href="menus.php" class="bouton-menus" id="btn-menus-hero">Voir nos menus</a>
     </section>
 
     <img src="assets/images/border2.png" alt="Bordure décorative" class="border">
@@ -53,11 +53,11 @@
     <section class="avis">
         <div class="avis-texte-img">
             <button type="button" class="bouton-avis-prec" id="avis-prec" aria-label="Avis précédent">
-                <img src="assets/images/arrow-left.png" alt="">
+                <img src="assets/images/arrow-left.png" class="arrow-avis" alt="">
             </button>
             <img src="assets/images/avis-clients.png" alt="Avis Clients">
             <button type="button" class="bouton-avis-suiv" id="avis-suiv" aria-label="Avis suivant">
-                <img src="assets/images/arrow-right.png" alt="">
+                <img src="assets/images/arrow-right.png" class="arrow-avis" alt="">
             </button>
         </div>
         <div class="commentaires">

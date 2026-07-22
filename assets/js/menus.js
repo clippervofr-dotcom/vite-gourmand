@@ -36,7 +36,6 @@ if (filtrerBtnbox) {
 }
 
 const menuDetailmodal = document.querySelector("#menu-detail-modal");
-const btnVoirDetail = document.querySelectorAll(".bouton-voir-detail");
 const btnMenuClose = document.querySelector("#menu-detail-close");
 const inputQuantite = document.querySelector("#menu-detail-input");
 
@@ -89,7 +88,7 @@ const menusData = {
 };
 
 
-if (menuDetailmodal && btnMenuClose && btnVoirDetail.length > 0) {
+if (menuDetailmodal && btnMenuClose) {
     function remplirModaleMenu(menuId) {
         const menu = menusData[menuId];
         if (!menu) return;

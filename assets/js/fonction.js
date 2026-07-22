@@ -22,7 +22,6 @@ if (btnProfil && dropdownProfil && profilBox) {
 }
 
 //check si le 1er mdp et 2eme mdp dans formulaire inscription sont similaire
-
 const mdp = document.getElementById('mdp');
 const mdpConfirm = document.getElementById('mdp-confirm');
 const messageErreur = document.getElementById('erreur-mdp');
@@ -41,7 +40,6 @@ if (mdp && mdpConfirm && messageErreur) {
 }
 
 // ouverture-fermeture menu hamburger / header responsive
-
 const navlinksMenus = document.querySelector('#nav-links-menus');
 const btnNavHamburger = document.querySelector('#bouton-nav-hamburger');
 
@@ -73,7 +71,6 @@ if (navlinksMenus && btnNavHamburger) {
 
 
 // carroussel mobile
-
 const btnSuivant = document.querySelector('#avis-suiv');
 const btnPrecedent = document.querySelector('#avis-prec');
 const commMegabox = document.querySelector('.commentaires-mega-box');
@@ -93,5 +90,13 @@ if (btnSuivant && btnPrecedent && commMegabox) {
     });
 }
 
+
+//scroll to top btn
+$(function () {
+    $("#btn-to-top").click(function () {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    });
+});
 
 

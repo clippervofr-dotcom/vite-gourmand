@@ -133,13 +133,18 @@ if (menuDetailmodal && btnMenuClose && btnVoirDetail.length > 0) {
 
     inputQuantite.addEventListener('input', recalculerPrix);
 
-    btnVoirDetail.forEach(function (bouton) {
-        bouton.addEventListener('click', function () {
+    const menusGrid = document.querySelector('.menus-grid');
+
+    if (menusGrid) {
+        menusGrid.addEventListener('click', function (event) {
+            const bouton = event.target.closest('.bouton-voir-detail');
+            if (!bouton) return;
+
             const menuId = bouton.dataset.menuId;
             remplirModaleMenu(menuId);
             menuDetailmodal.classList.add('active');
         });
-    });
+    }
 
     inputQuantite.addEventListener('blur', function () {
         const menuId = menuDetailmodal.dataset.menuIdActuel;
@@ -258,5 +263,153 @@ if (menuDetailBox) {
         rotateXCible = 0;
         rotateYCible = 0;
         lancerAnimation();
+    });
+}
+
+// fetch filtres
+function collecterFiltres() {
+    const themesCoches = document.querySelectorAll('.theme input[type="checkbox"]:checked');
+    const themes = Array.from(themesCoches).map(function (checkbox) {
+        return checkbox.dataset.themeId;
+    });
+
+    const regimesCoches = document.querySelectorAll('.regime input[type="checkbox"]:checked');
+    const regimes = Array.from(regimesCoches).map(function (checkbox) {
+        return checkbox.dataset.regimeId;
+    });
+
+    const allergenesCoches = document.querySelectorAll('.allergene input[type="checkbox"]:checked');
+    const allergenes = Array.from(allergenesCoches).map(function (checkbox) {
+        return checkbox.dataset.allergeneId;
+    });
+
+    const prixMin = document.querySelector('#prix-min').value;
+    const prixMax = document.querySelector('#prix-max').value;
+    const nbrPersonnes = document.querySelector('#nbr-personnes').value;
+
+    return {
+        themes: themes,
+        regimes: regimes,
+        allergenes: allergenes,
+        prixMin: prixMin,
+        prixMax: prixMax,
+        nbrPersonnes: nbrPersonnes
+    };
+}
+
+function afficherMenus(menus) {
+    const grille = document.querySelector('.menus-grid');
+    grille.innerHTML = '';
+
+    if (menus.length === 0) {
+        grille.innerHTML = '<p class="aucun-resultat">Aucun menu ne correspond à ces critères.</p>';
+        return;
+    }
+
+    const menusFiltreResultats = document.querySelector('#menus-filtre-resultats');
+    if (menusFiltreResultats) {
+        if (menus.length > 0) {
+            menusFiltreResultats.textContent = `${menus.length} menu${menus.length > 1 ? 's' : ''} trouvé${menus.length > 1 ? 's' : ''}`;
+        } else {
+            menusFiltreResultats.textContent = "";
+        }
+    }
+
+    menus.forEach(function (menu) {
+        const carte = document.createElement('div');
+        carte.classList.add('menus-box');
+
+        carte.innerHTML = `
+            <img src="${menu['image_url']}" alt="${menu['titre']}">
+            <div class="menus-box-titre-visible">
+                <h3>${menu['titre']}</h3>
+                <div class="menus-voir-detail-bouton">
+                    <button type="button" class="bouton-voir-detail" data-menu-id="${menu['menu_id']}">Voir le détail</button>
+                </div>
+            </div>
+        `;
+
+        grille.appendChild(carte);
+    });
+}
+
+async function filtrerMenus() {
+    const filtres = collecterFiltres();
+
+    const params = new URLSearchParams();
+
+    filtres.themes.forEach(function (id) {
+        params.append('themes[]', id);
+    });
+    filtres.regimes.forEach(function (id) {
+        params.append('regimes[]', id);
+    });
+    filtres.allergenes.forEach(function (id) {
+        params.append('allergenes[]', id);
+    });
+    params.append('prixMin', filtres.prixMin);
+    params.append('prixMax', filtres.prixMax);
+    params.append('nbrPersonnes', filtres.nbrPersonnes);
+
+    const reponse = await fetch('filtrer-menus.php?' + params.toString());
+    const data = await reponse.json();
+
+    afficherMenus(data);
+}
+
+const btnFiltrerTest = document.querySelector('#filtrer-btn');
+
+if (btnFiltrerTest) {
+    btnFiltrerTest.addEventListener('click', function () {
+        filtrerMenus();
+    });
+}
+
+
+// reset sidebar filtre
+const btnReset = document.querySelector('#reset-filtrer-btn');
+
+if (btnReset) {
+    btnReset.addEventListener('click', function () {
+        document.querySelectorAll('.sidebar-menu input[type="checkbox"]').forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+
+        document.querySelector('#prix-min').value = 0;
+        document.querySelector('#prix-max').value = 200;
+        document.querySelector('#prix-min-valeur').textContent = '0€';
+        document.querySelector('#prix-max-valeur').textContent = '200€';
+
+        document.querySelector('#nbr-personnes').value = 50;
+        document.querySelector('#nbr-personnes-valeur').textContent = '50';
+
+        const grille = document.querySelector('.menus-grid');
+        grille.innerHTML = '<p class="aucun-resultat">Veuillez définir votre recherche à l\'aide des filtres, puis cliquer sur "Valider".</p>';
+
+        document.querySelector('#menus-filtre-resultats').textContent = '';
+    });
+}
+
+// curseur nrb personnes + prix filtre
+const inputNbrPersonnes = document.querySelector('#nbr-personnes');
+const spanNbrPersonnesValeur = document.querySelector('#nbr-personnes-valeur');
+
+if (inputNbrPersonnes && spanNbrPersonnesValeur) {
+    inputNbrPersonnes.addEventListener('input', function () {
+        spanNbrPersonnesValeur.textContent = inputNbrPersonnes.value;
+    });
+}
+
+const prixMinFiltre = document.querySelector('#prix-min');
+const prixMaxFiltre = document.querySelector('#prix-max');
+const spanPrixMinValeur = document.querySelector('#prix-min-valeur');
+const spanPrixMaxValeur = document.querySelector('#prix-max-valeur');
+
+if (prixMinFiltre && prixMaxFiltre && spanPrixMinValeur && spanPrixMaxValeur) {
+    prixMinFiltre.addEventListener('input', function () {
+        spanPrixMinValeur.textContent = prixMinFiltre.value;
+    });
+    prixMaxFiltre.addEventListener('input', function () {
+        spanPrixMaxValeur.textContent = prixMaxFiltre.value;
     });
 }

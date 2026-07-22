@@ -144,6 +144,13 @@
                     <p>Le fait de valider une commande ou de signer un devis implique l'acceptation pleine et entière des présentes Conditions Générales de Vente par le Client, qui reconnaît en avoir pris connaissance préalablement.</p>
                     <p>Fait à Bordeaux, le 4 juillet 2026.</p>
                 </div>
+                <button type="button" id="btn-to-top">
+                    <svg id="svgIcon" viewBox="0 0 384 512">
+                        <path
+                                d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+                        ></path>
+                    </svg>
+                </button>
             </div>
             <div>
                 <img src="assets/images/banniere-v&g.png" class="bottom-banner" alt="Banniere Vite & Gourmand">

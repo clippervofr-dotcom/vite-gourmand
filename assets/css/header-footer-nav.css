@@ -1,6 +1,5 @@
 /* header + nav + bouton connexion + logo header + border */
 header {
-    background-color: var(--couleur-header);
     padding: 20px 40px;
     position: relative;
     overflow: hidden;
@@ -8,8 +7,8 @@ header {
     .header-banner {
         position: absolute;
         inset: 0;
-        width: 50%;
-        height: 100%;
+        width: 80%;
+        height: 115%;
         margin-inline: auto;
         object-fit: cover;
         mix-blend-mode: multiply;
@@ -120,28 +119,8 @@ nav ul {
     padding: 0;
 }
 
-.boutons-header {
-    color: var(--couleur-police-connexion);
-    border-radius: 6px;
-    border: 1.5px solid var(--couleur-tracer-connexion);
-    padding: 8px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
-    transition: all ease-in-out 0.2s;
-    background-color: var(--couleur-header);
-}
-
-.boutons-header:hover {
-    background-color: var(--couleur-hero-bouton);
-    color: var(--couleur-fond);
-}
-
 .nav-logo {
     font-family: 'Playfair Display', serif;
-    width: 440px;
     white-space: nowrap;
     font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
 }
@@ -152,34 +131,14 @@ nav ul {
     margin-bottom: 20px;
 }
 
-.bouton-connexion {
-    color: var(--couleur-police-connexion);
-    border-radius: 6px;
-    border: 1.5px solid var(--couleur-tracer-connexion);
-    padding: 8px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
-    cursor: pointer;
-    transition: all ease-in-out 0.2s;
-}
-
-.bouton-connexion:hover {
-    background-color: var(--couleur-hero-bouton);
-    color: var(--couleur-fond);
-}
-
 .bouton-nav-hamburger {
     display: none;
 
     img {
-        width: 20%;
+        width: 10%;
         height: auto;
     }
 }
-
 
 /* header responsive */
 

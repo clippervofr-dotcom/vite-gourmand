@@ -26,13 +26,6 @@
     position: relative;
 }
 
-.titre-info-perso, .titre-choix-menu, .titre-recap-commande {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
 .bubulle {
     position: absolute;
     top: -30px;
@@ -51,22 +44,6 @@
     font-family: 'Playfair Display', serif;
 }
 
-.first-ligne-info, .second-ligne-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 32px;
-}
-
-.third-ligne-info {
-    margin-top: 20px;
-    margin-bottom: -20px;
-    padding: 5px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-}
-
 .first-ligne-choix-menu {
     padding: 5px 16px;
     display: flex;
@@ -78,17 +55,6 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
-}
-
-.infos-perso, .infos-menu, .infos-perso-date-heure {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    padding: 5px 16px;
-}
-
-.infos-perso, .infos-perso-date-heure {
-    width: 100%;
 }
 
 .location-materiel {
@@ -183,34 +149,14 @@
 /* commandes responsive */
 
 @media (max-width: 640px) {
-    .first-ligne-info,
-    .second-ligne-info,
-    .second-ligne-choix-menu {
-        flex-direction: column;
-        gap: 16px;
-    }
-
     .commande-box-1,
     .commande-box-2,
     .commande-box-3 {
         padding: 16px;
     }
-
-    .infos-perso,
-    .infos-menu,
-    .infos-perso-date-heure {
-        width: 100%;
-    }
 }
 
 @media (max-width: 900px) {
-
-    .titre-info-perso,
-    .titre-choix-menu,
-    .titre-recap-commande {
-        margin-top: 30px;
-    }
-
     .bubulle {
         left: -15px;
     }

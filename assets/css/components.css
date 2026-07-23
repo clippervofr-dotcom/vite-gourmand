@@ -561,4 +561,61 @@ header a {
     transition-duration: 0.3s;
 }
 
+/* titre infos input formulaire + profil */
 
+.titre-info-perso, .titre-choix-menu, .titre-recap-commande {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.infos-perso, .infos-menu, .infos-perso-date-heure {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 5px 16px;
+}
+
+.infos-perso, .infos-perso-date-heure {
+    width: 100%;
+}
+
+.first-ligne-info, .second-ligne-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 32px;
+}
+
+.third-ligne-info {
+    margin-top: 20px;
+    margin-bottom: -20px;
+    padding: 5px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+@media (max-width: 640px) {
+    .first-ligne-info,
+    .second-ligne-info,
+    .second-ligne-choix-menu {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .infos-perso,
+    .infos-menu,
+    .infos-perso-date-heure {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .titre-info-perso,
+    .titre-choix-menu,
+    .titre-recap-commande {
+        margin-top: 30px;
+    }
+}

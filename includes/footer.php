@@ -114,6 +114,7 @@
 <script src="assets/js/fonction.js"></script>
 <script src="assets/js/forms.js"></script>
 <script src="assets/js/menus.js"></script>
+<script src="assets/js/profil.js"></script>
 
 
 

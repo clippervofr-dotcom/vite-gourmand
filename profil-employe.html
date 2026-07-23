@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/css/forms.css">
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/menus.css">
-    <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="assets/css/profil.css">
 
     <title>TEMPLATE</title>
 </head>
@@ -144,32 +144,18 @@
 
 <main>
     <div class="titre-profil-utilisateur" id="titre-profil-utilisateur">
-        <h1>Bienvenue dans ton profil $utilisateur !</h1>
-<!--        <h1><?= $salutation ?>, <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?> !</h1>-->
+        <h1>Bienvenue dans ton profil $employe !</h1>
+        <!--        <h1><?= $salutation ?>, <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?> !</h1>-->
     </div>
 
-    <div class="nav-profil-utilisateur" id="nav-profil-utilisateur">
-        <button type="button" class="animated-button" id="btn-info-perso-utilisateur">
+    <div class="nav-profil-employe" id="nav-profil-employe">
+        <button type="button" class="animated-button" id="btn-voir-commandes-employe">
             <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                 <path
                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                 ></path>
             </svg>
-            <span class="text">Infos Personnelles</span>
-            <span class="circle"></span>
-            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                ></path>
-            </svg>
-        </button>
-        <button type="button" class="animated-button" id="btn-profil-commandes-utilisateur">
-            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                ></path>
-            </svg>
-            <span class="text">Mes commandes</span>
+            <span class="text">Commandes en cours de validation</span>
             <span class="circle"></span>
             <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -180,99 +166,46 @@
     </div>
 
     <div class="profil-box-fond">
-        <div class="fond-exterieur"></div>
-
-        <!--
-        ----------------------------- INFO PERSO UTILISATEUR ---------------------------
-        -->
-<!--        <div class="profil-utilisateur-box-info-perso" id="profil-utilisateur-box-info-perso">-->
-<!--            <div class="titre-info-perso">-->
-<!--                <img src="assets/images/info-client.png" alt="Informations client">-->
-<!--            </div>-->
-<!--            <div class="first-ligne-info">-->
-<!--                <div class="infos-perso">-->
-<!--                    <label for="nom-profil-utilisateur">Nom</label>-->
-<!--                    <input type="text" id="nom-profil-utilisateur" name="nom-profil-utilisateur" placeholder="" autocomplete="family-name">-->
-<!--                </div>-->
-<!--                <div class="infos-perso">-->
-<!--                    <label for="prénom-profil-utilisateur">Prénom</label>-->
-<!--                    <input type="text" id="prénom-profil-utilisateur" name="prenom-profil-utilisateur" placeholder="" autocomplete="given-name">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="second-ligne-info">-->
-<!--                <div class="infos-perso">-->
-<!--                    <label for="email-profil-utilisateur">Email</label>-->
-<!--                    <input type="email" id="email-profil-utilisateur" name="email-profil-utilisateur" placeholder="" autocomplete="email">-->
-<!--                </div>-->
-<!--                <div class="infos-perso">-->
-<!--                    <label for="telephone-profil-utilisateur">Téléphone</label>-->
-<!--                    <input type="tel" id="telephone-profil-utilisateur" name="telephone-profil-utilisateur" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="" autocomplete="tel">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="third-ligne-info">-->
-<!--                <label for="adresse-profil-utilisateur">Adresse</label>-->
-<!--                <input type="text" id="adresse-profil-utilisateur" name="adresse-profil-utilisateur" placeholder="" autocomplete="address-line1">-->
-<!--            </div>-->
-<!--            <div class="fourth-ligne-info">-->
-<!--                <div class="infos-perso">-->
-<!--                    <label for="code-postal-profil-utilisateur">Code Postal</label>-->
-<!--                    <input type="text" id="code-postal-profil-utilisateur" name="code-postal-profil-utilisateur" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="" autocomplete="postal-code">-->
-<!--                </div>-->
-<!--                <div class="infos-perso">-->
-<!--                    <label for="ville-profil-utilisateur">Ville</label>-->
-<!--                    <input type="text" id="ville-profil-utilisateur" name="ville-profil-utilisateur" placeholder="" autocomplete="address-level2">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="btn-profil-utilisateur-modif">-->
-<!--                <button type="button" class="animated-button" id="btn-profil-utilisateur-modif">-->
-<!--                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">-->
-<!--                        <path-->
-<!--                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"-->
-<!--                        ></path>-->
-<!--                    </svg>-->
-<!--                    <span class="text">Valider</span>-->
-<!--                    <span class="circle"></span>-->
-<!--                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">-->
-<!--                        <path-->
-<!--                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"-->
-<!--                        ></path>-->
-<!--                    </svg>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!--
-        ----------------------------- COMMANDE UTILISATEUR ---------------------------
-        -->
-        <div class="profil-utilisateur-box-commandes" id="profil-utilisateur-box-commandes">
+        <div class="fond-exterieur" id="fond-exterieur-employe"></div>
+        <div class="profil-employe-box-commandes" id="profil-utilisateur-box-commandes">
             <div class="titre-info-perso">
-                <img src="assets/images/mes-commandes.png" alt="Informations client">
+                <img src="assets/images/commandes-en-attente-de-validation.png" alt="Informations client">
             </div>
 
-            <div class="profil-utilisateur-commandes-liste">
-                <div class="profil-utilisateur-commandes-entete">
+            <div class="profil-employe-commandes-liste">
+                <div class="profil-employe-commandes-entete">
                     <span>Commande n°</span>
                     <span>Nom du menu</span>
                     <span>Nbr de personnes</span>
                     <span>Date préstation</span>
                     <span>Status</span>
                     <span>Commentaires</span>
+                    <span>Validation</span>
                 </div>
 
-                <div class="profil-utilisateur-commandes-ligne" role="row">
+                <div class="profil-employe-commandes-ligne" role="row">
                     <span class="commandes-champ" data-label="Commande n°">01</span>
                     <span class="commandes-champ" data-label="Nom du menu">Menu de Noël</span>
                     <span class="commandes-champ" data-label="Nbr de personnes">24</span>
                     <span class="commandes-champ" data-label="Date prestation">25/12/2026</span>
-                    <span class="commandes-champ" data-label="Status">En attente de validation</span>
                     <span class="commandes-champ" data-label="Commentaires">—</span>
-                    <button type="button" class="animated-button" id="btn-annuler-commande-utilisateur">
+                    <div class="theme-checkbox">
+                        <div class="theme-individual">
+                            <label class="checkbox-custom">
+                                <input type="checkbox" id="validation-employe">
+                                <div class="checkbox-mark"></div>
+                                <span class="commandes-champ" data-label="Status">En attente de validation</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="animated-button" id="btn-voir-detail-commande-employe">
                         <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                             <path
                                     d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                             ></path>
                         </svg>
-                        <span class="text">Annuler la commande</span>
+                        <span class="text">Voir détails</span>
                         <span class="circle"></span>
                         <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -282,21 +215,23 @@
                     </button>
                 </div>
             </div>
-
+            <div class="profil-employe-btn">
+                <button type="button" class="animated-button" id="btn-valider-commande-employe">
+                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                    <span class="text">Sauvegarder</span>
+                    <span class="circle"></span>
+                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 </main>
 
@@ -320,7 +255,7 @@
 <script src="assets/js/fonction.js"></script>
 <script src="assets/js/forms.js"></script>
 <script src="assets/js/menus.js"></script>
-<script src="profil.css"></script>
+<script src="assets/js/profil.js"></script>
 
 </html>
 
@@ -365,6 +300,19 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
 PHP A METTRE UTILISATEUR COMMANDES
 ----------------------------------
+<?php foreach ($commandes as $commande): ?>
+    <div class="commande-ligne" role="row">
+        <span class="commande-champ" data-label="Commande n°"><?= htmlspecialchars($commande['numero_commande']) ?></span>
+        <span class="commande-champ" data-label="Nom du menu"><?= htmlspecialchars($commande['titre']) ?></span>
+        <span class="commande-champ" data-label="Nbr de personnes°"><?= htmlspecialchars($commande['nombre_personnes']) ?></span>
+        <span class="commande-champ" data-label="Date prestation"><?= htmlspecialchars($commande['date_prestation']) ?></span>
+        <span class="commande-champ" data-label="Status"><?= htmlspecialchars($commande['status']) ?></span>
+        <span class="commande-champ" data-label="Commentaires"><?= htmlspecialchars($commande['motif_annulation']) ?></span>
+    </div>
+<?php endforeach; ?>
+
+PHP A METTRE EMPLOYE VOIR COMMANDES
+-----------------------------------
 <?php foreach ($commandes as $commande): ?>
     <div class="commande-ligne" role="row">
         <span class="commande-champ" data-label="Commande n°"><?= htmlspecialchars($commande['numero_commande']) ?></span>

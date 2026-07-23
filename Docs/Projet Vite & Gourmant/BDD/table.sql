@@ -103,7 +103,7 @@ CREATE TABLE commande (
   prix_menu DOUBLE,
   prix_livraison DOUBLE,
   prix_total DOUBLE,
-  statut VARCHAR(50) DEFAULT 'en attente',
+  status VARCHAR(50) DEFAULT 'en attente',
   motif_annulation TEXT,
   mode_contact_annulation VARCHAR(50),
   pret_materiel BOOL DEFAULT FALSE,

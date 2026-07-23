@@ -458,7 +458,7 @@ header a {
     opacity: 1;
 }
 
-/* animated btn pour connexion + commandes + inscription */
+/* animated btn pour connexion + commandes + inscription + profil utilisateur annuler commande */
 #animated-btn-connexion,
 #animated-btn-inscription,
 #btn-confirmation-commande {
@@ -498,6 +498,12 @@ header a {
 
 #animated-btn-inscription:hover .circle {
     width: 1000px;
+}
+
+#btn-annuler-commande-utilisateur {
+    font-size: 10px;
+    font-weight: bold;
+
 }
 
 /* scroll to top */

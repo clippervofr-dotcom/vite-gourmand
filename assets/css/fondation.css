@@ -40,6 +40,9 @@
     border-radius: var(--border-radius); */
 }
 
+/*
+box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+*/
 
 /*
 xxx-large clamp(2rem, 1.5rem + 2vw, 3rem);

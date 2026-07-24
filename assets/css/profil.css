@@ -40,6 +40,19 @@
     margin: 0;
 }
 
+/*.validation-changement-info-box {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    background: var(--couleur-header);*/
+/*    width: 30%;*/
+/*    padding: 8px 20px;*/
+/*    border-radius: 12px;*/
+/*    border: 2px solid var(--couleur-hero-bouton);*/
+/*    box-shadow: 0 4px 12px var(--couleur-ombre-forte);*/
+/*    font-size: larger;*/
+/*    align-self: center;*/
+/*}*/
+
 .nav-profil-utilisateur,
 .nav-profil-employe {
     gap: 5rem;
@@ -55,6 +68,8 @@
     justify-content: center;
     align-content: center;
     color: var(--couleur-police-reduction);
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    font-family: 'Playfair Display', serif;
 }
 
 /* FOND SOUS CALQUE*/
@@ -62,7 +77,9 @@
 .profil-utilisateur-box-info-perso,
 .profil-utilisateur-box-commandes,
 .profil-employe-box-commandes,
-.profil-admin-box-liste-employe {
+.profil-admin-box-liste-employe,
+.profil-admin-box-voir-commandes,
+.profil-admin-box-voir-statistiques {
     grid-column: 1;
     grid-row: 1;
 }
@@ -89,7 +106,9 @@
 .profil-utilisateur-box-commandes,
 .profil-employe-box-commandes,
 .profil-admin-box-liste-employe,
-.profil-admin-box-creation-compte {
+.profil-admin-box-creation-compte,
+.profil-admin-box-voir-commandes,
+.profil-admin-box-voir-statistiques {
     display: none;
     position: relative;
     z-index: 2;
@@ -113,7 +132,9 @@
 .profil-utilisateur-box-commandes.active,
 .profil-employe-box-commandes.active,
 .profil-admin-box-liste-employe.active,
-.profil-admin-box-creation-compte.active {
+.profil-admin-box-creation-compte.active,
+.profil-admin-box-voir-commandes.active,
+.profil-admin-box-voir-statistiques.active {
     display: flex;
 }
 
@@ -144,7 +165,6 @@
 }
 
 #fond-exterieur-admin {
-    width: 80%;
     height: 82%;
 }
 
@@ -200,12 +220,95 @@
     width: 330px;
 }
 
-/* PROFIL ADMIN COMMANDE BOUTON VALIDATION */
+/* PROFIL ADMIN BOUTONs */
 
-#btn-voir-commandes-admin:hover .circle {
+#btn-nav-admin-voir-commandes:hover .circle {
     width: 330px;
 }
 
-#btn-creation-admin-valider .circle {
+#btn-creation-admin-valider:hover .circle {
     width: 300px;
+}
+
+.admin-btn-creation-compte {
+    display: flex;
+    justify-content: center;
+}
+
+#btn-creation-compte-employe:hover .circle {
+    width: 240px;
+}
+
+/* statistiques */
+/* selecteur */
+.profil-admin-statistiques-liste {
+    display: flex;
+}
+
+.profil-admin-statistiques-ligne {
+    display: grid;
+}
+
+.admin-selecteur-stats {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+}
+
+.first-ligne-periode,
+.second-ligne-status {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* rapport */
+.admin-rapport-stats {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: x-large;;
+
+    label {
+        font-family: 'Playfair Display', serif;
+    }
+
+    span {
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+.admin-rapport-commandes-validees,
+.admin-rapport-note-moyenne,
+.admin-rapport-taux-annulation,
+.admin-rapport-ca {
+    background: var(--couleur-avis-filtre-banner);
+    padding: 10px 10px;
+    border: 1px solid var(--couleur-hero-bouton);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    text-align: center;
+    gap: 1rem;
+    display: grid;
+}
+
+.statistiques-titre {
+    display: flex;
+    justify-content: flex-start;
+    font-size: x-large;
+    padding: 10px;
+}
+
+.profil-admin-statistiques-entete {
+
+}
+
+.profil-admin-statistiques-liste {
+    gap: 1rem;
+    padding: 0.75rem 0;
+    align-content: space-evenly;
+
+    .commandes-champ {
+        border-bottom: 1px solid var(--couleur-presentation-box-tracer);
+    }
 }

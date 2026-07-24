@@ -28,7 +28,7 @@ if (btnUtilisateurValider && btnUtilisateurModif) {
         }
     });
 }
-
+//nav profil utilisateur
 const btnUtilisateurInfo = document.querySelector("#btn-info-perso-utilisateur");
 const profilUtilisateurInfo = document.querySelector("#profil-utilisateur-box-info-perso");
 const btnUtilisateurCommandes = document.querySelector("#btn-profil-commandes-utilisateur");
@@ -47,53 +47,63 @@ if (btnUtilisateurInfo && profilUtilisateurInfo && profilUtilisateurCommandes &&
     });
 }
 
-const btnAdminListeEmploye = document.querySelector('#btn-compte-employe-admin'); // BTN onglet liste employés
-const btnAdminVoirCommandes = document.querySelector('#btn-voir-commandes-admin'); // BTN onglet voir les commandes en cours
-const btnAdminStatistiques = document.querySelector('#btn-voir-statistiques-admin'); // BTN onglet statistiques
+//nav profil admin
+//btn nav
+const btnAdminListeEmploye = document.querySelector("#btn-nav-admin-liste-employe");
+const btnAdminVoirCommandes = document.querySelector("#btn-nav-admin-voir-commandes");
+const btnAdminVoirStatistiques = document.querySelector("#btn-nav-admin-voir-statistiques");
 
-const profilAdminListeEmploye = document.querySelector('#profil-admin-box-liste-employe'); // page liste employés
-const profilAdminCreationEmploye = document.querySelector('#profil-admin-box-creation-compte'); // page creation employés
+//btn creation compte + validation
+const btnAdminCreationCompte = document.querySelector("#btn-creation-compte-employe");
+const btnAdminValidationCreation = document.querySelector("#btn-creation-admin-valider");
 
-// manque fetch() page des commandes en cours de profile-employe.php
+//sections
+//liste employe
+const adminListeEmploye = document.querySelector("#profil-admin-box-liste-employe");
+//creation compte
+const adminCreationCompte = document.querySelector("#profil-admin-box-creation-compte");
+//voir commandes
+const adminVoirCommandes = document.querySelector("#profil-admin-box-voir-commandes");
 
-const profilAdminStatistiques = document.querySelector('#profil-admin-box-statistiques'); //page statistiques
+//voir details commandes
+const btnAdminVoirDetailCommande = document.querySelector("#btn-admin-voir-detail-commande");
 
-if (btnAdminVoirCommandes && btnAdminStatistiques && btnAdminListeEmploye && profilAdminListeEmploye && profilAdminCreationEmploye && profilAdminStatistiques) {
+//voir statistiques
+//#btn-admin-voir-statistiques
+//#profil-admin-box-voir-statistiques
+
+if (adminVoirCommandes && btnAdminVoirDetailCommande && btnAdminListeEmploye && btnAdminVoirCommandes && btnAdminVoirStatistiques && adminListeEmploye && adminCreationCompte && btnAdminCreationCompte && btnAdminValidationCreation) {
 
     btnAdminListeEmploye.addEventListener('click', function () {
-        profilAdminListeEmploye.classList.add('active');
-        profilAdminStatistiques.classList.remove('active');
-        profilAdminCreationEmploye.classList.remove('active');
-        // fermera profilAdminVoirCommandes après fetch()
+        adminListeEmploye.classList.add('active');
+        adminCreationCompte.classList.remove('active');
+        adminVoirCommandes.classList.remove('active');
     });
 
-    btnAdminStatistiques.addEventListener('click', function () {
-        profilAdminCreationEmploye.classList.remove('active');
-        profilAdminStatistiques.classList.add('active');
-        profilAdminListeEmploye.classList.remove('active');
-        // fermera profilAdminVoirCommandes après fetch()
+    btnAdminCreationCompte.addEventListener('click', function () {
+        adminCreationCompte.classList.add('active');
+        adminListeEmploye.classList.remove('active');
+        adminVoirCommandes.classList.remove('active');
     });
-}
 
-const btnAdminCreationEmploye = document.querySelector('#btn-creation-compte-employe'); // BTN onglet création employés
-const btnAdminCreationValidation = document.querySelector('#btn-creation-admin-valider'); // BTN validation création employés
-
-if (btnAdminCreationEmploye) {
-    btnAdminCreationEmploye.addEventListener('click', function () {
-        profilAdminCreationEmploye.classList.add('active');
-        profilAdminStatistiques.classList.remove('active');
-        profilAdminListeEmploye.classList.remove('active');
-        // fermera profilAdminVoirCommandes après fetch()
+    btnAdminVoirCommandes.addEventListener('click', function () {
+        adminVoirCommandes.classList.add('active');
+        adminListeEmploye.classList.remove('active');
+        adminCreationCompte.classList.remove('active');
     });
-}
 
-if (btnAdminCreationValidation) {
-    btnAdminCreationValidation.addEventListener('click', function () {
-        profilAdminListeEmploye.classList.add('active');
-        profilAdminCreationEmploye.classList.remove('active');
-        validationChange.textContent = "Nouvel employé ajouté !";
+
+
+
+    btnAdminValidationCreation.addEventListener('click', function () {
+        adminListeEmploye.classList.add('active');
+        adminCreationCompte.classList.remove('active');
+        validationChange.textContent = "Nouveau compte employé créé avec succès !";
         setTimeout(function () {
             validationChange.textContent = "";
         }, 3000);
     });
+
+
+
 }

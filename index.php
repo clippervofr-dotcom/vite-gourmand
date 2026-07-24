@@ -24,7 +24,7 @@
             </div>
             <div class="presentation-detail">
                 <div class="presentation-produits-frais">
-                    <h3>Des produits frais</h3>
+                    <h3>Des produits frais !</h3>
                     <picture class="presentation-produits-frais-deff-bulle">
                         <source srcset="assets/images/produits-frais-texte-mobile.png" media="(max-width: 900px)">
                         <img src="assets/images/produits-frais-texte.png" alt="Des produits frais">
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="presentation-livraison">
-                    <h3>Livraison sur place</h3>
+                    <h3>Livraison sur place !</h3>
                     <picture class="presentation-livraison-deff-bulle">
                         <source srcset="assets/images/livraison-texte-mobile.png" media="(max-width: 900px)">
                         <img src="assets/images/livraison-texte.png" alt="Livraison sur place">

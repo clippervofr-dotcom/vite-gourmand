@@ -8,80 +8,92 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
 <main>
     <div class="titre-profil-utilisateur" id="titre-profil-utilisateur">
-        <h1>Bienvenue dans ton profil $utilisateur !</h1>
+        <h1>Bienvenue dans ton profil $employe !</h1>
         <!--        <h1><?= $salutation ?>, <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?> !</h1>-->
     </div>
 
-    <div class="nav-profil-utilisateur" id="nav-profil-utilisateur">
-        <button type="button" class="animated-button" id="btn-info-perso-utilisateur">
+    <div class="nav-profil-employe" id="nav-profil-employe">
+        <button type="button" class="animated-button" id="btn-voir-commandes-employe">
             <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                 <path
-                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                 ></path>
             </svg>
-            <span class="text">Infos Personnelles</span>
+            <span class="text">Commandes en cours de validation</span>
             <span class="circle"></span>
             <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                 <path
-                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                ></path>
-            </svg>
-        </button>
-        <button type="button" class="animated-button" id="btn-profil-commandes-utilisateur">
-            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                ></path>
-            </svg>
-            <span class="text">Mes commandes</span>
-            <span class="circle"></span>
-            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                 ></path>
             </svg>
         </button>
     </div>
 
     <div class="profil-box-fond">
-        <div class="fond-exterieur"></div>
-        <div class="profil-utilisateur-box-commandes" id="profil-utilisateur-box-commandes">
+        <div class="fond-exterieur" id="fond-exterieur-employe"></div>
+        <div class="profil-employe-box-commandes active" id="profil-utilisateur-box-commandes">
             <div class="titre-info-perso">
-                <img src="assets/images/mes-commandes.png" alt="Informations client">
+                <img src="assets/images/commandes-en-attente-de-validation.png" alt="Informations client">
             </div>
 
-            <div class="profil-utilisateur-commandes-liste">
-                <div class="profil-utilisateur-commandes-entete">
+            <div class="profil-employe-commandes-liste">
+                <div class="profil-employe-commandes-entete">
                     <span>Commande n°</span>
                     <span>Nom du menu</span>
                     <span>Nbr de personnes</span>
                     <span>Date préstation</span>
                     <span>Status</span>
                     <span>Commentaires</span>
+                    <span>Validation</span>
                 </div>
 
-                <div class="profil-utilisateur-commandes-ligne" role="row">
+                <div class="profil-employe-commandes-ligne" role="row">
                     <span class="commandes-champ" data-label="Commande n°">01</span>
                     <span class="commandes-champ" data-label="Nom du menu">Menu de Noël</span>
                     <span class="commandes-champ" data-label="Nbr de personnes">24</span>
                     <span class="commandes-champ" data-label="Date prestation">25/12/2026</span>
-                    <span class="commandes-champ" data-label="Status">En attente de validation</span>
                     <span class="commandes-champ" data-label="Commentaires">—</span>
-                    <button type="button" class="animated-button" id="btn-annuler-commande-utilisateur">
+                    <div class="theme-checkbox">
+                        <div class="theme-individual">
+                            <label class="checkbox-custom">
+                                <input type="checkbox" id="validation-employe">
+                                <div class="checkbox-mark"></div>
+                                <span class="commandes-champ" data-label="Status">En attente de validation</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="animated-button" id="btn-voir-detail-commande-employe">
                         <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                             ></path>
                         </svg>
-                        <span class="text">Annuler la commande</span>
+                        <span class="text">Voir détails</span>
                         <span class="circle"></span>
                         <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                             ></path>
                         </svg>
                     </button>
                 </div>
+            </div>
+            <div class="profil-employe-btn">
+                <button type="button" class="animated-button" id="btn-valider-commande-employe">
+                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                    <span class="text">Sauvegarder</span>
+                    <span class="circle"></span>
+                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>

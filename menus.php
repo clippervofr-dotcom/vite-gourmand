@@ -138,8 +138,34 @@
         </div>
 
         <div class="filtrer-btn-box" id="filter-btn-box">
-            <button type="button" id="reset-filtrer-btn">Reset</button>
-            <button type="button" id="filtrer-btn">Valider</button>
+            <button type="button" class="animated-button" id="reset-filtrer-btn">
+                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                    ></path>
+                </svg>
+                <span class="text">Reset</span>
+                <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                    ></path>
+                </svg>
+            </button>
+            <button type="button" class="animated-button" id="valider-filtrer-btn">
+                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                    ></path>
+                </svg>
+                <span class="text">Valider</span>
+                <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                    ></path>
+                </svg>
+            </button>
         </div>
     </aside>
 
@@ -150,7 +176,8 @@
             <h2 id="menus-filtre-resultats"></h2>
             <div class="filtre-btn-box">
                 <button class="bouton-filtre" id="bouton-filtre">
-                    <img src="assets/images/filtre.png" alt="Filtrer">
+                    <label for="bouton-filtre">Filtres</label>
+                    <img src="assets/images/filter-solid-full.svg" alt="Filtres">
                 </button>
             </div>
         </div>

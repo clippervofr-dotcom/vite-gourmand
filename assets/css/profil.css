@@ -61,7 +61,8 @@
 .fond-exterieur,
 .profil-utilisateur-box-info-perso,
 .profil-utilisateur-box-commandes,
-.profil-employe-box-commandes {
+.profil-employe-box-commandes,
+.profil-admin-box-liste-employe {
     grid-column: 1;
     grid-row: 1;
 }
@@ -86,7 +87,9 @@
 
 .profil-utilisateur-box-info-perso,
 .profil-utilisateur-box-commandes,
-.profil-employe-box-commandes {
+.profil-employe-box-commandes,
+.profil-admin-box-liste-employe,
+.profil-admin-box-creation-compte {
     display: none;
     position: relative;
     z-index: 2;
@@ -108,7 +111,9 @@
 
 .profil-utilisateur-box-info-perso.active,
 .profil-utilisateur-box-commandes.active,
-.profil-employe-box-commandes.active {
+.profil-employe-box-commandes.active,
+.profil-admin-box-liste-employe.active,
+.profil-admin-box-creation-compte.active {
     display: flex;
 }
 
@@ -117,7 +122,9 @@
 .profil-utilisateur-commandes-entete,
 .profil-utilisateur-commandes-ligne,
 .profil-employe-commandes-ligne,
-.profil-employe-commandes-entete {
+.profil-employe-commandes-entete,
+.profil-admin-commandes-entete,
+.profil-admin-commandes-ligne {
     display: grid;
     grid-template-columns: 110px 1fr 130px 140px 180px 1fr 140px;
     gap: 1rem;
@@ -127,20 +134,37 @@
     align-items: center;
 }
 
+.profil-admin-commandes-ligne,
+.profil-admin-commandes-entete {
+    grid-template-columns: 110px 100px 130px 200px 180px 1fr 140px 100px;
+}
+
+.profil-admin-box-commandes {
+    width: 80%;
+}
+
+#fond-exterieur-admin {
+    width: 80%;
+    height: 82%;
+}
+
 .profil-utilisateur-commandes-entete,
-.profil-employe-commandes-entete {
+.profil-employe-commandes-entete,
+.profil-admin-commandes-entete {
     font-family: 'Playfair Display', serif;
     font-weight: bold;
 }
 
 @media (max-width: 900px) {
     .profil-utilisateur-commandes-entete,
-    .profil-employe-commandes-entete {
+    .profil-employe-commandes-entete,
+    .profil-admin-commandes-entete {
         display: none;
     }
 
     .profil-utilisateur-commandes-ligne,
-    .profil-employe-commandes-ligne {
+    .profil-employe-commandes-ligne,
+    .profil-admin-commandes-ligne {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -157,7 +181,7 @@
     }
 }
 
-/* PROFIL EMPLOYE COMMANDE VALIDATION */
+/* PROFIL EMPLOYE COMMANDE BOUTON VALIDATION */
 
 #fond-exterieur-employe {
     height: 85%;
@@ -173,5 +197,15 @@
 }
 
 #btn-voir-commandes-employe:hover .circle {
-    width: 320px;
+    width: 330px;
+}
+
+/* PROFIL ADMIN COMMANDE BOUTON VALIDATION */
+
+#btn-voir-commandes-admin:hover .circle {
+    width: 330px;
+}
+
+#btn-creation-admin-valider .circle {
+    width: 300px;
 }

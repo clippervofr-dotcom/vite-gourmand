@@ -90,6 +90,42 @@ if (btnSuivant && btnPrecedent && commMegabox) {
     });
 }
 
+if (commMegabox) {
+    const echelleMax = 1;
+    const echelleMin = 0.85;
+
+    function mettreAJourEchelle() {
+        const rectContainer = commMegabox.getBoundingClientRect();
+        const centreContainer = rectContainer.left + rectContainer.width / 2;
+
+        const cartes = commMegabox.querySelectorAll('.commentaires-box');
+
+        cartes.forEach(function (carte) {
+            const rectCarte = carte.getBoundingClientRect();
+            const centreCarte = rectCarte.left + rectCarte.width / 2;
+
+            const distance = Math.abs(centreCarte - centreContainer);
+            const distanceNormalisee = Math.min(distance / (rectContainer.width / 2), 1);
+
+            const echelle = echelleMax - (echelleMax - echelleMin) * distanceNormalisee;
+
+            carte.style.transform = `scale(${echelle})`;
+        });
+    }
+
+    let enAttente = false;
+    commMegabox.addEventListener('scroll', function () {
+        if (!enAttente) {
+            enAttente = true;
+            requestAnimationFrame(function () {
+                mettreAJourEchelle();
+                enAttente = false;
+            });
+        }
+    });
+
+    mettreAJourEchelle();
+}
 
 //scroll to top btn
 $(function () {

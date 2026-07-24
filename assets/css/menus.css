@@ -2,8 +2,6 @@
 .menus-page {
     display: flex;
     justify-content: center;
-    background: #FFFFFF;
-    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(252, 241, 227, 1) 50%);
 }
 
 .sidebar-menu {
@@ -94,8 +92,7 @@
     padding-bottom: 1rem;
     }
 
-#filtrer-btn,
-#reset-filtrer-btn{
+#filtrer-btn {
     background-color: var(--couleur-hero-bouton);
     color: white;
     border: solid 1px var(--couleur-tracer-hero-bouton);
@@ -154,15 +151,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: transparent;
-        border: none;
-        border-radius: 6px;
+        background: var(--couleur-header);
+        border: solid 1px var(--couleur-boule-commande);
+        border-radius: 12px;
         padding: 8px 12px;
         cursor: pointer;
+        color: #C4703A;
+        gap: 0.5rem;
+        font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
 
         img {
-            width: 10%;
-            height: auto;
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        :hover {
+            opacity: 80%;
         }
     }
 
@@ -191,7 +200,7 @@
     justify-content: center;
     flex-direction: column;
     padding: 20px;
-    gap: 10px;
+    gap: 2rem;
 }
 
 .menus-grid {
@@ -315,6 +324,10 @@
     padding: 1rem;
     gap: 1rem;
     border-radius: 12px;
+    z-index: 0;
+    background-image: url("../images/peach-abstract-watercolor-texture-background-beige-watercolour-pattern-vector.jpg");
+    background-size: cover;
+
 
     h2 {
         font-family: 'Playfair Display', serif;
@@ -327,6 +340,7 @@
         text-align: center;
     }
 }
+
 
 #menu-detail-description {
     font-style: italic;

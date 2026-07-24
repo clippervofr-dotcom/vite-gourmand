@@ -1,6 +1,5 @@
 /* hero + bouton voir nos menus + titre + logo */
 .hero {
-    background-color: var(--couleur-test);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -189,11 +188,13 @@ img.jose-img {
     .presentation-produits-frais h3 {
         rotate: 340deg;
         justify-content: flex-start;
+        font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
     }
 
     .presentation-livraison h3 {
         rotate: 20deg;
         justify-content: flex-end;
+        font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
     }
     .equipe-passion {
         padding-top: 20px;
@@ -321,9 +322,8 @@ img.jose-img {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
-        gap: 20px;
-        padding: 0 20px;
-        width: 100%;
+        gap: 16px;
+        padding-inline: 11%;
         min-width: 0;
         scrollbar-width: none;
     }
@@ -333,8 +333,10 @@ img.jose-img {
     }
 
     .commentaires-box {
-        flex: 0 0 100%;
+        flex: 0 0 78%;
         scroll-snap-align: center;
+        transition: transform 0.15s ease-out;
+        transform-origin: center;
     }
 }
 

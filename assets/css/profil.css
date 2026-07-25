@@ -147,7 +147,7 @@
 .profil-admin-commandes-entete,
 .profil-admin-commandes-ligne {
     display: grid;
-    grid-template-columns: 110px 1fr 130px 140px 180px 1fr 140px;
+    grid-template-columns: 140px 110px 130px 130px 110px 120px 100px 100px;
     gap: 1rem;
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--couleur-presentation-box-tracer);
@@ -237,6 +237,12 @@
 
 #btn-creation-compte-employe:hover .circle {
     width: 240px;
+}
+
+.btn-statut-commande-box {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
 /* statistiques */

@@ -370,7 +370,11 @@ header a {
     text-decoration: none;
 }
 
-.animated-button {
+/* bouton animé */
+.animated-button,
+.btn-validation-commande,
+.btn-voir-detail-commande,
+.btn-annulation-commande {
     position: relative;
     display: flex;
     align-items: center;
@@ -389,7 +393,10 @@ header a {
     font-family:'Inter', sans-serif;
 }
 
-.animated-button svg {
+.animated-button svg,
+.btn-validation-commande svg,
+.btn-voir-detail-commande svg,
+.btn-annulation-commande svg{
     position: absolute;
     width: 24px;
     fill: var(--couleur-hero-bouton);
@@ -397,15 +404,24 @@ header a {
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.animated-button .arr-1 {
+.animated-button .arr-1,
+.btn-validation-commande .arr-1,
+.btn-voir-detail-commande .arr-1,
+.btn-annulation-commande .arr-1{
     right: 5px;
 }
 
-.animated-button .arr-2 {
+.animated-button .arr-2,
+.btn-validation-commande .arr-2,
+.btn-voir-detail-commande .arr-2,
+.btn-annulation-commande .arr-2{
     left: -25%;
 }
 
-.animated-button .circle {
+.animated-button .circle,
+.btn-validation-commande .circle,
+.btn-voir-detail-commande .circle,
+.btn-annulation-commande .circle{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -418,41 +434,65 @@ header a {
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.animated-button .text {
+.animated-button .text,
+.btn-validation-commande .text,
+.btn-voir-detail-commande .text,
+.btn-annulation-commande .text{
     position: relative;
     z-index: 1;
     transform: translateX(-12px);
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.animated-button:hover {
+.animated-button:hover,
+.btn-validation-commande:hover,
+.btn-voir-detail-commande:hover,
+.btn-annulation-commande:hover{
     box-shadow: 0 0 0 12px transparent;
     color: #ffffff;
     border-radius: 12px;
 }
 
-.animated-button:hover .arr-1 {
+.animated-button:hover .arr-1,
+.btn-validation-commande:hover .arr-1,
+.btn-voir-detail-commande:hover .arr-1,
+.btn-annulation-commande:hover .arr-1 {
     right: -25%;
 }
 
-.animated-button:hover .arr-2 {
+.animated-button:hover .arr-2,
+.btn-validation-commande:hover .arr-2,
+.btn-voir-detail-commande:hover .arr-2,
+.btn-annulation-commande:hover .arr-2 {
     left: 5px;
 }
 
-.animated-button:hover .text {
+.animated-button:hover .text,
+.btn-validation-commande:hover .text,
+.btn-voir-detail-commande:hover .text,
+.btn-annulation-commande:hover .text {
     transform: translateX(12px);
 }
 
-.animated-button:hover svg {
+.animated-button:hover svg,
+.btn-validation-commande:hover svg,
+.btn-voir-detail-commande:hover svg,
+.btn-annulation-commande:hover svg {
     fill: #ffffff;
 }
 
-.animated-button:active {
+.animated-button:active,
+.btn-validation-commande:active,
+.btn-voir-detail-commande:active,
+.btn-annulation-commande:active {
     scale: 0.95;
     box-shadow: 0 0 0 4px var(--couleur-hero-bouton);
 }
 
-.animated-button:hover .circle {
+.animated-button:hover .circle,
+.btn-validation-commande:hover .circle,
+.btn-voir-detail-commande:hover .circle,
+.btn-annulation-commande:hover .circle {
     width: 220px;
     height: 220px;
     opacity: 1;

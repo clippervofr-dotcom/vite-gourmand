@@ -134,35 +134,9 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                     <span>Status</span>
                     <span>Commentaires</span>
                 </div>
-
-                <div class="profil-utilisateur-commandes-ligne" role="row">
-                    <span class="commandes-champ" data-label="Commande n°">01</span>
-                    <span class="commandes-champ" data-label="Nom du menu">Menu de Noël</span>
-                    <span class="commandes-champ" data-label="Nbr de personnes">24</span>
-                    <span class="commandes-champ" data-label="Date prestation">25/12/2026</span>
-                    <span class="commandes-champ" data-label="Status">En attente de validation</span>
-                    <span class="commandes-champ" data-label="Commentaires">—</span>
-                    <button type="button" class="animated-button" id="btn-annuler-commande-utilisateur">
-                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                        <span class="text">Annuler la commande</span>
-                        <span class="circle"></span>
-                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                    </button>
-                </div>
+                <!-- JS apparait ici -->
             </div>
         </div>
-
-
-
-
     </div>
 </main>
 

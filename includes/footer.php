@@ -129,6 +129,7 @@
 <script src="assets/js/menus.js"></script>
 <script src="assets/js/profil.js"></script>
 <script src="assets/js/commandes.js"></script>
+<script src="assets/js/test-afaire.js"></script>
 
 
 

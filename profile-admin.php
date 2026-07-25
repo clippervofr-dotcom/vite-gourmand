@@ -180,15 +180,9 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                     <span>Date préstation</span>
                     <span>Status</span>
                     <span>Commentaires</span>
-                    <span>Validation</span>
                 </div>
-
+                <!-- AJOUTE commandes.js ICI -->
                 <div class="profil-employe-commandes-ligne" role="row">
-                    <span class="commandes-champ" data-label="Commande n°">01</span>
-                    <span class="commandes-champ" data-label="Nom du menu">Menu de Noël</span>
-                    <span class="commandes-champ" data-label="Nbr de personnes">24</span>
-                    <span class="commandes-champ" data-label="Date prestation">25/12/2026</span>
-                    <span class="commandes-champ" data-label="Commentaires">—</span>
                     <div class="theme-checkbox">
                         <div class="theme-individual">
                             <label class="checkbox-custom">
@@ -235,63 +229,63 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
         <!-- ADMIN STATISTIQUES -->
 
-        <div class="profil-admin-box-voir-statistiques active" id="profil-admin-box-voir-statistiques">
-            <div class="titre-info-perso">
-                <img src="assets/images/voir-stats.png" alt="Statistiques">
-            </div>
-
-            <div class="admin-selecteur-stats">
-                <div class="first-ligne-periode">
-                    <label for="periode-stats-admin">Période :</label>
-                    <select id="periode-stats-admin" name="periode-stats-admin">
-                        <option value="">Sélectionnez un mois</option>
-                        <option value="janvier">Janvier</option>
-                        <option value="fevrier">Février</option>
-                        <option value="mars">Mars</option>
-                    </select>
-                </div>
-                <div class="second-ligne-status">
-                    <label for="status-stats-admin">Status :</label>
-                    <select id="status-stats-admin" name="status-stats-admin">
-                        <option value="">Sélectionnez un status</option>
-                        <option value="en attente">En attente</option>
-                        <option value="validee">Validée</option>
-                        <option value="annulee">Annulée</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="admin-rapport-stats">
-                <div class="admin-rapport-ca">
-                    <label>CA du mois</label>
-                    <span data-label="ca du mois">1600 €</span>
-                </div>
-                <div class="admin-rapport-commandes-validees">
-                    <label>Commandes validées</label>
-                    <span data-label="commandes validées">26</span>
-                </div>
-                <div class="admin-rapport-note-moyenne">
-                    <label>Note moyenne</label>
-                    <span data-label="note moyenne">4.5 / 5</span>
-                </div>
-                <div class="admin-rapport-taux-annulation">
-                    <label>Taux d'annulation</label>
-                    <span data-label="taux d'annulation">5%</span>
-                </div>
-            </div>
-
-            <div>
-                <div class="statistiques-titre">
-                    <span>Menus les plus commandés</span>
-                </div>
-
-                <div class="profil-admin-statistiques-liste">
-
-                    <span>Menus</span>
-                    <span>Commandes</span>
-                    <span>CA</span>
-                </div>
-
+<!--        <div class="profil-admin-box-voir-statistiques" id="profil-admin-box-voir-statistiques">-->
+<!--            <div class="titre-info-perso">-->
+<!--                <img src="assets/images/voir-stats.png" alt="Statistiques">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="admin-selecteur-stats">-->
+<!--                <div class="first-ligne-periode">-->
+<!--                    <label for="periode-stats-admin">Période :</label>-->
+<!--                    <select id="periode-stats-admin" name="periode-stats-admin">-->
+<!--                        <option value="">Sélectionnez un mois</option>-->
+<!--                        <option value="janvier">Janvier</option>-->
+<!--                        <option value="fevrier">Février</option>-->
+<!--                        <option value="mars">Mars</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <div class="second-ligne-status">-->
+<!--                    <label for="status-stats-admin">Status :</label>-->
+<!--                    <select id="status-stats-admin" name="status-stats-admin">-->
+<!--                        <option value="">Sélectionnez un status</option>-->
+<!--                        <option value="en attente">En attente</option>-->
+<!--                        <option value="validee">Validée</option>-->
+<!--                        <option value="annulee">Annulée</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="admin-rapport-stats">-->
+<!--                <div class="admin-rapport-ca">-->
+<!--                    <label>CA du mois</label>-->
+<!--                    <span data-label="ca du mois">1600 €</span>-->
+<!--                </div>-->
+<!--                <div class="admin-rapport-commandes-validees">-->
+<!--                    <label>Commandes validées</label>-->
+<!--                    <span data-label="commandes validées">26</span>-->
+<!--                </div>-->
+<!--                <div class="admin-rapport-note-moyenne">-->
+<!--                    <label>Note moyenne</label>-->
+<!--                    <span data-label="note moyenne">4.5 / 5</span>-->
+<!--                </div>-->
+<!--                <div class="admin-rapport-taux-annulation">-->
+<!--                    <label>Taux d'annulation</label>-->
+<!--                    <span data-label="taux d'annulation">5%</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!--            <div>-->
+<!--                <div class="statistiques-titre">-->
+<!--                    <span>Menus les plus commandés</span>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="profil-admin-statistiques-liste">-->
+<!---->
+<!--                    <span>Menus</span>-->
+<!--                    <span>Commandes</span>-->
+<!--                    <span>CA</span>-->
+<!--                </div>-->
+<!---->
 <!--                    <div class="profil-admin-statistiques-ligne" role="row">-->
 <!--                        <span class="commandes-champ" data-label="menu de noel">12</span>-->
 <!--                        <span class="commandes-champ" data-label="menu de paques">30</span>-->
@@ -307,8 +301,8 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 <!--                        <span class="commandes-champ" data-label="menu evenementiel ca">500€</span>-->
 <!--                        <span class="commandes-champ" data-label="menu vegetarien ca">500€</span>-->
 <!--                    </div>-->
-                </div>
-            </div>
+<!--                </div>-->
+<!--            </div>-->
 
 
 

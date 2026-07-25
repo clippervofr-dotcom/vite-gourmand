@@ -30,7 +30,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <body>
 <header>
-    <img src="assets/images/header-banner-bgless.png" class="header-banner">
+    <div class="header-banner-box">
+        <img src="assets/images/header-banner-bgless.png" class="header-banner">
+    </div>
+
     <nav>
         <div class="nav-logo">
             <a href="index.php">
@@ -84,9 +87,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="administration.php">Administration</a>
-                                <a href="commandes-en-attente.php">Commandes</a>
-                                <a href="panel-statistiques.php">Voir Stats</a>
+                                <a href="profile-admin.php">Administration</a>
                                 <a href="deconnexion.php">Déconnexion</a>
                             </div>
                         </div>
@@ -99,8 +100,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="espace-employe.php">Espace employé</a>
-                                <a href="commandes-en-cours.php">Commandes en cours</a>
+                                <a href="profile-employe.php">Commandes en attente</a>
                                 <a href="deconnexion.php">Déconnexion</a>
                             </div>
                         </div>
@@ -117,8 +117,8 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="profil.php">Mon profil</a>
-                                <a href="mes-commandes.php">Mes commandes</a>
+                                <a href="profile-user.php">Mon compte</a>
+                                <a href="mon-panier.php">Mon panier</a>
                                 <a href="deconnexion.php">Déconnexion</a>
                             </div>
                         </div>

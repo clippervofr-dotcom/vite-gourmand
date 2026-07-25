@@ -108,6 +108,43 @@
     </div>
 </div>
 
+<!-- Modale annulation commande -->
+
+<div class="modal-overlay" id="annulation-modal">
+    <div class="modal-box">
+        <button type="button" class="modal-close" id="annulation-modal-close" aria-label="Fermer la fenêtre">&times;</button>
+
+        <div class="annulation-content">
+            <h2>Annuler la commande</h2>
+            <p id="annulation-numero"></p>
+            <p id="annulation-date-prestation"></p>
+            <p id="annulation-reglement"></p>
+
+            <label class="checkbox-custom">
+                <input type="checkbox" id="annulation-checkbox">
+                <div class="checkbox-mark"></div>
+                <span>Je confirme avoir pris connaissances des conséquences liées à cette annulation.</span>
+            </label>
+
+            <button type="button" class="animated-button" id="btn-annulation-commande">
+                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                    ></path>
+                </svg>
+                <span class="text">Confirmer l'annulation</span>
+                <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                    ></path>
+                </svg>
+            </button>
+            <p id="annulation-erreur" class="erreur"></p>
+        </div>
+    </div>
+</div>
+
 <footer>
     <ul class="cgv-ml-contact-footer">
         <li><a href="contact.php">Contact</a></li>
@@ -129,7 +166,7 @@
 <script src="assets/js/menus.js"></script>
 <script src="assets/js/profil.js"></script>
 <script src="assets/js/commandes.js"></script>
-<script src="assets/js/test-afaire.js"></script>
+<script src="assets/js/commandes-utilisateur.js"></script>
 
 
 

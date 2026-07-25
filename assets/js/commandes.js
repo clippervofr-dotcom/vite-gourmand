@@ -80,6 +80,7 @@ if (conteneurCommandes) {
     });
 }
 
-//gestion des commandes de l'utilisateur
+//gestion du bouton validation des commandes employe
+
 
 

@@ -155,6 +155,10 @@
     align-items: center;
 }
 
+.profil-utilisateur-commandes-ligne {
+    grid-template-columns: 140px 110px 130px 130px 110px 120px 100px;
+}
+
 .profil-admin-commandes-ligne,
 .profil-admin-commandes-entete {
     grid-template-columns: 110px 100px 130px 200px 180px 1fr 140px 100px;

@@ -47,18 +47,19 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                     <span>Validation</span>
                 </div>
 
+
+<!--                ICI-->
+
+
+
                 <div class="profil-employe-commandes-ligne" role="row">
-                    <span class="commandes-champ" data-label="Commande n°">01</span>
-                    <span class="commandes-champ" data-label="Nom du menu">Menu de Noël</span>
-                    <span class="commandes-champ" data-label="Nbr de personnes">24</span>
-                    <span class="commandes-champ" data-label="Date prestation">25/12/2026</span>
-                    <span class="commandes-champ" data-label="Commentaires">—</span>
+
                     <div class="theme-checkbox">
                         <div class="theme-individual">
                             <label class="checkbox-custom">
                                 <input type="checkbox" id="validation-employe">
                                 <div class="checkbox-mark"></div>
-                                <span class="commandes-champ" data-label="Status">En attente de validation</span>
+                                <span class="commandes-champ" data-label="Status"></span>
                             </label>
                         </div>
                     </div>
@@ -77,8 +78,11 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                             ></path>
                         </svg>
                     </button>
+
                 </div>
             </div>
+
+
             <div class="profil-employe-btn">
                 <button type="button" class="animated-button" id="btn-valider-commande-employe">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -98,6 +102,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
         </div>
     </div>
 </main>
+
 
 <?php require 'includes/footer.php'; ?>
 

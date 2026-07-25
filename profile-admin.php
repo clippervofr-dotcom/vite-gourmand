@@ -243,7 +243,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <div class="admin-selecteur-stats">
                 <div class="first-ligne-periode">
                     <label for="periode-stats-admin">Période :</label>
-                    <select id="periode-stats-admin">
+                    <select id="periode-stats-admin" name="periode-stats-admin">
                         <option value="">Sélectionnez un mois</option>
                         <option value="janvier">Janvier</option>
                         <option value="fevrier">Février</option>
@@ -252,7 +252,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                 </div>
                 <div class="second-ligne-status">
                     <label for="status-stats-admin">Status :</label>
-                    <select id="status-stats-admin">
+                    <select id="status-stats-admin" name="status-stats-admin">
                         <option value="">Sélectionnez un status</option>
                         <option value="en attente">En attente</option>
                         <option value="validee">Validée</option>
@@ -264,19 +264,19 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <div class="admin-rapport-stats">
                 <div class="admin-rapport-ca">
                     <label>CA du mois</label>
-                    <span>xx €</span>
+                    <span data-label="ca du mois">1600 €</span>
                 </div>
                 <div class="admin-rapport-commandes-validees">
                     <label>Commandes validées</label>
-                    <span>xx</span>
+                    <span data-label="commandes validées">26</span>
                 </div>
                 <div class="admin-rapport-note-moyenne">
                     <label>Note moyenne</label>
-                    <span>xx/5</span>
+                    <span data-label="note moyenne">4.5 / 5</span>
                 </div>
                 <div class="admin-rapport-taux-annulation">
                     <label>Taux d'annulation</label>
-                    <span>xx%</span>
+                    <span data-label="taux d'annulation">5%</span>
                 </div>
             </div>
 

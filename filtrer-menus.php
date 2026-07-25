@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 $conditions = [];
 $params = [];
 
-// --- Thème(s) ---
+// --- Thème ---
 if (!empty($_GET['themes'])) {
     $themes = $_GET['themes'];
     $placeholders = implode(',', array_fill(0, count($themes), '?'));
@@ -16,7 +16,7 @@ if (!empty($_GET['themes'])) {
     }
 }
 
-// --- Régime(s) ---
+// --- Régime ---
 if (!empty($_GET['regimes'])) {
     $regimes = $_GET['regimes'];
     $placeholders = implode(',', array_fill(0, count($regimes), '?'));
@@ -26,7 +26,7 @@ if (!empty($_GET['regimes'])) {
     }
 }
 
-// --- Allergène(s) à exclure ---
+// --- Allergène à exclure ---
 if (!empty($_GET['allergenes'])) {
     $allergenes = $_GET['allergenes'];
     $placeholders = implode(',', array_fill(0, count($allergenes), '?'));
@@ -54,7 +54,7 @@ if (isset($_GET['nbrPersonnes'])) {
     $params[] = $_GET['nbrPersonnes'];
 }
 
-// --- Construction finale ---
+// --- construction ---
 $sql = "SELECT DISTINCT menu.*, (SELECT url FROM image_menu WHERE image_menu.menu_id = menu.menu_id LIMIT 1) AS image_url FROM menu";
 
 if (!empty($conditions)) {

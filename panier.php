@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($menuId || $quantite) {
         echo json_encode(['success' => false, 'message' => 'Données manquantes.']);
+        exit;
     }
 
 

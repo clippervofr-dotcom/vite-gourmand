@@ -640,6 +640,7 @@ header a {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+    padding: 5px 16px;
 }
 
 @media (max-width: 640px) {

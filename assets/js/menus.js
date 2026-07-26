@@ -191,6 +191,8 @@ if (menuDetailmodal && btnMenuClose) {
             donnees.append('menu_id', menuId);
             donnees.append('quantite', quantite);
 
+            console.log(menuId, quantite)
+
             const reponse = await fetch('panier.php', {
                 method: 'POST',
                 body: donnees

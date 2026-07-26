@@ -201,76 +201,103 @@ nav ul {
         padding: 8px 12px;
         cursor: pointer;
     }
-
-
 }
 
-
-/* footer + logo footer + horaires */
-footer {
-    background: linear-gradient(180deg,rgba(252, 241, 227, 1) 0%, rgba(61, 43, 26, 1) 8%);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    justify-content: space-evenly;
-    font-family: 'Playfair Display', serif;
-    padding: 5px 40px;
+/* footer test */
+.container-footer {
+    padding: 0 5rem;
 }
 
-footer ul {
-    text-align: center;
-    list-style: none;
-    cursor: pointer;
+.footer-local {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--couleur-avis-filtre-banner);
+    padding: 3rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
-footer img {
-    width: 20%;
-    height: auto;
-    object-fit: contain;
-    align-items: center;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
+.footer-local__main {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile-first: single column */
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--footer-border);
 }
 
-.footer-horaires {
-    color: var(--couleur-police-horaires);
-    text-align: center;
-    font-size: xx-large;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.footer-local__details h3 {
+    color: var(--footer-heading);
+    font-size: 2rem;
+    margin: 0 0 1.5rem 0;
 }
 
-footer ul a {
+.footer-local__details p {
+    margin: 0 0 1rem 0;
+    font-size: large;
+}
+.footer-local__details a {
+    color: var(--footer-text);
     text-decoration: none;
-    color: var(--couleur-police-ml-cgv);
-    font-size: xx-large;
-    cursor: pointer;
+    transition: color 0.2s;
+}
+.footer-local__details a:hover {
+    color: var(--footer-link-hover);
+    text-decoration: underline;
 }
 
-.cgv-ml-contact-footer {
+.footer-local__hours-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: large;
+}
+.footer-local__hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+}
+.footer-local__hours-list li span:first-child {
+    font-weight: 500;
+}
+
+.footer-local__map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.footer-local__bottom {
+    padding-top: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    align-items: center;
+    gap: 1.5rem;
     text-align: center;
+    font-size: 0.875rem;
 }
 
-@media (max-width: 900px) {
+.footer-local__copyright { margin: 0; }
 
-    footer {
-        padding: 5px 20px;
+.footer-local__social ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+.footer-local__social a { color: var(--footer-text); transition: color 0.2s; }
+.footer-local__social a:hover { color: var(--footer-link-hover); }
+.footer-local__social svg { width: 22px; height: 22px; fill: currentColor; }
+
+/* Media query for larger screens */
+@media (min-width: 992px) {
+    .footer-local__main {
+        grid-template-columns: 1fr 1.2fr; /* Give slightly more space to map */
+        gap: 4rem;
     }
-
-    .footer-horaires {
-        font-size: small;
-        gap: 10px;
-    }
-
-    footer ul a {
-        font-size: small;
-    }
-
-    .cgv-ml-contact-footer {
-        gap: 10px;
+    .footer-local__bottom {
+        flex-direction: row;
+        justify-content: space-between;
     }
 }

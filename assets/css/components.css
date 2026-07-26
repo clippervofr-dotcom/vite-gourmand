@@ -172,11 +172,13 @@
 input[type="text"],
 input[type="email"],
 input[type="date"],
+input[type="datetime-local"],
 input[type="tel"],
 input[type="password"],
+input[type="number"],
 textarea {
     width: 100%;
-    padding: 1em;
+    /*padding: 1em;*/
     border-radius: 5px;
     border: 1.5px solid var(--couleur-hero-bouton);
     font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);
@@ -291,6 +293,12 @@ textarea {
     overflow-x: hidden;
     ms-overflow-style { display: none; }
     scrollbar-width { display: none; }
+}
+
+#menu-detail-close {
+    right: 25px;
+    top: 20px;
+    color: white;
 }
 
 .modal-box::-webkit-scrollbar {
@@ -629,9 +637,6 @@ header a {
 }
 
 .third-ligne-info {
-    margin-top: 20px;
-    margin-bottom: -20px;
-    padding: 5px 16px;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
@@ -689,24 +694,24 @@ header a {
     right: 2rem;
 }
 
-.new-adresse-content {
-    display: grid;
-    text-align: start;
+/*.new-adresse-content {*/
+/*    display: grid;*/
+/*    text-align: start;*/
 
-    .checkbox-custom {
-        justify-content: center;
-    }
-}
+/*    .checkbox-custom {*/
+/*        justify-content: center;*/
+/*    }*/
+/*}*/
 
-#new-adresse-code-postal {
-    width: 100%;
-    padding: 1em;
-    border-radius: 5px;
-    border: 1.5px solid var(--couleur-hero-bouton);
-    font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);
-}
+/*#new-adresse-code-postal {*/
+/*    width: 100%;*/
+/*    padding: 1em;*/
+/*    border-radius: 5px;*/
+/*    border: 1.5px solid var(--couleur-hero-bouton);*/
+/*    font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);*/
+/*}*/
 
-.new-adresse-btn-box {
-    display: flex;
-    justify-content: center;
-}
+/*.new-adresse-btn-box {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/

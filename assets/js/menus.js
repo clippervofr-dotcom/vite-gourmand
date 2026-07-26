@@ -27,7 +27,7 @@ if (sidebarMenu && btnFiltre) {
     });
 }
 
-const filtrerBtnbox = document.querySelector("#filtrer-btn");
+const filtrerBtnbox = document.querySelector("#valider-filtrer-btn");
 
 if (filtrerBtnbox) {
     filtrerBtnbox.addEventListener('click', function () {
@@ -174,10 +174,66 @@ if (menuDetailmodal && btnMenuClose) {
             menuDetailmodal.classList.remove('active');
         }
     });
+
+// Logique du panier
+    const btnAjouterPanier = document.querySelector('#menu-detail-ajouter');
+    const panierConfirmationModal = document.querySelector('#panier-confirmation-modal');
+    const panierConfirmationClose = document.querySelector('#panier-confirmation-close');
+    const panierContinuer = document.querySelector('#btn-continuer-panier');
+
+
+    if (btnAjouterPanier) {
+        btnAjouterPanier.addEventListener('click', async function () {
+            const menuId = menuDetailmodal.dataset.menuIdActuel;
+            const quantite = inputQuantite.value;
+
+            const donnees = new FormData();
+            donnees.append('menu_id', menuId);
+            donnees.append('quantite', quantite);
+
+            const reponse = await fetch('panier.php', {
+                method: 'POST',
+                body: donnees
+            });
+
+            const resultat = await reponse.json();
+
+            if (resultat['success']) {
+                menuDetailmodal.classList.remove('active');
+                if (panierConfirmationModal) {
+                    panierConfirmationModal.classList.add('active');
+                }
+            } else {
+                console.error(resultat['message']);
+            }
+        });
+    }
+
+    if (panierContinuer && panierConfirmationModal && panierConfirmationClose) {
+
+        panierConfirmationClose.addEventListener('click', function () {
+            panierConfirmationModal.classList.remove('active');
+        });
+
+        panierContinuer.addEventListener('click', function () {
+            panierConfirmationModal.classList.remove('active');
+        });
+
+        panierConfirmationModal.addEventListener('click', function (event) {
+            if (event.target === panierConfirmationModal) {
+                panierConfirmationModal.classList.remove('active');
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                panierConfirmationModal.classList.remove('active');
+            }
+        });
+    }
 }
 
 // boutons - + cartes menus
-
 const btnMoins = document.querySelector("#menu-detail-btn-moins");
 const btnPlus = document.querySelector("#menu-detail-btn-plus");
 
@@ -356,7 +412,7 @@ async function filtrerMenus() {
     afficherMenus(data);
 }
 
-const btnFiltrerTest = document.querySelector('#filtrer-btn');
+const btnFiltrerTest = document.querySelector('#valider-filtrer-btn');
 
 if (btnFiltrerTest) {
     btnFiltrerTest.addEventListener('click', function () {
@@ -412,3 +468,6 @@ if (prixMinFiltre && prixMaxFiltre && spanPrixMinValeur && spanPrixMaxValeur) {
         spanPrixMaxValeur.textContent = prixMaxFiltre.value;
     });
 }
+
+
+

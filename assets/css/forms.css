@@ -45,16 +45,29 @@
 }
 
 .first-ligne-choix-menu {
-    padding: 5px 16px;
+    padding: 5px 24px;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+
+    @media (max-width: 900px) {
+        padding: 5px 16px;
+    }
 }
 
 .second-ligne-choix-menu {
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
+}
+
+#nbr-personnes-commande {
+    align-self: center;
+    width: 30%;
+}
+
+.nbr {
+    text-align: center;
 }
 
 .location-materiel {

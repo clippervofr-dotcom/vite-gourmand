@@ -15,33 +15,41 @@
                 <div class="first-ligne-info">
                     <div class="infos-perso">
                         <label for="nom-commande">Nom<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="nom-commande" placeholder="Votre Nom" name="nom-commande">
+                        <input type="text" id="nom-commande" placeholder="Votre Nom" name="nom-commande" required>
                     </div>
                     <div class="infos-perso">
                         <label for="prénom-commande">Prénom<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="prénom-commande" placeholder="Votre Prénom" name="prénom-commande">
+                        <input type="text" id="prénom-commande" placeholder="Votre Prénom" name="prénom-commande" required>
                     </div>
                 </div>
                 <div class="second-ligne-info">
                     <div class="infos-perso">
                         <label for="email-commande">Email<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="email" id="email-commande" placeholder="Votre Email" name="email-commande">
+                        <input type="email" id="email-commande" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Votre Email" name="email-commande" required>
                     </div>
                     <div class="infos-perso">
                         <label for="téléphone-commande">Téléphone<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="tel" id="téléphone-commande" placeholder="Votre Téléphone" name="téléphone-commande">
+                        <input type="tel" id="téléphone-commande" placeholder="Votre Téléphone" name="téléphone-commande" required>
                     </div>
                 </div>
                 <div class="third-ligne-info">
-                    <label for="adresse-select">Adresse<span class="requis" aria-hidden="true">*</span></label>
-                    <select id="adresse-select" name="adresse-select">
-                        <option value="">Choisir une adresse enregistrée</option>
-                        <option value="adresse-enregistrée">123 Rue de la Paix, 75000 Paris</option>
-                    </select>
+                    <div class="infos-perso">
+                        <label for="adresse-commande">Adresse<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="text" id="adresse-commande" placeholder="Votre Adresse" name="adresse-commande" required>
+                    </div>
                 </div>
-                <div class="new-adresse">
-                    <span id="add-new-adresse">+ Saisir une nouvelle adresse</span>
+                <div class="first-ligne-info">
+                    <div class="infos-perso">
+                        <label for="code-postal-commande">Code Postal<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="number" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" id="code-postal-commande" placeholder="Votre Code Postal" name="code-postal-commande" required>
+                    </div>
+                    <div class="infos-perso">
+                        <label for="ville-commande">Ville<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="text" id="ville-commande" placeholder="Votre Ville" name="ville-commande" required>
+                    </div>
                 </div>
+
+
                 <div class="fourth-ligne-info">
                     <div class="infos-perso-date-heure">
                         <label for="date-heure">Date et heure de la prestation<span class="requis" aria-hidden="true">*</span></label>
@@ -67,7 +75,7 @@
                 </div>
                 <div class="second-ligne-choix-menu">
                     <div class="infos-menu">
-                        <label for="nbr-personnes-commande">Nombre de personnes<span class="requis">*</span></label>
+                        <label for="nbr-personnes-commande" class="nbr">Nombre de personnes<span class="requis">*</span></label>
                         <input type="number" id="nbr-personnes-commande" placeholder="Nombre de personnes" name="nbr-personnes-commande">
                         <p class="explications-nbr-pers">Minimum : 10 personnes<br>
                             (selon le menu selectionné)</p>

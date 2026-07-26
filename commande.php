@@ -2,7 +2,7 @@
 <?php require 'includes/header.php'; ?>
 
 <main>
-    <section class="commande">
+    <form class="commande" action="" method="post">
         <div class="commande-top-img">
             <img src="assets/images/reserver-prestation.png" alt="Réserver une prestation">
         </div>
@@ -15,37 +15,37 @@
                 <div class="first-ligne-info">
                     <div class="infos-perso">
                         <label for="nom-commande">Nom<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="nom-commande" placeholder="Votre Nom">
+                        <input type="text" id="nom-commande" placeholder="Votre Nom" name="nom-commande">
                     </div>
                     <div class="infos-perso">
                         <label for="prénom-commande">Prénom<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="prénom-commande" placeholder="Votre Prénom">
+                        <input type="text" id="prénom-commande" placeholder="Votre Prénom" name="prénom-commande">
                     </div>
                 </div>
                 <div class="second-ligne-info">
                     <div class="infos-perso">
                         <label for="email-commande">Email<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="email" id="email-commande" placeholder="Votre Email">
+                        <input type="email" id="email-commande" placeholder="Votre Email" name="email-commande">
                     </div>
                     <div class="infos-perso">
                         <label for="téléphone-commande">Téléphone<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="tel" id="téléphone-commande" placeholder="Votre Téléphone">
+                        <input type="tel" id="téléphone-commande" placeholder="Votre Téléphone" name="téléphone-commande">
                     </div>
                 </div>
                 <div class="third-ligne-info">
                     <label for="adresse-select">Adresse<span class="requis" aria-hidden="true">*</span></label>
-                    <select id="adresse-select">
+                    <select id="adresse-select" name="adresse-select">
                         <option value="">Choisir une adresse enregistrée</option>
-                        <option value="adresse-enregistrer"></option>
+                        <option value="adresse-enregistrée">123 Rue de la Paix, 75000 Paris</option>
                     </select>
                 </div>
                 <div class="new-adresse">
-                    <a href="new_adresse.php">+ Saisir une nouvelle adresse</a>
+                    <span id="add-new-adresse">+ Saisir une nouvelle adresse</span>
                 </div>
                 <div class="fourth-ligne-info">
                     <div class="infos-perso-date-heure">
                         <label for="date-heure">Date et heure de la prestation<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="datetime-local" id="date-heure">
+                        <input type="datetime-local" id="date-heure" name="date-heure">
                     </div>
                 </div>
             </div>
@@ -56,25 +56,25 @@
                 </div>
                 <div class="first-ligne-choix-menu">
                     <label for="choix-menu">Menu<span class="requis" aria-hidden="true">*</span></label>
-                    <select id="choix-menu">
-                        <option value="">Sélectionnez votre menu</option>
-                        <option value="menu-noel">Menu de Noël</option>
-                        <option value="menu-paques">Menu de Pâques</option>
-                        <option value="menu-classique">Menu Classique</option>
-                        <option value="menu-vegetarien">Menu Végétarien</option>
-                        <option value="menu-evenementiel">Menu Événementiel</option>
+                    <select id="choix-menu" name="choix-menu">
+                        <option value="" selected>Sélectionnez votre menu</option>
+                        <option value="menu-noel" data-menu-id="1">Menu de Noël</option>
+                        <option value="menu-paques" data-menu-id="2">Menu de Pâques</option>
+                        <option value="menu-classique" data-menu-id="3">Menu Classique</option>
+                        <option value="menu-vegetarien" data-menu-id="4">Menu Événementiel</option>
+                        <option value="menu-evenementiel" data-menu-id="5">Menu Végétarien</option>
                     </select>
                 </div>
                 <div class="second-ligne-choix-menu">
                     <div class="infos-menu">
                         <label for="nbr-personnes-commande">Nombre de personnes<span class="requis">*</span></label>
-                        <input type="number" id="nbr-personnes-commande" placeholder="Nombre de personnes">
+                        <input type="number" id="nbr-personnes-commande" placeholder="Nombre de personnes" name="nbr-personnes-commande">
                         <p class="explications-nbr-pers">Minimum : 10 personnes<br>
                             (selon le menu selectionné)</p>
                     </div>
                     <div class="location-materiel">
                         <label class="checkbox-custom" id="checkbox-location">
-                            <input type="checkbox" id="matériel">
+                            <input type="checkbox" id="matériel" name="matériel">
                             <div class="checkbox-mark"></div>
                             <span>Je souhaite louer du matériel</span>
                         </label>
@@ -146,7 +146,7 @@
         <div>
             <img src="assets/images/banniere-v&g.png" class="bottom-banner" alt="Banniere Vite & Gourmand">
         </div>
-    </section>
+    </form>
 </main>
 
 <?php require 'includes/footer.php'; ?>

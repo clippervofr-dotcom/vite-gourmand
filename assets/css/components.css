@@ -659,3 +659,54 @@ header a {
         margin-top: 30px;
     }
 }
+
+/* Modale annulation commande + new adresse */
+
+.annulation-content,
+.new-adresse-content {
+    background: var(--couleur-avis-filtre-banner);
+    padding: 2rem;
+    border-radius: 6px;
+    border: 2px solid #C4703A;
+    box-shadow: 0 4px 12px var(--couleur-hero-bouton);
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    font-size: large;
+    text-align: center;
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
+    }
+}
+
+#annulation-modal-close,
+#new-adresse-modal-close {
+    top: 1rem;
+    right: 2rem;
+}
+
+.new-adresse-content {
+    display: grid;
+    text-align: start;
+
+    .checkbox-custom {
+        justify-content: center;
+    }
+}
+
+#new-adresse-code-postal {
+    width: 100%;
+    padding: 1em;
+    border-radius: 5px;
+    border: 1.5px solid var(--couleur-hero-bouton);
+    font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);
+}
+
+.new-adresse-btn-box {
+    display: flex;
+    justify-content: center;
+}

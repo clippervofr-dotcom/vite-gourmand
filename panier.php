@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $_SESSION['panier'][] = [
+        'uniqueId' => uniqid(),
         'menu_id' => $menuId,
         'quantite' => $quantite
     ];

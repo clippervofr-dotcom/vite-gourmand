@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt_menu = $pdo->prepare('
-        SELECT commande.menu_id
+        SELECT commande.*
         FROM commande
         JOIN menu ON commande.menu_id = menu.menu_id
-        WHERE $menu_id = menu.menu_id;');
+        WHERE commande.menu_id = ?;');
 
 
     $stmt = $pdo->prepare('

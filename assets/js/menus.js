@@ -233,6 +233,9 @@ if (menuDetailmodal && btnMenuClose) {
             }
         });
     }
+
+
+
 }
 
 // boutons - + cartes menus

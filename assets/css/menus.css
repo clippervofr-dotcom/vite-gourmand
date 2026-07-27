@@ -296,7 +296,7 @@
     border-radius: 6px;
 }
 
-/* modale cartes menus */
+/* modale cartes menus + modale validation panier */
 
 .modal-box {
     border-radius: 20px;
@@ -307,13 +307,22 @@
     /*color: #FFFFFF;*/
 }
 
-#menu-detail-img {
+#menu-detail-img,
+.img-panier-box {
     border-radius: 20px;
     width: 100%;
     border: solid 1px var(--couleur-tracer-hero-bouton);
     height: 300px;
     object-fit: cover;
     object-position: center;
+}
+
+.img-panier-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
 }
 
 .menu-detail-content {
@@ -387,6 +396,97 @@
 
 #menu-detail-modal .modal-box {
     will-change: transform;
+}
+
+.btn-panier-confirm-box {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+#btn-voir-panier {
+    width: 65%;
+}
+
+#btn-continuer-panier {
+    width: 80%;
+}
+
+/* Mon panier */
+@media (max-width: 900px) {
+    .main-mon-panier {
+        padding: 3rem;
+    }
+}
+
+
+.panier-container {
+    max-width: 800px;
+    margin: auto;
+    background: var(--couleur-avis-filtre-banner);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    border: solid 2px var(--couleur-hero-bouton);
+
+    h1 {
+        margin-bottom: 20px;
+    }
+}
+
+.item-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    img {
+
+    }
+}
+
+.item-details h3 {
+    margin: 0 0 5px;
+    font-size: 16px;
+
+    p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+    }
+}
+
+.item-prix {
+    font-weight: bold;
+    color: #333;
+}
+
+.card-recap {
+    margin-top: 20px;
+    text-align: right;
+
+    h2 {
+        margin: 0 0 15px;
+        font-size: 20px;
+    }
+}
+
+.btn-passer-commande-box {
+    display: flex;
+    justify-content: flex-end;
 }
 
 

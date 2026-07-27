@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $menuId = $_POST['menu_id'] ?? null;
     $quantite = $_POST['quantite'] ?? null;
 
-    if ($menuId || $quantite) {
+    if (!$menuId || !$quantite) {
         echo json_encode(['success' => false, 'message' => 'Données manquantes.']);
         exit;
     }

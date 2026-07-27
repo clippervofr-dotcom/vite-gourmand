@@ -154,9 +154,6 @@
         <h2>Menu ajouté au panier ✓</h2>
 
         <div class="btn-panier-confirm-box">
-            <a >
-                <span class="text">Voir mon panier</span>
-            </a>
             <a href="panier.php" class="animated-button" id="btn-voir-panier">
                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -257,9 +254,9 @@
                     <strong>Email:</strong> <a href="mailto:contact@vite-et-gourmand.fr">contact@vite-et-gourmand.fr</a>
                 </p>
                 <ul class="footer-local__hours-list">
-                    <li><span>Lundi - Vendredi</span> <span>9:00 - 18:00</span></li>
-                    <li><span>Samedi</span> <span>9:00 - 13:00</span></li>
-                    <li><span>Dimanche</span> <span>Fermé</span></li>
+                    <li><span class="day">Lundi - Vendredi</span> <span class="time">9:00 - 18:00</span></li>
+                    <li><span class="day">Samedi</span> <span class="time">9:00 - 13:00</span></li>
+                    <li><span class="day">Dimanche</span> <span class="time">Fermé</span></li>
                 </ul>
             </div>
             <div class="footer-local__map">

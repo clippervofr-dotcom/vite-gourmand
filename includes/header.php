@@ -34,19 +34,21 @@ if (session_status() === PHP_SESSION_NONE) {
         <img src="assets/images/header-banner-bgless.png" class="header-banner">
     </div>
 
+
     <nav>
         <div class="nav-logo">
             <a href="index.php">
                 <img src="assets/images/logo1_background_less.png" alt="Vite & Gourmand"/>
             </a>
-        </div>
-        <div class="nav-links">
             <button type="button" class="bouton-nav-hamburger" id="bouton-nav-hamburger">
                 <img src="assets/images/suite.png" alt="Menu">
             </button>
+        </div>
+
+        <div class="nav-links">
             <div class="nav-links-menus" id="nav-links-menus">
                 <ul>
-                    <li><a href="menus.php" class="boutons-header">
+                    <li><a href="menus.php" id="bouton-menus">
                             <button class="animated-button">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -109,7 +111,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <?php elseif (isset($_SESSION['utilisateur'])): ?>
 
                     <div class="nav-utilisateur">
-                        <a href="panier.php">
+                        <a href="mon-panier.php" id="icone-panier">
                             <img src="assets/images/panier.png" class="panier-logo" alt="Panier">
                         </a>
                         <div class="profil-box">
@@ -143,6 +145,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     </a>
                 <?php endif; ?>
             </div>
+
         </div>
     </nav>
 </header>

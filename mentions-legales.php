@@ -76,7 +76,12 @@
                 <p>Les présentes mentions légales sont soumises au droit français. En cas de litige et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
 
                 <div class="titre-ml">
-                    <h2>9. Contact</h2>
+                    <h2>9. Réglementation IA</h2>
+                </div>
+                <p>Les images, bannières, les mentions légales et les conditions générales de vente du site web Vite & Gourmand ont été générés par IA.</p>
+
+                <div class="titre-ml">
+                    <h2>10. Contact</h2>
                     <p>Pour toute question relative aux présentes mentions légales, vous pouvez contacter Vite & Gourmand :</p>
                     <p><strong>Par e-mail :</strong> <a href="mailto:contact@vite-et-gourmand.fr">contact@vite-et-gourmand.fr</a></p>
                     <p><strong>Par téléphone :</strong> <a href="tel:+33556123456">05 56 12 34 56</a></p>

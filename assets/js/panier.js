@@ -11,7 +11,7 @@ if (panierContainer) {
 
     function afficherItem(items) {
         const conteneur = document.querySelector('#panier-container');
-        conteneur.querySelectorAll('.panier-info-box').forEach(function (ligne) {
+        conteneur.querySelectorAll('.panier-info-box, .card-recap').forEach(function (ligne) {
             ligne.remove();
         });
 
@@ -21,6 +21,7 @@ if (panierContainer) {
             const ligne = document.createElement('div');
             ligne.classList.add('panier-info-box');
             ligne.dataset.uniqueId = item['uniqueId'];
+            ligne.dataset.minimum = item['nombre_personne_minimum'];
             ligne.innerHTML = `
                 <div class="img-panier-box">
                 <img src="${item['image_url']}" alt="Image du Produit">
@@ -29,18 +30,22 @@ if (panierContainer) {
                     <div class="item-info">
                         <div class="item-details">
                             <h2 data-label="nom du produit">${item['titre']}</h2>
-                            <p data-label="quantite">Quantité :
-                                <button type="button" class="btn-quantite-moins">−</button>
+                            <p class="item-quantite" data-label="quantite">Quantité de repas préparés :<br>
+                                <button type="button" class="btn-moins">−</button>
                                 <span class="quantite-valeur">${item['quantite']}</span>
-                                <button type="button" class="btn-quantite-plus">+</button>
+                                <button type="button" class="btn-plus">+</button>
                             </p>
-                            <p data-label="description">${item['description']}</p>
-                            <p data-label="conditions">Information de réservation : ${item['conditions']}</p>
-                            <p data-label="nombre_personne_minimum">Nombre minimum de personnes : ${item['nombre_personne_minimum']}</p>
+                            <p>Indique le nombre de repas préparés lors de votre evenement.<br>Veuillez-vous referer au nombre de personnes minimum.</p>
+                            <p class="item-condition" data-label="conditions">Information de réservation :<br><span class="conditions-text">=> ${item['conditions']}</span></p>
+                            <p class="item-nrb-min" data-label="nombre_personne_minimum">Nombre minimum de personnes :<br><span class="nrb-min-valeur">=> ${item['nombre_personne_minimum']}</span></p>
+                            <p class="item-description" data-label="description">${item['description']}</p>
                         </div>
                     </div>
-                    <div class="item-prix" data-label="prix_par_personne">Prix par personne : ${item['prix_par_personne']} €</div>
-                    <button type="button" class="btn-supprimer-item">Supprimer</button>
+                    <div class="item-prix" data-label="prix_par_personne">Prix par personne :<br><span class="prix-valeur">=> ${item['prix_par_personne']} €</span></div>
+                    <div></div>
+                    <div class="btn-supprimer-item-box">
+                        <button type="button" class="bouton-2">Supprimer</button>
+                    </div>
                 </div>
             `;
             conteneur.appendChild(ligne);
@@ -52,7 +57,7 @@ if (panierContainer) {
         const recap = document.createElement('div');
         recap.classList.add('card-recap');
         recap.innerHTML = `
-                <h2>Total : ${totalGeneral}</h2>
+                <h2>Total : ${totalGeneral} €</h2>
                 <div class="btn-passer-commande-box" id="btn-passer-commande-box">
                     <button type="button" class="animated-button" id="btn-passer-commande">
                         <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -78,9 +83,9 @@ if (panierContainer) {
     });
 
     panierContainer.addEventListener('click', async function (event) {
-        const boutonSupprimer = event.target.closest('.btn-supprimer-item');
-        const boutonPlus = event.target.closest('.btn-quantite-plus');
-        const boutonMoins = event.target.closest('.btn-quantite-moins');
+        const boutonSupprimer = event.target.closest('.bouton-2');
+        const boutonPlus = event.target.closest('.btn-plus');
+        const boutonMoins = event.target.closest('.btn-moins');
 
         if (boutonSupprimer) {
             const ligne = boutonSupprimer.closest('.panier-info-box');
@@ -99,10 +104,11 @@ if (panierContainer) {
         if (boutonPlus || boutonMoins) {
             const ligne = (boutonPlus || boutonMoins).closest('.panier-info-box');
             const uniqueId = ligne.dataset.uniqueId;
+            const minimum = parseInt(ligne.dataset.minimum);
             const spanQuantite = ligne.querySelector('.quantite-valeur');
             let quantiteActuelle = parseInt(spanQuantite.textContent);
 
-            quantiteActuelle = boutonPlus ? quantiteActuelle + 1 : Math.max(1, quantiteActuelle - 1);
+            quantiteActuelle = boutonPlus ? quantiteActuelle + 1 : Math.max(minimum, quantiteActuelle - 1);
 
             const donnees = new FormData();
             donnees.append('action', 'modifier');

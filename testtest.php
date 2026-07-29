@@ -13,4 +13,14 @@ $resultats = $menu->fetch();
 $resultats['quantite'] = $quantite;
 $resultats['prix_total'] = $resultats['prix_par_personne'] * $quantite;
 
-echo json_encode($resultats);
+
+$utilisateurSESSION = 1;
+
+$utilisateur = $pdo->prepare("SELECT * FROM `utilisateur` WHERE utilisateur.utilisateur_id = ?");
+$utilisateur->execute([$utilisateurSESSION]);
+$utilisateur = $utilisateur->fetch();
+
+echo json_encode(['utilisateur' => $utilisateur, 'menu' => $resultats]);
+exit;
+
+

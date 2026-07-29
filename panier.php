@@ -11,7 +11,7 @@ if (!isset($_SESSION['panier'])) {
 
 //supp la ligne du panier
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'supprimer') {
-    $uniqueId = $_POST['uniqueId'] ?? null;
+    $uniqueId = $_POST['unique_id'] ?? null;
 
     $_SESSION['panier'] = array_filter($_SESSION['panier'], function ($item) use ($uniqueId) {
         return $item['uniqueId'] !== $uniqueId;
@@ -25,12 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
 //modif la quantité
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'modifier') {
-    $uniqueId = $_POST['uniqueId'] ?? null;
+    $uniqueId = $_POST['unique_id'] ?? null;
     $nouvelleQuantite = $_POST['quantite'] ?? null;
 
     foreach ($_SESSION['panier'] as &$item) {
         if ($item['uniqueId'] === $uniqueId) {
+            $nouvelleQuantite = max($item['nombre_personne_minimum'], $nouvelleQuantite);
             $item['quantite'] = $nouvelleQuantite;
+            $item['prix_total'] = $item['prix_par_personne'] * $nouvelleQuantite;
         }
     }
     unset($item);
@@ -78,3 +80,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 echo json_encode($_SESSION['panier']);
+
+

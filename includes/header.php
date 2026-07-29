@@ -47,15 +47,36 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <div class="nav-links">
             <div class="nav-links-menus" id="nav-links-menus">
-                <ul>
-                    <li><a href="menus.php" id="bouton-menus">
-                            <button class="animated-button">
+                <div class="nav-links-principal">
+                    <ul>
+                        <li>
+                            <a href="menus.php" id="bouton-menus">
+                                <button class="animated-button">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text">Nos menus</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <button class="animated-button" id="bouton-devis">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                             d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                                     ></path>
                                 </svg>
-                                <span class="text">Nos menus</span>
+                                <span class="text">Faire un devis</span>
                                 <span class="circle"></span>
                                 <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -63,24 +84,9 @@ if (session_status() === PHP_SESSION_NONE) {
                                     ></path>
                                 </svg>
                             </button>
-                        </a></li>
-                </ul>
-                <ul>
-                    <li><button class="animated-button" id="bouton-devis">
-                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                            <span class="text">Faire un devis</span>
-                            <span class="circle"></span>
-                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                        </button></li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
 
                 <?php if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['role_id'] == 3): ?>
                     <div class="nav-utilisateur">
@@ -119,9 +125,9 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="profile-user.php">Mon compte</a>
-                                <a href="mon-panier.php">Mon panier</a>
-                                <a href="deconnexion.php">Déconnexion</a>
+                                <a href="profile-user.php" class="bouton-2">Mon compte</a>
+                                <a href="mon-panier.php" class="bouton-2">Mon panier</a>
+                                <a href="deconnexion.php" class="bouton-2">Déconnexion</a>
                             </div>
                         </div>
                     </div>

@@ -8,8 +8,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
 <main>
     <div class="titre-profil-utilisateur" id="titre-profil-utilisateur">
-        <h1>Bienvenue dans ton profil $employe !</h1>
-        <!--        <h1><?= $salutation ?>, <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?> !</h1>-->
+        <h1><?= $salutation ?>, <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?> !</h1>
     </div>
 
     <div class="nav-profil-employe" id="nav-profil-employe">

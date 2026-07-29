@@ -95,7 +95,8 @@ if (menuDetailmodal && btnMenuClose) {
 
         document.querySelector("#menu-detail-titre").textContent = menu['titre'];
         document.querySelector("#menu-detail-description").textContent = menu['description'];
-        document.querySelector("#menu-detail-prix").textContent = `${menu['prixUnitaire']}€ / pers. (${menu['value']} pers. min)`;
+        document.querySelector("#menu-detail-prix").textContent = `${menu['prixUnitaire']}€ / pers.`;
+        document.querySelector('#menu-detail-personne-minimum').textContent = `(minimum : ${menu['min']})`;
 
         let texteStock;
         if (menu['stock'] === undefined) {

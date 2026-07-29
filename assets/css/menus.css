@@ -316,6 +316,9 @@
     object-fit: cover;
     object-position: center;
 }
+.panier-info-box {
+    padding-bottom: 5rem;
+}
 
 .img-panier-box img {
     width: 100%;
@@ -378,7 +381,7 @@
     border: solid 1px var(--couleur-police-connexion);
     border-radius: 50%;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.7rem;
     cursor: pointer;
 }
 
@@ -427,7 +430,7 @@
 
 
 .panier-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
     background: var(--couleur-avis-filtre-banner);
     padding: 20px;
@@ -441,10 +444,10 @@
 }
 
 .item-card {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     align-items: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px dotted black;
     padding: 15px 0;
 }
 
@@ -452,26 +455,76 @@
     display: flex;
     align-items: center;
     gap: 15px;
-
-    img {
-
-    }
 }
 
-.item-details h3 {
-    margin: 0 0 5px;
-    font-size: 16px;
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: 'Inter', sans-serif;
+
+    h2 {
+        margin: 0 0 5px;
+        color: var(--couleur-tracer-connexion);
+    }
 
     p {
-        margin: 0;
-        color: #666;
-        font-size: 14px;
+        color: var(--couleur-tracer-hero-bouton);
+        font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+    }
+
+    .item-condition,
+    .item-description {
+        font-style: italic;
+    }
+
+    .item-condition,
+    .item-nrb-min {
+        color: var(--couleur-footer);
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .conditions-text,
+    .nrb-min-valeur,
+    .prix-valeur {
+        font-weight: normal;
+        color: var(--couleur-police-standard);
+        font-size: large;
+    }
+
+    .item-quantite {
+        color: var(--couleur-footer);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+
+        .quantite-valeur {
+            font-weight: normal;
+            color: var(--couleur-police-standard);
+            font-size: large;
+        }
+
     }
 }
 
 .item-prix {
+    color: var(--couleur-police-standard);
     font-weight: bold;
-    color: #333;
+    text-align: center;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+
+    .prix-valeur {
+        font-weight: normal;
+        color: var(--couleur-police-standard);
+    }
+
+    @media (max-width: 900px) {
+        font-size: medium;
+    }
 }
 
 .card-recap {
@@ -480,13 +533,19 @@
 
     h2 {
         margin: 0 0 15px;
-        font-size: 20px;
+        font-size: 2rem;
+        font-family: 'Inter', sans-serif;
     }
 }
 
 .btn-passer-commande-box {
     display: flex;
     justify-content: flex-end;
+}
+
+.btn-supprimer-item-box {
+    display: flex;
+    justify-content: center;
 }
 
 

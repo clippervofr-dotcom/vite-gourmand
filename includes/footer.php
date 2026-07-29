@@ -81,11 +81,13 @@
             <p id="menu-detail-stock"></p>
             <p id="menu-detail-prix"></p>
 
+
             <div class="menu-detail-quantite">
                 <button type="button" class="btn-moins" id="menu-detail-btn-moins" aria-label="Diminuer la quantité">−</button>
                 <input type="number" id="menu-detail-input" value="0" min="0" aria-label="Quantité" inputmode="numeric" required>
                 <button type="button" class="btn-plus" id="menu-detail-btn-plus" aria-label="Augmenter la quantité">+</button>
             </div>
+            <p id="menu-detail-personne-minimum"></p>
 
             <p id="menu-detail-prix-calcule"></p>
 
@@ -291,7 +293,7 @@
 <script src="assets/js/commandes.js"></script>
 <script src="assets/js/commandes-utilisateur.js"></script>
 <script src="assets/js/commandes-post.js"></script>
-<script src="assets/js/testtest.js"></script>
+<script src="assets/js/panier.js"></script>
 
 
 

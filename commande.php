@@ -18,8 +18,8 @@
                         <input type="text" id="nom-commande" placeholder="Votre Nom" name="nom-commande" required>
                     </div>
                     <div class="infos-perso">
-                        <label for="prénom-commande">Prénom<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="prénom-commande" placeholder="Votre Prénom" name="prénom-commande" required>
+                        <label for="prenom-commande">Prénom<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="text" id="prenom-commande" placeholder="Votre Prénom" name="prenom-commande" required>
                     </div>
                 </div>
                 <div class="second-ligne-info">
@@ -28,8 +28,8 @@
                         <input type="email" id="email-commande" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Votre Email" name="email-commande" required>
                     </div>
                     <div class="infos-perso">
-                        <label for="téléphone-commande">Téléphone<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="tel" id="téléphone-commande" placeholder="Votre Téléphone" name="téléphone-commande" required>
+                        <label for="telephone-commande">Téléphone<span class="requis" aria-hidden="true">*</span></label>
+                        <input type="tel" id="telephone-commande" placeholder="Votre Téléphone" name="telephone-commande" required>
                     </div>
                 </div>
                 <div class="third-ligne-info">
@@ -48,12 +48,10 @@
                         <input type="text" id="ville-commande" placeholder="Votre Ville" name="ville-commande" required>
                     </div>
                 </div>
-
-
                 <div class="fourth-ligne-info">
                     <div class="infos-perso-date-heure">
                         <label for="date-heure">Date et heure de la prestation<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="datetime-local" id="date-heure" name="date-heure">
+                        <input type="datetime-local" data-date="date livraison" id="date-heure" name="date-heure">
                     </div>
                 </div>
             </div>
@@ -62,20 +60,15 @@
                 <div class="titre-choix-menu">
                     <img src="assets/images/votre-menu.png" alt="Votre menu">
                 </div>
-                <div class="first-ligne-choix-menu">
-                    <label for="choix-menu">Menu<span class="requis" aria-hidden="true">*</span></label>
-                    <select id="choix-menu" name="choix-menu">
-                        <option value="" selected>Sélectionnez votre menu</option>
-                        <option value="menu-noel" data-menu-id="1">Menu de Noël</option>
-                        <option value="menu-paques" data-menu-id="2">Menu de Pâques</option>
-                        <option value="menu-classique" data-menu-id="3">Menu Classique</option>
-                        <option value="menu-vegetarien" data-menu-id="4">Menu Événementiel</option>
-                        <option value="menu-evenementiel" data-menu-id="5">Menu Végétarien</option>
-                    </select>
+                <div class="third-ligne-info">
+                    <div class="infos-perso">
+                        <label for="choix-menu">Choix du menu</label>
+                        <input type="text" id="choix-menu">
+                    </div>
                 </div>
                 <div class="second-ligne-choix-menu">
                     <div class="infos-menu">
-                        <label for="nbr-personnes-commande" class="nbr">Nombre de personnes<span class="requis">*</span></label>
+                        <label for="nbr-personnes-commande" class="nbr">Nombre de personnes</label>
                         <input type="number" id="nbr-personnes-commande" placeholder="Nombre de personnes" name="nbr-personnes-commande">
                         <p class="explications-nbr-pers">Minimum : 10 personnes<br>
                             (selon le menu selectionné)</p>

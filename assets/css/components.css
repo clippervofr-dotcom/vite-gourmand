@@ -183,6 +183,9 @@ textarea {
     border: 1.5px solid var(--couleur-hero-bouton);
     font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);
 }
+input[disabled] {
+    cursor: not-allowed;
+}
 
 .form-checkbox {
     grid-column: 1 / -1;
@@ -653,7 +656,6 @@ header a {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    padding: 5px 16px;
 }
 
 @media (max-width: 640px) {
@@ -707,6 +709,70 @@ header a {
     top: 1rem;
     right: 2rem;
 }
+
+/* bouton #2 sous menu*/
+
+.bouton-2 {
+    font-family: inherit;
+    display: inline-block;
+    width: 6em;
+    height: 2.6em;
+    line-height: 2.5em;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 15px;
+    z-index: 1;
+    color: var(--couleur-hero-bouton);
+    border: 2px solid var(--couleur-hero-bouton);
+    background: #ffffffad;
+    border-radius: 6px;
+    position: relative;
+}
+
+.bouton-2::before {
+    position: absolute;
+    content: "";
+    width: 150px;
+    height: 200px;
+    z-index: -1;
+    border-radius: 50%;
+    background: var(--couleur-police-epuise);
+}
+
+.bouton-2:hover {
+    color: white;
+}
+
+.bouton-2:before {
+    top: 100%;
+    left: 100%;
+    transition: 0.3s all;
+}
+
+.bouton-2:hover::before {
+    top: -30px;
+    left: -30px;
+}
+
+.dropdown-profil.active {
+    .bouton-2 {
+        width: 8em;
+        color: var(--couleur-police-standard);
+        border: 2px solid var(--couleur-police-standard);
+
+        &::before {
+            border-radius: 45%;
+            width: 190px;
+            background: var(--couleur-hero-bouton);
+        }
+
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+
 
 /*.new-adresse-content {*/
 /*    display: grid;*/

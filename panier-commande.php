@@ -18,10 +18,23 @@ if (!$info) {
     exit;
 }
 
+$adresse = ($info['adresse'] . " " . $info['code_postal'] . " " . $info['ville']);
+$python = "C:\\xampp\\htdocs\\vite-et-gourmand\\venv\\Scripts\\python.exe";
+$commande = escapeshellarg($python) . " " . escapeshellarg("C:\\xampp\\htdocs\\vite-et-gourmand\\venv\\Scripts\\localisationbis.py") . " " . escapeshellarg($adresse);
+$sortie = shell_exec($commande);           // récupère tout ce que print() a affiché
+$coordonnees = json_decode($sortie, true); // transforme le JSON en tableau PHP
+if ($coordonnees['success']) {
+    $distanceKm = round($coordonnees['distance'], 0);
+}
+
+
+
+$info['date'] = date('Y-m-d H:i:s');
+$info['distance'] = $distanceKm;
+
 echo json_encode([
     'success' => true,
     'panier' => $_SESSION['panier'] ?? [],
-    'info' => $info,
-    'date' => date('Y-m-d H:i:s')
+    'info' => $info
 ]);
 

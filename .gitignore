@@ -10,3 +10,6 @@ OLD-forms.css
 OLD-style.css
 a faire.php
 TEST ONLY/
+venv/
+__pycache__/
+*.pyc

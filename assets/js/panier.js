@@ -2,6 +2,7 @@ const panierContainer = document.querySelector('#panier-container');
 
 if (panierContainer) {
 
+    // fetch json du panier.php
     async function chargerItem() {
         const reponse = await fetch('panier.php');
         const items = await reponse.json();
@@ -9,6 +10,7 @@ if (panierContainer) {
         afficherItem(items);
     }
 
+    // construction et affichage html mon-panier.php -- items
     function afficherItem(items) {
         const conteneur = document.querySelector('#panier-container');
         conteneur.querySelectorAll('.panier-info-box, .card-recap').forEach(function (ligne) {
@@ -35,7 +37,7 @@ if (panierContainer) {
                                 <span class="quantite-valeur">${item['quantite']}</span>
                                 <button type="button" class="btn-plus">+</button>
                             </p>
-                            <p>Indique le nombre de repas préparés lors de votre evenement.<br>Veuillez-vous referer au nombre de personnes minimum.</p>
+                            <p>Indique le nombre de repas préparés lors de votre evenement.<br>Veuillez-vous referer au nombre minimum de personnes.</p>
                             <p class="item-condition" data-label="conditions">Information de réservation :<br><span class="conditions-text">=> ${item['conditions']}</span></p>
                             <p class="item-nrb-min" data-label="nombre_personne_minimum">Nombre minimum de personnes :<br><span class="nrb-min-valeur">=> ${item['nombre_personne_minimum']}</span></p>
                             <p class="item-description" data-label="description">${item['description']}</p>
@@ -43,8 +45,11 @@ if (panierContainer) {
                     </div>
                     <div class="item-prix" data-label="prix_par_personne">Prix par personne :<br><span class="prix-valeur">=> ${item['prix_par_personne']} €</span></div>
                     <div></div>
+                    <div class="btn-commander-item-box">
+                        <a href="commandes.php" type="button" class="bouton-2-commander">Commander</a>
+                    </div>
                     <div class="btn-supprimer-item-box">
-                        <button type="button" class="bouton-2">Supprimer</button>
+                        <button type="button" class="bouton-2-supprimer">Supprimer</button>
                     </div>
                 </div>
             `;
@@ -53,7 +58,7 @@ if (panierContainer) {
             totalGeneral += Number(item['prix_total']);
         });
 
-
+        // recap du panier item
         const recap = document.createElement('div');
         recap.classList.add('card-recap');
         recap.innerHTML = `
@@ -82,10 +87,18 @@ if (panierContainer) {
         console.error('Erreur lors du chargement du panier :', erreur);
     });
 
+
+    // btn confirmer, supprimer et + -
     panierContainer.addEventListener('click', async function (event) {
-        const boutonSupprimer = event.target.closest('.bouton-2');
+        const boutonSupprimer = event.target.closest('.bouton-2-supprimer');
         const boutonPlus = event.target.closest('.btn-plus');
         const boutonMoins = event.target.closest('.btn-moins');
+        const boutonConfirmer = event.target.closest('.bouton-2-commander');
+
+        if (boutonConfirmer) {
+            const ligne = boutonConfirmer.closest('.panier-info-box');
+            const uniqueId = ligne.dataset.uniqueId;
+        }
 
         if (boutonSupprimer) {
             const ligne = boutonSupprimer.closest('.panier-info-box');

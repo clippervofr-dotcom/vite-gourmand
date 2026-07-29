@@ -75,7 +75,7 @@
                     </div>
                     <div class="location-materiel">
                         <label class="checkbox-custom" id="checkbox-location">
-                            <input type="checkbox" id="matériel" name="matériel">
+                            <input type="checkbox" data-location="99" id="materiel" name="matériel">
                             <div class="checkbox-mark"></div>
                             <span>Je souhaite louer du matériel</span>
                         </label>

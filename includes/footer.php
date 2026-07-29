@@ -294,6 +294,7 @@
 <script src="assets/js/commandes-utilisateur.js"></script>
 <script src="assets/js/commandes-post.js"></script>
 <script src="assets/js/panier.js"></script>
+<script src="assets/js/test.js"></script>
 
 
 

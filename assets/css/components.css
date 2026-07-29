@@ -712,7 +712,9 @@ header a {
 
 /* bouton #2 sous menu*/
 
-.bouton-2 {
+.bouton-2,
+.bouton-2-supprimer,
+.bouton-2-commander {
     font-family: inherit;
     display: inline-block;
     width: 6em;
@@ -729,7 +731,9 @@ header a {
     position: relative;
 }
 
-.bouton-2::before {
+.bouton-2::before,
+.bouton-2-supprimer::before,
+.bouton-2-commander::before {
     position: absolute;
     content: "";
     width: 150px;
@@ -739,17 +743,23 @@ header a {
     background: var(--couleur-police-epuise);
 }
 
-.bouton-2:hover {
+.bouton-2:hover,
+.bouton-2-supprimer:hover,
+.bouton-2-commander:hover {
     color: white;
 }
 
-.bouton-2:before {
+.bouton-2:before,
+.bouton-2-supprimer::before,
+.bouton-2-commander::before {
     top: 100%;
     left: 100%;
     transition: 0.3s all;
 }
 
-.bouton-2:hover::before {
+.bouton-2:hover::before,
+.bouton-2-supprimer:hover::before,
+.bouton-2-commander:hover::before {
     top: -30px;
     left: -30px;
 }

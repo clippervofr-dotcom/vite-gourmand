@@ -204,15 +204,6 @@ nav ul {
         background-color: var(--couleur-fond);
         padding: 0.75rem;
         box-shadow: 0 4px 12px var(--couleur-ombre-forte);
-
-        /*.boutons-header,*/
-        /*.bouton-connexion {*/
-        /*    border-radius: 0;*/
-        /*    border: none;*/
-        /*    padding: 0;*/
-        /*    background-color: transparent;*/
-        /*    font-family: 'Playfair Display', serif;*/
-        /*}*/
     }
 
     .bouton-nav-hamburger {
@@ -316,8 +307,6 @@ nav ul {
     strong {
         color: var(--couleur-box-partenaires);
     }
-
-
 }
 
 .footer-local__hours-list {
@@ -394,6 +383,26 @@ nav ul {
     fill: currentColor;
 }
 
+.cgv-ml-footer {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 1.5rem;
+    text-align: center;
+
+    a {
+        color: var(--couleur-police-boule-commande);
+        text-decoration: none;
+        transition: 0.3s ease;
+
+        &:hover {
+            color: var(--couleur-presentation-box);
+            text-decoration: underline;
+            font-size: large;
+        }
+    }
+
+}
+
 /* Media query for larger screens */
 @media (min-width: 992px) {
     .footer-local__main {
@@ -403,5 +412,12 @@ nav ul {
     .footer-local__bottom {
         flex-direction: row;
         justify-content: space-between;
+    }
+}
+
+@media (max-width: 900px) {
+    .cgv-ml-footer a,
+    .footer-local__details a {
+        text-decoration: underline;
     }
 }

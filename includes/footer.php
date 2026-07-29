@@ -272,6 +272,12 @@
                         referrerpolicy="strict-origin-when-cross-origin">
                 </iframe>
             </div>
+
+        </div>
+        <div class="cgv-ml-footer">
+            <a href="cgv.php">Conditions générales de vente</a>
+            <a href="mentions-legales.php">Mentions légales</a>
+            <a href="contact.php">Contact</a>
         </div>
         <div class="footer-local__bottom">
             <p class="footer-local__copyright">&copy; 2026 Vite & Gourmand. All Rights Reserved.</p>
@@ -294,7 +300,6 @@
 <script src="assets/js/commandes-utilisateur.js"></script>
 <script src="assets/js/commandes-post.js"></script>
 <script src="assets/js/panier.js"></script>
-<script src="assets/js/test.js"></script>
 
 
 

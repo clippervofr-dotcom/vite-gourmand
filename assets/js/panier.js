@@ -46,7 +46,7 @@ if (panierContainer) {
                     <div class="item-prix" data-label="prix_par_personne">Prix par personne :<br><span class="prix-valeur">=> ${item['prix_par_personne']} €</span></div>
                     <div></div>
                     <div class="btn-commander-item-box">
-                        <a href="commandes.php" type="button" class="bouton-2-commander">Commander</a>
+                        <a href="commande.php?item=${item['uniqueId']}" type="button" class="bouton-2-commander">Commander</a>
                     </div>
                     <div class="btn-supprimer-item-box">
                         <button type="button" class="bouton-2-supprimer">Supprimer</button>
@@ -63,22 +63,6 @@ if (panierContainer) {
         recap.classList.add('card-recap');
         recap.innerHTML = `
                 <h2>Total : ${totalGeneral} €</h2>
-                <div class="btn-passer-commande-box" id="btn-passer-commande-box">
-                    <button type="button" class="animated-button" id="btn-passer-commande">
-                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                        <span class="text">Passer commande</span>
-                        <span class="circle"></span>
-                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                    </button>
-                </div>
             `;
         conteneur.appendChild(recap);
     }
@@ -95,10 +79,14 @@ if (panierContainer) {
         const boutonMoins = event.target.closest('.btn-moins');
         const boutonConfirmer = event.target.closest('.bouton-2-commander');
 
-        if (boutonConfirmer) {
-            const ligne = boutonConfirmer.closest('.panier-info-box');
-            const uniqueId = ligne.dataset.uniqueId;
-        }
+        // if (boutonConfirmer) {
+        //     const ligne = boutonConfirmer.closest('.panier-info-box');
+        //     const uniqueId = ligne.dataset.uniqueId;
+        //
+        //     console.log('uniqueId trouvé :', uniqueId);
+        //
+        //     window.location.href = 'commande.php?item=' + encodeURIComponent(uniqueId);
+        // }
 
         if (boutonSupprimer) {
             const ligne = boutonSupprimer.closest('.panier-info-box');

@@ -27,14 +27,35 @@ if ($coordonnees['success']) {
     $distanceKm = round($coordonnees['distance'], 0);
 }
 
-
-
 $info['date'] = date('Y-m-d H:i:s');
 $info['distance'] = $distanceKm;
 
+$itemId = $_GET['item'] ?? null;
+
+error_log('contenu brut de $_GET : ' . print_r($_GET, true));
+
+$panierComplet = $_SESSION['panier'] ?? [];
+$menuChoisi = null;
+
+error_log('item cherché : ' . $itemId);
+error_log('panier actuel : ' . print_r($_SESSION['panier'], true));
+
+foreach ($panierComplet as $item) {
+    if ($item['uniqueId'] === $itemId) {
+        $menuChoisi = $item;
+        break;
+    }
+}
+if (!$menuChoisi) {
+    echo json_encode(['success' => false, 'message' => 'Item non trouvé.']);
+    exit;
+}
+
+
+
 echo json_encode([
     'success' => true,
-    'panier' => $_SESSION['panier'] ?? [],
+    'panier' => $menuChoisi,
     'info' => $info
 ]);
 

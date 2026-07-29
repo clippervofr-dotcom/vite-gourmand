@@ -94,54 +94,7 @@
                 <div class="titre-recap-commande">
                     <img src="assets/images/recap.png" alt="Récapitulatif de la commande">
                 </div>
-                <div class="recap-commande-box">
-                    <div class="recap-infos">
-                        <div class="recap-liste">
-                            <p class="recap-intitule">Menu :</p>
-                            <p class="recap-resultat">xxxx</p>
-                        </div>
-                        <div class="recap-liste">
-                            <p class="recap-intitule">Nombre de personnes :</p>
-                            <p class="recap-resultat">xxxx</p>
-                        </div>
-                        <div class="recap-liste">
-                            <p class="recap-intitule">Adresse :</p>
-                            <p class="recap-resultat">xxxx</p>
-                        </div>
-                        <div class="recap-liste">
-                            <p class="recap-intitule">Date de livraison :</p>
-                            <p class="recap-resultat"> le xxx à xxhxx</p>
-                        </div>
-                        <div class="recap-liste">
-                            <p class="recap-intitule">Forfait location de matériel :</p>
-                            <p class="recap-resultat"> y/n</p>
-                        </div>
-                        <div class="recap-liste">
-                            <p class="recap-intitule">Prix de la livraison :</p>
-                            <p class="recap-resultat"> xx€</p>
-                        </div>
-                    </div>
-                    <div class="recap-prix">
-                        <p>Total : xxx€</p>
-                    </div>
-                </div>
-                <div class="recap-commande-bouton-confirmation">
-                    <button class="animated-button" type="button" id="btn-confirmation-commande">
-                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                        <span class="text">Confirmer la commande</span>
-                        <span class="circle"></span>
-                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                    </button>
-                    <p>Un mail de confirmation vous sera envoyé après validation de la commande</p>
-                </div>
+                <!-- JS recap ICI -->
             </div>
         </div>
         <div>

@@ -92,9 +92,6 @@ if (adminVoirCommandes && btnAdminVoirDetailCommande && btnAdminListeEmploye && 
         adminCreationCompte.classList.remove('active');
     });
 
-
-
-
     btnAdminValidationCreation.addEventListener('click', function () {
         adminListeEmploye.classList.add('active');
         adminCreationCompte.classList.remove('active');

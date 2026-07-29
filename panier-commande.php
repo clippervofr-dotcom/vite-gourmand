@@ -20,7 +20,7 @@ if (!$info) {
 
 $adresse = ($info['adresse'] . " " . $info['code_postal'] . " " . $info['ville']);
 $python = "C:\\xampp\\htdocs\\vite-et-gourmand\\venv\\Scripts\\python.exe";
-$commande = escapeshellarg($python) . " " . escapeshellarg("C:\\xampp\\htdocs\\vite-et-gourmand\\venv\\Scripts\\localisationbis.py") . " " . escapeshellarg($adresse);
+$commande = escapeshellarg($python) . " " . escapeshellarg("C:\\xampp\\htdocs\\vite-et-gourmand\\assets\\py\\localisationbis.py") . " " . escapeshellarg($adresse);
 $sortie = shell_exec($commande);           // récupère tout ce que print() a affiché
 $coordonnees = json_decode($sortie, true); // transforme le JSON en tableau PHP
 if ($coordonnees['success']) {

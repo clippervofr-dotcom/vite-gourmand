@@ -18,6 +18,30 @@ if (btnUtilisateurValider && btnUtilisateurModif) {
     });
 
     btnUtilisateurValider.addEventListener('click', function () {
+        async function nouvelleInfosUtilisateur() {
+            const inputNomUtilisateur = document.querySelector('#nom-profil-utilisateur');
+            const inputPrenomUtilisateur = document.querySelector('#prenom-profil-utilisateur');
+            const inputEmailUtilisateur = document.querySelector('#email-profil-utilisateur');
+            const inputTelephoneUtilisateur = document.querySelector('#telephone-profil-utilisateur');
+            const inputAdresseUtilisateur = document.querySelector('#adresse-profil-utilisateur');
+            const inputVilleUtilisateur = document.querySelector('#ville-profil-utilisateur');
+            const inputCodePostalUtilisateur = document.querySelector('#code-postal-profil-utilisateur');
+
+            const donnees = new FormData();
+
+            donnees.append('nom', inputNomUtilisateur.value);
+            donnees.append('prenom', inputPrenomUtilisateur.value);
+            donnees.append('email', inputEmailUtilisateur.value);
+            donnees.append('telephone', inputTelephoneUtilisateur.value);
+            donnees.append('adresse', inputAdresseUtilisateur.value);
+            donnees.append('ville', inputVilleUtilisateur.value);
+            donnees.append('code_postal', inputCodePostalUtilisateur.value);
+
+            await fetch ('profile-update.php', {
+                method: 'POST',
+                body: donnees
+            });
+        }
         let inputs = document.getElementsByClassName('input-profil-utilisateur');
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].disabled = true;
@@ -26,6 +50,13 @@ if (btnUtilisateurValider && btnUtilisateurModif) {
                 validationChange.textContent = "";
             }, 3000);
         }
+        nouvelleInfosUtilisateur().catch(function (erreur) {
+            console.error('Erreur lors de fetch des nouvelles informations du profil :', erreur);
+        });
+
+        chargerInfo().catch(function (erreur) {
+            console.error('Erreur lors du chargement des informations du profil :', erreur);
+        });
     });
 }
 //nav profil utilisateur
@@ -36,6 +67,22 @@ const profilUtilisateurCommandes = document.querySelector("#profil-utilisateur-b
 
 if (btnUtilisateurInfo && profilUtilisateurInfo && profilUtilisateurCommandes && btnUtilisateurCommandes) {
 
+    async function chargerInfo() {
+        const reponse = await fetch('profile.php');
+        const infos = await reponse.json();
+
+        if (!infos['success']) {
+            console.error(infos['message']);
+        }
+
+        document.querySelector('#nom-profil-utilisateur').value = infos['nom'] ?? null;
+        document.querySelector('#prenom-profil-utilisateur').value = infos['prenom'] ?? null;
+        document.querySelector('#email-profil-utilisateur').value = infos['email'] ?? null;
+        document.querySelector('#telephone-profil-utilisateur').value = infos['telephone'] ?? null;
+        document.querySelector('#adresse-profil-utilisateur').value = infos['adresse'] ?? null;
+        document.querySelector('#ville-profil-utilisateur').value = infos['ville'] ?? null;
+        document.querySelector('#code-postal-profil-utilisateur').value = infos['code_postal'] ?? null;
+    }
     btnUtilisateurInfo.addEventListener('click', function () {
         profilUtilisateurInfo.classList.add('active');
         profilUtilisateurCommandes.classList.remove('active');
@@ -45,7 +92,11 @@ if (btnUtilisateurInfo && profilUtilisateurInfo && profilUtilisateurCommandes &&
         profilUtilisateurCommandes.classList.add('active');
         profilUtilisateurInfo.classList.remove('active');
     });
+    chargerInfo().catch(function (erreur) {
+        console.error('Erreur lors du chargement des informations du profil :', erreur);
+    });
 }
+
 
 //nav profil admin
 //btn nav
@@ -100,7 +151,5 @@ if (adminVoirCommandes && btnAdminVoirDetailCommande && btnAdminListeEmploye && 
             validationChange.textContent = "";
         }, 3000);
     });
-
-
 
 }

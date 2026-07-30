@@ -1,4 +1,3 @@
-console.log('le fichier commandes-post.js démarre');
 const commandeBox = document.querySelector('.commande-box');
 
 if (commandeBox) {

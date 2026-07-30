@@ -77,16 +77,6 @@ if (panierContainer) {
         const boutonSupprimer = event.target.closest('.bouton-2-supprimer');
         const boutonPlus = event.target.closest('.btn-plus');
         const boutonMoins = event.target.closest('.btn-moins');
-        const boutonConfirmer = event.target.closest('.bouton-2-commander');
-
-        // if (boutonConfirmer) {
-        //     const ligne = boutonConfirmer.closest('.panier-info-box');
-        //     const uniqueId = ligne.dataset.uniqueId;
-        //
-        //     console.log('uniqueId trouvé :', uniqueId);
-        //
-        //     window.location.href = 'commande.php?item=' + encodeURIComponent(uniqueId);
-        // }
 
         if (boutonSupprimer) {
             const ligne = boutonSupprimer.closest('.panier-info-box');

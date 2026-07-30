@@ -18,6 +18,7 @@ if (!$info) {
     exit;
 }
 
+// commande script python pour calcul lat/long et distance km
 $adresse = ($info['adresse'] . " " . $info['code_postal'] . " " . $info['ville']);
 $python = "C:\\xampp\\htdocs\\vite-et-gourmand\\venv\\Scripts\\python.exe";
 $commande = escapeshellarg($python) . " " . escapeshellarg("C:\\xampp\\htdocs\\vite-et-gourmand\\assets\\py\\localisationbis.py") . " " . escapeshellarg($adresse);
@@ -32,13 +33,8 @@ $info['distance'] = $distanceKm;
 
 $itemId = $_GET['item'] ?? null;
 
-error_log('contenu brut de $_GET : ' . print_r($_GET, true));
-
 $panierComplet = $_SESSION['panier'] ?? [];
 $menuChoisi = null;
-
-error_log('item cherché : ' . $itemId);
-error_log('panier actuel : ' . print_r($_SESSION['panier'], true));
 
 foreach ($panierComplet as $item) {
     if ($item['uniqueId'] === $itemId) {
@@ -50,8 +46,6 @@ if (!$menuChoisi) {
     echo json_encode(['success' => false, 'message' => 'Item non trouvé.']);
     exit;
 }
-
-
 
 echo json_encode([
     'success' => true,

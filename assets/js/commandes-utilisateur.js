@@ -2,15 +2,15 @@
 const conteneurCommandesUser = document.querySelector('.profil-utilisateur-commandes-liste');
 let derniereCommandesRecues = [];
 
+async function chargerCommandesUser() {
+    const reponse = await fetch('mes-commandes.php');
+    const commandesUser = await reponse.json();
+
+    derniereCommandesRecues = commandesUser;
+    afficherCommandesUser(commandesUser);
+}
+
 if (conteneurCommandesUser) {
-    async function chargerCommandesUser() {
-        const reponse = await fetch('mes-commandes.php');
-        const commandesUser = await reponse.json();
-
-        derniereCommandesRecues = commandesUser;
-        afficherCommandesUser(commandesUser);
-    }
-
     function afficherCommandesUser(commandesUser) {
         const conteneurUser = document.querySelector('.profil-utilisateur-commandes-liste');
 
@@ -71,7 +71,7 @@ if (conteneurCommandesUser) {
 const annulationModal = document.querySelector('#annulation-modal');
 const annulationClose = document.querySelector('#annulation-modal-close');
 const annulationCheckbox = document.querySelector('#annulation-checkbox');
-const annulationConfirm = document.querySelector('#btn-annulation-commande');
+const annulationConfirm = document.querySelector('#btn-annulation-confirmer');
 
 if (annulationModal && annulationCheckbox && annulationConfirm && annulationClose) {
 
@@ -103,6 +103,25 @@ if (annulationModal && annulationCheckbox && annulationConfirm && annulationClos
         annulationModal.classList.add('active');
     }
 
+    function changementStatutAnnuler() {
+        const commandeId = annulationModal.dataset.commandeId;
+
+        const donnees = new FormData();
+        donnees.append('commande_id', commandeId);
+        donnees.append('statut', 'annulé');
+
+        for (const paire of donnees.entries()) {
+            console.log(paire[0], paire[1]);
+        }
+
+        return  fetch ('commandes-statut-update.php', {
+            method: 'POST',
+            body: donnees
+        });
+
+
+    }
+
     annulationCheckbox.addEventListener('change', function () {
         annulationConfirm.disabled = !annulationCheckbox.checked;
     });
@@ -123,10 +142,18 @@ if (annulationModal && annulationCheckbox && annulationConfirm && annulationClos
         }
     });
 
-    annulationConfirm.addEventListener('click', async function () {
+    annulationConfirm.addEventListener('click', function () {
+        if (!annulationCheckbox.checked) {
+            return;
+        }
+        changementStatutAnnuler().catch(function (erreur) {
+            console.error('Erreur lors de la mise à jour du statut de la commande :', erreur);
+        });
         annulationModal.classList.remove('active');
+        chargerCommandesUser().catch(function (erreur) {
+            console.error('Erreur lors du chargement des commandes :', erreur);
+        });
     });
-
 }
 
 

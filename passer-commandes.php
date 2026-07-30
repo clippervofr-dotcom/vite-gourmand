@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //selection menu
     if(filter_has_var(INPUT_POST, 'choix-menu')) {
-        $menu_id = htmlspecialchars($_POST['choix-menu']);
+        $menu_id = htmlspecialchars($_POST['choix-menu'], ENT_QUOTES, 'UTF-8');
     } else {
         $menu_id = null;
     }

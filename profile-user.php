@@ -8,7 +8,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
 <main>
     <div class="titre-profil-utilisateur" id="titre-profil-utilisateur">
-        <h1><?= $salutation ?>, <?= htmlspecialchars($_SESSION['utilisateur']['prenom']) ?> !</h1>
+        <h1><?= $salutation ?>, <?= htmlspecialchars($_SESSION['utilisateur']['prenom'], ENT_QUOTES, 'UTF-8') ?> !</h1>
     </div>
     <div class="nav-profil-utilisateur" id="nav-profil-utilisateur">
         <button type="button" class="animated-button" id="btn-info-perso-utilisateur">
@@ -46,43 +46,45 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
         <!-- PROFIL INFO UTILISATEUR -->
 
-        <div class="profil-utilisateur-box-info-perso active" id="profil-utilisateur-box-info-perso">
+        <form class="profil-utilisateur-box-info-perso active" id="profil-utilisateur-box-info-perso" action="" method="post">
             <div class="titre-info-perso">
                 <img src="assets/images/info-client.png" alt="Informations client">
             </div>
             <p class="validation-changement-info"></p>
             <div class="first-ligne-info">
                 <div class="infos-perso">
-                    <label for="nom-profil-utilisateur">Nom</label>
-                    <input type="text" class="input-profil-utilisateur" id="nom-profil-utilisateur" name="nom-profil-utilisateur" placeholder="" autocomplete="family-name" disabled>
+                    <label for="nom-profil-utilisateur">Nom :</label>
+                    <input type="text" class="input-profil-utilisateur" id="nom-profil-utilisateur" name="nom-profil-utilisateur" value="" disabled>
                 </div>
                 <div class="infos-perso">
-                    <label for="prénom-profil-utilisateur">Prénom</label>
-                    <input type="text" class="input-profil-utilisateur" id="prénom-profil-utilisateur" name="prenom-profil-utilisateur" placeholder="" autocomplete="given-name" disabled>
+                    <label for="prenom-profil-utilisateur">Prénom :</label>
+                    <input type="text" class="input-profil-utilisateur" id="prenom-profil-utilisateur" name="prenom-profil-utilisateur" value="" disabled>
                 </div>
             </div>
             <div class="second-ligne-info">
                 <div class="infos-perso">
-                    <label for="email-profil-utilisateur">Email</label>
-                    <input type="email" class="input-profil-utilisateur" id="email-profil-utilisateur" name="email-profil-utilisateur" placeholder="" autocomplete="email" disabled>
+                    <label for="email-profil-utilisateur">Email :</label>
+                    <input type="email" class="input-profil-utilisateur" id="email-profil-utilisateur" name="email-profil-utilisateur" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" value="" disabled>
                 </div>
                 <div class="infos-perso">
-                    <label for="telephone-profil-utilisateur">Téléphone</label>
-                    <input type="tel" class="input-profil-utilisateur" id="telephone-profil-utilisateur" name="telephone-profil-utilisateur" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="" autocomplete="tel" disabled>
+                    <label for="telephone-profil-utilisateur">Téléphone :</label>
+                    <input type="tel" class="input-profil-utilisateur" id="telephone-profil-utilisateur" name="telephone-profil-utilisateur" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" value="" disabled>
                 </div>
-            </div>
-            <div class="third-ligne-info">
-                <label for="adresse-profil-utilisateur">Adresse</label>
-                <input type="text" class="input-profil-utilisateur" id="adresse-profil-utilisateur" name="adresse-profil-utilisateur" placeholder="" autocomplete="address-line1" disabled>
             </div>
             <div class="fourth-ligne-info">
                 <div class="infos-perso">
-                    <label for="code-postal-profil-utilisateur">Code Postal</label>
-                    <input type="text" class="input-profil-utilisateur" id="code-postal-profil-utilisateur" name="code-postal-profil-utilisateur" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="" autocomplete="postal-code" disabled>
+                    <label for="adresse-profil-utilisateur">Adresse :</label>
+                    <input type="text" class="input-profil-utilisateur" id="adresse-profil-utilisateur" name="adresse-profil-utilisateur" value="" disabled>
+                </div>
+            </div>
+            <div class="fourth-ligne-info">
+                <div class="infos-perso">
+                    <label for="code-postal-profil-utilisateur">Code Postal :</label>
+                    <input type="text" class="input-profil-utilisateur" id="code-postal-profil-utilisateur" name="code-postal-profil-utilisateur" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" value="" disabled>
                 </div>
                 <div class="infos-perso">
-                    <label for="ville-profil-utilisateur">Ville</label>
-                    <input type="text" class="input-profil-utilisateur" id="ville-profil-utilisateur" name="ville-profil-utilisateur" placeholder="" autocomplete="address-level2" disabled>
+                    <label for="ville-profil-utilisateur">Ville :</label>
+                    <input type="text" class="input-profil-utilisateur" id="ville-profil-utilisateur" name="ville-profil-utilisateur" value="" disabled>
                 </div>
             </div>
             <div class="btn-profil-utilisateur-modif">
@@ -115,7 +117,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                     </svg>
                 </button>
             </div>
-        </div>
+        </form>
 
         <!-- PROFIL COMMANDES UTILISATEUR -->
 

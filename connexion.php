@@ -33,7 +33,7 @@ include 'includes/header.php';
 
 
         <?php if ($erreur): ?>
-            <p class="erreur"><?= htmlspecialchars($erreur) ?></p>
+            <p class="erreur"><?= htmlspecialchars($erreur, ENT_QUOTES, 'UTF-8') ?></p>
         <?php endif; ?>
 
         <form class="se-connecter-box" method="POST" action="connexion.php">

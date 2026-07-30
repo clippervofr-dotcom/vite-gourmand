@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <?php if (isset($erreur)) : ?>
                 <p class="erreur">
-                    <?= htmlspecialchars($erreur) ?>
+                    <?= htmlspecialchars($erreur, ENT_QUOTES, 'UTF-8') ?>
                 </p>
             <?php endif; ?>
 

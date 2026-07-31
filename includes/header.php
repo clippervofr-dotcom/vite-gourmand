@@ -95,8 +95,34 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="profile-admin.php">Administration</a>
-                                <a href="deconnexion.php">Déconnexion</a>
+                                <a href="profile-admin.php" class="animated-button">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text">Administration</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                                <a href="deconnexion.php" class="animated-button">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text">Déconnexion</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -108,8 +134,34 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="profile-employe.php">Commandes en attente</a>
-                                <a href="deconnexion.php">Déconnexion</a>
+                                <a href="profile-employe.php" class="animated-button">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text">Commandes en attente</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                                <a href="deconnexion.php" class="animated-button">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text">Déconnexion</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -125,9 +177,48 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="profile-user.php" class="bouton-2">Mon compte</a>
-                                <a href="mon-panier.php" class="bouton-2">Mon panier</a>
-                                <a href="deconnexion.php" class="bouton-2">Déconnexion</a>
+                                <a href="profile-user.php" class="animated-button">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text">Mon compte</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                                <a href="mon-panier.php" class="animated-button">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text">Mon panier</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                                <a href="deconnexion.php" class="animated-button">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text">Déconnexion</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>

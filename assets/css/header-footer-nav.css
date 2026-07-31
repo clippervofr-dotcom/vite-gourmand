@@ -149,7 +149,7 @@ nav ul {
 
 .nav-links-principal {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 /* header responsive */
@@ -247,7 +247,7 @@ nav ul {
         position: static;
         border: none;
         padding: 0;
-        gap: 1rem;
+        gap: 2rem;
 
         .bouton-2 {
             width: 10em;

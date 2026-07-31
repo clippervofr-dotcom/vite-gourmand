@@ -3,7 +3,7 @@ require 'includes/db.php';
 
 header('Content-Type: application/json');
 
-$statusAutorises = ['en attente', 'validé', 'annulé'];
+$statusAutorises = ['en attente', 'validée', 'annulée'];
 $statutDemande = $_GET['statut'] ?? 'en attente';
 
 if (!in_array($statutDemande, $statusAutorises)) {

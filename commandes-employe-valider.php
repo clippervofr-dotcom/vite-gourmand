@@ -1,18 +1,17 @@
 <?php
-session_start();
 require 'includes/db.php';
+session_start();
 header('Content-Type: application/json');
 
-if (isset($_SESSION['utilisateur'])) {
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_SESSION['utilisateur'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_SESSION['utilisateur']['role_id'] === 2)) {
 
         $commandeId = $_POST['commande_id'] ?? null;
         $nouveauStatut = $_POST['statut'] ?? null;
+        $statusAutorises = 'validée';
 
-        $statusAutorises = ['en attente', 'validé', 'annulé'];
-
-        if ($commandeId && in_array($nouveauStatut, $statusAutorises, true)) {
+        if ($commandeId && $nouveauStatut === $statusAutorises) {
 
             $stmt = $pdo->prepare('UPDATE commande SET statut = ? WHERE commande_id = ?');
             $stmt->execute([$nouveauStatut, $commandeId]);
@@ -20,6 +19,8 @@ if (isset($_SESSION['utilisateur'])) {
         } else {
             echo json_encode(['success' => false, 'message' => 'Paramètres invalides.']);
         }
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Accès refusé.']);
     }
 } else {
     echo json_encode(['success' => false, 'message' => 'Non connecté.']);

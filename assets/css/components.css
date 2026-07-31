@@ -359,6 +359,56 @@ input[disabled] {
     opacity: 80%;
 }
 
+.commande-detail-content,
+.info-client-content {
+    display: grid;
+}
+
+.commande-content h2,
+.info-client-content h2 {
+    margin: 1.5rem;
+    border-bottom: solid 1px var(--couleur-footer);
+    font-family: 'Inter', sans-serif;
+}
+
+#commande-detail-close {
+    right: 20px;
+}
+
+.commande-detail,
+.client-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    justify-items: flex-start;
+    font-size: large;
+
+    span {
+        color: var(--couleur-footer);
+        font-weight: 700;
+    }
+
+    p {
+        color: var(--couleur-tracer-hero-bouton);
+    }
+}
+
+#commande-detail-adresse-livraison {
+    text-align: left;
+}
+
+.modal-box-moyenne {
+    background-color: var(--couleur-box-filtre);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: solid 2px var(--couleur-police-connexion);
+}
+
 /* modif des inputs et select du site */
 input, select {
     border: 1.5px solid var(--couleur-hero-bouton);
@@ -398,7 +448,8 @@ header a {
 .animated-button,
 .btn-validation-commande,
 .btn-voir-detail-commande,
-.btn-annulation-commande {
+.btn-annulation-commande,
+.btn-statut-commande {
     position: relative;
     display: flex;
     align-items: center;
@@ -420,7 +471,8 @@ header a {
 .animated-button svg,
 .btn-validation-commande svg,
 .btn-voir-detail-commande svg,
-.btn-annulation-commande svg{
+.btn-annulation-commande svg,
+.btn-statut-commande svg{
     position: absolute;
     width: 24px;
     fill: var(--couleur-hero-bouton);
@@ -431,21 +483,24 @@ header a {
 .animated-button .arr-1,
 .btn-validation-commande .arr-1,
 .btn-voir-detail-commande .arr-1,
-.btn-annulation-commande .arr-1{
+.btn-annulation-commande .arr-1,
+.btn-statut-commande .arr-1{
     right: 5px;
 }
 
 .animated-button .arr-2,
 .btn-validation-commande .arr-2,
 .btn-voir-detail-commande .arr-2,
-.btn-annulation-commande .arr-2{
+.btn-annulation-commande .arr-2,
+.btn-statut-commande .arr-2{
     left: -25%;
 }
 
 .animated-button .circle,
 .btn-validation-commande .circle,
 .btn-voir-detail-commande .circle,
-.btn-annulation-commande .circle{
+.btn-annulation-commande .circle,
+.btn-statut-commande .circle{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -461,7 +516,8 @@ header a {
 .animated-button .text,
 .btn-validation-commande .text,
 .btn-voir-detail-commande .text,
-.btn-annulation-commande .text{
+.btn-annulation-commande .text,
+.btn-statut-commande .text{
     position: relative;
     z-index: 1;
     transform: translateX(-12px);
@@ -471,7 +527,8 @@ header a {
 .animated-button:hover,
 .btn-validation-commande:hover,
 .btn-voir-detail-commande:hover,
-.btn-annulation-commande:hover{
+.btn-annulation-commande:hover,
+.btn-statut-commande:hover{
     box-shadow: 0 0 0 12px transparent;
     color: #ffffff;
     border-radius: 12px;
@@ -480,35 +537,40 @@ header a {
 .animated-button:hover .arr-1,
 .btn-validation-commande:hover .arr-1,
 .btn-voir-detail-commande:hover .arr-1,
-.btn-annulation-commande:hover .arr-1 {
+.btn-annulation-commande:hover .arr-1,
+.btn-statut-commande:hover .arr-1 {
     right: -25%;
 }
 
 .animated-button:hover .arr-2,
 .btn-validation-commande:hover .arr-2,
 .btn-voir-detail-commande:hover .arr-2,
-.btn-annulation-commande:hover .arr-2 {
+.btn-annulation-commande:hover .arr-2,
+.btn-statut-commande:hover .arr-2 {
     left: 5px;
 }
 
 .animated-button:hover .text,
 .btn-validation-commande:hover .text,
 .btn-voir-detail-commande:hover .text,
-.btn-annulation-commande:hover .text {
+.btn-annulation-commande:hover .text,
+.btn-statut-commande:hover .text {
     transform: translateX(12px);
 }
 
 .animated-button:hover svg,
 .btn-validation-commande:hover svg,
 .btn-voir-detail-commande:hover svg,
-.btn-annulation-commande:hover svg {
+.btn-annulation-commande:hover svg,
+.btn-statut-commande:hover svg {
     fill: #ffffff;
 }
 
 .animated-button:active,
 .btn-validation-commande:active,
 .btn-voir-detail-commande:active,
-.btn-annulation-commande:active {
+.btn-annulation-commande:active,
+.btn-statut-commande:active {
     scale: 0.95;
     box-shadow: 0 0 0 4px var(--couleur-hero-bouton);
 }
@@ -516,13 +578,15 @@ header a {
 .animated-button:hover .circle,
 .btn-validation-commande:hover .circle,
 .btn-voir-detail-commande:hover .circle,
-.btn-annulation-commande:hover .circle {
+.btn-annulation-commande:hover .circle,
+.btn-statut-commande:hover .circle {
     width: 220px;
     height: 220px;
     opacity: 1;
 }
 
 /* animated btn pour connexion + commandes + inscription + profil utilisateur annuler commande */
+/* AJUSTEMENT BTN */
 #animated-btn-connexion,
 #animated-btn-inscription,
 #btn-confirmation-commande {
@@ -567,8 +631,8 @@ header a {
 #btn-annuler-commande-utilisateur {
     font-size: 10px;
     font-weight: bold;
-
 }
+
 
 /* scroll to top */
 #btn-to-top {
@@ -624,6 +688,8 @@ header a {
     bottom: unset;
     transition-duration: 0.3s;
 }
+
+.btn-statut-commande-box
 
 /* titre infos input formulaire + profil */
 
@@ -781,27 +847,3 @@ header a {
         }
     }
 }
-
-
-
-/*.new-adresse-content {*/
-/*    display: grid;*/
-/*    text-align: start;*/
-
-/*    .checkbox-custom {*/
-/*        justify-content: center;*/
-/*    }*/
-/*}*/
-
-/*#new-adresse-code-postal {*/
-/*    width: 100%;*/
-/*    padding: 1em;*/
-/*    border-radius: 5px;*/
-/*    border: 1.5px solid var(--couleur-hero-bouton);*/
-/*    font-size: clamp(0.875rem, 0.625rem + 1.25vw, 1.25rem);*/
-/*}*/
-
-/*.new-adresse-btn-box {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/

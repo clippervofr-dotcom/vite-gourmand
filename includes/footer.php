@@ -188,7 +188,51 @@
     </div>
 </div>
 
+<!-- Modale commandes Details -->
 
+<div id="commande-detail-modal" class="modal-overlay">
+    <div class="modal-box modal-box-moyenne">
+        <button type="button" class="modal-close" id="commande-detail-close" aria-label="Fermer la fenêtre">&times;
+        </button>
+
+        <h1>Details de la commande</h1>
+
+        <div class="commande-detail-content">
+            <div class="commande-content">
+                <h2 id="commande-detail-numero-commande"></h2>
+                <div class="commande-detail">
+                    <span>Nom du Menu :</span>
+                    <p id="commande-detail-titre-commande"></p>
+                    <span>Commande passée le :</span>
+                    <p id="commande-detail-date-commande"></p>
+                    <span>Date de la prestation :</span>
+                    <p id="commande-detail-date-prestation"></p>
+                    <span>Heure de la prestation : </span>
+                    <p id="commande-detail-heure-prestation"></p>
+                    <span>Adresse de livraison :</span>
+                    <p id="commande-detail-adresse-livraison"></p>
+                    <span>Prêt de matériel :</span>
+                    <p id="commande-detail-pret-materiel"></p>
+                    <span>Prix total :</span>
+                    <p id="commande-detail-prix-total"></p>
+                </div>
+            </div>
+            <div class="info-client-content">
+                <h2>Informations client</h2>
+                <div class="client-detail">
+                    <span>Nom du client :</span>
+                    <p id="commande-detail-nom-client"></p>
+                    <span>Prénom du client :</span>
+                    <p id="commande-detail-prenom-client"></p>
+                    <span>Email du client :</span>
+                    <p id="commande-detail-email-client"></p>
+                    <span> Téléphone du client :</span>
+                    <p id="commande-detail-tel-client"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modale inscrire new adresse -->
 <!---->
@@ -292,13 +336,14 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="assets/js/fonction.js"></script>
+<script src="assets/js/index-hamb-feature.js"></script>
 <script src="assets/js/forms.js"></script>
 <script src="assets/js/menus.js"></script>
 <script src="assets/js/profil.js"></script>
-<script src="assets/js/commandes.js"></script>
-<script src="assets/js/commandes-utilisateur.js"></script>
-<script src="assets/js/commandes-post.js"></script>
+<script src="assets/js/profil-commandes-employe.js"></script>
+<script src="assets/js/profil-commandes-utilisateur.js"></script>
+<script src="assets/js/profil-commandes-admin.js"></script>
+<script src="assets/js/panier-commande.js"></script>
 <script src="assets/js/panier.js"></script>
 
 

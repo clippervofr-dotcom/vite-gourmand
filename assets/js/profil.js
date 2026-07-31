@@ -37,7 +37,7 @@ if (btnUtilisateurValider && btnUtilisateurModif) {
             donnees.append('ville', inputVilleUtilisateur.value);
             donnees.append('code_postal', inputCodePostalUtilisateur.value);
 
-            await fetch ('profile-update.php', {
+            await fetch ('profile-info-update-utilisateur.php', {
                 method: 'POST',
                 body: donnees
             });
@@ -101,30 +101,20 @@ if (btnUtilisateurInfo && profilUtilisateurInfo && profilUtilisateurCommandes &&
 //nav profil admin
 //btn nav
 const btnAdminListeEmploye = document.querySelector("#btn-nav-admin-liste-employe");
-const btnAdminVoirCommandes = document.querySelector("#btn-nav-admin-voir-commandes");
-const btnAdminVoirStatistiques = document.querySelector("#btn-nav-admin-voir-statistiques");
+const btnAdminVoirCommandes = document.querySelector("#btn-nav-admin-commandes");
+const btnAdminVoirStatistiques = document.querySelector("#btn-nav-admin-statistiques");
 
 //btn creation compte + validation
-const btnAdminCreationCompte = document.querySelector("#btn-creation-compte-employe");
-const btnAdminValidationCreation = document.querySelector("#btn-creation-admin-valider");
+const btnAdminCreationCompte = document.querySelector("#btn-creation-employe");
+const btnAdminValidationCreation = document.querySelector("#btn-creation-employe-valider");
 
 //sections
-//liste employe
-const adminListeEmploye = document.querySelector("#profil-admin-box-liste-employe");
-//creation compte
-const adminCreationCompte = document.querySelector("#profil-admin-box-creation-compte");
-//voir commandes
-const adminVoirCommandes = document.querySelector("#profil-admin-box-voir-commandes");
+const adminListeEmploye = document.querySelector(".profil-admin-box-liste-employe");
+const adminCreationCompte = document.querySelector(".profil-admin-box-creation-compte");
+const adminVoirCommandes = document.querySelector("#profil-admin-box-commandes");
 
-//voir details commandes
-const btnAdminVoirDetailCommande = document.querySelector("#btn-admin-voir-detail-commande");
-
-//voir statistiques
-//#btn-admin-voir-statistiques
-//#profil-admin-box-voir-statistiques
-
-if (adminVoirCommandes && btnAdminVoirDetailCommande && btnAdminListeEmploye && btnAdminVoirCommandes && btnAdminVoirStatistiques && adminListeEmploye && adminCreationCompte && btnAdminCreationCompte && btnAdminValidationCreation) {
-
+// nav liste employé / création compte
+if (btnAdminListeEmploye && btnAdminCreationCompte && adminListeEmploye && adminCreationCompte && adminVoirCommandes) {
     btnAdminListeEmploye.addEventListener('click', function () {
         adminListeEmploye.classList.add('active');
         adminCreationCompte.classList.remove('active');
@@ -136,13 +126,24 @@ if (adminVoirCommandes && btnAdminVoirDetailCommande && btnAdminListeEmploye && 
         adminListeEmploye.classList.remove('active');
         adminVoirCommandes.classList.remove('active');
     });
+}
 
+// nav voir commandes
+if (btnAdminVoirCommandes && adminVoirCommandes && adminListeEmploye && adminCreationCompte) {
     btnAdminVoirCommandes.addEventListener('click', function () {
         adminVoirCommandes.classList.add('active');
         adminListeEmploye.classList.remove('active');
         adminCreationCompte.classList.remove('active');
     });
+}
 
+// // détail commande admin
+// if (btnAdminVoirDetailCommande) {
+//     // ...
+// }
+
+// création employé (validation)
+if (btnAdminValidationCreation && adminListeEmploye && adminCreationCompte && validationChange) {
     btnAdminValidationCreation.addEventListener('click', function () {
         adminListeEmploye.classList.add('active');
         adminCreationCompte.classList.remove('active');
@@ -151,5 +152,9 @@ if (adminVoirCommandes && btnAdminVoirDetailCommande && btnAdminListeEmploye && 
             validationChange.textContent = "";
         }, 3000);
     });
+}
 
+// statistiques
+if (btnAdminVoirStatistiques) {
+    // ...
 }

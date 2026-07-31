@@ -179,6 +179,10 @@ INSERT INTO horaire (jour, heure_ouverture, heure_fermeture) VALUES ('Dimanche',
 
 INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
 VALUES (3, 1, 'COMMANDE-343', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 1, 'COMMANDE-320', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'validée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 1, 'COMMANDE-310', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'annulée');
 
 
 INSERT INTO historique_statut (commande_id, statut, date_changement) 
@@ -186,7 +190,7 @@ VALUES (1, 'en attente', '2026-06-25 12:00:00');
 
 
 INSERT INTO avis (utilisateur_id, commande_id, note, description_avis, statut)
-VALUES (3, 1, 5, 'Excellent! Nous avons passez un agréable moment!', 'validé');
+VALUES (3, 1, 5, 'Excellent! Nous avons passez un agréable moment!', 'validée');
 
 
 

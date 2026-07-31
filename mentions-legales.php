@@ -4,25 +4,24 @@
     <main>
         <section>
             <div class="ml-content">
-                <div class="titre-ml">
+                <div class="titre-ml titre-page-ml">
                     <h1>Mentions légales</h1>
                     <p><em>Site internet : Vite & Gourmand</em></p>
                     <p>Dernière mise à jour : 4 juillet 2026</p>
                 </div>
-
                 <div class="titre-ml">
                     <h2>1. Éditeur du site</h2>
                 </div>
                 <p>Le site internet « Vite & Gourmand » (ci-après « le Site ») est édité par :</p>
                 <p><strong>Dénomination sociale :</strong> Vite & Gourmand</p>
                 <p><strong>Forme juridique :</strong> SARL (Société à responsabilité limitée) au capital social de 5 000 €</p>
-                <p><strong>Siège social :</strong> 12 rue des Vignes, 33000 Bordeaux</p>
+                <p><strong>Siège social :</strong> 360 rue Georges Bonnac, 33000 Bordeaux</p>
                 <p><strong>RCS :</strong> Bordeaux 892 456 371</p>
                 <p><strong>SIRET :</strong> 892 456 371 00012</p>
                 <p><strong>Numéro de TVA intracommunautaire :</strong> FR32 892456371</p>
                 <p><strong>Code APE/NAF :</strong> 5621Z – Traiteurs</p>
-                <p><strong>Gérance :</strong> Cogérance assurée par José Martin et Julie Dubois</p>
-                <p><strong>Directeur de la publication :</strong> José Martin, cogérant</p>
+                <p><strong>Gérance :</strong> Cogérance assurée par José Lafrite et Julie Latomate</p>
+                <p><strong>Directeur de la publication :</strong> José Lafrite, cogérant</p>
                 <p><strong>Téléphone :</strong> <a href="tel:+33556123456">05 56 12 34 56</a></p>
                 <p><strong>E-mail :</strong> <a href="mailto:contact@vite-et-gourmand.fr">contact@vite-et-gourmand.fr</a></p>
                 <p><strong>Zone d'activité :</strong> Bordeaux et ses alentours</p>
@@ -31,10 +30,10 @@
                     <h2>2. Hébergement du site</h2>
                 </div>
                 <p>Le Site est hébergé par :</p>
-                <p><strong>Raison sociale :</strong> o2switch SAS</p>
-                <p><strong>Adresse :</strong> 222 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand, France</p>
-                <p><strong>Téléphone :</strong> 04 44 44 60 40</p>
-                <p><strong>Site web :</strong> <a href="https://www.o2switch.fr" target="_blank" rel="noopener">www.o2switch.fr</a></p>
+                <p><strong>Raison sociale :</strong> La Frite Qui Croustille SAS</p>
+                <p><strong>Adresse :</strong> 222 Boulevard Gustave Flaubert, 33000 Bordeaux, France</p>
+                <p><strong>Téléphone :</strong> 05 12 34 56 78</p>
+                <p><strong>Site web :</strong> <a href="https://www.lafritequicroustille.fr" target="_blank" rel="noopener">www.lafritequicroustille.fr</a></p>
 
                 <div class="titre-ml">
                     <h2>3. Propriété intellectuelle</h2>
@@ -85,7 +84,7 @@
                     <p>Pour toute question relative aux présentes mentions légales, vous pouvez contacter Vite & Gourmand :</p>
                     <p><strong>Par e-mail :</strong> <a href="mailto:contact@vite-et-gourmand.fr">contact@vite-et-gourmand.fr</a></p>
                     <p><strong>Par téléphone :</strong> <a href="tel:+33556123456">05 56 12 34 56</a></p>
-                    <p><strong>Par courrier :</strong> 12 rue des Vignes, 33000 Bordeaux</p>
+                    <p><strong>Par courrier :</strong> 360 rue Georges Bonnac, 33000 Bordeaux</p>
                 </div>
                 <button type="button" id="btn-to-top">
                     <svg id="svgIcon" viewBox="0 0 384 512">

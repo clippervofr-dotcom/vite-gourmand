@@ -40,19 +40,6 @@
     margin: 0;
 }
 
-/*.validation-changement-info-box {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    background: var(--couleur-header);*/
-/*    width: 30%;*/
-/*    padding: 8px 20px;*/
-/*    border-radius: 12px;*/
-/*    border: 2px solid var(--couleur-hero-bouton);*/
-/*    box-shadow: 0 4px 12px var(--couleur-ombre-forte);*/
-/*    font-size: larger;*/
-/*    align-self: center;*/
-/*}*/
-
 .nav-profil-utilisateur,
 .nav-profil-employe {
     gap: 5rem;
@@ -78,8 +65,8 @@
 .profil-utilisateur-box-commandes,
 .profil-employe-box-commandes,
 .profil-admin-box-liste-employe,
-.profil-admin-box-voir-commandes,
-.profil-admin-box-voir-statistiques {
+.profil-admin-box-commandes,
+.profil-admin-box-statistiques {
     grid-column: 1;
     grid-row: 1;
 }
@@ -107,7 +94,7 @@
 .profil-employe-box-commandes,
 .profil-admin-box-liste-employe,
 .profil-admin-box-creation-compte,
-.profil-admin-box-voir-commandes,
+.profil-admin-box-commandes,
 .profil-admin-box-voir-statistiques {
     display: none;
     position: relative;
@@ -133,8 +120,8 @@
 .profil-employe-box-commandes.active,
 .profil-admin-box-liste-employe.active,
 .profil-admin-box-creation-compte.active,
-.profil-admin-box-voir-commandes.active,
-.profil-admin-box-voir-statistiques.active {
+.profil-admin-box-commandes.active,
+.profil-admin-box-statistiques.active {
     display: flex;
 }
 
@@ -161,7 +148,7 @@
 
 .profil-admin-commandes-ligne,
 .profil-admin-commandes-entete {
-    grid-template-columns: 110px 100px 130px 200px 180px 1fr 140px 100px;
+    grid-template-columns: 110px 100px 130px 200px 180px 1fr;
 }
 
 .profil-admin-box-commandes {
@@ -224,9 +211,9 @@
     width: 330px;
 }
 
-/* PROFIL ADMIN BOUTONs */
+/* PROFIL ADMIN + BOUTONs */
 
-#btn-nav-admin-voir-commandes:hover .circle {
+#btn-nav-admin-commandes:hover .circle {
     width: 330px;
 }
 
@@ -247,6 +234,34 @@
     display: flex;
     justify-content: center;
     gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .btn-statut-commande-box {
+        display: grid;
+    }
+}
+
+.titre-info-perso {
+    display: flex;
+    justify-content: center;
+}
+
+.radio-ligne-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+    label {
+        font-size: large;
+    }
+}
+
+.radio-creation-employe-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 /* statistiques */

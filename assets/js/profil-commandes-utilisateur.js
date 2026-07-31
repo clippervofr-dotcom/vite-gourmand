@@ -108,18 +108,12 @@ if (annulationModal && annulationCheckbox && annulationConfirm && annulationClos
 
         const donnees = new FormData();
         donnees.append('commande_id', commandeId);
-        donnees.append('statut', 'annulé');
+        donnees.append('statut', 'annulée');
 
-        for (const paire of donnees.entries()) {
-            console.log(paire[0], paire[1]);
-        }
-
-        return  fetch ('commandes-statut-update.php', {
+        return  fetch ('commandes-utilisateur-annuler.php', {
             method: 'POST',
             body: donnees
         });
-
-
     }
 
     annulationCheckbox.addEventListener('change', function () {

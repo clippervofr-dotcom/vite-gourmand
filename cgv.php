@@ -9,7 +9,6 @@
                     <p><em>Vite & Gourmand — Traiteur événementiel et particuliers</em></p>
                     <p>Dernière mise à jour : 4 juillet 2026</p>
                 </div>
-
                 <div class="titre-ml">
                     <h2>Préambule</h2>
                 </div>

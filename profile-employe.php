@@ -35,7 +35,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                 <img src="assets/images/commandes-en-attente-de-validation.png" alt="Informations client">
             </div>
             <div class="btn-statut-commande-box">
-                <button type="button" class="animated-button" id="btn-statut-commande">
+                <button type="button" class="btn-statut-commande" data-statut="en attente" id="btn-statut-commande-attente">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path
                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -49,13 +49,27 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                         ></path>
                     </svg>
                 </button>
-                <button type="button" class="animated-button" id="btn-statut-commande">
+                <button type="button" class="btn-statut-commande" data-statut="validée" id="btn-statut-commande-validee">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path
                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                         ></path>
                     </svg>
                     <span class="text">Commandes validées</span>
+                    <span class="circle"></span>
+                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                </button>
+                <button type="button" class="btn-statut-commande" data-statut="annulée" id="btn-statut-commande-annulee">
+                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                    <span class="text">Commandes Annulées</span>
                     <span class="circle"></span>
                     <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -73,6 +87,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                     <span>Date préstation</span>
                     <span>Status</span>
                     <span>Commentaires</span>
+                    <span>Détails</span>
                     <span>Validation</span>
                 </div>
                 <!-- AJOUTE commandes.js ICI -->

@@ -34,7 +34,7 @@ if (panierContainer) {
                             <h2 data-label="nom du produit">${item['titre']}</h2>
                             <p class="item-quantite" data-label="quantite">Quantité de repas préparés :<br>
                                 <button type="button" class="btn-moins">−</button>
-                                <span class="quantite-valeur">${item['quantite']}</span>
+                                <span class="quantite-valeur">${echapperHTML(item['quantite'])}</span>
                                 <button type="button" class="btn-plus">+</button>
                             </p>
                             <p>Indique le nombre de repas préparés lors de votre evenement.<br>Veuillez-vous referer au nombre minimum de personnes.</p>

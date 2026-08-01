@@ -234,6 +234,59 @@
     </div>
 </div>
 
+<!-- Modale annulation commande admin -->
+
+<div class="modal-overlay" id="annulation-modal-admin">
+    <div class="modal-box modal-box-moyenne">
+        <button type="button" class="modal-close" id="annulation-modal-admin-close" aria-label="Fermer la fenêtre">&times;</button>
+
+        <div class="annulation-content-admin">
+
+            <h2>Annuler la commande</h2>
+            <div class="annulation-content-admin-box">
+                <span class="annulation-content-titre">Numero de commande :</span>
+                <span id="annulation-numero-admin"></span>
+                <span class="annulation-content-titre">Date de prestation :</span>
+                <span id="annulation-date-prestation-admin"></span>
+                <span class="annulation-content-titre">Prix total de la commande :</span>
+                <span id="annulation-reglement-admin"></span>
+            </div>
+
+            <h2>Mode de contact :</h2>
+            <div class="annulation-content-admin-radio">
+                <label for="annulation-radio-telephone">Par téléphone :</label>
+                <input type="radio" id="annulation-radio-telephone" name="annulation-choice" value="telephone">
+                <label for="annulation-radio-sms">Par SMS :</label>
+                <input type="radio" id="annulation-radio-sms" name="annulation-choice" value="sms">
+                <label for="annulation-radio-email">Par email :</label>
+                <input type="radio" id="annulation-radio-email" name="annulation-choice" value="email">
+            </div>
+            <div class="annulation-content-textarea-box">
+                <label for="annulation-content-textarea">Raison de l'annulation :</label>
+                <textarea class="annulation-content-textarea" id="annulation-content-textarea" name="annulation_raison" rows="4" cols="15"></textarea>
+            </div>
+            <div class="btn-annulation-admin-box">
+                <button type="button" class="btn-annulation-admin-confirmer" id="btn-annulation-admin-confirmer">
+                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                    <span class="text">Confirmer</span>
+                    <span class="circle"></span>
+                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+
+            <p id="annulation-erreur" class="erreur"></p>
+        </div>
+    </div>
+</div>
+
 <!-- Modale inscrire new adresse -->
 <!---->
 <!--<div class="modal-overlay" id="new-adresse-modal">-->
@@ -345,6 +398,7 @@
 <script src="assets/js/profil-commandes-admin.js"></script>
 <script src="assets/js/panier-commande.js"></script>
 <script src="assets/js/panier.js"></script>
+<script src="assets/js/fonctions.js"></script>
 
 
 

@@ -70,15 +70,15 @@ if (commandeBox) {
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Nombre de personnes :</p>
-                    <p class="recap-resultat">${menu['quantite']}</p>
+                    <p class="recap-resultat">${echapperHTML(menu['quantite'])}</p>
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Adresse :</p>
-                    <p class="recap-resultat">${utilisateur['adresse']}</p>
+                    <p class="recap-resultat">${echapperHTML(utilisateur['adresse'])}</p>
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Date de livraison :</p>
-                    <p class="recap-resultat"></p>
+                    <p class="recap-resultat">${echapperHTML(utilisateur['date_livraison'])}</p>
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Forfait location de matériel :</p>

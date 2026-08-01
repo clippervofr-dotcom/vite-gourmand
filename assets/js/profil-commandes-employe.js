@@ -1,32 +1,34 @@
 // gestion et affichages commandes en attente de validation + en attente/validée
 const conteneurCommandes = document.querySelector('.profil-employe-commandes-liste');
 
-if (conteneurCommandes) {
-    async function chargerCommandesEnAttente(statut) {
-        const reponse = await fetch('commandes-en-attente.php?statut=' + encodeURIComponent(statut));
-        const commandesEnAttente = await reponse.json();
+const bdyHeader = document.querySelector('.body-header');
+const role = parseInt(bdyHeader.dataset.roleId);
 
-        afficherCommandes(commandesEnAttente);
-    }
+async function chargerCommandesEnAttente(statut) {
+    const reponse = await fetch('commandes-en-attente.php?statut=' + encodeURIComponent(statut));
+    const commandesEnAttente = await reponse.json();
 
-    function afficherCommandes(commandesEnAttente) {
-        const conteneur = document.querySelector('.profil-employe-commandes-liste');
+    afficherCommandes(commandesEnAttente);
+}
 
-        conteneur.querySelectorAll('.profil-employe-commandes-ligne').forEach(function (ligne) {
-            ligne.remove();
-        });
+function afficherCommandes(commandesEnAttente) {
+    const conteneur = document.querySelector('.profil-employe-commandes-liste');
 
-        commandesEnAttente.forEach(function (commande) {
-            const ligne = document.createElement('div');
-            ligne.classList.add('profil-employe-commandes-ligne');
-            ligne.dataset.commandeId = commande['commande_id'];
-            ligne.innerHTML = `
+    conteneur.querySelectorAll('.profil-employe-commandes-ligne').forEach(function (ligne) {
+        ligne.remove();
+    });
+
+    commandesEnAttente.forEach(function (commande) {
+        const ligne = document.createElement('div');
+        ligne.classList.add('profil-employe-commandes-ligne');
+        ligne.dataset.commandeId = commande['commande_id'];
+        ligne.innerHTML = `
                 <span class="commandes-champ" data-label="Commande n°">${commande['numero_commande']}</span>
                 <span class="commandes-champ" data-label="Nom du menu">${commande['titre']}</span>
-                <span class="commandes-champ" data-label="Nbr de personnes">${commande['nombre_personnes']}</span>
-                <span class="commandes-champ" data-label="Date prestation">${commande['date_prestation']}</span>
+                <span class="commandes-champ" data-label="Nbr de personnes">${echapperHTML(commande['nombre_personnes'])}</span>
+                <span class="commandes-champ" data-label="Date prestation">${echapperHTML(commande['date_prestation'])}</span>
                 <span class="commandes-champ" data-label="Status">${commande['statut']}</span>
-                <span class="commandes-champ" data-label="Commentaires">${commande['motif_annulation'] ?? '-'}</span>
+                <span class="commandes-champ" data-label="Commentaires">${echapperHTML(commande['motif_annulation'] ?? '-')}</span>
                 <button type="button" class="btn-voir-detail-commande" id="btn-voir-detail-commande">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -42,7 +44,7 @@ if (conteneurCommandes) {
                     </svg>
                 </button>
                 ${commande['statut'] === 'en attente' ?
-                `<button type="button" class="btn-validation-commande" data-statut="validée" id="btn-validation-commande">
+            `<button type="button" class="btn-validation-commande" data-statut="validée" id="btn-validation-commande">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -56,11 +58,30 @@ if (conteneurCommandes) {
                         ></path>
                     </svg>
                 </button>`
-                : ''}
+            : ''}
+                ${role === 3 && commande['statut'] === 'en attente' ?
+            `<button type="button" class="btn-annulation-commande-admin" data-statut="annulée" id="btn-annulation-commande-admin">
+                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                    <span class="text" data-commande-id="${commande['commande_id']}">Annuler</span>
+                    <span class="circle"></span>
+                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                </button>`
+            : ''}
             `;
-            conteneur.appendChild(ligne);
-        });
-    }
+        conteneur.appendChild(ligne);
+    });
+}
+
+if (conteneurCommandes) {
+
 
     conteneurCommandes.addEventListener('click', async function (event) {
         const boutonValider = event.target.closest('.btn-validation-commande');
@@ -85,6 +106,29 @@ if (conteneurCommandes) {
         } else {
             console.error(resultat['message']);
         }
+    });
+
+    conteneurCommandes.addEventListener('click', async function (event) {
+        const boutonAnnuler = event.target.closest('.btn-annulation-commande-admin');
+        if (!boutonAnnuler) return;
+
+        const ligne = boutonAnnuler.closest('.profil-employe-commandes-ligne');
+        const commandeId = ligne.dataset.commandeId;
+
+        const donnees = new FormData();
+        donnees.append('commande_id', commandeId);
+
+        const reponse = await fetch('profil-voir-details-commandes.php', {
+            method: 'POST',
+            body: donnees
+        });
+        const resultat = await reponse.json();
+
+        if (!resultat['success']) {
+            console.error(resultat['message']);
+        }
+        console.log(resultat);
+        ouvrirModalAnnulationAdmin(resultat);
     });
 
     conteneurCommandes.addEventListener('click', async function (event) {
@@ -191,6 +235,86 @@ if (detailCommandeModalClose && detailCommandeModal) {
     detailCommandeModal.addEventListener('click', function (event) {
         if (event.target === detailCommandeModal) {
             detailCommandeModal.classList.remove('active');
+        }
+    });
+}
+
+// annulation commande admin Modal
+
+const annulationModalAdmin = document.querySelector('#annulation-modal-admin');
+const annulationModalAdminClose = document.querySelector('#annulation-modal-admin-close');
+
+if (annulationModalAdmin && annulationModalAdminClose) {
+
+    function ouvrirModalAnnulationAdmin(resultat) {
+
+        const commande = resultat['commande'];
+        annulationModalAdmin.dataset.commandeId = commande['commande_id'];
+
+
+        function capitalizeFirstLetter(str) {
+            if (str.length === 0) return str;
+            if (!/[a-zA-Z]/.test(str.charAt(0))) return str;
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        //date prestation
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const datePrestation = new Date(commande['date_prestation']);
+        const datePrestationString = datePrestation.toLocaleDateString('fr-FR', options);
+
+        document.querySelector('#annulation-numero-admin').textContent = commande['numero_commande'];
+        document.querySelector('#annulation-date-prestation-admin').textContent = capitalizeFirstLetter(datePrestationString);
+        document.querySelector('#annulation-reglement-admin').textContent = `${commande['prix_total'] ?? '-'} €`;
+
+        annulationModalAdmin.classList.add('active');
+    }
+    annulationModalAdminClose.addEventListener('click', function () {
+        annulationModalAdmin.classList.remove('active');
+    });
+
+    annulationModalAdmin.addEventListener('click', async function (event) {
+        const boutonAnnulerCommande = event.target.closest('.btn-annulation-admin-confirmer');
+        if (!boutonAnnulerCommande) return;
+
+        const commandeId = annulationModalAdmin.dataset.commandeId;
+
+        const radioChecked = document.querySelector('input[name="annulation-choice"]:checked');
+        const annulationType = radioChecked ? radioChecked.value : null;
+
+        const motifAnnulation = document.querySelector('#annulation-content-textarea');
+
+        const donnees = new FormData();
+        donnees.append('commande_id', commandeId);
+        donnees.append('statut', 'annulée');
+        donnees.append('annulation_type', annulationType);
+        donnees.append('motif_annulation', motifAnnulation.value);
+
+        const reponse = await fetch('commandes-admin-annuler.php', {
+            method: 'POST',
+            body: donnees
+        });
+        const resultat = await reponse.json();
+
+        if (resultat['success']) {
+            const statutActif = document.querySelector('.btn-statut-commande.active');
+            annulationModalAdmin.classList.remove('active');
+            await chargerCommandesEnAttente(statutActif.dataset.statut);
+        } else {
+            console.error(resultat['message']);
+        }
+
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            annulationModalAdmin.classList.remove('active');
+        }
+    });
+
+    annulationModalAdmin.addEventListener('click', function (event) {
+        if (event.target === annulationModalAdmin) {
+            annulationModalAdmin.classList.remove('active');
         }
     });
 }

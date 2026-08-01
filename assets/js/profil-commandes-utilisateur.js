@@ -25,10 +25,10 @@ if (conteneurCommandesUser) {
             ligne.innerHTML = `
                 <span class="commandes-champ" data-label="Commande n°">${commande['numero_commande']}</span>
                 <span class="commandes-champ" data-label="Nom du menu">${commande['titre']}</span>
-                <span class="commandes-champ" data-label="Nbr de personnes">${commande['nombre_personnes']}</span>
-                <span class="commandes-champ" data-label="Date prestation">${commande['date_prestation']}</span>
-                <span class="commandes-champ" data-label="Status">${commande['statut']}</span>
-                <span class="commandes-champ" data-label="Commentaires">${commande['motif_annulation'] ?? '-'}</span>   
+                <span class="commandes-champ" data-label="Nbr de personnes">${echapperHTML(commande['nombre_personnes'])}</span>
+                <span class="commandes-champ" data-label="Date prestation">${echapperHTML(commande['date_prestation'])}</span>
+                <span class="commandes-champ" data-label="Status">${echapperHTML(commande['statut'])}</span>
+                <span class="commandes-champ" data-label="Commentaires">${echapperHTML(commande['motif_annulation']) ?? '-'}</span>   
                 <button type="button" class="btn-annulation-commande">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path

@@ -28,7 +28,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <title>Vite & Gourmand</title>
 </head>
 
-<body>
+<body class="body-header" data-role-id="<?= htmlspecialchars($_SESSION['utilisateur']['role_id'] ?? ''); ?>">
 <header>
     <div class="header-banner-box">
         <img src="assets/images/header-banner-bgless.png" class="header-banner">

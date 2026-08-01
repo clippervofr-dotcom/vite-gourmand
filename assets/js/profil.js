@@ -104,9 +104,10 @@ const btnAdminListeEmploye = document.querySelector("#btn-nav-admin-liste-employ
 const btnAdminVoirCommandes = document.querySelector("#btn-nav-admin-commandes");
 const btnAdminVoirStatistiques = document.querySelector("#btn-nav-admin-statistiques");
 
-//btn creation compte + validation
+//btn creation compte + validation + annulation
 const btnAdminCreationCompte = document.querySelector("#btn-creation-employe");
 const btnAdminValidationCreation = document.querySelector("#btn-creation-employe-valider");
+const btnAdminAnnulationCreation = document.querySelector('#btn-creation-employe-annuler');
 
 //sections
 const adminListeEmploye = document.querySelector(".profil-admin-box-liste-employe");
@@ -114,7 +115,7 @@ const adminCreationCompte = document.querySelector(".profil-admin-box-creation-c
 const adminVoirCommandes = document.querySelector("#profil-admin-box-commandes");
 
 // nav liste employé / création compte
-if (btnAdminListeEmploye && btnAdminCreationCompte && adminListeEmploye && adminCreationCompte && adminVoirCommandes) {
+if (btnAdminAnnulationCreation && btnAdminListeEmploye && btnAdminCreationCompte && adminListeEmploye && adminCreationCompte && adminVoirCommandes) {
     btnAdminListeEmploye.addEventListener('click', function () {
         adminListeEmploye.classList.add('active');
         adminCreationCompte.classList.remove('active');
@@ -126,6 +127,12 @@ if (btnAdminListeEmploye && btnAdminCreationCompte && adminListeEmploye && admin
         adminListeEmploye.classList.remove('active');
         adminVoirCommandes.classList.remove('active');
     });
+
+    btnAdminAnnulationCreation.addEventListener('click', function () {
+        adminCreationCompte.classList.remove('active');
+        adminListeEmploye.classList.add('active');
+    });
+
 }
 
 // nav voir commandes

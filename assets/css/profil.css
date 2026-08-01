@@ -11,6 +11,10 @@
 
 .btn-profil-utilisateur-modif {
     gap: 4rem;
+
+    @media (max-width: 900px) {
+        padding: 1rem;
+    }
 }
 
 .titre-profil-utilisateur {
@@ -44,6 +48,11 @@
 .nav-profil-employe {
     gap: 5rem;
     margin-bottom: 1rem;
+
+    @media (max-width: 900px) {
+        display: grid;
+        gap: 1.5rem;
+    }
 }
 
 .profil-box-fond {
@@ -89,6 +98,10 @@
     }
 }
 
+#fond-exterieur-admin-commande {
+    width: 65%;
+}
+
 .profil-utilisateur-box-info-perso,
 .profil-utilisateur-box-commandes,
 .profil-employe-box-commandes,
@@ -127,6 +140,17 @@
 
 /* profil utilisateur commandes */
 
+#profil-admin-box-commandes {
+    width: 65%;
+
+    .profil-employe-commandes-liste {
+        .profil-employe-commandes-ligne,
+        .profil-employe-commandes-entete {
+            grid-template-columns: 140px 110px 130px 130px 110px 120px 100px 100px 110px;
+        }
+    }
+}
+
 .profil-utilisateur-commandes-entete,
 .profil-utilisateur-commandes-ligne,
 .profil-employe-commandes-ligne,
@@ -142,13 +166,26 @@
     align-items: center;
 }
 
+#fond-exterieur-admin {
+    width: 40%;
+}
+.profil-admin-box-liste-employe {
+    width: 40%;
+}
+
+@media (max-width: 900px) {
+    .profil-admin-commandes-entete {
+        grid-template-columns: 140px 110px 130px 130px 110px;
+    }
+}
+
 .profil-utilisateur-commandes-ligne {
     grid-template-columns: 140px 110px 130px 130px 110px 120px 100px;
 }
 
 .profil-admin-commandes-ligne,
 .profil-admin-commandes-entete {
-    grid-template-columns: 110px 100px 130px 200px 180px 1fr;
+    grid-template-columns: 110px 100px 130px 200px 1fr;
 }
 
 .profil-admin-box-commandes {
@@ -165,6 +202,10 @@
     font-family: 'Playfair Display', serif;
     font-weight: bold;
 }
+
+
+
+
 
 @media (max-width: 900px) {
     .profil-utilisateur-commandes-entete,

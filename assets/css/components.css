@@ -449,6 +449,8 @@ header a {
 .btn-validation-commande,
 .btn-voir-detail-commande,
 .btn-annulation-commande,
+.btn-annulation-commande-admin,
+.btn-annulation-admin-confirmer,
 .btn-statut-commande {
     position: relative;
     display: flex;
@@ -472,6 +474,8 @@ header a {
 .btn-validation-commande svg,
 .btn-voir-detail-commande svg,
 .btn-annulation-commande svg,
+.btn-annulation-commande-admin svg,
+.btn-annulation-admin-confirmer svg,
 .btn-statut-commande svg{
     position: absolute;
     width: 24px;
@@ -484,6 +488,8 @@ header a {
 .btn-validation-commande .arr-1,
 .btn-voir-detail-commande .arr-1,
 .btn-annulation-commande .arr-1,
+.btn-annulation-commande-admin .arr-1,
+.btn-annulation-admin-confirmer .arr-1,
 .btn-statut-commande .arr-1{
     right: 5px;
 }
@@ -492,6 +498,8 @@ header a {
 .btn-validation-commande .arr-2,
 .btn-voir-detail-commande .arr-2,
 .btn-annulation-commande .arr-2,
+.btn-annulation-commande-admin .arr-2,
+.btn-annulation-admin-confirmer .arr-2,
 .btn-statut-commande .arr-2{
     left: -25%;
 }
@@ -500,6 +508,8 @@ header a {
 .btn-validation-commande .circle,
 .btn-voir-detail-commande .circle,
 .btn-annulation-commande .circle,
+.btn-annulation-commande-admin .circle,
+.btn-annulation-admin-confirmer .circle,
 .btn-statut-commande .circle{
     position: absolute;
     top: 50%;
@@ -517,6 +527,8 @@ header a {
 .btn-validation-commande .text,
 .btn-voir-detail-commande .text,
 .btn-annulation-commande .text,
+.btn-annulation-commande-admin .text,
+.btn-annulation-admin-confirmer .text,
 .btn-statut-commande .text{
     position: relative;
     z-index: 1;
@@ -528,6 +540,8 @@ header a {
 .btn-validation-commande:hover,
 .btn-voir-detail-commande:hover,
 .btn-annulation-commande:hover,
+.btn-annulation-commande-admin:hover,
+.btn-annulation-admin-confirmer:hover,
 .btn-statut-commande:hover{
     box-shadow: 0 0 0 12px transparent;
     color: #ffffff;
@@ -538,6 +552,8 @@ header a {
 .btn-validation-commande:hover .arr-1,
 .btn-voir-detail-commande:hover .arr-1,
 .btn-annulation-commande:hover .arr-1,
+.btn-annulation-commande-admin:hover .arr-1,
+.btn-annulation-admin-confirmer:hover .arr-1,
 .btn-statut-commande:hover .arr-1 {
     right: -25%;
 }
@@ -546,6 +562,8 @@ header a {
 .btn-validation-commande:hover .arr-2,
 .btn-voir-detail-commande:hover .arr-2,
 .btn-annulation-commande:hover .arr-2,
+.btn-annulation-commande-admin:hover .arr-2,
+.btn-annulation-admin-confirmer:hover .arr-2,
 .btn-statut-commande:hover .arr-2 {
     left: 5px;
 }
@@ -554,6 +572,8 @@ header a {
 .btn-validation-commande:hover .text,
 .btn-voir-detail-commande:hover .text,
 .btn-annulation-commande:hover .text,
+.btn-annulation-commande-admin:hover .text,
+.btn-annulation-admin-confirmer:hover .text,
 .btn-statut-commande:hover .text {
     transform: translateX(12px);
 }
@@ -562,6 +582,8 @@ header a {
 .btn-validation-commande:hover svg,
 .btn-voir-detail-commande:hover svg,
 .btn-annulation-commande:hover svg,
+.btn-annulation-commande-admin:hover svg,
+.btn-annulation-admin-confirmer:hover svg,
 .btn-statut-commande:hover svg {
     fill: #ffffff;
 }
@@ -570,6 +592,8 @@ header a {
 .btn-validation-commande:active,
 .btn-voir-detail-commande:active,
 .btn-annulation-commande:active,
+.btn-annulation-commande-admin:active,
+.btn-annulation-admin-confirmer:active,
 .btn-statut-commande:active {
     scale: 0.95;
     box-shadow: 0 0 0 4px var(--couleur-hero-bouton);
@@ -579,6 +603,8 @@ header a {
 .btn-validation-commande:hover .circle,
 .btn-voir-detail-commande:hover .circle,
 .btn-annulation-commande:hover .circle,
+.btn-annulation-commande-admin:hover .circle,
+.btn-annulation-admin-confirmer:hover .circle,
 .btn-statut-commande:hover .circle {
     width: 220px;
     height: 220px;
@@ -631,6 +657,17 @@ header a {
 #btn-annuler-commande-utilisateur {
     font-size: 10px;
     font-weight: bold;
+}
+
+#btn-creation-employe:hover .circle {
+    width: 250px;
+}
+
+
+@media (max-width: 900px) {
+    #btn-nav-admin-liste-employe {
+        width: 350px;
+    }
 }
 
 
@@ -846,4 +883,72 @@ header a {
             color: white;
         }
     }
+}
+
+/* Modale annulation commande admin */
+
+#annulation-modal-admin-close {
+    right: 1rem;
+}
+
+.annulation-content-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h2 {
+        color: var(--couleur-footer);
+        padding: 1rem 0;
+        border-bottom: solid 1px var(--couleur-footer);
+    }
+}
+
+.annulation-content-admin-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    text-align: left;
+
+    .annulation-content-titre {
+        font-size: large;
+        color: var(--couleur-footer);
+    }
+}
+
+#annulation-numero-admin,
+#annulation-date-prestation-admin,
+#annulation-reglement-admin {
+    color: var(--couleur-police-connexion);
+}
+
+.annulation-content-admin-radio {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.annulation-content-textarea-box {
+    display: grid;
+    padding: 1rem;
+    gap: 1rem;
+
+    label {
+        color: var(--couleur-footer);
+        padding: 1rem 0;
+        border-bottom: solid 1px var(--couleur-footer);
+        font-size: x-large;
+        font-weight: 800;
+        font-family: 'Playfair Display', serif;
+    }
+}
+
+.annulation-content-textarea {
+    resize: vertical;
+    max-height: 130px;
+    padding: 0.5em;
+}
+
+.btn-annulation-admin-box {
+    display: flex;
+    justify-content: center;
 }

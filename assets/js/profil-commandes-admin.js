@@ -22,12 +22,12 @@ if (conteneurListeEmploye) {
             const ligne = document.createElement('div');
             ligne.classList.add('profil-admin-commandes-ligne');
             ligne.innerHTML = `
-                    <span class="commandes-champ" data-label="Nom">${employe.nom}</span>
-                    <span class="commandes-champ" data-label="Prénom">${employe.prenom}</span>
-                    <span class="commandes-champ" data-label="Email">${employe.email}</span>
-                    <span class="commandes-champ" data-label="Téléphone">${employe.telephone}</span>
-                    <span class="commandes-champ" data-label="Rôle">${employe.libelle}</span>
-                    <span class="commandes-champ" data-label="Commentaires">—</span>
+                    <span class="commandes-champ" data-label="Nom">${echapperHTML(employe.nom)}</span>
+                    <span class="commandes-champ" data-label="Prénom">${echapperHTML(employe.prenom)}</span>
+                    <span class="commandes-champ" data-label="Email">${echapperHTML(employe.email)}</span>
+                    <span class="commandes-champ" data-label="Téléphone">${echapperHTML(employe.telephone)}</span>
+                    <span class="commandes-champ" data-label="Rôle">${echapperHTML(employe.libelle)}</span>
+<!--                    <span class="commandes-champ" data-label="Commentaires">—</span>-->
             `;
             conteneur.appendChild(ligne);
         });

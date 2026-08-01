@@ -77,7 +77,6 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                     <span>Email</span>
                     <span>Téléphone</span>
                     <span>Rôle</span>
-                    <span>Commentaires</span>
                 </div>
                 <!-- AJOUTE liste-employe.js ICI -->
             </div>
@@ -154,10 +153,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                         <label for="radio-admin">Administrateur</label>
                         <input type="radio" class="input-profil-utilisateur" id="radio-admin" name="role-creation-admin" value="admin">
                     </div>
-
-
                 </div>
-
             </div>
             <div class="btn-profil-utilisateur-modif">
                 <button type="button" class="animated-button" id="btn-creation-employe-valider">
@@ -174,12 +170,26 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                         ></path>
                     </svg>
                 </button>
+                <button type="button" class="animated-button" id="btn-creation-employe-annuler">
+                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                    <span class="text">Quitter</span>
+                    <span class="circle"></span>
+                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                </button>
             </div>
         </div>
 
         <!-- ADMIN VOIR COMMANDES EN COURS -->
         <div class="profil-box-fond">
-            <div class="fond-exterieur" id="fond-exterieur-employe"></div>
+            <div class="fond-exterieur" id="fond-exterieur-admin-commande"></div>
             <div class="profil-employe-box-commandes active" id="profil-admin-box-commandes">
                 <div class="titre-info-perso">
                     <img src="assets/images/commandes-en-attente-de-validation.png" alt="Informations client">
@@ -239,6 +249,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                         <span>Commentaires</span>
                         <span>Détails</span>
                         <span>Validation</span>
+                        <span>Annulation</span>
                     </div>
                     <!-- AJOUTE commandes.js ICI -->
                 </div>

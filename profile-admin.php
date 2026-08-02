@@ -291,28 +291,28 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
 
                         <span class="jour-titre">Lundi :</span>
-                        <input type="text" class="input-profil-utilisateur" id="modif-ouverture-lundi" name="modif-ouverture-lundi" value="">
-                        <input type="text" class="input-profil-utilisateur" id="modif-fermeture-lundi" name="modif-fermeture-lundi" value="">
+                        <input type="time" class="input-profil-utilisateur" id="modif-ouverture-lundi" name="modif-ouverture-lundi" value="" step="1800">
+                        <input type="time" class="input-profil-utilisateur" id="modif-fermeture-lundi" name="modif-fermeture-lundi" value="" step="1800">
 
                         <span class="jour-titre">Mardi :</span>
-                        <input type="text" class="input-profil-utilisateur" id="modif-ouverture-mardi" name="modif-ouverture-mardi" value="">
-                        <input type="text" class="input-profil-utilisateur" id="modif-fermeture-mardi" name="modif-fermeture-mardi" value="">
+                        <input type="time" class="input-profil-utilisateur" id="modif-ouverture-mardi" name="modif-ouverture-mardi" value="" step="1800">
+                        <input type="time" class="input-profil-utilisateur" id="modif-fermeture-mardi" name="modif-fermeture-mardi" value="" step="1800">
 
                         <span class="jour-titre">Mercredi :</span>
-                        <input type="text" class="input-profil-utilisateur" id="modif-ouverture-mercredi" name="modif-ouverture-mercredi" value="">
-                        <input type="text" class="input-profil-utilisateur" id="modif-fermeture-mercredi" name="modif-fermeture-mercredi" value="">
+                        <input type="time" class="input-profil-utilisateur" id="modif-ouverture-mercredi" name="modif-ouverture-mercredi" value="" step="1800">
+                        <input type="time" class="input-profil-utilisateur" id="modif-fermeture-mercredi" name="modif-fermeture-mercredi" value="" step="1800">
 
                         <span class="jour-titre">Jeudi :</span>
-                        <input type="text" class="input-profil-utilisateur" id="modif-ouverture-jeudi" name="modif-ouverture-jeudi" value="">
-                        <input type="text" class="input-profil-utilisateur" id="modif-fermeture-jeudi" name="modif-fermeture-jeudi" value="">
+                        <input type="time" class="input-profil-utilisateur" id="modif-ouverture-jeudi" name="modif-ouverture-jeudi" value="" step="1800">
+                        <input type="time" class="input-profil-utilisateur" id="modif-fermeture-jeudi" name="modif-fermeture-jeudi" value="" step="1800">
 
                         <span class="jour-titre">Vendredi :</span>
-                        <input type="text" class="input-profil-utilisateur" id="modif-ouverture-vendredi" name="modif-ouverture-vendredi" value="">
-                        <input type="text" class="input-profil-utilisateur" id="modif-fermeture-vendredi" name="modif-fermeture-vendredi" value="">
+                        <input type="time" class="input-profil-utilisateur" id="modif-ouverture-vendredi" name="modif-ouverture-vendredi" value="" step="1800">
+                        <input type="time" class="input-profil-utilisateur" id="modif-fermeture-vendredi" name="modif-fermeture-vendredi" value="" step="1800">
 
                         <span class="jour-titre">Samedi :</span>
-                        <input type="text" class="input-profil-utilisateur" id="modif-ouverture-samedi" name="modif-ouverture-samedi" value="">
-                        <input type="text" class="input-profil-utilisateur" id="modif-fermeture-samedi" name="modif-fermeture-samedi" value="">
+                        <input type="time" class="input-profil-utilisateur" id="modif-ouverture-samedi" name="modif-ouverture-samedi" value="" step="1800">
+                        <input type="time" class="input-profil-utilisateur" id="modif-fermeture-samedi" name="modif-fermeture-samedi" value="" step="1800">
                     </div>
                 </div>
                 <div class="btn-modif-horaire">

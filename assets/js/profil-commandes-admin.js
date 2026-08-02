@@ -144,7 +144,7 @@ if (conteneurModifHoraires) {
             donnees.append('samedi-ouverture', inputSamediOuverture.value);
             donnees.append('samedi-fermeture', inputSamediFermeture.value);
 
-            await fetch('', {
+            await fetch('changement-horaires.php', {
                 method: 'POST',
                 body: donnees
             });

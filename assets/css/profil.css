@@ -386,15 +386,28 @@
 
 .modifications-horaires {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 100px 1fr 1fr;
     column-gap: 2rem;
     gap: 1rem;
+    align-items: center;
+    text-align: center;
 }
 
 .modif-jour-titre,
 .modif-ouverture-titre,
 .modif-fermeture-titre {
     font-size: xx-large;
+}
+
+.jour-titre {
+    font-size: larger;
+}
+
+.btn-modif-horaire {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+    justify-content: center;
 }
 
 

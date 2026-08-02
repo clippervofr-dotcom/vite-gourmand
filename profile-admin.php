@@ -278,43 +278,44 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                 <div class="titre-info-perso">
                     <img src="assets/images/modification-horaire.png" alt="Création de compte employé">
                 </div>
+                <span class="validation-change-horaire"></span>
 
                 <span class="modification-horaire-info"></span>
 
                 <div class="first-ligne-info">
 
                     <div class="modifications-horaires">
-                        <span class="modif-jour-titre">Jour :</span>
+                        <span class="modif-jour-titre"></span>
                         <span class="modif-ouverture-titre">Heure d'ouverture :</span>
                         <span class="modif-fermeture-titre">Heure de fermeture :</span>
 
 
-                        <input type="text" class="input-profil-utilisateur" id="modif-jour-lundi" name="modif-jour-lundi" value="">
+                        <span class="jour-titre">Lundi :</span>
                         <input type="text" class="input-profil-utilisateur" id="modif-ouverture-lundi" name="modif-ouverture-lundi" value="">
                         <input type="text" class="input-profil-utilisateur" id="modif-fermeture-lundi" name="modif-fermeture-lundi" value="">
 
-                        <input type="text" class="input-profil-utilisateur" id="modif-jour-mardi" name="modif-jour-mardi" value="">
+                        <span class="jour-titre">Mardi :</span>
                         <input type="text" class="input-profil-utilisateur" id="modif-ouverture-mardi" name="modif-ouverture-mardi" value="">
                         <input type="text" class="input-profil-utilisateur" id="modif-fermeture-mardi" name="modif-fermeture-mardi" value="">
 
-                        <input type="text" class="input-profil-utilisateur" id="modif-jour-mercredi" name="modif-jour-mercredi" value="">
+                        <span class="jour-titre">Mercredi :</span>
                         <input type="text" class="input-profil-utilisateur" id="modif-ouverture-mercredi" name="modif-ouverture-mercredi" value="">
                         <input type="text" class="input-profil-utilisateur" id="modif-fermeture-mercredi" name="modif-fermeture-mercredi" value="">
 
-                        <input type="text" class="input-profil-utilisateur" id="modif-jour-jeudi" name="modif-jour-lundi" value="">
+                        <span class="jour-titre">Jeudi :</span>
                         <input type="text" class="input-profil-utilisateur" id="modif-ouverture-jeudi" name="modif-ouverture-jeudi" value="">
                         <input type="text" class="input-profil-utilisateur" id="modif-fermeture-jeudi" name="modif-fermeture-jeudi" value="">
 
-                        <input type="text" class="input-profil-utilisateur" id="modif-jour-vendredi" name="modif-jour-vendredi" value="">
+                        <span class="jour-titre">Vendredi :</span>
                         <input type="text" class="input-profil-utilisateur" id="modif-ouverture-vendredi" name="modif-ouverture-vendredi" value="">
                         <input type="text" class="input-profil-utilisateur" id="modif-fermeture-vendredi" name="modif-fermeture-vendredi" value="">
 
-                        <input type="text" class="input-profil-utilisateur" id="modif-jour-samedi" name="modif-jour-samedi" value="">
+                        <span class="jour-titre">Samedi :</span>
                         <input type="text" class="input-profil-utilisateur" id="modif-ouverture-samedi" name="modif-ouverture-samedi" value="">
                         <input type="text" class="input-profil-utilisateur" id="modif-fermeture-samedi" name="modif-fermeture-samedi" value="">
                     </div>
                 </div>
-                <div class="btns-modif-horaire">
+                <div class="btn-modif-horaire">
                     <button type="button" class="animated-button" id="btn-modif-horaire-valider">
                         <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -322,20 +323,6 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                             ></path>
                         </svg>
                         <span class="text">Valider</span>
-                        <span class="circle"></span>
-                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                    </button>
-                    <button type="button" class="animated-button" id="btn-modif-horaire-annuler">
-                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                        <span class="text">Quitter</span>
                         <span class="circle"></span>
                         <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                             <path

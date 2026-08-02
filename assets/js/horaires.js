@@ -1,5 +1,3 @@
-
-
 const conteneurHoraires = document.querySelector('.footer-local__details');
 
 if (conteneurHoraires) {

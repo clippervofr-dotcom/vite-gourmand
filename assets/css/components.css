@@ -659,7 +659,8 @@ header a {
     font-weight: bold;
 }
 
-#btn-creation-employe:hover .circle {
+#btn-creation-employe:hover .circle,
+#btn-nav-admin-horaires:hover .circle {
     width: 250px;
 }
 

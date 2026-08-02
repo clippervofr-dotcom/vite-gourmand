@@ -103,6 +103,8 @@ if (btnUtilisateurInfo && profilUtilisateurInfo && profilUtilisateurCommandes &&
 const btnAdminListeEmploye = document.querySelector("#btn-nav-admin-liste-employe");
 const btnAdminVoirCommandes = document.querySelector("#btn-nav-admin-commandes");
 const btnAdminVoirStatistiques = document.querySelector("#btn-nav-admin-statistiques");
+const btnAdminModifHoraire = document.querySelector('#btn-nav-admin-horaires');
+
 
 //btn creation compte + validation + annulation
 const btnAdminCreationCompte = document.querySelector("#btn-creation-employe");
@@ -113,19 +115,24 @@ const btnAdminAnnulationCreation = document.querySelector('#btn-creation-employe
 const adminListeEmploye = document.querySelector(".profil-admin-box-liste-employe");
 const adminCreationCompte = document.querySelector(".profil-admin-box-creation-compte");
 const adminVoirCommandes = document.querySelector("#profil-admin-box-commandes");
+const adminModifHoraire = document.querySelector('.profil-admin-box-modif-horaire');
 
 // nav liste employé / création compte
-if (btnAdminAnnulationCreation && btnAdminListeEmploye && btnAdminCreationCompte && adminListeEmploye && adminCreationCompte && adminVoirCommandes) {
+
+if (btnAdminModifHoraire && adminModifHoraire && btnAdminAnnulationCreation && btnAdminListeEmploye && btnAdminCreationCompte && adminListeEmploye && adminCreationCompte && adminVoirCommandes) {
+
     btnAdminListeEmploye.addEventListener('click', function () {
         adminListeEmploye.classList.add('active');
         adminCreationCompte.classList.remove('active');
         adminVoirCommandes.classList.remove('active');
+        adminModifHoraire.classList.remove('active');
     });
 
     btnAdminCreationCompte.addEventListener('click', function () {
         adminCreationCompte.classList.add('active');
         adminListeEmploye.classList.remove('active');
         adminVoirCommandes.classList.remove('active');
+        adminModifHoraire.classList.remove('active');
     });
 
     btnAdminAnnulationCreation.addEventListener('click', function () {
@@ -133,21 +140,24 @@ if (btnAdminAnnulationCreation && btnAdminListeEmploye && btnAdminCreationCompte
         adminListeEmploye.classList.add('active');
     });
 
+    btnAdminModifHoraire.addEventListener('click', function () {
+        adminModifHoraire.classList.add('active');
+        adminListeEmploye.classList.remove('active');
+        adminVoirCommandes.classList.remove('active');
+        adminCreationCompte.classList.remove('active');
+    });
+
 }
 
 // nav voir commandes
-if (btnAdminVoirCommandes && adminVoirCommandes && adminListeEmploye && adminCreationCompte) {
+if (adminModifHoraire && btnAdminVoirCommandes && adminVoirCommandes && adminListeEmploye && adminCreationCompte) {
     btnAdminVoirCommandes.addEventListener('click', function () {
         adminVoirCommandes.classList.add('active');
         adminListeEmploye.classList.remove('active');
         adminCreationCompte.classList.remove('active');
+        adminModifHoraire.classList.remove('active');
     });
 }
-
-// // détail commande admin
-// if (btnAdminVoirDetailCommande) {
-//     // ...
-// }
 
 // création employé (validation)
 if (btnAdminValidationCreation && adminListeEmploye && adminCreationCompte && validationChange) {

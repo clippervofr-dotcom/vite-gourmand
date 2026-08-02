@@ -75,6 +75,7 @@
 .profil-employe-box-commandes,
 .profil-admin-box-liste-employe,
 .profil-admin-box-commandes,
+.profil-admin-box-modif-horaire,
 .profil-admin-box-statistiques {
     grid-column: 1;
     grid-row: 1;
@@ -108,7 +109,8 @@
 .profil-admin-box-liste-employe,
 .profil-admin-box-creation-compte,
 .profil-admin-box-commandes,
-.profil-admin-box-voir-statistiques {
+.profil-admin-box-voir-statistiques,
+.profil-admin-box-modif-horaire {
     display: none;
     position: relative;
     z-index: 2;
@@ -134,6 +136,7 @@
 .profil-admin-box-liste-employe.active,
 .profil-admin-box-creation-compte.active,
 .profil-admin-box-commandes.active,
+.profil-admin-box-modif-horaire.active,
 .profil-admin-box-statistiques.active {
     display: flex;
 }
@@ -377,6 +380,21 @@
     .commandes-champ {
         border-bottom: 1px solid var(--couleur-presentation-box-tracer);
     }
+}
+
+/* horaires panel Admin */
+
+.modifications-horaires {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2rem;
+    gap: 1rem;
+}
+
+.modif-jour-titre,
+.modif-ouverture-titre,
+.modif-fermeture-titre {
+    font-size: xx-large;
 }
 
 

@@ -127,7 +127,6 @@ if (conteneurCommandes) {
         if (!resultat['success']) {
             console.error(resultat['message']);
         }
-        console.log(resultat);
         ouvrirModalAnnulationAdmin(resultat);
     });
 

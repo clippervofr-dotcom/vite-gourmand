@@ -352,11 +352,7 @@
                     <strong>Téléphone:</strong> <a href="tel:+33123456789">00 11 22 33 44</a><br>
                     <strong>Email:</strong> <a href="mailto:contact@vite-et-gourmand.fr">contact@vite-et-gourmand.fr</a>
                 </p>
-                <ul class="footer-local__hours-list">
-                    <li><span class="day">Lundi - Vendredi</span> <span class="time">9:00 - 18:00</span></li>
-                    <li><span class="day">Samedi</span> <span class="time">9:00 - 13:00</span></li>
-                    <li><span class="day">Dimanche</span> <span class="time">Fermé</span></li>
-                </ul>
+
             </div>
             <div class="footer-local__map">
                 <iframe
@@ -398,6 +394,7 @@
 <script src="assets/js/profil-commandes-admin.js"></script>
 <script src="assets/js/panier-commande.js"></script>
 <script src="assets/js/panier.js"></script>
+<script src="assets/js/horaires.js"></script>
 <script src="assets/js/fonctions.js"></script>
 
 

@@ -310,32 +310,11 @@
                 <span class="fa fa-star star"></span>
                 <span class="fa fa-star star"></span>
                 <span class="fa fa-star star"></span>
-
-<!--                <div>-->
-<!--                    <label for="commentaire-radio-etoile-1"><span class="fa fa-star"></span></label>-->
-<!--                    <input type="radio" id="commentaire-radio-etoile-1" name="etoile-choice" value="1">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="commentaire-radio-etoile-2"><span class="fa fa-star"></span><span class="fa fa-star"></span></label>-->
-<!--                    <input type="radio" id="commentaire-radio-etoile-2" name="etoile-choice" value="2">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="commentaire-radio-etoile-3"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></label>-->
-<!--                    <input type="radio" id="commentaire-radio-etoile-3" name="etoile-choice" value="3">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="commentaire-radio-etoile-4"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></label>-->
-<!--                    <input type="radio" id="commentaire-radio-etoile-4" name="etoile-choice" value="4">-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label for="commentaire-radio-etoile-5"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></label>-->
-<!--                    <input type="radio" id="commentaire-radio-etoile-5" name="etoile-choice" value="5">-->
-<!--                </div>-->
             </div>
             <span id="star-result">Note : 0/5</span>
             <div class="commentaire-content-textarea-box">
                 <label for="commentaire-content-textarea">Laissez nous quelques mots :</label>
-                <textarea class="commentaire-content-textarea" id="commentaire-content-textarea" name="commentaire-avis" rows="4" cols="15"></textarea>
+                <textarea class="commentaire-content-textarea" id="commentaire-content-textarea" name="commentaire-avis" rows="10" cols="30"></textarea>
             </div>
             <div class="btn-commentaire-user-box">
                 <button type="button" class="btn-commentaire-user-confirmer" id="btn-commentaire-user-confirmer">
@@ -358,58 +337,6 @@
         </div>
     </div>
 </div>
-
-<!-- Modale inscrire new adresse -->
-<!---->
-<!--<div class="modal-overlay" id="new-adresse-modal">-->
-<!--    <div class="modal-box">-->
-<!--        <button type="button" class="modal-close" id="new-adresse-modal-close" aria-label="Fermer la fenêtre">&times;</button>-->
-<!---->
-<!--        <form class="new-adresse-content" method="post" action="test-new-adresse.php">-->
-<!---->
-<!--            <div class="new-adresse-nom">-->
-<!--                <label for="new-adresse-nom">Adresse :</label>-->
-<!--                <input type="text" id="new-adresse-nom" name="new-adresse-nom" autocomplete="address-line1" required>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="new-adresse-code-postal">-->
-<!--                <label for="new-adresse-code-postal">Code Postal :</label>-->
-<!--                <input type="number" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" id="new-adresse-code-postal" name="new-adresse-code-postal" autocomplete="postal-code" required>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="new-adresse-ville">-->
-<!--                <label for="new-adresse-ville">Ville :</label>-->
-<!--                <input type="text" id="new-adresse-ville" name="new-adresse-ville" autocomplete="address-level2" required>-->
-<!--            </div>-->
-<!---->
-<!--            <label class="checkbox-custom">-->
-<!--                <input type="checkbox" id="new-adresse-checkbox" required>-->
-<!--                <div class="checkbox-mark"></div>-->
-<!--                <span>Je confirme que les informations sont conformes.</span>-->
-<!--            </label>-->
-<!--            <div class="new-adresse-btn-box">-->
-<!--                <button type="button" class="animated-button" id="btn-new-adresse-confirm">-->
-<!--                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">-->
-<!--                        <path-->
-<!--                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"-->
-<!--                        ></path>-->
-<!--                    </svg>-->
-<!--                    <span class="text">Confirmer</span>-->
-<!--                    <span class="circle"></span>-->
-<!--                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">-->
-<!--                        <path-->
-<!--                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"-->
-<!--                        ></path>-->
-<!--                    </svg>-->
-<!--                </button>-->
-<!--            </div>-->
-<!---->
-<!---->
-<!--            <p id="new-adresse-erreur" class="erreur"></p>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
-
 
 <footer class="footer-local" role="contentinfo">
     <div class="container-footer">

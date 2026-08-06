@@ -204,6 +204,7 @@ if (avisModalClose && avisBtnConfirmer && avisModal) {
 
         totalStars = 0;
         updateStars();
+        document.querySelector('#commentaire-content-textarea').value = '';
 
         avisModal.classList.add('active');
     }
@@ -219,7 +220,7 @@ if (avisModalClose && avisBtnConfirmer && avisModal) {
                 star.classList.remove('active');
             }
         });
-        document.querySelector('#star-result').textContent = `${totalStars}/5`;
+        document.querySelector('#star-result').textContent = `Note de : ${totalStars}/5`;
     }
 
     stars.forEach(function (star, index) {
@@ -235,8 +236,6 @@ if (avisModalClose && avisBtnConfirmer && avisModal) {
 
         const commandeId = avisModal.dataset.commandId;
 
-        // const radioChecked = document.querySelector('input[name="etoile-choice"]:checked');
-        // const etoileNombre = radioChecked ? radioChecked.value : null;
         const commentaire = document.querySelector('#commentaire-content-textarea');
 
         const donnees = new FormData();
@@ -255,6 +254,11 @@ if (avisModalClose && avisBtnConfirmer && avisModal) {
             chargerCommandesUser().catch(function (erreur) {
                 console.error('Erreur lors du chargement des commandes utilisateur :', erreur);
             });
+            const validationAvis = document.querySelector('.validation-avis');
+            validationAvis.textContent = "Votre avis a bien été reçu !";
+            setTimeout(function () {
+                validationAvis.textContent = "";
+            }, 3600);
         } else {
             console.error(resultat['message']);
         }

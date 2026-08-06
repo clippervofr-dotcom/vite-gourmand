@@ -984,8 +984,8 @@ header a {
 /* Modale Avis */
 
 .star {
-
     font-size: xx-large;
+    cursor: pointer;
 
     &.active {
         color: orange;

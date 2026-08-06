@@ -126,6 +126,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                 <img src="assets/images/mes-commandes.png" alt="Informations client">
             </div>
 
+            <span class="validation-avis"></span>
             <div class="profil-utilisateur-commandes-liste">
                 <div class="profil-utilisateur-commandes-entete">
                     <span>Commande n°</span>

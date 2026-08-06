@@ -401,6 +401,10 @@ nav ul {
         }
     }
 
+    @media (max-width: 900px) {
+        display: grid;
+        gap: 2rem;
+    }
 }
 
 /* Media query for larger screens */

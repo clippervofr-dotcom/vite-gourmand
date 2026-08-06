@@ -183,7 +183,7 @@
 }
 
 .profil-utilisateur-commandes-ligne {
-    grid-template-columns: 140px 110px 130px 130px 110px 120px 100px;
+    grid-template-columns: 140px 110px 130px 130px 110px 120px 120px;
 }
 
 .profil-admin-commandes-ligne,

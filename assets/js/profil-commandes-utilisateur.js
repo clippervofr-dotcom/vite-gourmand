@@ -202,8 +202,32 @@ if (avisModalClose && avisBtnConfirmer && avisModal) {
         document.querySelector('#commentaire-numero-user').textContent = commande['numero_commande'];
         document.querySelector('#commentaire-date-prestation-user').textContent = capitalizeFirstLetter(datePrestationString);
 
+        totalStars = 0;
+        updateStars();
+
         avisModal.classList.add('active');
     }
+
+    const stars = document.querySelectorAll('.star');
+    let totalStars = 0;
+
+    function updateStars() {
+        stars.forEach(function (star, index) {
+            if (index < totalStars) {
+                star.classList.add('active');
+            } else {
+                star.classList.remove('active');
+            }
+        });
+        document.querySelector('#star-result').textContent = `${totalStars}/5`;
+    }
+
+    stars.forEach(function (star, index) {
+        star.addEventListener('click', function () {
+            totalStars = index + 1;
+            updateStars();
+        });
+    });
 
     avisModal.addEventListener('click', async function (event) {
         const boutonAvisConfirmer = event.target.closest('.btn-commentaire-user-confirmer');
@@ -211,17 +235,16 @@ if (avisModalClose && avisBtnConfirmer && avisModal) {
 
         const commandeId = avisModal.dataset.commandId;
 
-
-        const radioChecked = document.querySelector('input[name="etoile-choice"]:checked');
-        const etoileNombre = radioChecked ? radioChecked.value : null;
+        // const radioChecked = document.querySelector('input[name="etoile-choice"]:checked');
+        // const etoileNombre = radioChecked ? radioChecked.value : null;
         const commentaire = document.querySelector('#commentaire-content-textarea');
 
         const donnees = new FormData();
         donnees.append('commande_id', commandeId);
-        donnees.append('etoile_nombre', etoileNombre);
+        donnees.append('etoile_nombre', totalStars);
         donnees.append('commentaire', commentaire.value);
 
-        const reponse = await fetch('', {
+        const reponse = await fetch('avis-post.php', {
             method: 'POST',
             body: donnees
         });

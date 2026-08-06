@@ -298,24 +298,41 @@
             <h2>Votre commande :</h2>
             <div class="commentaire-content-user-box">
                 <span class="commentaire-content-titre">Numero de commande :</span>
-                <span id="commentaire-numero-user"></span>
+                <span id="commentaire-numero-user" class="commentaire-numero-user"></span>
                 <span class="commentaire-content-titre">Date de prestation :</span>
-                <span id="commentaire-date-prestation-user"></span>
+                <span id="commentaire-date-prestation-user" class="commentaire-date-prestation-user"></span>
             </div>
 
             <h2>Votre avis compte !</h2>
             <div class="commentaire-content-user-radio">
-                <label for="commentaire-radio-etoile-1">Par téléphone :</label>
-                <input type="radio" id="commentaire-radio-etoile-1" name="etoile-choice" value="1">
-                <label for="commentaire-radio-etoile-2">Par SMS :</label>
-                <input type="radio" id="commentaire-radio-etoile-2" name="etoile-choice" value="2">
-                <label for="commentaire-radio-etoile-3">Par email :</label>
-                <input type="radio" id="commentaire-radio-etoile-3" name="etoile-choice" value="3">
-                <label for="commentaire-radio-etoile-4">Par email :</label>
-                <input type="radio" id="commentaire-radio-etoile-4" name="etoile-choice" value="4">
-                <label for="commentaire-radio-etoile-5">Par email :</label>
-                <input type="radio" id="commentaire-radio-etoile-5" name="etoile-choice" value="5">
+                <span class="fa fa-star star"></span>
+                <span class="fa fa-star star"></span>
+                <span class="fa fa-star star"></span>
+                <span class="fa fa-star star"></span>
+                <span class="fa fa-star star"></span>
+
+<!--                <div>-->
+<!--                    <label for="commentaire-radio-etoile-1"><span class="fa fa-star"></span></label>-->
+<!--                    <input type="radio" id="commentaire-radio-etoile-1" name="etoile-choice" value="1">-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="commentaire-radio-etoile-2"><span class="fa fa-star"></span><span class="fa fa-star"></span></label>-->
+<!--                    <input type="radio" id="commentaire-radio-etoile-2" name="etoile-choice" value="2">-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="commentaire-radio-etoile-3"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></label>-->
+<!--                    <input type="radio" id="commentaire-radio-etoile-3" name="etoile-choice" value="3">-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="commentaire-radio-etoile-4"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></label>-->
+<!--                    <input type="radio" id="commentaire-radio-etoile-4" name="etoile-choice" value="4">-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="commentaire-radio-etoile-5"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></label>-->
+<!--                    <input type="radio" id="commentaire-radio-etoile-5" name="etoile-choice" value="5">-->
+<!--                </div>-->
             </div>
+            <span id="star-result">Note : 0/5</span>
             <div class="commentaire-content-textarea-box">
                 <label for="commentaire-content-textarea">Laissez nous quelques mots :</label>
                 <textarea class="commentaire-content-textarea" id="commentaire-content-textarea" name="commentaire-avis" rows="4" cols="15"></textarea>

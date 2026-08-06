@@ -184,7 +184,6 @@
         <section class="menus-grid">
             <p class="aucun-resultat">Veuillez définir votre recherche à l'aide des filtres, puis cliquer sur "Valider".</p>
         </section>
-        <a href="commande.php" class="bouton-commander">Commander TEST</a>
     </div>
 </main>
 

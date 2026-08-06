@@ -451,7 +451,9 @@ header a {
 .btn-annulation-commande,
 .btn-annulation-commande-admin,
 .btn-annulation-admin-confirmer,
-.btn-statut-commande {
+.btn-statut-commande,
+.btn-commentaire-user-confirmer,
+.btn-commentaire-commande {
     position: relative;
     display: flex;
     align-items: center;
@@ -476,7 +478,9 @@ header a {
 .btn-annulation-commande svg,
 .btn-annulation-commande-admin svg,
 .btn-annulation-admin-confirmer svg,
-.btn-statut-commande svg{
+.btn-statut-commande svg,
+.btn-commentaire-user-confirmer svg,
+.btn-commentaire-commande svg {
     position: absolute;
     width: 24px;
     fill: var(--couleur-hero-bouton);
@@ -490,7 +494,9 @@ header a {
 .btn-annulation-commande .arr-1,
 .btn-annulation-commande-admin .arr-1,
 .btn-annulation-admin-confirmer .arr-1,
-.btn-statut-commande .arr-1{
+.btn-statut-commande .arr-1,
+.btn-commentaire-user-confirmer .arr-1,
+.btn-commentaire-commande .arr-1 {
     right: 5px;
 }
 
@@ -500,7 +506,9 @@ header a {
 .btn-annulation-commande .arr-2,
 .btn-annulation-commande-admin .arr-2,
 .btn-annulation-admin-confirmer .arr-2,
-.btn-statut-commande .arr-2{
+.btn-statut-commande .arr-2,
+.btn-commentaire-user-confirmer .arr-2,
+.btn-commentaire-commande .arr-2 {
     left: -25%;
 }
 
@@ -510,7 +518,9 @@ header a {
 .btn-annulation-commande .circle,
 .btn-annulation-commande-admin .circle,
 .btn-annulation-admin-confirmer .circle,
-.btn-statut-commande .circle{
+.btn-statut-commande .circle,
+.btn-commentaire-user-confirmer .circle,
+.btn-commentaire-commande .circle {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -529,7 +539,9 @@ header a {
 .btn-annulation-commande .text,
 .btn-annulation-commande-admin .text,
 .btn-annulation-admin-confirmer .text,
-.btn-statut-commande .text{
+.btn-statut-commande .text,
+.btn-commentaire-user-confirmer .text,
+.btn-commentaire-commande .text {
     position: relative;
     z-index: 1;
     transform: translateX(-12px);
@@ -542,7 +554,9 @@ header a {
 .btn-annulation-commande:hover,
 .btn-annulation-commande-admin:hover,
 .btn-annulation-admin-confirmer:hover,
-.btn-statut-commande:hover{
+.btn-statut-commande:hover,
+.btn-commentaire-user-confirmer:hover,
+.btn-commentaire-commande:hover {
     box-shadow: 0 0 0 12px transparent;
     color: #ffffff;
     border-radius: 12px;
@@ -554,7 +568,9 @@ header a {
 .btn-annulation-commande:hover .arr-1,
 .btn-annulation-commande-admin:hover .arr-1,
 .btn-annulation-admin-confirmer:hover .arr-1,
-.btn-statut-commande:hover .arr-1 {
+.btn-statut-commande:hover .arr-1,
+.btn-commentaire-user-confirmer:hover .arr-1,
+.btn-commentaire-commande:hover .arr-1 {
     right: -25%;
 }
 
@@ -564,7 +580,9 @@ header a {
 .btn-annulation-commande:hover .arr-2,
 .btn-annulation-commande-admin:hover .arr-2,
 .btn-annulation-admin-confirmer:hover .arr-2,
-.btn-statut-commande:hover .arr-2 {
+.btn-statut-commande:hover .arr-2,
+.btn-commentaire-user-confirmer:hover .arr-2,
+.btn-commentaire-commande:hover .arr-2 {
     left: 5px;
 }
 
@@ -574,7 +592,9 @@ header a {
 .btn-annulation-commande:hover .text,
 .btn-annulation-commande-admin:hover .text,
 .btn-annulation-admin-confirmer:hover .text,
-.btn-statut-commande:hover .text {
+.btn-statut-commande:hover .text,
+.btn-commentaire-user-confirmer:hover .text,
+.btn-commentaire-commande:hover .text {
     transform: translateX(12px);
 }
 
@@ -584,7 +604,9 @@ header a {
 .btn-annulation-commande:hover svg,
 .btn-annulation-commande-admin:hover svg,
 .btn-annulation-admin-confirmer:hover svg,
-.btn-statut-commande:hover svg {
+.btn-statut-commande:hover svg,
+.btn-commentaire-user-confirmer:hover svg,
+.btn-commentaire-commande:hover svg {
     fill: #ffffff;
 }
 
@@ -594,7 +616,9 @@ header a {
 .btn-annulation-commande:active,
 .btn-annulation-commande-admin:active,
 .btn-annulation-admin-confirmer:active,
-.btn-statut-commande:active {
+.btn-statut-commande:active,
+.btn-commentaire-user-confirmer:active,
+.btn-commentaire-commande:active {
     scale: 0.95;
     box-shadow: 0 0 0 4px var(--couleur-hero-bouton);
 }
@@ -605,7 +629,9 @@ header a {
 .btn-annulation-commande:hover .circle,
 .btn-annulation-commande-admin:hover .circle,
 .btn-annulation-admin-confirmer:hover .circle,
-.btn-statut-commande:hover .circle {
+.btn-statut-commande:hover .circle,
+.btn-commentaire-user-confirmer:hover .circle,
+.btn-commentaire-commande:hover .circle {
     width: 220px;
     height: 220px;
     opacity: 1;

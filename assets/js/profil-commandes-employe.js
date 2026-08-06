@@ -184,12 +184,6 @@ if (detailCommandeModalClose && detailCommandeModal) {
 
         const commande = resultat['commande'];
 
-        function capitalizeFirstLetter(str) {
-            if (str.length === 0) return str;
-            if (!/[a-zA-Z]/.test(str.charAt(0))) return str;
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-
         //date commande
         const dateReplace = commande['date_commande'].replace(' ', 'T');
         const newDate = new Date(dateReplace);
@@ -250,13 +244,6 @@ if (annulationModalAdmin && annulationModalAdminClose) {
         const commande = resultat['commande'];
         annulationModalAdmin.dataset.commandeId = commande['commande_id'];
 
-
-        function capitalizeFirstLetter(str) {
-            if (str.length === 0) return str;
-            if (!/[a-zA-Z]/.test(str.charAt(0))) return str;
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-
         //date prestation
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const datePrestation = new Date(commande['date_prestation']);
@@ -302,7 +289,6 @@ if (annulationModalAdmin && annulationModalAdminClose) {
         } else {
             console.error(resultat['message']);
         }
-
     });
 
     document.addEventListener('keydown', function (event) {

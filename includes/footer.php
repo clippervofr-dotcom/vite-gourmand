@@ -287,6 +287,61 @@
     </div>
 </div>
 
+<!-- Modale avis / laissez commentaire -->
+
+<div class="modal-overlay" id="commentaire-modal-user">
+    <div class="modal-box modal-box-moyenne">
+        <button type="button" class="modal-close" id="commentaire-modal-user-close" aria-label="Fermer la fenêtre">&times;</button>
+
+        <div class="commentaire-content-user">
+
+            <h2>Votre commande :</h2>
+            <div class="commentaire-content-user-box">
+                <span class="commentaire-content-titre">Numero de commande :</span>
+                <span id="commentaire-numero-user"></span>
+                <span class="commentaire-content-titre">Date de prestation :</span>
+                <span id="commentaire-date-prestation-user"></span>
+            </div>
+
+            <h2>Votre avis compte !</h2>
+            <div class="commentaire-content-user-radio">
+                <label for="commentaire-radio-etoile-1">Par téléphone :</label>
+                <input type="radio" id="commentaire-radio-etoile-1" name="etoile-choice" value="1">
+                <label for="commentaire-radio-etoile-2">Par SMS :</label>
+                <input type="radio" id="commentaire-radio-etoile-2" name="etoile-choice" value="2">
+                <label for="commentaire-radio-etoile-3">Par email :</label>
+                <input type="radio" id="commentaire-radio-etoile-3" name="etoile-choice" value="3">
+                <label for="commentaire-radio-etoile-4">Par email :</label>
+                <input type="radio" id="commentaire-radio-etoile-4" name="etoile-choice" value="4">
+                <label for="commentaire-radio-etoile-5">Par email :</label>
+                <input type="radio" id="commentaire-radio-etoile-5" name="etoile-choice" value="5">
+            </div>
+            <div class="commentaire-content-textarea-box">
+                <label for="commentaire-content-textarea">Laissez nous quelques mots :</label>
+                <textarea class="commentaire-content-textarea" id="commentaire-content-textarea" name="commentaire-avis" rows="4" cols="15"></textarea>
+            </div>
+            <div class="btn-commentaire-user-box">
+                <button type="button" class="btn-commentaire-user-confirmer" id="btn-commentaire-user-confirmer">
+                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                    <span class="text">Confirmer</span>
+                    <span class="circle"></span>
+                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+
+            <p id="commentaire-erreur" class="erreur"></p>
+        </div>
+    </div>
+</div>
+
 <!-- Modale inscrire new adresse -->
 <!---->
 <!--<div class="modal-overlay" id="new-adresse-modal">-->

@@ -161,7 +161,7 @@
 .profil-admin-commandes-entete,
 .profil-admin-commandes-ligne {
     display: grid;
-    grid-template-columns: 140px 110px 130px 130px 110px 120px 100px 100px;
+    grid-template-columns: 140px 110px 150px 130px 110px 120px 100px 100px;
     gap: 1rem;
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--couleur-presentation-box-tracer);
@@ -183,7 +183,7 @@
 }
 
 .profil-utilisateur-commandes-ligne {
-    grid-template-columns: 140px 110px 130px 130px 110px 120px 120px;
+    grid-template-columns: 140px 110px 150px 130px 110px 120px 120px;
 }
 
 .profil-admin-commandes-ligne,
@@ -230,6 +230,14 @@
         font-weight: bold;
         color: var(--couleur-hero-bouton);
     }
+}
+
+.user-nom-menu,
+.user-statut,
+.user-date-prestation,
+.user-nbr-personnes,
+.user-commande-numero {
+    cursor: pointer;
 }
 
 /* PROFIL EMPLOYE COMMANDE BOUTON VALIDATION */

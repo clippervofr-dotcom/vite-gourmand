@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 // Affichage via Query
 // 1er argument ===>   []   === on prend tous les avis
 // 2em argument ===>   ['sort' => .... === on tri selon plusieurs critères, par ordre de priorité et si égalité
-// setType map === transforme en tableau
+// setTypeMap === transforme objets en tableau
 
 try {
     $query = new MongoDB\Driver\Query([], ['sort' => ['note' => -1, 'date-avis' => -1]]);
@@ -20,12 +20,19 @@ try {
 
 $avis = [];
 foreach ($curseur as $document) {
+    $utilisateurId = $document['utilisateur_id'];
+    $stmt = $pdo->prepare('SELECT nom, prenom FROM utilisateur WHERE utilisateur_id = ?');
+    $stmt->execute([$utilisateurId]);
+    $utilisateurInfos = $stmt->fetch();
+
     $avis[] = [
         'utilisateur_id' => $document['utilisateur_id'],
         'commande_id' => $document['commande_id'],
         'note' => $document['note'],
         'commentaire' => $document['commentaire'],
         'date_avis' => $document['date_avis'],
+        'nom' => $utilisateurInfos['nom'] ?? 'Doe',
+        'prenom' => $utilisateurInfos['prenom'] ?? 'John',
     ];
 }
 echo json_encode(['success' => true, 'avis' => $avis]);

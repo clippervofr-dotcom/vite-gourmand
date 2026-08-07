@@ -129,12 +129,12 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <span class="validation-avis"></span>
             <div class="profil-utilisateur-commandes-liste">
                 <div class="profil-utilisateur-commandes-entete">
-                    <span>Commande n°</span>
-                    <span>Nom du menu</span>
-                    <span>Nbr de personnes</span>
-                    <span>Date préstation</span>
-                    <span>Status</span>
-                    <span>Commentaires</span>
+                    <span class="user-commande-numero">Commande n°<span class="fleche-tri-numero fleche"></span></span>
+                    <span class="user-nom-menu">Nom du menu<span class="fleche-tri-titre fleche"></span></span>
+                    <span class="user-nbr-personnes">Nbr de personnes<span class="fleche-tri-nbr fleche"></span></span>
+                    <span class="user-date-prestation">Date préstation<span class="fleche-tri-date fleche"></span></span>
+                    <span class="user-statut">Statut<span class="fleche-tri-statut fleche"></span></span>
+                    <span class="user-commentaires">Commentaires</span>
                 </div>
                 <!-- JS apparait ici -->
             </div>

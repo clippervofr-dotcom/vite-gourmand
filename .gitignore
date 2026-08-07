@@ -12,3 +12,4 @@ a faire.php
 TEST ONLY/
 __pycache__/
 *.pyc
+node_modules/

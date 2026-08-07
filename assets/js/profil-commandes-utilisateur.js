@@ -1,6 +1,7 @@
 //UTILISATEUR -- Affichage des commandes
 const conteneurCommandesUser = document.querySelector('.profil-utilisateur-commandes-liste');
 let derniereCommandesRecues = [];
+let ordreCroissant = true;
 
 async function chargerCommandesUser() {
     const reponse = await fetch('mes-commandes.php');
@@ -45,7 +46,7 @@ if (conteneurCommandesUser) {
                     </svg>
                 </button>
                 ` : ''}
-                ${commande['statut'] === 'terminée' ? `
+                ${commande['statut'] === 'terminée' && commande['possede_avis'] === 0 ? `
                 <button type="button" class="btn-commentaire-commande">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -60,11 +61,53 @@ if (conteneurCommandesUser) {
                         ></path>
                     </svg>
                 </button>
-                ` : ''}    
+                ` : ''}
+                ${commande['possede_avis'] === 1 ? `
+                <span class="text">Votre avis à bien été pris en compte.</span>
+                ` : ''}
                     `;
             conteneurUser.appendChild(ligne);
         });
     }
+
+    function trier(cle) {
+        derniereCommandesRecues.sort((a, b) => {
+            let resultat;
+
+            if (cle === 'date_prestation') {
+                const dateA = new Date(a[cle]);
+                const dateB = new Date(b[cle]);
+                resultat = dateA - dateB;
+            } else if (typeof a[cle] === "string") {
+                resultat = a[cle].localeCompare(b[cle]);
+            } else {
+                resultat = a[cle] - b[cle];
+            }
+            return ordreCroissant ? resultat : -resultat;
+        });
+        afficherCommandesUser(derniereCommandesRecues);
+    }
+
+    const colonnesTriables = [
+        { bouton: '.user-commande-numero', fleche: '.fleche-tri-numero', cle: 'numero_commande' },
+        { bouton: '.user-nom-menu', fleche: '.fleche-tri-titre', cle: 'titre' },
+        { bouton: '.user-nbr-personnes', fleche: '.fleche-tri-nbr', cle: 'nombre_personnes' },
+        { bouton: '.user-statut', fleche: '.fleche-tri-statut', cle: 'statut' },
+        { bouton: '.user-date-prestation', fleche: '.fleche-tri-date', cle: 'date_prestation' }
+    ];
+
+    colonnesTriables.forEach(function (colonne) {
+        document.querySelector(colonne.bouton).addEventListener('click', function () {
+            ordreCroissant = !ordreCroissant;
+
+            document.querySelectorAll('.fleche').forEach(function(fleche) {
+                fleche.textContent = '';
+            });
+            document.querySelector(colonne.fleche).textContent = ordreCroissant ? '▲' : '▼';
+
+            trier(colonne.cle);
+        });
+    });
 
     conteneurCommandesUser.addEventListener('click', function (event) {
         const boutonAnnuler = event.target.closest('.btn-annulation-commande');
@@ -93,7 +136,6 @@ if (conteneurCommandesUser) {
 
         ouvrirAvisModal(commande);
     });
-
 
     chargerCommandesUser().catch(function (erreur) {
         console.error('Erreur lors du chargement des commandes :', erreur);

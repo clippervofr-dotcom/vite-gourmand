@@ -183,6 +183,29 @@ INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, d
 VALUES (3, 1, 'COMMANDE-320', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'validée');
 INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
 VALUES (3, 1, 'COMMANDE-310', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'annulée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 1, 'COMMANDE-200', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'terminée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 2, 'COMMANDE-210', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'terminée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 3, 'COMMANDE-220', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'terminée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 4, 'COMMANDE-230', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'terminée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 5, 'COMMANDE-240', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 1, 'COMMANDE-250', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 2, 'COMMANDE-260', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 3, 'COMMANDE-270', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 4, 'COMMANDE-280', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 4, 'COMMANDE-290', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en annulée');
+
+
+
 
 
 INSERT INTO historique_statut (commande_id, statut, date_changement) 

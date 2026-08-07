@@ -108,6 +108,7 @@ CREATE TABLE commande (
   mode_contact_annulation VARCHAR(50),
   pret_materiel BOOL DEFAULT FALSE,
   rendu_materiel BOOL DEFAULT FALSE,
+  possede_avis BOOL DEFAULT FALSE,
   FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(utilisateur_id),
   FOREIGN KEY (menu_id) REFERENCES menu(menu_id)
 );

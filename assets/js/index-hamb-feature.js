@@ -81,19 +81,85 @@ if (btnSuivant && btnPrecedent && commMegabox) {
         return premiereCarte ? premiereCarte.offsetWidth + 20 : 0;
     }
 
+    let indexActuel = 0;
+
+    function afficherCarteIndex(index) {
+        const cartes = commMegabox.querySelectorAll('.commentaires-box');
+
+        cartes.forEach(function (carte) {
+            carte.classList.remove('active');
+        });
+
+        if (cartes[index]) {
+            cartes[index].classList.add('active');
+        }
+    }
+
     btnSuivant.addEventListener('click', function () {
         commMegabox.scrollBy({ left: largeurCarte(), behavior: 'smooth' });
+
+        const cartes = commMegabox.querySelectorAll('.commentaires-box');
+        indexActuel = (indexActuel + 1) % cartes.length;
+        afficherCarteIndex(indexActuel);
     });
 
     btnPrecedent.addEventListener('click', function () {
         commMegabox.scrollBy({ left: -largeurCarte(), behavior: 'smooth' });
+
+        const cartes = commMegabox.querySelectorAll('.commentaires-box');
+        indexActuel = (indexActuel - 1 + cartes.length) % cartes.length;
+        afficherCarteIndex(indexActuel);
     });
 }
 
 if (commMegabox) {
+    async function chargerAvis() {
+        const reponse = await fetch('avis-get.php');
+        const resultatAvis = await reponse.json();
+
+        afficherAvis(resultatAvis['avis']);
+    }
+
+    function genererEtoiles(note) {
+        let html = '';
+        for (let i = 1; i <= 5; i++) {
+            const classe = i <= note ? 'fa fa-star star-pleine' : 'fa fa-star star-vide';
+            html += `<span class="${classe}"></span>`;
+        }
+        return html;
+    }
+
+    function afficherAvis(resultatAvis) {
+        const conteneurAvis = document.querySelector('.commentaires-mega-box');
+
+        conteneurAvis.querySelectorAll('.commentaires-box').forEach(function (ligne) {
+            ligne.remove();
+        });
+
+        resultatAvis.forEach(function (avis) {
+            const ligne = document.createElement('div');
+            ligne.classList.add('commentaires-box');
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateAvis = new Date(avis['date_avis']);
+            const dateAvisString = dateAvis.toLocaleDateString('fr-FR', options);
+
+            ligne.innerHTML = `
+                <span class="auteur">${echapperHTML(avis['nom'])} ${echapperHTML(avis['prenom'])}</span>
+                <span class="date-avis">${capitalizeFirstLetter(dateAvisString)}</span>
+                <span class="commentaires-texte">"${echapperHTML(avis['commentaire'])}."</span>
+                <div class="commentaire-content-user-etoiles">
+                    ${genererEtoiles(avis['note'])}
+                </div>
+            `;
+            conteneurAvis.appendChild(ligne);
+        });
+        indexActuel = 0;
+        afficherCarteIndex(0);
+    }
+
     const echelleMax = 1;
     const echelleMin = 0.85;
-
     function mettreAJourEchelle() {
         const rectContainer = commMegabox.getBoundingClientRect();
         const centreContainer = rectContainer.left + rectContainer.width / 2;
@@ -124,7 +190,12 @@ if (commMegabox) {
         }
     });
 
+
+
     mettreAJourEchelle();
+    chargerAvis().catch(function (erreur) {
+        console.error('Erreur lors du chargement des avis :', erreur);
+    });
 }
 
 //scroll to top btn

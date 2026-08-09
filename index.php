@@ -63,21 +63,7 @@
         <div class="commentaires">
             <img src="assets/images/avis1.png" alt="Avis Clients">
             <div class="commentaires-mega-box">
-                <div class="commentaires-box">
-                    <p class="auteur">Auteur 1</p>
-                    <p class="commentaires-texte">"Commentaires 1"</p>
-                    <p class="etoiles">★★★★★</p>
-                </div>
-                <div class="commentaires-box">
-                    <p class="auteur">Auteur 2</p>
-                    <p class="commentaires-texte">"Commentaires 2"</p>
-                    <p class="etoiles">★★★★☆</p>
-                </div>
-                <div class="commentaires-box">
-                    <p class="auteur">Auteur 3</p>
-                    <p class="commentaires-texte">"Commentaires 3"</p>
-                    <p class="etoiles">★★★★★</p>
-                </div>
+            <!-- ICI AVIS JS -->
             </div>
             <img src="assets/images/avis2.png" alt="Avis Clients">
         </div>

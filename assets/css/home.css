@@ -237,6 +237,7 @@ img.jose-img {
 .commentaires {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .commentaires img {
@@ -244,27 +245,47 @@ img.jose-img {
     height: auto;
     flex-shrink: 0;
 }
+@media (min-width: 900px) {
 
-.commentaires-mega-box {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    flex: 1;
-    padding: 0 50px;
-    gap: 40px;
+    .commentaires-mega-box {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .commentaires-box {
+        grid-column: 1;
+        grid-row: 1;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .commentaires-box.active {
+        opacity: 1;
+        pointer-events: auto;
+        display: grid;
+        gap: 2rem;
+        justify-content: center;
+        background: var(--couleur-avis-bouton);
+        border: solid 1px var(--couleur-tracer-hero-bouton);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    }
+
 }
 
-.commentaires-box {
-    background-color: var(--couleur-avis-bouton);
-    border: solid 1px var(--couleur-presentation-box-tracer);
-    box-shadow: 0 8px 20px var(--couleur-ombre-forte);
-    padding: 20px 24px;
-    border-radius: 6px;
-    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+
+.commentaires-texte,
+.auteur,
+.commentaire-content-user-etoiles {
+    font-size: xx-large;
 }
 
-.commentaires-texte {
-    margin-bottom: 20px;
-    margin-top: 30px;
+.date-avis {
+    font-size: larger;
+    border-bottom: solid 2px;
+    padding-bottom: 1rem;
 }
 
 .etoiles {
@@ -275,9 +296,8 @@ img.jose-img {
 
 .auteur {
     color: var(--couleur-police-filtre);
-    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+    /*font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);*/
     font-style: italic;
-    margin-top: 10px;
 }
 
 .avis-img img {
@@ -285,8 +305,8 @@ img.jose-img {
     height: 80%;
 }
 
-#avis-prec,
-#avis-suiv {
+.bouton-avis-prec,
+.bouton-avis-suiv {
     border: none;
     text-decoration: none;
     cursor: pointer;
@@ -337,6 +357,17 @@ img.jose-img {
         scroll-snap-align: center;
         transition: transform 0.15s ease-out;
         transform-origin: center;
+        display: grid;
+        gap: 0.5rem;
+
+        &.active {
+            display: grid;
+            gap: 0.5rem;
+        }
+    }
+
+    .date-avis {
+        border-bottom: none;
     }
 }
 
@@ -403,3 +434,13 @@ img.jose-img {
     justify-content: flex-end;
     padding: 1em;
 }
+
+/* stars avis card */
+
+.star-pleine {
+    color: orange;
+}
+
+/*.star-vide {*/
+/*    */
+/*}*/

@@ -116,16 +116,19 @@ const adminListeEmploye = document.querySelector(".profil-admin-box-liste-employ
 const adminCreationCompte = document.querySelector(".profil-admin-box-creation-compte");
 const adminVoirCommandes = document.querySelector("#profil-admin-box-commandes");
 const adminModifHoraire = document.querySelector('.profil-admin-box-modif-horaire');
+const adminStatistiquesBox = document.querySelector('.profil-admin-box-voir-statistiques');
+
 
 // nav liste employé / création compte
 
-if (btnAdminModifHoraire && adminModifHoraire && btnAdminAnnulationCreation && btnAdminListeEmploye && btnAdminCreationCompte && adminListeEmploye && adminCreationCompte && adminVoirCommandes) {
+if (btnAdminVoirStatistiques && adminStatistiquesBox && btnAdminModifHoraire && adminModifHoraire && btnAdminAnnulationCreation && btnAdminListeEmploye && btnAdminCreationCompte && adminListeEmploye && adminCreationCompte && adminVoirCommandes) {
 
     btnAdminListeEmploye.addEventListener('click', function () {
         adminListeEmploye.classList.add('active');
         adminCreationCompte.classList.remove('active');
         adminVoirCommandes.classList.remove('active');
         adminModifHoraire.classList.remove('active');
+        adminStatistiquesBox.classList.remove('active');
     });
 
     btnAdminCreationCompte.addEventListener('click', function () {
@@ -133,6 +136,7 @@ if (btnAdminModifHoraire && adminModifHoraire && btnAdminAnnulationCreation && b
         adminListeEmploye.classList.remove('active');
         adminVoirCommandes.classList.remove('active');
         adminModifHoraire.classList.remove('active');
+        adminStatistiquesBox.classList.remove('active');
     });
 
     btnAdminAnnulationCreation.addEventListener('click', function () {
@@ -145,6 +149,15 @@ if (btnAdminModifHoraire && adminModifHoraire && btnAdminAnnulationCreation && b
         adminListeEmploye.classList.remove('active');
         adminVoirCommandes.classList.remove('active');
         adminCreationCompte.classList.remove('active');
+        adminStatistiquesBox.classList.remove('active');
+    });
+
+    btnAdminVoirStatistiques.addEventListener('click', function() {
+        adminStatistiquesBox.classList.add('active');
+        adminListeEmploye.classList.remove('active');
+        adminVoirCommandes.classList.remove('active');
+        adminCreationCompte.classList.remove('active');
+        adminModifHoraire.classList.remove('active');
     });
 
 }
@@ -169,9 +182,4 @@ if (btnAdminValidationCreation && adminListeEmploye && adminCreationCompte && va
             validationChange.textContent = "";
         }, 3000);
     });
-}
-
-// statistiques
-if (btnAdminVoirStatistiques) {
-    // ...
 }

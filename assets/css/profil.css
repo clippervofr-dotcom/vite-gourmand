@@ -137,7 +137,7 @@
 .profil-admin-box-creation-compte.active,
 .profil-admin-box-commandes.active,
 .profil-admin-box-modif-horaire.active,
-.profil-admin-box-statistiques.active {
+.profil-admin-box-voir-statistiques.active {
     display: flex;
 }
 

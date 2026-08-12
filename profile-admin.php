@@ -376,6 +376,15 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                         <option value="janvier">Janvier</option>
                         <option value="fevrier">Février</option>
                         <option value="mars">Mars</option>
+                        <option value="avril">Avril</option>
+                        <option value="mai">Mai</option>
+                        <option value="juin">Juin</option>
+                        <option value="juillet">Juillet</option>
+                        <option value="aout">Aout</option>
+                        <option value="septembre">Septembre</option>
+                        <option value="octobre">Octobre</option>
+                        <option value="novembre">Novembre</option>
+                        <option value="decembre">Decembre</option>
                     </select>
                 </div>
                 <div class="second-ligne-status">
@@ -383,8 +392,8 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                     <select id="status-stats-admin" name="status-stats-admin">
                         <option value="">----</option>
                         <option value="en attente">En attente</option>
-                        <option value="validee">Validée</option>
-                        <option value="annulee">Annulée</option>
+                        <option value="validée">Validée</option>
+                        <option value="annulée">Annulée</option>
                         <option value="terminée">Terminée</option>
                     </select>
                 </div>
@@ -393,49 +402,41 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <div class="admin-rapport-stats">
                 <div class="admin-rapport-ca">
                     <label>CA du mois</label>
-                    <span id="ca-du-mois" data-label="ca du mois">1600 €</span>
+                    <span id="ca-du-mois" data-label="ca du mois"></span>
                 </div>
                 <div class="admin-rapport-commandes-validees">
                     <label>Commandes validées</label>
-                    <span id="nbr-commandes-by-statut" data-label="commandes validées">26</span>
+                    <span id="nbr-commandes-by-statut" data-label="commandes validées"></span>
                 </div>
                 <div class="admin-rapport-note-moyenne">
                     <label>Note moyenne</label>
-                    <span id="note-moyenne" data-label="note moyenne">4.5 / 5</span>
+                    <span id="note-moyenne" data-label="note moyenne"></span>
                 </div>
                 <div class="admin-rapport-taux-annulation">
                     <label>Taux d'annulation</label>
-                    <span id="taux-annulation" data-label="taux d'annulation">5%</span>
+                    <span id="taux-annulation" data-label="taux d'annulation"></span>
                 </div>
             </div>
 
-            <div>
+            <div class="profil-admin-container">
                 <div class="statistiques-titre">
                     <span>Menus les plus commandés</span>
                 </div>
 
                 <div class="profil-admin-statistiques-liste">
-
                     <span>Menus</span>
                     <span>Commandes</span>
                     <span>CA</span>
                 </div>
 
-                <div class="profil-admin-statistiques-ligne" role="row">
-                    <span class="commandes-champ" data-label="menu de noel">12</span>
-                    <span class="commandes-champ" data-label="menu de paques">30</span>
-                    <span class="commandes-champ" data-label="menu classique">24</span>
-                    <span class="commandes-champ" data-label="menu evenementiel">20</span>
-                    <span class="commandes-champ" data-label="menu vegetarien">12</span>
-                </div>
+<!--                <div class="profil-admin-statistiques-ligne" role="row">-->
+<!--                    <span class="commandes-champ" data-label="menu de noel">12</span>-->
+<!--                    <span class="commandes-champ" data-label="menu de paques">30</span>-->
+<!--                    <span class="commandes-champ" data-label="menu classique">24</span>-->
+<!--                    <span class="commandes-champ" data-label="menu evenementiel">20</span>-->
+<!--                    <span class="commandes-champ" data-label="menu vegetarien">12</span>-->
+<!--                </div>-->
 
-                <div class="profil-admin-statistiques-ligne" role="row">
-                    <span class="commandes-champ" data-label="menu de noel ca">500€</span>
-                    <span class="commandes-champ" data-label="menu de paques ca">500€</span>
-                    <span class="commandes-champ" data-label="menu classique ca">500€</span>
-                    <span class="commandes-champ" data-label="menu evenementiel ca">500€</span>
-                    <span class="commandes-champ" data-label="menu vegetarien ca">500€</span>
-                </div>
             </div>
         </div>
     </div>

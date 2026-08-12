@@ -395,6 +395,7 @@
 <script src="assets/js/panier.js"></script>
 <script src="assets/js/horaires.js"></script>
 <script src="assets/js/fonctions.js"></script>
+<script src="assets/js/test-stats.js"></script>
 
 
 

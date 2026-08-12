@@ -13,7 +13,6 @@ async function chargerCommandesEnAttente(statut) {
 
 function afficherCommandes(commandesEnAttente) {
     const conteneur = document.querySelector('.profil-employe-commandes-liste');
-
     conteneur.querySelectorAll('.profil-employe-commandes-ligne').forEach(function (ligne) {
         ligne.remove();
     });

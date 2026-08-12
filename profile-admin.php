@@ -372,19 +372,19 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                 <div class="first-ligne-periode">
                     <label for="periode-stats-admin">Période :</label>
                     <select id="periode-stats-admin" name="periode-stats-admin">
-                        <option value="">Sélectionnez un mois</option>
-                        <option value="janvier">Janvier</option>
-                        <option value="fevrier">Février</option>
-                        <option value="mars">Mars</option>
-                        <option value="avril">Avril</option>
-                        <option value="mai">Mai</option>
-                        <option value="juin">Juin</option>
-                        <option value="juillet">Juillet</option>
-                        <option value="aout">Aout</option>
-                        <option value="septembre">Septembre</option>
-                        <option value="octobre">Octobre</option>
-                        <option value="novembre">Novembre</option>
-                        <option value="decembre">Decembre</option>
+                        <option value="Tous">Tous</option>
+                        <option value="01">Janvier</option>
+                        <option value="02">Février</option>
+                        <option value="03">Mars</option>
+                        <option value="04">Avril</option>
+                        <option value="05">Mai</option>
+                        <option value="06">Juin</option>
+                        <option value="07">Juillet</option>
+                        <option value="08">Aout</option>
+                        <option value="09">Septembre</option>
+                        <option value="10">Octobre</option>
+                        <option value="11">Novembre</option>
+                        <option value="12">Decembre</option>
                     </select>
                 </div>
                 <div class="second-ligne-status">
@@ -402,10 +402,11 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <div class="admin-rapport-stats">
                 <div class="admin-rapport-ca">
                     <label>CA du mois</label>
+                    <span id="nom-du-mois" data-label="nom du mois"></span>
                     <span id="ca-du-mois" data-label="ca du mois"></span>
                 </div>
                 <div class="admin-rapport-commandes-validees">
-                    <label>Commandes validées</label>
+                    <label>Commandes :</label><span id="nbr-commandes-by-statut-name"></span>
                     <span id="nbr-commandes-by-statut" data-label="commandes validées"></span>
                 </div>
                 <div class="admin-rapport-note-moyenne">
@@ -415,6 +416,10 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                 <div class="admin-rapport-taux-annulation">
                     <label>Taux d'annulation</label>
                     <span id="taux-annulation" data-label="taux d'annulation"></span>
+                </div>
+                <div class="admin-rapport-ca-total">
+                    <label>CA Total</label>
+                    <span id="ca-total" data-label="taux d'annulation"></span>
                 </div>
             </div>
 
@@ -428,15 +433,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                     <span>Commandes</span>
                     <span>CA</span>
                 </div>
-
-<!--                <div class="profil-admin-statistiques-ligne" role="row">-->
-<!--                    <span class="commandes-champ" data-label="menu de noel">12</span>-->
-<!--                    <span class="commandes-champ" data-label="menu de paques">30</span>-->
-<!--                    <span class="commandes-champ" data-label="menu classique">24</span>-->
-<!--                    <span class="commandes-champ" data-label="menu evenementiel">20</span>-->
-<!--                    <span class="commandes-champ" data-label="menu vegetarien">12</span>-->
-<!--                </div>-->
-
+                <!-- ICI JS STATS -->
             </div>
         </div>
     </div>

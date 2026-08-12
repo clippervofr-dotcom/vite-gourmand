@@ -234,9 +234,6 @@ if (menuDetailmodal && btnMenuClose) {
             }
         });
     }
-
-
-
 }
 
 // boutons - + cartes menus
@@ -264,8 +261,7 @@ if (btnMoins && btnPlus) {
     }
 }
 
-// modale tilt
-
+// modale tilt le GOaoulde xD
 const menuDetailBox = document.querySelector("#menu-detail-modal .modal-box");
 
 if (menuDetailBox) {

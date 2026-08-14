@@ -387,53 +387,52 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                         <option value="12">Decembre</option>
                     </select>
                 </div>
-                <div class="second-ligne-status">
-                    <label for="status-stats-admin">Status :</label>
-                    <select id="status-stats-admin" name="status-stats-admin">
-                        <option value="">----</option>
-                        <option value="en attente">En attente</option>
-                        <option value="validée">Validée</option>
-                        <option value="annulée">Annulée</option>
-                        <option value="terminée">Terminée</option>
-                    </select>
-                </div>
             </div>
 
             <div class="admin-rapport-stats">
-                <div class="admin-rapport-ca">
-                    <label>CA du mois</label>
-                    <span id="nom-du-mois" data-label="nom du mois"></span>
-                    <span id="ca-du-mois" data-label="ca du mois"></span>
-                </div>
-                <div class="admin-rapport-commandes-validees">
-                    <label>Commandes :</label><span id="nbr-commandes-by-statut-name"></span>
-                    <span id="nbr-commandes-by-statut" data-label="commandes validées"></span>
-                </div>
                 <div class="admin-rapport-note-moyenne">
                     <label>Note moyenne</label>
                     <span id="note-moyenne" data-label="note moyenne"></span>
                 </div>
                 <div class="admin-rapport-taux-annulation">
-                    <label>Taux d'annulation</label>
+                    <label>Taux d'annulation<br> global</label>
                     <span id="taux-annulation" data-label="taux d'annulation"></span>
+                </div>
+                <div class="admin-rapport-commandes-validees">
+                    <label>Commandes Totales:</label>
+                    <div class="admin-rapport-commandes-validees-liste">
+                        <span id="nbr-commandes-by-statut-name-en-attente"></span><span>---></span><span id="nbr-commandes-by-statut-en-attente" data-label="commandes en attente"></span>
+                        <span id="nbr-commandes-by-statut-name-validee"></span><span>---></span><span id="nbr-commandes-by-statut-validee" data-label="commandes validées"></span>
+                        <span id="nbr-commandes-by-statut-name-terminee"></span><span>---></span><span id="nbr-commandes-by-statut-terminee" data-label="commandes terminées"></span>
+                        <span id="nbr-commandes-by-statut-name-annulee"></span><span>---></span><span id="nbr-commandes-by-statut-annulee" data-label="commandes annulées"></span>
+                    </div>
+
                 </div>
                 <div class="admin-rapport-ca-total">
                     <label>CA Total</label>
-                    <span id="ca-total" data-label="taux d'annulation"></span>
+                    <span id="ca-total" data-label="CA total"></span>
                 </div>
             </div>
 
+            <div class="statistiques-titre">
+                <span id="details-commandes-du-mois"></span>
+            </div>
             <div class="profil-admin-container">
-                <div class="statistiques-titre">
-                    <span>Menus les plus commandés</span>
-                </div>
-
                 <div class="profil-admin-statistiques-liste">
-                    <span>Menus</span>
-                    <span>Commandes</span>
-                    <span>CA</span>
+                    <span>Noms des menus</span>
+                    <span>Commandes<br> en attente</span>
+                    <span>Commandes validées</span>
+                    <span>Commandes terminées</span>
+                    <span>Commandes annulées</span>
+                    <span>Commandes totales</span>
+                    <span>Taux d'annulation</span>
+                    <span>CA par commandes</span>
                 </div>
                 <!-- ICI JS STATS -->
+            </div>
+            <div class="mois-montant-total">
+                <span>Montant CA total du mois :</span>
+                <span id="montant-ca-total-mois"></span>
             </div>
         </div>
     </div>

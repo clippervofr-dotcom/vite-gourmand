@@ -314,12 +314,17 @@
 
 /* statistiques */
 /* selecteur */
-.profil-admin-statistiques-liste {
-    display: flex;
-}
 
 .profil-admin-statistiques-ligne {
     display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    border-bottom: solid 1px;
+    text-align: left;
+    padding: 10px;
+    font-size: larger;
+    border-radius: 12px;
+    background-color: var(--couleur-avis-bouton);
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
 }
 
 .admin-selecteur-stats {
@@ -354,36 +359,91 @@
 .admin-rapport-commandes-validees,
 .admin-rapport-note-moyenne,
 .admin-rapport-taux-annulation,
-.admin-rapport-ca {
+.admin-rapport-ca,
+.admin-rapport-ca-total {
     background: var(--couleur-avis-filtre-banner);
-    padding: 10px 10px;
+    padding: 15px 15px;
     border: 1px solid var(--couleur-hero-bouton);
     border-radius: 6px;
     box-shadow: 0 4px 12px var(--couleur-ombre-forte);
     text-align: center;
-    gap: 1rem;
+    gap: 5px;
     display: grid;
+}
+
+.admin-rapport-commandes-validees-liste {
+    display: grid;
+    grid-template-columns: 1fr 50px 50px;
+    font-size: large;
+    gap: 0.5rem;
+    font-style: italic;
+}
+
+#nbr-commandes-by-statut-name-en-attente,
+#nbr-commandes-by-statut-name-validee,
+#nbr-commandes-by-statut-name-annulee,
+#nbr-commandes-by-statut-name-terminee {
+    text-align: left;
 }
 
 .statistiques-titre {
     display: flex;
-    justify-content: flex-start;
-    font-size: x-large;
-    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    font-size: xx-large;
 }
 
-.profil-admin-statistiques-entete {
+#taux-annulation,
+#note-moyenne{
+    font-size: xx-large;
+}
 
+.mois-montant-total {
+    display: flex;
+    gap: 10px;
+    padding: 10px 40px;
+    justify-content: end;
+    font-size: larger;
+    align-items: center;
+
+    #mois-montant-total-label {
+        font-size: larger;
+    }
 }
 
 .profil-admin-statistiques-liste {
+    padding: 0.75rem 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+    font-size: large;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--couleur-police-horaires);
+    border-radius: 12px;
+    align-items: center;
+    font-style: italic;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+}
+
+.profil-admin-statistiques-entete {
     gap: 1rem;
     padding: 0.75rem 0;
     align-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    text-align: center;
+    font-size: x-large;
+    font-family: 'Playfair Display', serif;
+}
 
-    .commandes-champ {
-        border-bottom: 1px solid var(--couleur-presentation-box-tracer);
-    }
+.commandes-champ-center {
+    text-align: center;
+}
+
+.profil-admin-container {
+    display: grid;
+    gap: 1rem;
 }
 
 /* horaires panel Admin */

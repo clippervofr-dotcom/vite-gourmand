@@ -8,6 +8,8 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+$totalCommandes = $commandes;
+
 //liste mois
 $nomsMois = [
     '01' => 'Janvier',
@@ -33,6 +35,9 @@ $liste_menu = [
     "Menu Végétarien"
 ];
 
+//liste statuts
+$liste_statuts = ['en attente', 'validée', 'terminée', 'annulée'];
+
 function isValide($moisChoisi, $nomsMois) {
     if (array_key_exists($moisChoisi, $nomsMois)) {
         return $moisChoisi;
@@ -56,9 +61,9 @@ if ($moisDemande !== null) {
 
 
 //calcul CA TOTAL
-function calculCa($commandes) {
+function calculCa($totalCommandes) {
     $montant_ca = 0;
-    foreach ($commandes as $commande) {
+    foreach ($totalCommandes as $commande) {
         $montant_ca += intval($commande['prix_total']);
     }
     return $montant_ca;
@@ -87,27 +92,32 @@ function calculerCaParMois($commandes, $nomsMois) {
 }
 
 //calcul commandes par titre menu
+
 function calculCommandesParTitreMenu($commandes, $liste_menu) {
     foreach ($liste_menu as $menu) {
         $nombre_commandes = 0;
         $ca_commandes = 0;
+        $compteurStatuts = ['en attente' => 0, 'validée' => 0, 'terminée' => 0, 'annulée' => 0];
         foreach ($commandes as $commande) {
+
             if ($commande['titre'] === $menu) {
                 $nombre_commandes++;
                 $ca_commandes += intval($commande['prix_total']);
+                $compteurStatuts[$commande['statut']]++;
+                $taux_annulation_commandes = ($compteurStatuts['annulée'] / count($commandes)) * 100;
             }
         }
-        $commandes_par_menu[] = ['nom_menu' => $menu, 'nrb_commande_menu' => $nombre_commandes, 'ca_par_commande' => $ca_commandes];
+        $commandes_par_menu[] = ['nom_menu' => $menu, 'nbr_commande_menu' => $nombre_commandes, 'ca_par_commande' => $ca_commandes, 'en_attente' => $compteurStatuts['en attente'], 'validée' => $compteurStatuts['validée'], 'terminée' => $compteurStatuts['terminée'], 'annulée' => $compteurStatuts['annulée'], 'taux_annulation' => round($taux_annulation_commandes, 1) . ' %'];
     }
     return $commandes_par_menu;
 }
 
 //calcul commande par statut 
-$liste_statuts = ['en attente', 'validée', 'terminée', 'annulée'];
-function calculCommandesParStatut($commandes, $liste_statuts) {
+
+function calculCommandesParStatut($totalCommandes, $liste_statuts) {
     foreach ($liste_statuts as $statut) {
         $nombre_commandes = 0;
-        foreach ($commandes as $commande) {
+        foreach ($totalCommandes as $commande) {
             if ($commande['statut'] === $statut) {
                 $nombre_commandes++;
             }
@@ -118,18 +128,18 @@ function calculCommandesParStatut($commandes, $liste_statuts) {
 }
 
 //calcul taux annulation 
-function tauxAnnulationCommandes($commandes) {
-    if (empty($commandes)) {
+function tauxAnnulationCommandes($totalCommandes) {
+    if (empty($totalCommandes)) {
         return '0 %';
     }
 
     $nombre_commandes_annulees = 0;
-    foreach ($commandes as $commande) {
+    foreach ($totalCommandes as $commande) {
         if ($commande['statut'] === 'annulée') {
             $nombre_commandes_annulees++;
         }
     }    
-    $taux_annulation = ($nombre_commandes_annulees / count($commandes)) * 100;
+    $taux_annulation = ($nombre_commandes_annulees / count($totalCommandes)) * 100;
     return round($taux_annulation, 1) . ' %';
 }
 
@@ -172,11 +182,11 @@ $noteAvis = getNoteAvis($arrayAvis);
 // json_encode final
 echo json_encode([
     'success' => true,
-    'ca_total' => calculCa($commandes),
+    'ca_total' => calculCa($totalCommandes),
     'ca_par_mois' => calculerCaParMois($commandes, $nomsMois),
     'commandes_par_menu' => calculCommandesParTitreMenu($commandes, $liste_menu),
-    'commandes_par_statut' => calculCommandesParStatut($commandes, $liste_statuts),
-    'taux_annulation' => tauxAnnulationCommandes($commandes),
+    'commandes_par_statut' => calculCommandesParStatut($totalCommandes, $liste_statuts),
+    'taux_annulation' => tauxAnnulationCommandes($totalCommandes),
     'moyenne_avis' => calculMoyenneAvis($noteAvis),
 ]);
 

@@ -692,7 +692,12 @@ header a {
 
 
 @media (max-width: 900px) {
-    #btn-nav-admin-liste-employe {
+    /*#btn-nav-admin-liste-employe {*/
+    /*    width: 350px;*/
+    /*}*/
+    #btn-nav-admin-liste-employe:hover .circle,
+    #btn-nav-admin-horaires:hover .circle,
+    #btn-nav-admin-commandes:hover .circle {
         width: 350px;
     }
 }
@@ -780,6 +785,10 @@ header a {
     align-items: center;
     justify-content: space-evenly;
     gap: 32px;
+}
+
+.first-ligne-info-horaires {
+    align-items: center;
 }
 
 .third-ligne-info {

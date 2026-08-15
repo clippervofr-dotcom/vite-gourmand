@@ -206,31 +206,16 @@
     font-weight: bold;
 }
 
-@media (max-width: 900px) {
-    .profil-utilisateur-commandes-entete,
-    .profil-employe-commandes-entete,
-    .profil-admin-commandes-entete {
-        display: none;
-    }
-
-    .profil-utilisateur-commandes-ligne,
-    .profil-employe-commandes-ligne,
-    .profil-admin-commandes-ligne {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 1rem;
-        background-color: var(--couleur-box-partenaires);
-        box-shadow: 0 2px 8px var(--couleur-ombre-legere);
-        margin-bottom: 1rem;
-    }
-
-    .commandes-champ::before {
-        content: attr(data-label) " : ";
-        font-weight: bold;
-        color: var(--couleur-hero-bouton);
-    }
+.modif-ouverture-fermeture-mobile {
+    display: none;
 }
+
+.ouverture-mobile,
+.fermeture-mobile {
+    display: none;
+}
+
+
 
 .user-nom-menu,
 .user-statut,
@@ -410,6 +395,10 @@
     #mois-montant-total-label {
         font-size: larger;
     }
+
+    #montant-ca-total-mois {
+        font-size: xx-large;
+    }
 }
 
 .profil-admin-statistiques-liste {
@@ -450,11 +439,13 @@
 
 .modifications-horaires {
     display: grid;
-    grid-template-columns: 100px 1fr 1fr;
-    column-gap: 2rem;
+    grid-template-columns: 100px 1fr;
     gap: 1rem;
-    align-items: center;
     text-align: center;
+
+    .input {
+        width: 100%;
+    }
 }
 
 .modif-jour-titre,
@@ -465,6 +456,8 @@
 
 .jour-titre {
     font-size: larger;
+    display: flex;
+    align-items: center;
 }
 
 .btn-modif-horaire {
@@ -472,6 +465,121 @@
     gap: 3rem;
     margin-top: 2rem;
     justify-content: center;
+}
+
+.horaires-details {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+}
+.horaires-details input {
+    text-align: center;
+    width: 100%;
+}
+
+.modif-horaires-titre {
+    display: grid;
+    grid-template-columns: 150px 1fr 1fr;
+    padding-bottom: 1rem;
+}
+
+/* Horaires responsive */
+@media (max-width: 900px) {
+    .modifications-horaires {
+        text-align: start;
+        grid-template-columns: auto;
+    }
+
+    .modif-fermeture-titre,
+    .modif-ouverture-titre {
+        display: none;
+    }
+
+    .modif-ouverture-fermeture-mobile {
+        display: flex;
+        font-size: xx-large;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .ouverture-mobile,
+    .fermeture-mobile {
+        display: flex;
+        font-size: small;
+    }
+
+    .horaires-details {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: 1fr 4fr;
+        align-items: center;
+
+        .input {
+            text-align: center;
+
+        }
+    }
+
+    .modif-horaires-titre {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-bottom: 1rem;
+    }
+}
+
+/* statistiques responsive */
+
+@media (max-width: 900px) {
+    .profil-utilisateur-commandes-entete,
+    .profil-employe-commandes-entete,
+    .profil-admin-commandes-entete,
+    .profil-admin-statistiques-liste {
+        display: none;
+    }
+
+    .profil-utilisateur-commandes-ligne,
+    .profil-employe-commandes-ligne,
+    .profil-admin-commandes-ligne,
+    .profil-admin-statistiques-ligne {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        background-color: var(--couleur-box-partenaires);
+        box-shadow: 0 2px 8px var(--couleur-ombre-legere);
+        margin-bottom: 1rem;
+    }
+
+    .profil-admin-statistiques-ligne {
+        text-align: center;
+    }
+
+    .commandes-champ::before,
+    .commandes-champ-center::before {
+        content: attr(data-label) " : ";
+        font-weight: bold;
+        color: var(--couleur-hero-bouton);
+    }
+
+    .profil-admin-box-liste-employe,
+    #fond-exterieur-admin {
+        width: 80%;
+    }
+
+    .admin-rapport-stats {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .statistiques-titre {
+        font-size: medium;
+    }
+
+    .mois-montant-total {
+        justify-content: center;
+        padding: 10px 10px;
+    }
 }
 
 

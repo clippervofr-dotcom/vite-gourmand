@@ -296,50 +296,54 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
             <span class="modification-horaire-info"></span>
 
-            <div class="first-ligne-info">
+            <div class="first-ligne-info-horaires">
+                <div class="horaire-container">
+                    <div class="modif-horaires-titre">
+                        <span></span>
+                        <span class="modif-ouverture-titre">Heure d'ouverture :</span>
+                        <span class="modif-fermeture-titre">Heure de fermeture :</span>
+                        <span class="modif-ouverture-fermeture-mobile">Heure d'ouverture<br> &<br> fermeture</span>
+                    </div>
+                    <div class="modifications-horaires">
+                        <span class="jour-titre">Lundi :</span>
+                        <div class="horaires-details">
+                            <span class="ouverture-mobile">Ouverture</span><input type="time" class="input-profil-utilisateur" id="modif-ouverture-lundi" name="modif-ouverture-lundi" value="" step="1800">
+                            <span class="fermeture-mobile">Fermeture</span><input type="time" class="input-profil-utilisateur" id="modif-fermeture-lundi" name="modif-fermeture-lundi" value="" step="1800">
+                        </div>
 
-                <div class="modifications-horaires">
-                    <span class="modif-jour-titre"></span>
-                    <span class="modif-ouverture-titre">Heure d'ouverture :</span>
-                    <span class="modif-fermeture-titre">Heure de fermeture :</span>
 
+                        <span class="jour-titre">Mardi :</span>
+                        <div class="horaires-details">
+                            <span class="ouverture-mobile">Ouverture</span><input type="time" class="input-profil-utilisateur" id="modif-ouverture-mardi" name="modif-ouverture-mardi" value="" step="1800">
+                            <span class="fermeture-mobile">Fermeture</span><input type="time" class="input-profil-utilisateur" id="modif-fermeture-mardi" name="modif-fermeture-mardi" value="" step="1800">
+                        </div>
 
-                    <span class="jour-titre">Lundi :</span>
-                    <input type="time" class="input-profil-utilisateur" id="modif-ouverture-lundi"
-                           name="modif-ouverture-lundi" value="" step="1800">
-                    <input type="time" class="input-profil-utilisateur" id="modif-fermeture-lundi"
-                           name="modif-fermeture-lundi" value="" step="1800">
+                        <span class="jour-titre">Mercredi :</span>
+                        <div class="horaires-details">
+                            <span class="ouverture-mobile">Ouverture</span><input type="time" class="input-profil-utilisateur" id="modif-ouverture-mercredi" name="modif-ouverture-mercredi" value="" step="1800">
+                            <span class="fermeture-mobile">Fermeture</span><input type="time" class="input-profil-utilisateur" id="modif-fermeture-mercredi" name="modif-fermeture-mercredi" value="" step="1800">
+                        </div>
 
-                    <span class="jour-titre">Mardi :</span>
-                    <input type="time" class="input-profil-utilisateur" id="modif-ouverture-mardi"
-                           name="modif-ouverture-mardi" value="" step="1800">
-                    <input type="time" class="input-profil-utilisateur" id="modif-fermeture-mardi"
-                           name="modif-fermeture-mardi" value="" step="1800">
+                        <span class="jour-titre">Jeudi :</span>
+                        <div class="horaires-details">
+                            <span class="ouverture-mobile">Ouverture</span><input type="time" class="input-profil-utilisateur" id="modif-ouverture-jeudi" name="modif-ouverture-jeudi" value="" step="1800">
+                            <span class="fermeture-mobile">Fermeture</span><input type="time" class="input-profil-utilisateur" id="modif-fermeture-jeudi" name="modif-fermeture-jeudi" value="" step="1800">
+                        </div>
 
-                    <span class="jour-titre">Mercredi :</span>
-                    <input type="time" class="input-profil-utilisateur" id="modif-ouverture-mercredi"
-                           name="modif-ouverture-mercredi" value="" step="1800">
-                    <input type="time" class="input-profil-utilisateur" id="modif-fermeture-mercredi"
-                           name="modif-fermeture-mercredi" value="" step="1800">
+                        <span class="jour-titre">Vendredi :</span>
+                        <div class="horaires-details">
+                            <span class="ouverture-mobile">Ouverture</span><input type="time" class="input-profil-utilisateur" id="modif-ouverture-vendredi" name="modif-ouverture-vendredi" value="" step="1800">
+                            <span class="fermeture-mobile">Fermeture</span><input type="time" class="input-profil-utilisateur" id="modif-fermeture-vendredi" name="modif-fermeture-vendredi" value="" step="1800">
+                        </div>
 
-                    <span class="jour-titre">Jeudi :</span>
-                    <input type="time" class="input-profil-utilisateur" id="modif-ouverture-jeudi"
-                           name="modif-ouverture-jeudi" value="" step="1800">
-                    <input type="time" class="input-profil-utilisateur" id="modif-fermeture-jeudi"
-                           name="modif-fermeture-jeudi" value="" step="1800">
-
-                    <span class="jour-titre">Vendredi :</span>
-                    <input type="time" class="input-profil-utilisateur" id="modif-ouverture-vendredi"
-                           name="modif-ouverture-vendredi" value="" step="1800">
-                    <input type="time" class="input-profil-utilisateur" id="modif-fermeture-vendredi"
-                           name="modif-fermeture-vendredi" value="" step="1800">
-
-                    <span class="jour-titre">Samedi :</span>
-                    <input type="time" class="input-profil-utilisateur" id="modif-ouverture-samedi"
-                           name="modif-ouverture-samedi" value="" step="1800">
-                    <input type="time" class="input-profil-utilisateur" id="modif-fermeture-samedi"
-                           name="modif-fermeture-samedi" value="" step="1800">
+                        <span class="jour-titre">Samedi :</span>
+                        <div class="horaires-details">
+                            <span class="ouverture-mobile">Ouverture</span><input type="time" class="input-profil-utilisateur" id="modif-ouverture-samedi" name="modif-ouverture-samedi" value="" step="1800">
+                            <span class="fermeture-mobile">Fermeture</span><input type="time" class="input-profil-utilisateur" id="modif-fermeture-samedi" name="modif-fermeture-samedi" value="" step="1800">
+                        </div>
+                    </div>
                 </div>
+
             </div>
             <div class="btn-modif-horaire">
                 <button type="button" class="animated-button" id="btn-modif-horaire-valider">
@@ -392,19 +396,19 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <div class="admin-rapport-stats">
                 <div class="admin-rapport-note-moyenne">
                     <label>Note moyenne</label>
-                    <span id="note-moyenne" data-label="note moyenne"></span>
+                    <span id="note-moyenne" data-label="Note moyenne"></span>
                 </div>
                 <div class="admin-rapport-taux-annulation">
                     <label>Taux d'annulation<br> global</label>
-                    <span id="taux-annulation" data-label="taux d'annulation"></span>
+                    <span id="taux-annulation" data-label="Taux d'annulation"></span>
                 </div>
                 <div class="admin-rapport-commandes-validees">
                     <label>Commandes Totales:</label>
                     <div class="admin-rapport-commandes-validees-liste">
-                        <span id="nbr-commandes-by-statut-name-en-attente"></span><span>---></span><span id="nbr-commandes-by-statut-en-attente" data-label="commandes en attente"></span>
-                        <span id="nbr-commandes-by-statut-name-validee"></span><span>---></span><span id="nbr-commandes-by-statut-validee" data-label="commandes validées"></span>
-                        <span id="nbr-commandes-by-statut-name-terminee"></span><span>---></span><span id="nbr-commandes-by-statut-terminee" data-label="commandes terminées"></span>
-                        <span id="nbr-commandes-by-statut-name-annulee"></span><span>---></span><span id="nbr-commandes-by-statut-annulee" data-label="commandes annulées"></span>
+                        <span id="nbr-commandes-by-statut-name-en-attente"></span><span>---></span><span id="nbr-commandes-by-statut-en-attente" data-label="Commandes en attente"></span>
+                        <span id="nbr-commandes-by-statut-name-validee"></span><span>---></span><span id="nbr-commandes-by-statut-validee" data-label="Commandes validées"></span>
+                        <span id="nbr-commandes-by-statut-name-terminee"></span><span>---></span><span id="nbr-commandes-by-statut-terminee" data-label="Commandes terminées"></span>
+                        <span id="nbr-commandes-by-statut-name-annulee"></span><span>---></span><span id="nbr-commandes-by-statut-annulee" data-label="Commandes annulées"></span>
                     </div>
 
                 </div>

@@ -259,19 +259,20 @@ img.jose-img {
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.5s ease-in-out;
+        background: var(--couleur-avis-bouton);
+        border: solid 1px var(--couleur-tracer-hero-bouton);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+        display: grid;
+        gap: 0.5rem;
+        justify-content: center;
     }
 
     .commentaires-box.active {
         opacity: 1;
         pointer-events: auto;
-        display: grid;
-        gap: 2rem;
-        justify-content: center;
-        background: var(--couleur-avis-bouton);
-        border: solid 1px var(--couleur-tracer-hero-bouton);
-        border-radius: 12px;
-        box-shadow: 0 4px 12px var(--couleur-ombre-forte);
     }
+
 
 }
 
@@ -280,11 +281,11 @@ img.jose-img {
 .auteur,
 .commentaire-content-user-etoiles {
     font-size: xx-large;
+    padding: 10px 20px;
 }
 
 .date-avis {
     font-size: larger;
-    border-bottom: solid 2px;
     padding-bottom: 1rem;
 }
 
@@ -441,6 +442,3 @@ img.jose-img {
     color: orange;
 }
 
-/*.star-vide {*/
-/*    */
-/*}*/

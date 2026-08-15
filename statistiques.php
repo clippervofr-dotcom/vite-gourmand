@@ -98,8 +98,8 @@ function calculCommandesParTitreMenu($commandes, $liste_menu) {
         $nombre_commandes = 0;
         $ca_commandes = 0;
         $compteurStatuts = ['en attente' => 0, 'validée' => 0, 'terminée' => 0, 'annulée' => 0];
+        $taux_annulation_commandes = 0;
         foreach ($commandes as $commande) {
-
             if ($commande['titre'] === $menu) {
                 $nombre_commandes++;
                 $ca_commandes += intval($commande['prix_total']);
@@ -107,7 +107,15 @@ function calculCommandesParTitreMenu($commandes, $liste_menu) {
                 $taux_annulation_commandes = ($compteurStatuts['annulée'] / count($commandes)) * 100;
             }
         }
-        $commandes_par_menu[] = ['nom_menu' => $menu, 'nbr_commande_menu' => $nombre_commandes, 'ca_par_commande' => $ca_commandes, 'en_attente' => $compteurStatuts['en attente'], 'validée' => $compteurStatuts['validée'], 'terminée' => $compteurStatuts['terminée'], 'annulée' => $compteurStatuts['annulée'], 'taux_annulation' => round($taux_annulation_commandes, 1) . ' %'];
+        $commandes_par_menu[] = [
+            'nom_menu' => $menu,
+            'nbr_commande_menu' => $nombre_commandes,
+            'ca_par_commande' => $ca_commandes,
+            'en_attente' => $compteurStatuts['en attente'],
+            'validée' => $compteurStatuts['validée'],
+            'terminée' => $compteurStatuts['terminée'],
+            'annulée' => $compteurStatuts['annulée'],
+            'taux_annulation' => round($taux_annulation_commandes, 1) . ' %'];
     }
     return $commandes_par_menu;
 }
@@ -188,5 +196,6 @@ echo json_encode([
     'commandes_par_statut' => calculCommandesParStatut($totalCommandes, $liste_statuts),
     'taux_annulation' => tauxAnnulationCommandes($totalCommandes),
     'moyenne_avis' => calculMoyenneAvis($noteAvis),
+    'mois_filtre' => $moisDemande,
 ]);
 

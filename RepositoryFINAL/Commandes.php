@@ -10,7 +10,7 @@ class Commandes  implements JsonSerializable {
         private string $datePrestation,
         private string $heurePrestation,
         private string $adresseLivraison,
-        private int $nombrePersonne,
+        private int $nombrePersonnes,
         private float $prixMenu,
         private float $prixLivraison,
         private float $prixTotal,
@@ -54,8 +54,8 @@ class Commandes  implements JsonSerializable {
         return $this->adresseLivraison;
     }
 
-    public function getNombrePersonne(): int {
-        return $this->nombrePersonne;
+    public function getNombrePersonnes(): int {
+        return $this->nombrePersonnes;
     }
 
     public function getPrixMenu(): float {
@@ -108,7 +108,7 @@ class Commandes  implements JsonSerializable {
             'date_prestation' => $this->datePrestation,
             'heure_prestation' => $this->heurePrestation,
             'adresse_livraison' => $this->adresseLivraison,
-            'nombre_personne' => $this->nombrePersonne,
+            'nombre_personnes' => $this->nombrePersonnes,
             'prix_menu' => $this->prixMenu,
             'prix_livraison' => $this->prixLivraison,
             'prix_total' => $this->prixTotal,

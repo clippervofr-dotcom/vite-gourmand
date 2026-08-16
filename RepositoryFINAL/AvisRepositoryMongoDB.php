@@ -36,7 +36,32 @@ class AvisRepositoryMongoDB implements AvisRepositoryInterface
     }
 
     public function getByUtilisateurId(int $utilisateurId): array {
-        $filter = ['utilisateurId' => $utilisateurId];
+        $filter = ['utilisateur_id' => $utilisateurId];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $this->manager->executeQuery('vite_et_gourmand.avis', $query);
+
+        $avisList = [];
+        foreach ($cursor as $result) {
+            $avisList[] = $this->mapLigneVersAvis($result);
+        }
+        return $avisList;
+    }
+
+    public function getByDateAvis(string $dateAvis): array {
+
+        $filter = ['date_avis' => $dateAvis];
+        $query = new MongoDB\Driver\Query($filter);
+        $cursor = $this->manager->executeQuery('vite_et_gourmand.avis', $query);
+
+        $avisList = [];
+        foreach ($cursor as $result) {
+            $avisList[] = $this->mapLigneVersAvis($result);
+        }
+        return $avisList;
+    }
+
+    public function getByCommandeId(int $commandeId): array {
+        $filter = ['commande_id' => $commandeId];
         $query = new MongoDB\Driver\Query($filter);
         $cursor = $this->manager->executeQuery('vite_et_gourmand.avis', $query);
 
@@ -64,21 +89,21 @@ class AvisRepositoryMongoDB implements AvisRepositoryInterface
 
         if ($avis->getAvisId() === null) {
             $document = [
-                'utilisateurId' => $avis->getUtilisateurId(),
-                'commandeId' => $avis->getCommandeId(),
+                'utilisateur_id' => $avis->getUtilisateurId(),
+                'commande_id' => $avis->getCommandeId(),
                 'note' => $avis->getNote(),
-                'descriptionAvis' => $avis->getDescriptionAvis(),
-                'statut' => $avis->getStatut()
+                'commentaire' => $avis->getCommentaire(),
+                'date_avis' => $avis->getDateAvis()
             ];
             $bulk->insert($document);
         } else {
             $filter = ['avisId' => $avis->getAvisId()];
             $update = ['$set' => [
-                'utilisateurId' => $avis->getUtilisateurId(),
-                'commandeId' => $avis->getCommandeId(),
+                'utilisateur_id' => $avis->getUtilisateurId(),
+                'commande_id' => $avis->getCommandeId(),
                 'note' => $avis->getNote(),
-                'descriptionAvis' => $avis->getDescriptionAvis(),
-                'statut' => $avis->getStatut()
+                'commentaire' => $avis->getCommentaire(),
+                'date_avis' => $avis->getDateAvis()
             ]];
             $bulk->update($filter, $update);
         }
@@ -96,11 +121,11 @@ class AvisRepositoryMongoDB implements AvisRepositoryInterface
     private function mapLigneVersAvis($ligne): Avis {
         return new Avis(
             avisId: $ligne->avisId ?? null,
-            utilisateurId: $ligne->utilisateurId,
-            commandeId: $ligne->commandeId,
+            utilisateurId: $ligne->utilisateur_id,
+            commandeId: $ligne->commande_id,
             note: $ligne->note,
-            descriptionAvis: $ligne->descriptionAvis,
-            statut: $ligne->statut
+            commentaire: $ligne->commentaire,
+            dateAvis: $ligne->date_avis
         );
     }
 }

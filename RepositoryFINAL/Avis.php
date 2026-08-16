@@ -6,8 +6,8 @@ class Avis {
         private int $utilisateurId,
         private int $commandeId,
         private int $note,
-        private string $descriptionAvis,
-        private string $statut
+        private string $commentaire,
+        private string $dateAvis,
     ) {}
 
     public function getAvisId(): ?int {
@@ -26,16 +26,15 @@ class Avis {
         return $this->note;
     }
 
-    public function getDescriptionAvis(): string {
-        return $this->descriptionAvis;
+    public function getDateAvis(): string {
+        return $this->dateAvis;
     }
 
-    public function getStatut(): string {
-        return $this->statut;
+    public function getCommentaire(): string {
+        return $this->commentaire;
     }
 
     public function setAvisId(int $avisId): void {
         $this->avisId = $avisId;
     }
 }
-?>

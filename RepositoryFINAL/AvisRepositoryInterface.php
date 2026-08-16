@@ -9,6 +9,10 @@ interface AvisRepositoryInterface {
 
     public function getByUtilisateurId(int $utilisateurId): array;
 
+    public function getByCommandeId(int $commandeId): array;
+
+    public function getByDateAvis(string $dateAvis): array;
+
     public function save(Avis $avis): void;
 
     public function delete(int $avisId): void;

@@ -1,5 +1,5 @@
 <?php
-// Utilisateurs.php
+// Utilisateur.php
 class Utilisateur implements JsonSerializable {
     public function __construct(
         private ?int $id,

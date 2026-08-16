@@ -13,3 +13,6 @@ TEST ONLY/
 __pycache__/
 *.pyc
 node_modules/
+
+includes/mongo-db.php
+RepositoryFINAL/mongo-db.php

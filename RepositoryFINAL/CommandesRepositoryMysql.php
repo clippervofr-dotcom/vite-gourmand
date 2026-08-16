@@ -152,7 +152,7 @@ class CommandesRepositoryMysql implements CommandesRepositoryInterface {
             $stmt->bindValue(':date_prestation', $commande->getDatePrestation(), PDO::PARAM_STR);
             $stmt->bindValue(':heure_prestation', $commande->getHeurePrestation(), PDO::PARAM_STR);
             $stmt->bindValue(':adresse_livraison', $commande->getAdresseLivraison(), PDO::PARAM_STR);
-            $stmt->bindValue(':nombre_personnes', $commande->getNombrePersonne(), PDO::PARAM_INT);
+            $stmt->bindValue(':nombre_personne', $commande->getNombrePersonne(), PDO::PARAM_INT);
             $stmt->bindValue(':prix_menu', $commande->getPrixMenu(), PDO::PARAM_STR);
             $stmt->bindValue(':prix_livraison', $commande->getPrixLivraison(), PDO::PARAM_STR);
             $stmt->bindValue(':prix_total', $commande->getPrixTotal(), PDO::PARAM_STR);

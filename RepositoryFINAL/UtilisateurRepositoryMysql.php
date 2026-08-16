@@ -1,5 +1,5 @@
 <?php
-// UtilisateursRepositoryMysql.php
+// UtilisateurRepositoryMysql.php
 class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface {
     private PDO $pdo;
 

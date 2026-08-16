@@ -1,5 +1,5 @@
 <?php
-require_once 'Utilisateurs.php';
-require_once 'UtilisateursRepositoryInterface.php';
-require_once 'UtilisateursRepositoryMysql.php';
+require_once 'Utilisateur.php';
+require_once 'UtilisateurRepositoryInterface.php';
+require_once 'UtilisateurRepositoryMysql.php';
 require_once 'UtilisateurController.php';

@@ -1,5 +1,5 @@
 <?php
-// UtilisateursRepositoryInterface.php
+// UtilisateurRepositoryInterface.php
 interface UtilisateurRepositoryInterface {
     public function getById(int $id): ?Utilisateur;
     public function getAll(): array;

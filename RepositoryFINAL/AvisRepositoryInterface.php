@@ -1,8 +1,6 @@
 <?php
 // AvisRepositoryInterface.php
 interface AvisRepositoryInterface {
-    public function getById(int $avisId): ?Avis;
-
     public function getAll(): array;
 
     public function getByNote(int $note): array;
@@ -15,7 +13,7 @@ interface AvisRepositoryInterface {
 
     public function save(Avis $avis): void;
 
-    public function delete(int $avisId): void;
+    public function delete(int $commandeId): void;
 }
 
 

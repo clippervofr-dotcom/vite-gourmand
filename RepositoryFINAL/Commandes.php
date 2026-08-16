@@ -6,7 +6,6 @@ class Commandes  implements JsonSerializable {
         private string $numeroCommande,
         private int $utilisateurId,
         private int $menuId,
-        private string $dateCommande,
         private string $datePrestation,
         private string $heurePrestation,
         private string $adresseLivraison,
@@ -19,7 +18,8 @@ class Commandes  implements JsonSerializable {
         private ?string $modeContactAnnulation,
         private bool $pretMateriel,
         private bool $renduMateriel,
-        private bool $possedeAvis
+        private bool $possedeAvis,
+        private ?string $dateCommande = null,
     ) {}
 
     public function getCommandeId(): ?int {
@@ -38,7 +38,7 @@ class Commandes  implements JsonSerializable {
         return $this->menuId;
     }
 
-    public function getDateCommande(): string {
+    public function getDateCommande(): ?string {
         return $this->dateCommande;
     }
 
@@ -98,13 +98,16 @@ class Commandes  implements JsonSerializable {
         $this->commandeId = $commandeId;
     }
 
+    public function setPossedeAvis(bool $possedeAvis): void {
+        $this->possedeAvis = $possedeAvis;
+    }
+
     public function jsonSerialize(): array {
         return [
             'commande_id' => $this->commandeId,
             'numero_commande' => $this->numeroCommande,
             'utilisateur_id' => $this->utilisateurId,
             'menu_id' => $this->menuId,
-            'date_commande' => $this->dateCommande,
             'date_prestation' => $this->datePrestation,
             'heure_prestation' => $this->heurePrestation,
             'adresse_livraison' => $this->adresseLivraison,
@@ -117,7 +120,8 @@ class Commandes  implements JsonSerializable {
             'mode_contact_annulation' => $this->modeContactAnnulation,
             'pret_materiel' => $this->pretMateriel,
             'rendu_materiel' => $this->renduMateriel,
-            'possede_avis' => $this->possedeAvis
+            'possede_avis' => $this->possedeAvis,
+            'date_commande' => $this->dateCommande,
         ];
     }
 }

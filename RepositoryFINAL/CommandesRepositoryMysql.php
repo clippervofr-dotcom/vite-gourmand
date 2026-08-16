@@ -143,12 +143,11 @@ class CommandesRepositoryMysql implements CommandesRepositoryInterface {
 
     public function save(Commandes $commande): void {
         if ($commande->getCommandeId() === null) {
-            $sql = 'INSERT INTO commande (numero_commande, utilisateur_id, menu_id, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut, motif_annulation, mode_contact_annulation, pret_materiel, rendu_materiel, possede_avis) VALUES (:numero_commande, :utilisateur_id, :menu_id, :date_commande, :date_prestation, :heure_prestation, :adresse_livraison, :nombre_personnes, :prix_menu, :prix_livraison, :prix_total, :statut, :motif_annulation, :mode_contact_annulation, :pret_materiel, :rendu_materiel, :possede_avis)';
+            $sql = 'INSERT INTO commande (numero_commande, utilisateur_id, menu_id, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut, motif_annulation, mode_contact_annulation, pret_materiel, rendu_materiel, possede_avis) VALUES (:numero_commande, :utilisateur_id, :menu_id, :date_prestation, :heure_prestation, :adresse_livraison, :nombre_personnes, :prix_menu, :prix_livraison, :prix_total, :statut, :motif_annulation, :mode_contact_annulation, :pret_materiel, :rendu_materiel, :possede_avis)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':numero_commande', $commande->getNumeroCommande(), PDO::PARAM_STR);
             $stmt->bindValue(':utilisateur_id', $commande->getUtilisateurId(), PDO::PARAM_INT);
             $stmt->bindValue(':menu_id', $commande->getMenuId(), PDO::PARAM_INT);
-            $stmt->bindValue(':date_commande', $commande->getDateCommande(), PDO::PARAM_STR);
             $stmt->bindValue(':date_prestation', $commande->getDatePrestation(), PDO::PARAM_STR);
             $stmt->bindValue(':heure_prestation', $commande->getHeurePrestation(), PDO::PARAM_STR);
             $stmt->bindValue(':adresse_livraison', $commande->getAdresseLivraison(), PDO::PARAM_STR);
@@ -176,12 +175,11 @@ class CommandesRepositoryMysql implements CommandesRepositoryInterface {
             $stmtVerif->execute();
             $ancienStatut = $stmtVerif->fetchColumn();
     
-            $sql = 'UPDATE commande SET numero_commande = :numero_commande, utilisateur_id = :utilisateur_id, menu_id = :menu_id, date_commande = :date_commande, date_prestation = :date_prestation, heure_prestation = :heure_prestation, adresse_livraison = :adresse_livraison, nombre_personnes = :nombre_personnes, prix_menu = :prix_menu, prix_livraison = :prix_livraison, prix_total = :prix_total, statut = :statut, motif_annulation = :motif_annulation, mode_contact_annulation = :mode_contact_annulation, pret_materiel = :pret_materiel, rendu_materiel = :rendu_materiel, possede_avis = :possede_avis WHERE commande_id = :commande_id';
+            $sql = 'UPDATE commande SET numero_commande = :numero_commande, utilisateur_id = :utilisateur_id, menu_id = :menu_id, date_prestation = :date_prestation, heure_prestation = :heure_prestation, adresse_livraison = :adresse_livraison, nombre_personnes = :nombre_personnes, prix_menu = :prix_menu, prix_livraison = :prix_livraison, prix_total = :prix_total, statut = :statut, motif_annulation = :motif_annulation, mode_contact_annulation = :mode_contact_annulation, pret_materiel = :pret_materiel, rendu_materiel = :rendu_materiel, possede_avis = :possede_avis WHERE commande_id = :commande_id';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':numero_commande', $commande->getNumeroCommande(), PDO::PARAM_STR);
             $stmt->bindValue(':utilisateur_id', $commande->getUtilisateurId(), PDO::PARAM_INT);
             $stmt->bindValue(':menu_id', $commande->getMenuId(), PDO::PARAM_INT);
-            $stmt->bindValue(':date_commande', $commande->getDateCommande(), PDO::PARAM_STR);
             $stmt->bindValue(':date_prestation', $commande->getDatePrestation(), PDO::PARAM_STR);
             $stmt->bindValue(':heure_prestation', $commande->getHeurePrestation(), PDO::PARAM_STR);
             $stmt->bindValue(':adresse_livraison', $commande->getAdresseLivraison(), PDO::PARAM_STR);
@@ -239,7 +237,6 @@ class CommandesRepositoryMysql implements CommandesRepositoryInterface {
             numeroCommande: $ligne['numero_commande'],
             utilisateurId: $ligne['utilisateur_id'],
             menuId: $ligne['menu_id'],
-            dateCommande: $ligne['date_commande'],
             datePrestation: $ligne['date_prestation'],
             heurePrestation: $ligne['heure_prestation'],
             adresseLivraison: $ligne['adresse_livraison'],
@@ -253,6 +250,7 @@ class CommandesRepositoryMysql implements CommandesRepositoryInterface {
             pretMateriel: (bool) $ligne['pret_materiel'],
             renduMateriel: (bool) $ligne['rendu_materiel'],
             possedeAvis: (bool) $ligne['possede_avis'],
+            dateCommande: $ligne['date_commande']
         );
     }
 }

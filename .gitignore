@@ -1,6 +1,6 @@
 Obsidian/
 .obsidian/
-.env
+includes/.env
 .vscode/
 .idea/
 images-ressources/

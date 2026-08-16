@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 $sql = 'SELECT commande.commande_id, commande.date_commande, commande.prix_total, commande.statut, menu.titre, menu.menu_id FROM commande JOIN menu ON commande.menu_id = menu.menu_id';
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
-$commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$commandes = $stmt->fetchAll();
 
 $totalCommandes = $commandes;
 
@@ -92,7 +92,6 @@ function calculerCaParMois($commandes, $nomsMois) {
 }
 
 //calcul commandes par titre menu
-
 function calculCommandesParTitreMenu($commandes, $liste_menu) {
     foreach ($liste_menu as $menu) {
         $nombre_commandes = 0;
@@ -120,8 +119,7 @@ function calculCommandesParTitreMenu($commandes, $liste_menu) {
     return $commandes_par_menu;
 }
 
-//calcul commande par statut 
-
+//calcul commande par statut
 function calculCommandesParStatut($totalCommandes, $liste_statuts) {
     foreach ($liste_statuts as $statut) {
         $nombre_commandes = 0;

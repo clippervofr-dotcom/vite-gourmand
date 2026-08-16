@@ -1,7 +1,16 @@
 <?php
 session_start();
-require 'includes/db.php';
-require 'includes/mongo-db.php';
+
+use Controllers\AvisController;
+use Repositories\HistoriqueStatutRepositoryMysql;
+use Repositories\CommandesRepositoryMysql;
+use Repositories\AvisRepositoryMongoDB;
+use Entities\Avis;
+
+use includes\Autoloader;
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
 header('Content-Type: application/json');
 
 if (!isset($_SESSION['utilisateur'])) {
@@ -23,31 +32,18 @@ if (!$commandeId || !$note) {
     exit;
 }
 
-$stmt = $pdo->prepare('SELECT utilisateur_id, possede_avis FROM commande WHERE commande_id = ?');
-$stmt->execute([$commandeId]);
-$commande = $stmt->fetch();
+$historiqueRepository = new HistoriqueStatutRepositoryMysql($pdo);
+$commandesRepository = new CommandesRepositoryMysql($pdo, $historiqueRepository);
+$avisRepository = new AvisRepositoryMongoDB($manager);
+$avisController = new AvisController($avisRepository, $commandesRepository);
 
-if (!$commande || $commande['utilisateur_id'] != $_SESSION['utilisateur']['utilisateur_id']) {
-    echo json_encode(['success' => false, 'message' => 'Utilisateur invalide.']);
-    exit;
-}
+$avis = new Avis(
+    utilisateurId: $_SESSION['utilisateur']['utilisateur_id'],
+    commandeId: (int) $commandeId,
+    note: (int) $note,
+    commentaire: $commentaire,
+    dateAvis: date('Y-m-d H:i:s')
+);
 
-if ($commande['possede_avis'] == 1) {
-    echo json_encode(['success' => false, 'message' => 'La commande possède déjà un avis.']);
-    exit;
-}
-
-$bulk = new MongoDB\Driver\BulkWrite();
-$bulk->insert([
-    'utilisateur_id' => $_SESSION['utilisateur']['utilisateur_id'],
-    'commande_id' => $commandeId,
-    'note' => $note,
-    'commentaire' => $commentaire,
-    'date_avis' => date('Y-m-d H:i:s'),
-]);
-$manager->executeBulkWrite('vite_et_gourmand.avis', $bulk);
-
-$stmt = $pdo->prepare('UPDATE commande SET possede_avis = ? WHERE commande_id = ?');
-$stmt->execute([1, $commandeId]);
-
-echo json_encode(['success' => true]);
+$resultat = $avisController->ajouterAvis($avis);
+echo json_encode($resultat);

@@ -1,38 +1,42 @@
 <?php
-require 'includes/db.php';
-require 'includes/mongo-db.php';
+
+use Repositories\HistoriqueStatutRepositoryMysql;
+use Repositories\UtilisateurRepositoryMysql;
+use Repositories\AvisRepositoryMongoDB;
+use Repositories\CommandesRepositoryMysql;
+use Controllers\AvisController;
+use Controllers\UtilisateurController;
+
+use includes\Autoloader;
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
 header('Content-Type: application/json');
 
 
-// Affichage via Query
-// 1er argument ===>   []   === on prend tous les avis
-// 2em argument ===>   ['sort' => .... === on tri selon plusieurs critères, par ordre de priorité et si égalité
-// setTypeMap === transforme objets en tableau
+$historiqueRepository = new HistoriqueStatutRepositoryMysql($pdo);
+$commandesRepository = new CommandesRepositoryMysql($pdo, $historiqueRepository);
+$avisRepository = new AvisRepositoryMongoDB($manager);
+$avisController = new AvisController($avisRepository, $commandesRepository);
+$utilisateurRepository = new UtilisateurRepositoryMysql($pdo);
+$utilisateurController = new UtilisateurController($utilisateurRepository);
 
-try {
-    $query = new MongoDB\Driver\Query([], ['sort' => ['note' => -1, 'date-avis' => -1]]);
-    $curseur = $manager->executeQuery('vite_et_gourmand.avis', $query);
-    $curseur->setTypeMap(['root' => 'array', 'document' => 'array']);
-} catch (Exception $e) {
-    echo json_encode(['success' => false, 'message' => 'Erreur de lecture données MongoDB : ' . $e->getMessage()]);
-    exit;
-}
+
+$toutLesAvis = $avisController->getAllAvis();
+
 
 $avis = [];
-foreach ($curseur as $document) {
-    $utilisateurId = $document['utilisateur_id'];
-    $stmt = $pdo->prepare('SELECT nom, prenom FROM utilisateur WHERE utilisateur_id = ?');
-    $stmt->execute([$utilisateurId]);
-    $utilisateurInfos = $stmt->fetch();
-
+foreach ($toutLesAvis as $unAvis) {
+    $utilisateurId = $unAvis->getUtilisateurId();
+    $utilisateurInfos = $utilisateurController->trouverUtilisateur($unAvis->getUtilisateurId());
     $avis[] = [
-        'utilisateur_id' => $document['utilisateur_id'],
-        'commande_id' => $document['commande_id'],
-        'note' => $document['note'],
-        'commentaire' => $document['commentaire'],
-        'date_avis' => $document['date_avis'],
-        'nom' => $utilisateurInfos['nom'] ?? 'Doe',
-        'prenom' => $utilisateurInfos['prenom'] ?? 'John',
+        'utilisateur_id' => $unAvis->getUtilisateurId(),
+        'commande_id' => $unAvis->getCommandeId(),
+        'note' => $unAvis->getNote(),
+        'commentaire' => $unAvis->getCommentaire(),
+        'date_avis' => $unAvis->getDateAvis(),
+        'nom' => $utilisateurInfos->getNom() ?? 'Doe',
+        'prenom' => $utilisateurInfos->getPrenom() ?? 'John',
     ];
 }
 echo json_encode(['success' => true, 'avis' => $avis]);

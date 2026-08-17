@@ -1,14 +1,20 @@
 <?php
-require 'includes/db.php';
+session_start();
+
+use Controllers\HorairesController;
+use Repositories\HorairesRepositoryMysql;
+
+use includes\Autoloader;
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
 header('Content-Type: application/json');
 
-$stmt = $pdo->prepare('SELECT horaire.* FROM horaire ORDER BY horaire_id');
-$stmt->execute();
 
-$horaires = $stmt->fetchAll();
+$horairesRepository = new HorairesRepositoryMysql($pdo);
+$horairesController = new HorairesController($horairesRepository);
 
-echo json_encode($horaires);
+$toutLesHorairesTrier = $horairesController->getByOrderedId();
 
-if (!$horaires) {
-    echo json_encode(['success' => false, 'message' => 'Horaires manquants.']);
-}
+echo json_encode($toutLesHorairesTrier);
+

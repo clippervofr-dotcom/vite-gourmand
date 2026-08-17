@@ -1,27 +1,54 @@
 <?php
-require 'includes/db.php';
 session_start();
+
+use Controllers\CommandesController;
+use Repositories\CommandesRepositoryMysql;
+use Repositories\HistoriqueStatutRepositoryMysql;
+
+use includes\Autoloader;
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
 header('Content-Type: application/json');
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['success' => false, 'message' => 'Mauvaise méthode.']);
+    exit;
+}
 
-if (isset($_SESSION['utilisateur'])) {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_SESSION['utilisateur']['role_id'] === 2)) {
+if (!isset($_SESSION['utilisateur'])) {
+    echo json_encode(['success' => false, 'message' => 'Non connecté.']);
+    exit;
+}
 
-        $commandeId = $_POST['commande_id'] ?? null;
-        $nouveauStatut = $_POST['statut'] ?? null;
-        $statusAutorises = 'validée';
+if (!($_SESSION['utilisateur']['role_id'] === 2 || $_SESSION['utilisateur']['role_id'] === 3)) {
+    echo json_encode(['success' => false, 'message' => 'Droits insuffisants.']);
+    exit;
+}
 
-        if ($commandeId && $nouveauStatut === $statusAutorises) {
+$commandeId = $_POST['commande_id'] ?? null;
+$nouveauStatut = $_POST['statut'] ?? null;
+$statusAutorises = 'validée';
 
-            $stmt = $pdo->prepare('UPDATE commande SET statut = ? WHERE commande_id = ?');
-            $stmt->execute([$nouveauStatut, $commandeId]);
-            echo json_encode(['success' => true]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Paramètres invalides.']);
-        }
+$historiqueStatutRepository = new HistoriqueStatutRepositoryMysql($pdo);
+$commandesRepository = new CommandesRepositoryMysql($pdo, $historiqueStatutRepository);
+$commandesController = new CommandesController($commandesRepository);
+
+if ($commandeId && $nouveauStatut === $statusAutorises) {
+    $commande = $commandesController->getCommandeById((int)$commandeId);
+    if (!$commande) {
+        echo json_encode(['success' => false, 'message' => 'Commande introuvable.']);
+        exit;
+    }
+
+    $commande->setStatut($nouveauStatut);
+    $validationCommande = $commandesController->saveOrUpdateCommande($commande);
+
+    if ($validationCommande['success']) {
+        echo json_encode(['success' => true, 'message' => 'Commande validée avec succès.']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Accès refusé.']);
+        echo json_encode(['success' => false, 'message' => 'Erreur lors de la validation de la commande.']);
     }
 } else {
-    echo json_encode(['success' => false, 'message' => 'Non connecté.']);
+    echo json_encode(['success' => false, 'message' => 'Paramètres invalides.']);
 }

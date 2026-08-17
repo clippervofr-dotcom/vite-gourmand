@@ -1,5 +1,19 @@
-<!--modale faire un devis-->
+<!--Modale A MODIF POUR ERREURS CONNEXION -->
+<!--<div id="erreurs-inscription-modal" class="modal-overlay">-->
+<!--    <div class="modal-box modal-box-petite">-->
+<!--        <button type="button" class="modal-close" id="erreurs-confirmation-close"-->
+<!--                aria-label="Fermer la fenêtre">&times;-->
+<!--        </button>-->
+<!--        <h2>Ooops !</h2>-->
+<!--        <p class="erreurs-inscription">-->
+<!--            Des erreurs sont survenues.-->
+<!--        </p>-->
+<!--        <span class="erreurs-inscription-motifs"></span>-->
+<!--    </div>-->
+<!--</div>-->
 
+
+<!--modale faire un devis-->
 <div id="devis-modal" class="modal-overlay">
     <div class="modal-box">
         <button type="button" class="modal-close" id="devis-close" aria-label="Fermer la fenêtre">&times;</button>
@@ -58,6 +72,7 @@
     </div>
 </div>
 
+<!--Modale devis confirmation -->
 <div id="devis-confirmation" class="modal-overlay">
     <div class="modal-box modal-box-petite">
         <button type="button" class="modal-close" id="confirmation-close"

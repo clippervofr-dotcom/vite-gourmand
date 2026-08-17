@@ -1,45 +1,86 @@
 <?php
 session_start();
-require 'includes/db.php';
+
+use Entities\Utilisateur;
+use Repositories\UtilisateurRepositoryMysql;
+use Controllers\UtilisateurController;
+
+use includes\Autoloader;
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
+
+$erreurs = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $mdp = $_POST['mdp'];
-    $mdp_confirm = $_POST['mdp-confirm'];
 
-    $valide = $mdp === $mdp_confirm;
+    $utilisateurRepository = new UtilisateurRepositoryMysql($pdo);
+    $utilisateurController = new UtilisateurController($utilisateurRepository);
 
-    if ($valide) {
+    $mdp = $_POST['mdp'] ?? null;
+    $mdp_confirm = $_POST['mdp-confirm'] ?? null;
+    $mdpValide = $mdp === $mdp_confirm;
+    if (!$mdpValide) {
+        $erreurs[] = 'Les mots de passe ne correspondent pas.';
+    }
+
+    $nom = $_POST['nom'] ?? null;
+    $prenom = $_POST['prenom'] ?? null;
+    $adresse = $_POST['adresse'] ?? null;
+    $ville = $_POST['ville'] ?? null;
+
+    $codePostal = $_POST['code-postal'] ?? null;
+    $codePostalValide = preg_match('/^[0-9]{5}$/', $codePostal);
+    if (!$codePostalValide) {
+        $erreurs[] = 'Code postal invalide.';
+    }
+
+    $telephone = $_POST['telephone'] ?? null;
+    $telephoneValide = preg_match('/^[0-9]{10}$/', $telephone);
+    if (!$telephoneValide) {
+        $erreurs[] = 'Telephone invalide.';
+    }
+
+    $email = $_POST['email'] ?? null;
+    $emailValide = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (!$emailValide) {
+        $erreurs[] = 'Email invalide.';
+    }
+
+
+    if ($mdpValide && $emailValide && $telephoneValide && $codePostalValide) {
         $mdp_hache = password_hash($mdp, PASSWORD_DEFAULT);
 
-        $stmt = $pdo->prepare('INSERT INTO utilisateur (role_id, nom, prenom, adresse, code_postal, ville, telephone, email, password) VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $roleId= 1; //role utilisateur
 
-        $stmt->execute([
-                $_POST['nom'],
-                $_POST['prenom'],
-                $_POST['adresse'],
-                $_POST['code-postal'],
-                $_POST['ville'],
-                $_POST['telephone'],
-                $_POST['email'],
-                $mdp_hache,
-                ]);
+        $newUtilisateur = new Utilisateur(
+                null,
+                $nom,
+                $prenom,
+                $email,
+                $telephone,
+                $adresse,
+                $ville,
+                $codePostal,
+                true,
+                $roleId
+        );
 
-        $nouvel_id = $pdo->lastInsertId();
-
-        $stmtUser = $pdo->prepare('SELECT * FROM utilisateur WHERE utilisateur_id = ?');
-        $stmtUser->execute([$nouvel_id]);
-        $utilisateur = $stmtUser->fetch();
-
-        unset($utilisateur['password']);
-        $_SESSION['utilisateur'] = $utilisateur;
-
-        header('location: index.php');
-        exit;
-    } else {
-        $erreur = "Les mots de passe ne correspondent pas.";
+        $inscriptionUtilisateur = $utilisateurController->ajouterUtilisateur($newUtilisateur);
+        if (!$inscriptionUtilisateur['success']) {
+            $erreurs[] = 'Erreur d\'enregistrement.';
+        } else {
+            $ajoutMdp = $utilisateurController->ajouterPassword($newUtilisateur->getId(), $mdp_hache);
+            if ($ajoutMdp['success']) {
+                $_SESSION['utilisateur'] = $newUtilisateur;
+                header('location: index.php');
+                exit;
+            } else {
+                $erreurs[] = 'Erreur d\'ajout du mot de passe.';
+            }
+        }
     }
 }
-
 ?>
 
 <?php $css_pages = ['forms']; ?>
@@ -48,9 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <form class="form-page" method="post" action="">
 
-            <?php if (isset($erreur)) : ?>
-                <p class="erreur">
-                    <?= htmlspecialchars($erreur, ENT_QUOTES, 'UTF-8') ?>
+            <?php if (count($erreurs) > 0) : ?>
+                <p class="erreur-inscription">
+                    <?php foreach ($erreurs as $erreur) {
+                        echo htmlspecialchars($erreur, ENT_QUOTES, 'UTF-8');
+                    }?>
                 </p>
             <?php endif; ?>
 

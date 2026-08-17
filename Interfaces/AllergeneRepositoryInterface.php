@@ -14,5 +14,3 @@ interface AllergeneRepositoryInterface
 
     public function delete(int $allergeneId): void;
 }
-
-?>

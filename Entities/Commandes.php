@@ -48,11 +48,6 @@ class Commandes implements JsonSerializable
         return $this->menuId;
     }
 
-    public function getDateCommande(): ?string
-    {
-        return $this->dateCommande;
-    }
-
     public function getDatePrestation(): string
     {
         return $this->datePrestation;
@@ -118,6 +113,11 @@ class Commandes implements JsonSerializable
         return $this->possedeAvis;
     }
 
+    public function getDateCommande(): string
+    {
+        return $this->dateCommande;
+    }
+
     public function setCommandeId(int $commandeId): void
     {
         $this->commandeId = $commandeId;
@@ -126,6 +126,21 @@ class Commandes implements JsonSerializable
     public function setPossedeAvis(bool $possedeAvis): void
     {
         $this->possedeAvis = $possedeAvis;
+    }
+
+    public function setStatut(string $statut): void
+    {
+        $this->statut = $statut;
+    }
+
+    public function setMotifAnnulation(string $motifAnnulation): void
+    {
+        $this->motifAnnulation = $motifAnnulation;
+    }
+
+    public function setModeContactAnnulation(string $modeContactAnnulation): void
+    {
+        $this->modeContactAnnulation = $modeContactAnnulation;
     }
 
     public function jsonSerialize(): array

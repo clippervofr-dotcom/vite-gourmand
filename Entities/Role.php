@@ -19,9 +19,9 @@ class Role
         return $this->libelle;
     }
 
-    public function setRoleId(int $id): void
+    public function setRoleId(int $roleId): void
     {
-        $this->roleId = $id;
+        $this->roleId = $roleId;
     }
 }
 

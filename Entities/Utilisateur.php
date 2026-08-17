@@ -7,7 +7,7 @@ use JsonSerializable;
 class Utilisateur implements JsonSerializable
 {
     public function __construct(
-        private ?int   $id,
+        private ?int $utilisateurId,
         private string $nom,
         private string $prenom,
         private string $email,
@@ -15,13 +15,14 @@ class Utilisateur implements JsonSerializable
         private string $adresse,
         private string $ville,
         private string $codePostal,
-        private bool   $actif,
+        private bool $actif,
+        private int $roleId
     ) {
     }
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->utilisateurId;
     }
 
     public function getNom(): string
@@ -64,21 +65,28 @@ class Utilisateur implements JsonSerializable
         return $this->actif;
     }
 
-    public function setId(int $id): void
+    public function getRoleId(): int
     {
-        $this->id = $id;
+        return $this->roleId;
+    }
+
+    public function setId(int $utilisateurId): void
+    {
+        $this->utilisateurId = $utilisateurId;
     }
 
     public function jsonSerialize(): array
     {
         return [
+            'utilisateur_id' => $this->utilisateurId,
             'nom' => $this->nom,
             'prenom' => $this->prenom,
             'email' => $this->email,
             'telephone' => $this->telephone,
             'adresse' => $this->adresse,
             'ville' => $this->ville,
-            'codePostal' => $this->codePostal
+            'code_postal' => $this->codePostal,
+            'role_id' => $this->roleId,
         ];
     }
 }

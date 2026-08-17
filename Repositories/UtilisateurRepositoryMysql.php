@@ -15,16 +15,44 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
         $this->pdo = $pdo;
     }
 
-    public function getById(int $id): ?Utilisateur
+    public function getById(int $utilisateurId): ?Utilisateur
     {
 
-        $sql = 'SELECT utilisateur_id, nom, prenom, email, telephone, adresse, ville, code_postal, actif FROM utilisateur WHERE utilisateur_id = :id';
+        $sql = 'SELECT utilisateur_id, nom, prenom, email, telephone, adresse, ville, code_postal, actif, role_id FROM utilisateur WHERE utilisateur_id = :utilisateur_id';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':utilisateur_id', $utilisateurId, PDO::PARAM_INT);
         $stmt->execute();
 
         $ligne = $stmt->fetch();
 
+        if ($ligne === false) {
+            return null;
+        }
+        return $this->mapLigneVersUtilisateur($ligne);
+    }
+
+    public function getByEmail(string $email): ?Utilisateur
+    {
+        $sql = 'SELECT * FROM utilisateur WHERE email = :email';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $ligne = $stmt->fetch();
+        if ($ligne === false) {
+            return null;
+        }
+        return $this->mapLigneVersUtilisateur($ligne);
+    }
+
+    public function getByRoleId(int $roleId): ?Utilisateur
+    {
+        $sql = 'SELECT * FROM utilisateur WHERE role_id = :role_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':role_id', $roleId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $ligne = $stmt->fetch();
         if ($ligne === false) {
             return null;
         }
@@ -46,9 +74,25 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
         return $utilisateurs;
     }
 
+    public function getAllByRoleId(int $roleId): array
+    {
+        $sql = 'SELECT * FROM utilisateur WHERE role_id = :role_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':role_id', $roleId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $resultats = $stmt->fetchAll();
+
+        $utilisateurs = [];
+        foreach ($resultats as $resultat) {
+            $utilisateurs[] = $this->mapLigneVersUtilisateur($resultat);
+        }
+        return $utilisateurs;
+    }
+
     public function estActif(): array
     {
-        $sql = 'SELECT utilisateur_id, nom, prenom, email, telephone, adresse, ville, code_postal, actif FROM utilisateur WHERE actif = 1 ORDER BY utilisateur_id ASC';
+        $sql = 'SELECT utilisateur_id, nom, prenom, email, telephone, adresse, ville, code_postal, actif, role_id FROM utilisateur WHERE actif = 1 ORDER BY utilisateur_id ASC';
         $stmt = $this->pdo->query($sql);
 
         $resultats = $stmt->fetchAll();
@@ -62,9 +106,8 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
 
     public function save(Utilisateur $utilisateur): void
     {
-
         if ($utilisateur->getId() === null) {
-            $sql = 'INSERT INTO utilisateur (nom, prenom, email, adresse, code_postal, ville, telephone, actif) VALUES (:nom, :prenom, :email, :adresse, :code_postal, :ville, :telephone, :actif)';
+            $sql = 'INSERT INTO utilisateur (nom, prenom, email, adresse, code_postal, ville, telephone, actif, role_id) VALUES (:nom, :prenom, :email, :adresse, :code_postal, :ville, :telephone, :actif, :role_id)';
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(':nom', $utilisateur->getNom(), PDO::PARAM_STR);
@@ -75,12 +118,12 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
             $stmt->bindValue(':ville', $utilisateur->getVille(), PDO::PARAM_STR);
             $stmt->bindValue(':telephone', $utilisateur->getTelephone(), PDO::PARAM_STR);
             $stmt->bindValue(':actif', $utilisateur->getActif(), PDO::PARAM_BOOL);
-
+            $stmt->bindValue(':role_id', $utilisateur->getRoleId(), PDO::PARAM_INT);
             $stmt->execute();
 
             $utilisateur->setId((int)$this->pdo->lastInsertId());
         } else {
-            $sql = 'UPDATE utilisateur SET nom = :nom, prenom = :prenom, email = :email, telephone = :telephone, adresse = :adresse, ville = :ville, code_postal = :code_postal, actif = :actif WHERE utilisateur_id = :id';
+            $sql = 'UPDATE utilisateur SET nom = :nom, prenom = :prenom, email = :email, telephone = :telephone, adresse = :adresse, ville = :ville, code_postal = :code_postal, actif = :actif WHERE utilisateur_id = :utilisateur_id';
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(':nom', $utilisateur->getNom(), PDO::PARAM_STR);
@@ -91,24 +134,45 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
             $stmt->bindValue(':ville', $utilisateur->getVille(), PDO::PARAM_STR);
             $stmt->bindValue(':code_postal', $utilisateur->getCodePostal(), PDO::PARAM_STR);
             $stmt->bindValue(':actif', $utilisateur->getActif(), PDO::PARAM_BOOL);
-            $stmt->bindValue(':id', $utilisateur->getId(), PDO::PARAM_INT);
-
+            $stmt->bindValue(':utilisateur_id', $utilisateur->getId(), PDO::PARAM_INT);
             $stmt->execute();
         }
     }
 
-    public function delete(int $id): void
+    public function delete(int $utilisateurId): void
     {
-        $sql = "DELETE FROM utilisateur WHERE utilisateur_id = :id";
+        $sql = "DELETE FROM utilisateur WHERE utilisateur_id = :utilisateur_id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':utilisateur_id', $utilisateurId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function getPassword(int $utilisateurId): ?string
+    {
+        $sql = 'SELECT password FROM utilisateur WHERE utilisateur_id = :utilisateur_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':utilisateur_id', $utilisateurId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() === 0) {
+            return null;
+        }
+        return $stmt->fetchColumn();
+    }
+
+    public function ajoutPassword(string $password, int $utilisateurId): void
+    {
+        $sql = 'UPDATE utilisateur SET password = :password WHERE utilisateur_id = :utilisateur_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':utilisateur_id', $utilisateurId, PDO::PARAM_INT);
+        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
         $stmt->execute();
     }
 
     private function mapLigneVersUtilisateur(array $ligne): Utilisateur
     {
         return new Utilisateur(
-            id: $ligne['utilisateur_id'],
+            utilisateurId: $ligne['utilisateur_id'],
             nom: $ligne['nom'],
             prenom: $ligne['prenom'],
             email: $ligne['email'],
@@ -116,9 +180,8 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
             adresse: $ligne['adresse'],
             ville: $ligne['ville'],
             codePostal: $ligne['code_postal'],
-            actif: $ligne['actif']
+            actif: $ligne['actif'],
+            roleId: $ligne['role_id']
         );
     }
 }
-
-?>

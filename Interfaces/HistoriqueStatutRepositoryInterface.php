@@ -20,5 +20,3 @@ interface HistoriqueStatutRepositoryInterface
 
     public function findByDateChangementStatut(string $dateChangementStatut): array;
 }
-
-?>

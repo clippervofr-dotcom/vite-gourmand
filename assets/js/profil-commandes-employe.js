@@ -17,6 +17,15 @@ function afficherCommandes(commandesEnAttente) {
         ligne.remove();
     });
 
+    if (commandesEnAttente.length === 0) {
+        const messageAucun = document.createElement('div');
+        messageAucun.classList.add('profil-employe-commandes-ligne');
+        messageAucun.innerHTML = `<span class="commandes-champ" data-label="Aucune commande">Aucune commande à afficher.</span>`;
+        conteneur.appendChild(messageAucun);
+        return;
+    }
+
+
     commandesEnAttente.forEach(function (commande) {
         const ligne = document.createElement('div');
         ligne.classList.add('profil-employe-commandes-ligne');

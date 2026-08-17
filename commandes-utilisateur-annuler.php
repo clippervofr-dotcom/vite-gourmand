@@ -1,35 +1,58 @@
 <?php
 session_start();
-require 'includes/db.php';
+
+use Controllers\CommandesController;
+use Repositories\CommandesRepositoryMysql;
+use Repositories\HistoriqueStatutRepositoryMysql;
+
+use includes\Autoloader;
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
 header('Content-Type: application/json');
 
-if (isset($_SESSION['utilisateur'])) {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['success' => false, 'message' => 'Mauvaise méthode.']);
+    exit;
+}
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (!isset($_SESSION['utilisateur'])) {
+    echo json_encode(['success' => false, 'message' => 'Non connecté.']);
+    exit;
+}
 
-        $commandeId = $_POST['commande_id'] ?? null;
-        $nouveauStatut = $_POST['statut'] ?? null;
+$commandeId = $_POST['commande_id'] ?? null;
+$nouveauStatut = $_POST['statut'] ?? null;
 
-        $statusAutorises = 'annulée';
+$statusAutorises = 'annulée';
 
-        $stmt = $pdo->prepare('SELECT utilisateur_id FROM commande WHERE commande_id = ?');
-        $stmt->execute([$commandeId]);
-        $utilisateur = $stmt->fetch();
+$historiqueStatutRepository = new HistoriqueStatutRepositoryMysql($pdo);
+$commandesRepository = new CommandesRepositoryMysql($pdo, $historiqueStatutRepository);
+$commandesController = new CommandesController($commandesRepository);
 
-        if (!$utilisateur || $utilisateur['utilisateur_id'] != $_SESSION['utilisateur']['utilisateur_id']) {
-            echo json_encode(['success' => false, 'message' => 'Utilisateur invalide.']);
-            exit;
-        }
+$commande = $commandesController->getCommandeById((int)$commandeId);
 
-        if ($commandeId && $nouveauStatut === $statusAutorises) {
+if (!$commande) {
+    echo json_encode(['success' => false, 'message' => 'Commande inconnue.']);
+    exit;
+}
 
-            $stmt = $pdo->prepare('UPDATE commande SET statut = ? WHERE commande_id = ?');
-            $stmt->execute([$nouveauStatut, $commandeId]);
-            echo json_encode(['success' => true]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Paramètres invalides.']);
-        }
+$utilisateurId = $commande->getUtilisateurId();
+
+if (!$utilisateurId || $utilisateurId != $_SESSION['utilisateur']['utilisateur_id']) {
+    echo json_encode(['success' => false, 'message' => 'Utilisateur invalide.']);
+    exit;
+}
+
+if ($commandeId && $nouveauStatut === $statusAutorises) {
+    $commande->setStatut($nouveauStatut);
+    $annulationCommande = $commandesController->saveOrUpdateCommande($commande);
+
+    if ($annulationCommande['success']) {
+        echo json_encode(['success' => true, 'message' => 'Commande annulée avec succès.']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Erreur lors de l\'annulation de la commande.']);
     }
 } else {
-    echo json_encode(['success' => false, 'message' => 'Non connecté.']);
+    echo json_encode(['success' => false, 'message' => 'Paramètres d\'annulation invalides.']);
 }

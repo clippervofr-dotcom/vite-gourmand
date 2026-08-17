@@ -17,11 +17,11 @@ class RoleRepositoryMysql implements RoleRepositoryInterface
         $this->pdo = $pdo;
     }
 
-    public function getById(int $id): ?Role
+    public function getById(int $roleId): ?Role
     {
-        $sql = 'SELECT * FROM role WHERE id = :id';
+        $sql = 'SELECT * FROM role WHERE role_id = :role_id';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':role_id', $roleId, PDO::PARAM_INT);
         $stmt->execute();
         $ligne = $stmt->fetch();
 
@@ -46,6 +46,22 @@ class RoleRepositoryMysql implements RoleRepositoryInterface
         return $roles;
     }
 
+    public function getAllByRole(int $roleId): array
+    {
+        $sql = 'SELECT * FROM role WHERE role_id = :role_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':role_id', $roleId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $resultats = $stmt->fetchAll();
+
+        $roles = [];
+        foreach ($resultats as $resultat) {
+            $roles[] = $this->mapLigneVersRole($resultat);
+        }
+        return $roles;
+    }
+
     public function save(Role $role): void
     {
 
@@ -57,19 +73,19 @@ class RoleRepositoryMysql implements RoleRepositoryInterface
 
             $role->setRoleId((int)$this->pdo->lastInsertId());
         } else {
-            $sql = 'UPDATE role SET libelle = :libelle WHERE id = :id';
+            $sql = 'UPDATE role SET libelle = :libelle WHERE role_id = :role_id';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':libelle', $role->getLibelle(), PDO::PARAM_STR);
-            $stmt->bindValue(':id', $role->getRoleId(), PDO::PARAM_INT);
+            $stmt->bindValue(':role_id', $role->getRoleId(), PDO::PARAM_INT);
             $stmt->execute();
         }
     }
 
-    public function delete(int $id): void
+    public function delete(int $roleId): void
     {
         $sql = 'DELETE FROM role WHERE id = :id';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $roleId, PDO::PARAM_INT);
         $stmt->execute();
     }
 

@@ -25,13 +25,23 @@ class HorairesController
         }
     }
 
-    public function getById(int $id): ?Horaires
+    public function getById(int $horaireId): ?Horaires
     {
         try {
-            return $this->horaireRepository->getById($id);
+            return $this->horaireRepository->getById($horaireId);
         } catch (PDOException $e) {
             error_log($e->getMessage());
             return null;
+        }
+    }
+
+    public function getByOrderedId(): array
+    {
+        try {
+            return $this->horaireRepository->getByOrderedId();
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            return [];
         }
     }
 
@@ -46,10 +56,10 @@ class HorairesController
         }
     }
 
-    public function delete(int $id): array
+    public function delete(int $horaireId): array
     {
         try {
-            $this->horaireRepository->delete($id);
+            $this->horaireRepository->delete($horaireId);
             return ['success' => true, 'message' => 'Horaire supprimé avec succès.'];
         } catch (PDOException $e) {
             error_log($e->getMessage());

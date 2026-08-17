@@ -19,5 +19,3 @@ interface MenuRepositoryInterface
 
     public function getRegimeByMenu(int $menuId): array;
 }
-
-?>

@@ -14,10 +14,18 @@ async function chargerCommandesUser() {
 if (conteneurCommandesUser) {
     function afficherCommandesUser(commandesUser) {
         const conteneurUser = document.querySelector('.profil-utilisateur-commandes-liste');
-
         conteneurUser.querySelectorAll('.profil-utilisateur-commandes-ligne').forEach(function (ligne) {
             ligne.remove();
         });
+
+        if (commandesUser.length === 0) {
+            const messageAucun = document.createElement('div');
+            messageAucun.classList.add('profil-utilisateur-commandes-ligne');
+            messageAucun.innerHTML = `<span class="commandes-champ" data-label="Aucune commande">Aucune commande à afficher.</span>`;
+            conteneurUser.appendChild(messageAucun);
+            return;
+        }
+
 
         commandesUser.forEach(function (commande) {
             const ligne = document.createElement('div');
@@ -170,15 +178,15 @@ if (annulationModal && annulationCheckbox && annulationConfirm && annulationClos
         annulationModal.dataset.commandeId = commande['commande_id'];
         document.querySelector('#annulation-numero').textContent = `Commande :\n ${commande['numero_commande']}`
         ;
-                document.querySelector('#annulation-date-prestation').textContent =
+        document.querySelector('#annulation-date-prestation').textContent =
             `Date de prestation :\n ${commande['date_prestation']}`
         ;
-                document.querySelector('#annulation-reglement').textContent = tranche.texte;
+        document.querySelector('#annulation-reglement').textContent = tranche.texte;
 
-                annulationCheckbox.checked = false;
-                annulationConfirm.disabled = true;
+        annulationCheckbox.checked = false;
+        annulationConfirm.disabled = true;
 
-                annulationModal.classList.add('active');
+        annulationModal.classList.add('active');
     }
 
     function changementStatutAnnuler() {

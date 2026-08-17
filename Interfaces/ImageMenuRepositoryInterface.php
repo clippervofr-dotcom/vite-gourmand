@@ -14,5 +14,3 @@ interface ImageMenuRepositoryInterface
 
     public function delete(int $imageId): void;
 }
-
-?>

@@ -20,11 +20,11 @@ class CommandesRepositoryMysql implements CommandesRepositoryInterface
         $this->historiqueRepository = $historiqueRepository;
     }
 
-    public function getById(int $id): ?Commandes
+    public function getById(int $commandeId): ?Commandes
     {
         $sql = 'SELECT * FROM commande WHERE commande_id = :commande_id';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':commande_id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':commande_id', $commandeId, PDO::PARAM_INT);
         $stmt->execute();
         $ligne = $stmt->fetch();
 

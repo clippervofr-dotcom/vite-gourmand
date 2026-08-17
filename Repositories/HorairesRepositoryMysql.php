@@ -31,6 +31,20 @@ class HorairesRepositoryMysql implements HorairesRepositoryInterface
         return $this->mapLigneVersHoraires($ligne);
     }
 
+    public function getByOrderedId(): array
+    {
+        $sql = 'SELECT * FROM horaire ORDER BY horaire_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        $resultats = $stmt->fetchAll();
+        $horaires = [];
+        foreach ($resultats as $results) {
+            $horaires[] = $this->mapLigneVersHoraires($results);
+        }
+        return $horaires;
+    }
+
     public function getAll(): array
     {
         $sql = 'SELECT * FROM horaire';

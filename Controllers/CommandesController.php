@@ -27,17 +27,17 @@ class CommandesController
         }
     }
 
-    public function getCommandeById(int $id): ?Commandes
+    public function getCommandeById(int $commandeId): ?Commandes
     {
         try {
-            return $this->commandesRepository->getById($id);
+            return $this->commandesRepository->getById($commandeId);
         } catch (PDOException $e) {
             error_log($e->getMessage());
             return null;
         }
     }
 
-    public function ajouterCommande(Commandes $commande): array
+    public function saveOrUpdateCommande(Commandes $commande): array
     {
         try {
             $this->commandesRepository->save($commande);
@@ -48,10 +48,10 @@ class CommandesController
         }
     }
 
-    public function supprimerCommande(int $id): array
+    public function supprimerCommande(int $commandeId): array
     {
         try {
-            $this->commandesRepository->delete($id);
+            $this->commandesRepository->delete($commandeId);
             return ['success' => true, 'message' => 'Commande supprimée avec succès.'];
         } catch (PDOException $e) {
             error_log($e->getMessage());
@@ -109,6 +109,16 @@ class CommandesController
         }
     }
 
+    public function findByUtilisateurId(int $utilisateurId): array
+    {
+        try {
+            return $this->commandesRepository->findByUtilisateurId($utilisateurId);
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            return [];
+        }
+    }
+
     public function findByNumeroCommande(string $numeroCommande): ?Commandes
     {
         try {
@@ -119,5 +129,3 @@ class CommandesController
         }
     }
 }
-
-?>

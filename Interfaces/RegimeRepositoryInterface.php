@@ -14,5 +14,3 @@ interface RegimeRepositoryInterface
 
     public function delete(int $regimeId): void;
 }
-
-?>

@@ -14,5 +14,3 @@ interface ThemeRepositoryInterface
 
     public function delete(int $themeId): void;
 }
-
-?>

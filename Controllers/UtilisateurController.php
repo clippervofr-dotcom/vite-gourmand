@@ -2,9 +2,9 @@
 // UtilisateurController.php
 namespace Controllers;
 
-use PDOException;
 use Entities\Utilisateur;
 use Interfaces\UtilisateurRepositoryInterface;
+use PDOException;
 
 class UtilisateurController
 {
@@ -121,4 +121,41 @@ class UtilisateurController
             return ['success' => false, 'message' => 'Une erreur est survenue lors de l\'ajout du hash.'];
         }
     }
-}
+
+        public function ajouterEmployeAvecMotDePasse(Utilisateur $utilisateur): array
+        {
+            $resultatCreation = $this->ajouterUtilisateur($utilisateur);
+            if (!$resultatCreation['success']) {
+                return $resultatCreation;
+            }
+
+            $motDePasse = $this->genererMotDePasseAleatoire();
+            $motDePasseHache = password_hash($motDePasse, PASSWORD_DEFAULT);
+
+            $resultatMdp = $this->ajouterPassword($utilisateur->getId(), $motDePasseHache);
+            if (!$resultatMdp['success']) {
+                error_log('Utilisateur créé mais échec de l\'ajout du mot de passe.');
+                return [
+                    'success' => false,
+                    'message' => 'Utilisateur créé mais échec de l\'ajout du mot de passe.'
+                ];
+            }
+
+            return [
+                'success' => true,
+                'message' => 'Utilisateur créé avec succès.',
+                'mot_de_passe' => $motDePasse
+            ];
+        }
+
+        private function genererMotDePasseAleatoire(int $longueur = 12): string
+        {
+            $caracteres = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%';
+            $motDePasse = '';
+            $max = strlen($caracteres) - 1;
+            for ($i = 0; $i < $longueur; $i++) {
+                $motDePasse .= $caracteres[random_int(0, $max)];
+            }
+            return $motDePasse;
+        }
+    }

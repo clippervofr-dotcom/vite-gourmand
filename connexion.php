@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-use Repositories\UtilisateurRepositoryMysql;
 use Controllers\UtilisateurController;
-
 use includes\Autoloader;
+use Repositories\UtilisateurRepositoryMysql;
+
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $verification = $utilisateurController->verifPassword($utilisateur->getId(), $password);
         if ($verification) {
-            $_SESSION['utilisateur'] = $utilisateur;
+            $_SESSION['utilisateur'] = $utilisateur->jsonSerialize();
             header('Location: index.php');
             exit;
         } else {

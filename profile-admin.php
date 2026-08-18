@@ -113,8 +113,8 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             </div>
         </div>
     </div>
-        <!-- ADMIN CREATION COMPTE EMPLOYE -->
 
+        <!-- ADMIN CREATION COMPTE EMPLOYE -->
     <div class="profil-admin-box-creation-compte" id="profil-admin-box-creation-compte">
         <div class="titre-info-perso">
             <img src="assets/images/creation-compte.png" alt="Création de compte employé">
@@ -123,46 +123,37 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
         <div class="first-ligne-info">
             <div class="infos-perso">
                 <label for="nom-creation-admin">Nom :</label>
-                <input type="text" class="input-profil-utilisateur" id="nom-creation-admin" name="nom-creation-admin"
-                       value="" required>
+                <input type="text" class="input-profil-utilisateur" id="nom-creation-admin" pattern="/^\\b(?:\\w|-)+\\b$/" name="nom-creation-admin" value="" required>
             </div>
             <div class="infos-perso">
                 <label for="prenom-creation-admin">Prénom :</label>
-                <input type="text" class="input-profil-utilisateur" id="prenom-creation-admin"
-                       name="prenom-creation-admin" value="" required>
+                <input type="text" class="input-profil-utilisateur" id="prenom-creation-admin" pattern="/^\\b(?:\\w|-)+\\b$/" name="prenom-creation-admin" value="" required>
             </div>
         </div>
         <div class="second-ligne-info">
             <div class="infos-perso">
                 <label for="email-creation-admin">Email :</label>
-                <input type="email" class="input-profil-utilisateur" id="email-creation-admin"
-                       name="email-creation-admin" value="" required>
+                <input type="email" class="input-profil-utilisateur" id="email-creation-admin" pattern="/^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/" name="email-creation-admin" value="" required>
             </div>
             <div class="infos-perso">
                 <label for="telephone-creation-admin">Téléphone :</label>
-                <input type="tel" class="input-profil-utilisateur" id="telephone-creation-admin"
-                       name="telephone-creation-admin" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" value=""
-                       required>
+                <input type="tel" class="input-profil-utilisateur" id="telephone-creation-admin" name="telephone-creation-admin" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" value="" required>
             </div>
         </div>
         <div class="second-ligne-info">
             <div class="infos-perso">
                 <label for="code-postal-creation-admin">Code postal :</label>
-                <input type="text" class="input-profil-utilisateur" id="code-postal-creation-admin"
-                       name="code-postal-creation-admin" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" value=""
-                       required>
+                <input type="text" class="input-profil-utilisateur" id="code-postal-creation-admin" name="code-postal-creation-admin" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" value="" required>
             </div>
             <div class="infos-perso">
                 <label for="ville-creation-admin">Ville :</label>
-                <input type="text" class="input-profil-utilisateur" id="ville-creation-admin"
-                       name="ville-creation-admin" value="" required>
+                <input type="text" class="input-profil-utilisateur" pattern="/^\\b(?:\\w|-)+\\b$/" id="ville-creation-admin" name="ville-creation-admin" value="" required>
             </div>
         </div>
         <div class="third-ligne-info">
             <div class="infos-perso">
                 <label for="adresse-creation-admin">Adresse :</label>
-                <input type="text" class="input-profil-utilisateur" id="adresse-creation-admin"
-                       name="adresse-creation-admin" value="" required>
+                <input type="text" class="input-profil-utilisateur" id="adresse-creation-admin" name="adresse-creation-admin" value="" required>
             </div>
         </div>
         <div class="radio-ligne-info">
@@ -170,13 +161,11 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <div class="radio-creation-employe-box">
                 <div>
                     <label for="radio-employe">Employé</label>
-                    <input type="radio" class="input-profil-utilisateur" id="radio-employe" name="role-creation-admin"
-                           value="employe" checked>
+                    <input type="radio" class="input-profil-utilisateur" id="radio-employe" name="role-creation-admin" value="employe" checked>
                 </div>
                 <div>
                     <label for="radio-admin">Administrateur</label>
-                    <input type="radio" class="input-profil-utilisateur" id="radio-admin" name="role-creation-admin"
-                           value="admin">
+                    <input type="radio" class="input-profil-utilisateur" id="radio-admin" name="role-creation-admin" value="admin">
                 </div>
             </div>
         </div>

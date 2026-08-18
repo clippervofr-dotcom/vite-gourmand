@@ -2,9 +2,9 @@
 // ImageMenuRepositoryMysql.php
 namespace Repositories;
 
-use PDO;
 use Entities\ImageMenu;
 use Interfaces\ImageMenuRepositoryInterface;
+use PDO;
 
 class ImageMenuRepositoryMysql implements ImageMenuRepositoryInterface
 {
@@ -15,11 +15,26 @@ class ImageMenuRepositoryMysql implements ImageMenuRepositoryInterface
         $this->pdo = $pdo;
     }
 
-    public function getById(int $imageId): ?ImageMenu
+    public function getByImageId(int $imageId): ?ImageMenu
     {
-        $sql = 'SELECT * FROM image_menu WHERE image_id = :imageId';
+        $sql = 'SELECT * FROM image_menu WHERE image_id = :image_id';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':imageId', $imageId, PDO::PARAM_INT);
+        $stmt->bindValue(':image_id', $imageId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $ligne = $stmt->fetch();
+
+        if ($ligne === false) {
+            return null;
+        }
+        return $this->mapLigneVersImageMenu($ligne);
+    }
+
+    public function getByMenuId(int $menuId): ?ImageMenu
+    {
+        $sql = 'SELECT * FROM image_menu WHERE menu_id = :menu_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':menu_id', $menuId, PDO::PARAM_INT);
         $stmt->execute();
 
         $ligne = $stmt->fetch();

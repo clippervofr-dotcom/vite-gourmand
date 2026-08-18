@@ -38,26 +38,26 @@ if (commandeBox) {
         const menu = resultat['panier'];
 
         const locationMaterielCheckbox = document.querySelector('#materiel');
+        const dateLivraisonInput = document.querySelector('#date-heure');
 
         function calculerTotal() {
-            let prixSurplusKm = 1.5;
-            let prixTotalDistance = 0;
-            let totalGeneral = 0;
-            const distanceKm = utilisateur['distance'];
+            document.querySelector('.recap-prix p').textContent =
+                `Total : ${locationMaterielCheckbox.checked ? utilisateur['total_avec_materiel'] : utilisateur['total_sans_materiel']} €`;
+        }
 
-            if (locationMaterielCheckbox.checked) {
-                totalGeneral += Number(menu['prix_total'] + parseInt(locationMaterielCheckbox.dataset.location));
-            } else {
-                totalGeneral += Number(menu['prix_total']);
+        function dateLivraisonRecap() {
+            if (!dateLivraisonInput.value) {
+                document.querySelector('#recap-date-livraison').textContent = 'Non renseignée';
+                return;
             }
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const datePrestation = new Date(dateLivraisonInput.value);
+            document.querySelector('#recap-date-livraison').textContent = datePrestation.toLocaleDateString('fr-FR', options);
+        }
 
-            if (distanceKm > 5) {
-                prixTotalDistance += (prixSurplusKm * distanceKm);
-                totalGeneral += prixTotalDistance;
-            }
-
-            document.querySelector('.recap-prix p').textContent = `Total : ${totalGeneral} €`;
-            document.querySelector('#recap-prix-livraison').textContent = `Prix de la livraison : ${prixTotalDistance} €`;
+        function modifPrixMateriel() {
+            document.querySelector('#recap-forfait-materiel').textContent =
+                locationMaterielCheckbox.checked ? `${utilisateur['prix_materiel']} €` : 'Non sélectionné';
         }
 
         const ligne = document.createElement('div');
@@ -66,7 +66,7 @@ if (commandeBox) {
             <div class="recap-infos">
                 <div class="recap-liste">
                     <p class="recap-intitule">Menu :</p>
-                    <p class="recap-resultat">${menu['titre']}</p>
+                    <p class="recap-resultat">${echapperHTML(menu['titre'])}</p>
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Nombre de personnes :</p>
@@ -78,15 +78,15 @@ if (commandeBox) {
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Date de livraison :</p>
-                    <p class="recap-resultat">${echapperHTML(utilisateur['date_livraison'])}</p>
+                        <p class="recap-resultat" id="recap-date-livraison"></p>
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Forfait location de matériel :</p>
-                    <p class="recap-resultat"></p>
+                    <p class="recap-resultat" id="recap-forfait-materiel"></p>
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Prix de la livraison :</p>
-                    <p class="recap-resultat" id="recap-prix-livraison"></p>
+                    <p class="recap-resultat" id="recap-prix-livraison">${utilisateur['prix_livraison']} €</p>
                 </div>
             </div>
             <div class="recap-prix">
@@ -113,8 +113,15 @@ if (commandeBox) {
         conteneur.appendChild(ligne);
 
         calculerTotal();
+        dateLivraisonRecap();
+        modifPrixMateriel();
 
-        locationMaterielCheckbox.addEventListener('change', calculerTotal);
+        locationMaterielCheckbox.addEventListener('change', function() {
+            calculerTotal();
+            modifPrixMateriel();
+        });
+
+        dateLivraisonInput.addEventListener('change', dateLivraisonRecap);
     }
     chargerItems().catch(function (erreur) {
         console.error('Erreur lors du chargement de la commande :', erreur);

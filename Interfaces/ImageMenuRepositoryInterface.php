@@ -6,11 +6,9 @@ use Entities\ImageMenu;
 
 interface ImageMenuRepositoryInterface
 {
-    public function getById(int $imageId): ?ImageMenu;
-
+    public function getByImageId(int $imageId): ?ImageMenu;
+    public function getByMenuId(int $menuId): ?ImageMenu;
     public function getAll(): array;
-
     public function save(ImageMenu $imageMenu): void;
-
     public function delete(int $imageId): void;
 }

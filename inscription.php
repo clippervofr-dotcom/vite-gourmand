@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-use Entities\Utilisateur;
-use Repositories\UtilisateurRepositoryMysql;
 use Controllers\UtilisateurController;
-
+use Entities\Utilisateur;
 use includes\Autoloader;
+use Repositories\UtilisateurRepositoryMysql;
+
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();
@@ -24,24 +24,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erreurs[] = 'Les mots de passe ne correspondent pas.';
     }
 
-    $nom = $_POST['nom'] ?? null;
-    $prenom = $_POST['prenom'] ?? null;
-    $adresse = $_POST['adresse'] ?? null;
-    $ville = $_POST['ville'] ?? null;
+    $nom = trim($_POST['nom'] ?? null);
+    $prenom = trim($_POST['prenom'] ?? null);
+    $adresse = trim($_POST['adresse'] ?? null);
+    $ville = trim($_POST['ville'] ?? null);
 
-    $codePostal = $_POST['code-postal'] ?? null;
+    $codePostal = trim($_POST['code-postal'] ?? null);
     $codePostalValide = preg_match('/^[0-9]{5}$/', $codePostal);
     if (!$codePostalValide) {
         $erreurs[] = 'Code postal invalide.';
     }
 
-    $telephone = $_POST['telephone'] ?? null;
+    $telephone = trim($_POST['telephone'] ?? null);
     $telephoneValide = preg_match('/^[0-9]{10}$/', $telephone);
     if (!$telephoneValide) {
-        $erreurs[] = 'Telephone invalide.';
+        $erreurs[] = 'Téléphone invalide.';
     }
 
-    $email = $_POST['email'] ?? null;
+    $email = trim($_POST['email'] ?? null);
     $emailValide = filter_var($email, FILTER_VALIDATE_EMAIL);
     if (!$emailValide) {
         $erreurs[] = 'Email invalide.';
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $ajoutMdp = $utilisateurController->ajouterPassword($newUtilisateur->getId(), $mdp_hache);
             if ($ajoutMdp['success']) {
-                $_SESSION['utilisateur'] = $newUtilisateur;
+                $_SESSION['utilisateur'] = $newUtilisateur->jsonSerialize();
                 header('location: index.php');
                 exit;
             } else {

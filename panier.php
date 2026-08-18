@@ -1,14 +1,21 @@
 <?php
-require 'includes/db.php';
+session_start();
 
+use Controllers\MenuController;
+use includes\Autoloader;
+use Repositories\ImageMenuRepositoryMysql;
+use Repositories\MenuRepositoryMysql;
+
+
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
 header('Content-Type: application/json');
 
-session_start();
 
 if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = [];
 }
-
 
 //supp la ligne du panier
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'supprimer') {
@@ -31,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     foreach ($_SESSION['panier'] as &$item) {
         if ($item['uniqueId'] === $uniqueId) {
-            $nouvelleQuantite = max($item['nombre_personne_minimum'], $nouvelleQuantite);
-            $item['quantite'] = $nouvelleQuantite;
-            $item['prix_total'] = $item['prix_par_personne'] * $nouvelleQuantite;
+            $nouvelleQuantite = max($item['nombre_personne_minimum'], (int)$nouvelleQuantite);
+            $item['quantite'] = (int)$nouvelleQuantite;
+            $item['prix_total'] = $item['prix_par_personne'] * (int)$nouvelleQuantite;
         }
     }
     unset($item);
@@ -42,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     exit;
 }
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $menuId = $_POST['menu_id'] ?? null;
     $quantite = $_POST['quantite'] ?? null;
 
@@ -52,28 +59,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $menu = $pdo->prepare("SELECT menu.*, image_menu.url AS image_url FROM menu JOIN image_menu ON menu.menu_id = image_menu.menu_id WHERE menu.menu_id = ?");
-    $menu->execute([$menuId]);
-    $resultats = $menu->fetch();
-    if (!$resultats) {
+    $menuRepository = new MenuRepositoryMysql($pdo);
+    $imageMenuRepository = new ImageMenuRepositoryMysql($pdo);
+    $menuController = new MenuController($menuRepository);
+
+    $menu = $menuController->getMenuById((int)$menuId);
+    if (!$menu) {
         echo json_encode(['success' => false, 'message' => 'Menu introuvable.']);
         exit;
     }
 
+    $imageMenu = $imageMenuRepository->getByMenuId($menu->getId());
+    if (!$imageMenu) {
+        error_log('Image introuvable pour le menu ID: ' . $menu->getId());
+    }
 
-    $resultats['prix_total'] = $resultats['prix_par_personne'] * $quantite;
+    $prixTotal = $menu->getPrixParPersonne() * (int)$quantite;
 
     $_SESSION['panier'][] = [
         'uniqueId' => uniqid(),
-        'menu_id' => $menuId,
-        'quantite' => $quantite,
-        'titre' => $resultats['titre'] ?? null,
-        'description' => $resultats['description_menu'] ?? null,
-        'prix_par_personne' => $resultats['prix_par_personne'] ?? null,
-        'nombre_personne_minimum' => $resultats['nombre_personne_minimum'] ?? null,
-        'conditions' => $resultats['conditions'] ?? null,
-        'image_url' => $resultats['image_url'] ?? null,
-        'prix_total' => $resultats['prix_total'] ?? null,
+        'menu_id' => $menu->getId(),
+        'titre' => $menu->getTitre(),
+        'quantite' => (int)$quantite,
+        'description' => $menu->getDescriptionMenu(),
+        'conditions' => $menu->getConditions(),
+        'prix_par_personne' => $menu->getPrixParPersonne(),
+        'prix_total' => $prixTotal,
+        'nombre_personne_minimum' => $menu->getNombrePersonneMinimum(),
+        'image_url' => $imageMenu ? $imageMenu->getUrlImage() : null
     ];
 
     echo json_encode(['success' => true, 'panier' => $_SESSION['panier']]);
@@ -81,5 +94,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 echo json_encode($_SESSION['panier']);
-
-

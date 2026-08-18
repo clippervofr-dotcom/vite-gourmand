@@ -1,46 +1,86 @@
 <?php
-require 'includes/db.php';
 session_start();
+
+use Controllers\UtilisateurController;
+use Entities\Utilisateur;
+use includes\Autoloader;
+use Repositories\UtilisateurRepositoryMysql;
+
+
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
 header('Content-Type: application/json');
 
+$utilisateurRepository = new UtilisateurRepositoryMysql($pdo);
+$utilisateurController = new UtilisateurController($utilisateurRepository);
 
-if (isset($_SESSION['utilisateur'])) {
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_SESSION['utilisateur']['role_id'] === 3)) {
-
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $email = $_POST['email'];
-        $telephone = $_POST['telephone'];
-        $ville = $_POST['ville'];
-        $codePostal = $_POST['code_postal'];
-        $adresse  = $_POST['adresse'];
-        $role = 0;
-
-        if ($_POST['role'] === 'admin') {
-            $role = 3;
-        } else if ($_POST['role'] === 'employe') {
-            $role = 2;
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Rôle invalide.']);
-            exit;
-        }
-
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo json_encode(['success' => false, 'message' => 'Email invalide']);
-            exit;
-        }
-
-
-        $stmt = $pdo->prepare("INSERT INTO utilisateur (nom, prenom, email, telephone, role_id, ville, code_postal, adresse) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$nom, $prenom, $email, $telephone, $role, $ville, $codePostal, $adresse]);
-
-
-        echo json_encode(['success' => true, 'message' => 'Employé créé avec succès.']);
-
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Droits insuffisant.']);
-    }
-} else {
+if (!isset($_SESSION['utilisateur'])) {
     echo json_encode(['success' => false, 'message' => 'Non connecté.']);
+    exit;
 }
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['success' => false, 'message' => 'Mauvaise méthode.']);
+    exit;
+}
+
+if ($_SESSION['utilisateur']['role_id'] !== 3) {
+    echo json_encode(['success' => false, 'message' => 'Accès refusé.']);
+    exit;
+}
+
+$nom = trim($_POST['nom'] ?? null);
+$prenom = trim($_POST['prenom'] ?? null);
+$email = trim($_POST['email'] ?? null);
+$ville = trim($_POST['ville'] ?? null);
+$adresse = trim($_POST['adresse'] ?? null);
+$role_input = trim($_POST['role'] ?? null);
+$role = 0;
+$actif = true;
+
+if ($role_input === 'admin') {
+    $role = 3;
+} else if ($role_input === 'employe') {
+    $role = 2;
+} else {
+    echo json_encode(['success' => false, 'message' => 'Rôle invalide.']);
+    exit;
+}
+
+$emailValide = filter_var($email, FILTER_VALIDATE_EMAIL);
+if (!$emailValide) {
+    echo json_encode(['success' => false, 'message' => 'Email invalide.']);
+    exit;
+}
+
+$telephone = trim($_POST['telephone'] ?? null);
+$telephoneValide = preg_match('/^[0-9]{10}$/', $telephone);
+if (!$telephoneValide) {
+    echo json_encode(['success' => false, 'message' => 'Téléphone invalide.']);
+    exit;
+}
+
+$codePostal = trim($_POST['code_postal'] ?? null);
+$codePostalValide = preg_match('/^[0-9]{5}$/', $codePostal);
+if (!$codePostalValide) {
+    echo json_encode(['success' => false, 'message' => 'Code postal invalide.']);
+    exit;
+}
+
+$newEmploye = new Utilisateur(null, $nom, $prenom, $email, $telephone, $adresse, $ville, $codePostal, $actif, $role);
+
+$utilisateur = $utilisateurController->ajouterEmployeAvecMotDePasse($newEmploye);
+if ($utilisateur['success']) {
+    echo json_encode(['success' => true, 'message' => 'Employé créé avec succès. Mot de passe généré : ' . $utilisateur['mot_de_passe']]);
+} else {
+    echo json_encode(['success' => false, 'message' => $utilisateur['message']]);
+}
+
+
+
+
+
+
+
+

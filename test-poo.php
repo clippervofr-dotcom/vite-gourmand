@@ -1,28 +1,28 @@
 <?php
-use Repositories\HistoriqueStatutRepositoryMysql;
+
+use Controllers\AvisController;
+use Controllers\CommandesController;
+use Controllers\HorairesController;
+use Controllers\UtilisateurController;
+use includes\Autoloader;
+use Repositories\AllergeneRepositoryMysql;
+use Repositories\AvisRepositoryMongoDB;
 use Repositories\CommandesRepositoryMysql;
+use Repositories\HistoriqueStatutRepositoryMysql;
+use Repositories\horairesRepositoryMysql;
+use Repositories\ImageMenuRepositoryMysql;
 use Repositories\MenuRepositoryMysql;
+use Repositories\RegimeRepositoryMysql;
 use Repositories\RoleRepositoryMysql;
 use Repositories\ThemeRepositoryMysql;
-use Repositories\RegimeRepositoryMysql;
-use Repositories\AllergeneRepositoryMysql;
-use Repositories\ImageMenuRepositoryMysql;
 use Repositories\UtilisateurRepositoryMysql;
-use Repositories\AvisRepositoryMongoDB;
-use Controllers\AvisController;
-use Controllers\HorairesController;
-use Repositories\horairesRepositoryMysql;
-use Controllers\UtilisateurController;
-use Controllers\CommandesController;
 
 
-use includes\Autoloader;
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();
 header('Content-Type: application/json');
 
-// --- Étape 1 : créer les repositories, dans le bon ordre ---
 $historiqueRepository = new HistoriqueStatutRepositoryMysql($pdo);
 $commandesRepository = new CommandesRepositoryMysql($pdo, $historiqueRepository);
 $menuRepository = new MenuRepositoryMysql($pdo);
@@ -42,7 +42,7 @@ $roleRepository = new RoleRepositoryMysql($pdo);
 
 $roleId = 2;
 $statutDemande = 'en attente';
-// --- Étape 2 : tester une vraie méthode ---
+
 //$commande = $commandesRepository->getById(1);
 $utilisateur = $utilisateurRepository->getById(1);
 $menu = $menuRepository->getById(1);
@@ -73,7 +73,7 @@ $email = 'jojo@gmail.com';
 $utilisateurEmail = $utilisateurController->findUtilisateurByEmail($email);
 
 echo '<pre>';
-// print_r($commande);
+
 print_r($utilisateur);
 print_r($menu);
 print_r($theme);

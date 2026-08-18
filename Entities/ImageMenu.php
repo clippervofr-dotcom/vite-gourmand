@@ -4,8 +4,8 @@ namespace Entities;
 class ImageMenu
 {
     public function __construct(
-        private ?int   $imageId,
-        private ?int   $menuId,
+        private ?int $imageId,
+        private ?int $menuId,
         private string $urlImage
     )
     {

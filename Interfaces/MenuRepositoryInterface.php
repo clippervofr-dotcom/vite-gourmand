@@ -18,4 +18,12 @@ interface MenuRepositoryInterface
     public function getThemeByMenu(int $menuId): array;
 
     public function getRegimeByMenu(int $menuId): array;
+    public function filtrer(
+        array $themes = [],
+        array $regimes = [],
+        array $allergenes = [],
+        ?float $prixMin = null,
+        ?float $prixMax = null,
+        ?int $nbrPersonnes = null
+    ): array;
 }

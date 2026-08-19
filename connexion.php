@@ -50,11 +50,10 @@ include 'includes/header.php';
         <form class="se-connecter-box" method="POST" action="connexion.php">
             <div class="input-connexion">
                 <label for="email">Email</label>
-                <input type="email" id="email" pattern="/^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/"
-                 name="email" placeholder="Votre Email" required>
+                <input type="email" id="email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" name="email" placeholder="Votre Email" required>
 
                 <label for="password">Mot de passe</label>
-                <input type="password" pattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/" id="password" name="password" placeholder="Votre mot de passe" required>
+                <input type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" id="password" name="password" placeholder="Votre mot de passe" required>
             </div>
 
             <button class="animated-button" id="animated-btn-connexion" type="submit">

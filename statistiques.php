@@ -1,14 +1,29 @@
 <?php
-require_once "includes/db.php";
-require_once "includes/mongo-db.php";
+session_start();
+
+use Controllers\AvisController;
+use Controllers\CommandesController;
+use Controllers\MenuController;
+use includes\Autoloader;
+use Repositories\AvisRepositoryMongoDB;
+use Repositories\CommandesRepositoryMysql;
+use Repositories\HistoriqueStatutRepositoryMysql;
+use Repositories\MenuRepositoryMysql;
+
+require __DIR__ . '/includes/Autoloader.php';
+require __DIR__ . '/Bootstraps/bootstrap-db.php';
+Autoloader::register();
 header('Content-Type: application/json');
 
-$sql = 'SELECT commande.commande_id, commande.date_commande, commande.prix_total, commande.statut, menu.titre, menu.menu_id FROM commande JOIN menu ON commande.menu_id = menu.menu_id';
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$commandes = $stmt->fetchAll();
+if (!isset($_SESSION['utilisateur'])) {
+    echo json_encode(['success' => false, 'message' => 'Non connecté.']);
+    exit;
+}
 
-$totalCommandes = $commandes;
+if ($_SESSION['utilisateur']['role_id'] !== 3) {
+    echo json_encode(['success' => false, 'message' => 'Droits insuffisants.']);
+    exit;
+}
 
 //liste mois
 $nomsMois = [
@@ -38,6 +53,51 @@ $liste_menu = [
 //liste statuts
 $liste_statuts = ['en attente', 'validée', 'terminée', 'annulée'];
 
+$historiqueStatutRepository = new HistoriqueStatutRepositoryMysql($pdo);
+$commandesRepository = new CommandesRepositoryMysql($pdo, $historiqueStatutRepository);
+$commandesController = new CommandesController($commandesRepository);
+$menuRepository = new MenuRepositoryMysql($pdo);
+$menuController = new MenuController($menuRepository);
+$avisRepository = new AvisRepositoryMongoDB($manager);
+$avisController = new AvisController($avisRepository, $commandesRepository);
+
+$commandes = $commandesController->getAllCommandes();
+if (empty($commandes)) {
+    echo json_encode(['success' => false, 'message' => 'Aucune commande trouvée.']);
+    exit;
+} else {
+    $commandesAndTitreMenu = [];
+    foreach ($commandes as $commande) {
+        $menu = $menuController->getMenuById($commande->getMenuId());
+        if (!$menu) {
+            error_log('Menu introuvable pour la commande ID: ' . $commande->getCommandeId());
+        }
+        $commandesAndTitreMenu[] = [
+            'commande_id' => $commande->getCommandeId(),
+            'numero_commande' => $commande->getNumeroCommande(),
+            'utilisateur_id' => $commande->getUtilisateurId(),
+            'menu_id' => $commande->getMenuId(),
+            'titre' => $menu ? $menu->getTitre() : null,
+            'statut' => $commande->getStatut(),
+            'date_commande' => $commande->getDateCommande(),
+            'date_prestation' => $commande->getDatePrestation(),
+            'heure_prestation' => $commande->getHeurePrestation(),
+            'adresse_livraison' => $commande->getAdresseLivraison(),
+            'nombre_personnes' => $commande->getNombrePersonnes(),
+            'prix_menu' => $commande->getPrixMenu(),
+            'prix_total' => $commande->getPrixTotal(),
+            'prix_livraison' => $commande->getPrixLivraison(),
+            'possede_avis' => $commande->getPossedeAvis(),
+            'pret_materiel' => $commande->getPretMateriel(),
+            'rendu_materiel' => $commande->getRenduMateriel(),
+            'motif_annulation' => $commande->getMotifAnnulation(),
+            'mode_contact_annulation' => $commande->getModeContactAnnulation(),
+        ];
+    }
+}
+
+$totalCommandes = $commandesAndTitreMenu;
+
 function isValide($moisChoisi, $nomsMois) {
     if (array_key_exists($moisChoisi, $nomsMois)) {
         return $moisChoisi;
@@ -52,7 +112,7 @@ if (isset($_GET['choix_mois'])) {
 }
 // si oui, filtre les commandes avec le mois demandé
 if ($moisDemande !== null) {
-    $commandes = array_filter($commandes, function ($commande) use ($moisDemande) {
+    $commandesAndTitreMenu = array_filter($commandesAndTitreMenu, function ($commande) use ($moisDemande) {
         $date = new DateTime($commande['date_commande']);
         $moisCommande = $date->format('m');
         return $moisDemande === $moisCommande;
@@ -70,10 +130,10 @@ function calculCa($totalCommandes) {
 }
 
 //calcul CA par mois
-function calculerCaParMois($commandes, $nomsMois) {
+function calculerCaParMois($commandesAndTitreMenu, $nomsMois) {
     $caParMois = [];
 
-    foreach ($commandes as $commande) {
+    foreach ($commandesAndTitreMenu as $commande) {
         $date = new DateTime($commande['date_commande']);
         $numeroMois = $date->format('m');
         $nomMois = $nomsMois[$numeroMois];
@@ -92,18 +152,18 @@ function calculerCaParMois($commandes, $nomsMois) {
 }
 
 //calcul commandes par titre menu
-function calculCommandesParTitreMenu($commandes, $liste_menu) {
+function calculCommandesParTitreMenu($commandesAndTitreMenu, $liste_menu) {
     foreach ($liste_menu as $menu) {
         $nombre_commandes = 0;
         $ca_commandes = 0;
         $compteurStatuts = ['en attente' => 0, 'validée' => 0, 'terminée' => 0, 'annulée' => 0];
         $taux_annulation_commandes = 0;
-        foreach ($commandes as $commande) {
+        foreach ($commandesAndTitreMenu as $commande) {
             if ($commande['titre'] === $menu) {
                 $nombre_commandes++;
                 $ca_commandes += intval($commande['prix_total']);
                 $compteurStatuts[$commande['statut']]++;
-                $taux_annulation_commandes = ($compteurStatuts['annulée'] / count($commandes)) * 100;
+                $taux_annulation_commandes = ($compteurStatuts['annulée'] / max(1, $nombre_commandes)) * 100;
             }
         }
         $commandes_par_menu[] = [
@@ -133,7 +193,7 @@ function calculCommandesParStatut($totalCommandes, $liste_statuts) {
     return $commandes_par_statut;
 }
 
-//calcul taux annulation 
+//calcul taux annulation
 function tauxAnnulationCommandes($totalCommandes) {
     if (empty($totalCommandes)) {
         return '0 %';
@@ -144,16 +204,16 @@ function tauxAnnulationCommandes($totalCommandes) {
         if ($commande['statut'] === 'annulée') {
             $nombre_commandes_annulees++;
         }
-    }    
+    }
     $taux_annulation = ($nombre_commandes_annulees / count($totalCommandes)) * 100;
     return round($taux_annulation, 1) . ' %';
 }
 
-// tableau avec que les notes 
+// tableau avec que les notes
 function getNoteAvis($arrayAvis) {
     $noteAvis = [];
     foreach ($arrayAvis as $document) {
-    $noteAvis[] = $document['note'];
+        $noteAvis[] = $document->getNote();
     }
     return $noteAvis;
 }
@@ -174,26 +234,22 @@ function calculMoyenneAvis($noteAvis) {
 
 // fetch mongoDB avisavis
 try {
-    $query = new MongoDB\Driver\Query([]);
-    $curseur = $manager->executeQuery('vite_et_gourmand.avis', $query);
-    $curseur->setTypeMap(['root' => 'array', 'document' => 'array']);
-    $arrayAvis = $curseur->toArray();
+    $listeAvis = $avisController->getAllAvis();
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'message' => 'Erreur query MongoDB : ' . $e->getMessage()]);
     exit;
 }
 
-$noteAvis = getNoteAvis($arrayAvis);
+$noteAvis = getNoteAvis($listeAvis);
 
 // json_encode final
 echo json_encode([
     'success' => true,
     'ca_total' => calculCa($totalCommandes),
-    'ca_par_mois' => calculerCaParMois($commandes, $nomsMois),
-    'commandes_par_menu' => calculCommandesParTitreMenu($commandes, $liste_menu),
+    'ca_par_mois' => calculerCaParMois($commandesAndTitreMenu, $nomsMois),
+    'commandes_par_menu' => calculCommandesParTitreMenu($commandesAndTitreMenu, $liste_menu),
     'commandes_par_statut' => calculCommandesParStatut($totalCommandes, $liste_statuts),
     'taux_annulation' => tauxAnnulationCommandes($totalCommandes),
     'moyenne_avis' => calculMoyenneAvis($noteAvis),
     'mois_filtre' => $moisDemande,
 ]);
-

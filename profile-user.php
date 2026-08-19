@@ -54,37 +54,37 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <div class="first-ligne-info">
                 <div class="infos-perso">
                     <label for="nom-profil-utilisateur">Nom :</label>
-                    <input type="text" class="input-profil-utilisateur" id="nom-profil-utilisateur" name="nom-profil-utilisateur" value="" disabled>
+                    <input type="text" class="input-profil-utilisateur" id="nom-profil-utilisateur" name="nom-profil-utilisateur" pattern="^\b(?:\w|-)+\b$" value="" disabled>
                 </div>
                 <div class="infos-perso">
                     <label for="prenom-profil-utilisateur">Prénom :</label>
-                    <input type="text" class="input-profil-utilisateur" id="prenom-profil-utilisateur" name="prenom-profil-utilisateur" value="" disabled>
+                    <input type="text" class="input-profil-utilisateur" id="prenom-profil-utilisateur" name="prenom-profil-utilisateur" pattern="^\b(?:\w|-)+\b$" value="" disabled>
                 </div>
             </div>
             <div class="second-ligne-info">
                 <div class="infos-perso">
                     <label for="email-profil-utilisateur">Email :</label>
-                    <input type="email" class="input-profil-utilisateur" id="email-profil-utilisateur" name="email-profil-utilisateur" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" value="" disabled>
+                    <input type="email" class="input-profil-utilisateur" id="email-profil-utilisateur" name="email-profil-utilisateur" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" value="" disabled>
                 </div>
                 <div class="infos-perso">
                     <label for="telephone-profil-utilisateur">Téléphone :</label>
-                    <input type="tel" class="input-profil-utilisateur" id="telephone-profil-utilisateur" name="telephone-profil-utilisateur" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" value="" disabled>
+                    <input type="tel" class="input-profil-utilisateur" id="telephone-profil-utilisateur" name="telephone-profil-utilisateur" inputmode="numeric" pattern="^[0-9]{10}$" maxlength="10" value="" disabled>
                 </div>
             </div>
             <div class="fourth-ligne-info">
                 <div class="infos-perso">
                     <label for="adresse-profil-utilisateur">Adresse :</label>
-                    <input type="text" class="input-profil-utilisateur" id="adresse-profil-utilisateur" name="adresse-profil-utilisateur" value="" disabled>
+                    <input type="text" class="input-profil-utilisateur" id="adresse-profil-utilisateur" name="adresse-profil-utilisateur" maxlength="150" value="" disabled>
                 </div>
             </div>
             <div class="fourth-ligne-info">
                 <div class="infos-perso">
                     <label for="code-postal-profil-utilisateur">Code Postal :</label>
-                    <input type="text" class="input-profil-utilisateur" id="code-postal-profil-utilisateur" name="code-postal-profil-utilisateur" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" value="" disabled>
+                    <input type="text" class="input-profil-utilisateur" id="code-postal-profil-utilisateur" name="code-postal-profil-utilisateur" inputmode="numeric" pattern="^[0-9]{5}$" maxlength="5" value="" disabled>
                 </div>
                 <div class="infos-perso">
                     <label for="ville-profil-utilisateur">Ville :</label>
-                    <input type="text" class="input-profil-utilisateur" id="ville-profil-utilisateur" name="ville-profil-utilisateur" value="" disabled>
+                    <input type="text" class="input-profil-utilisateur" id="ville-profil-utilisateur" name="ville-profil-utilisateur" pattern="^\b(?:\w|-)+\b$" value="" disabled>
                 </div>
             </div>
             <div class="btn-profil-utilisateur-modif">

@@ -10,7 +10,7 @@ CREATE TABLE utilisateur (
   nom VARCHAR(50),
   prenom VARCHAR(50),
   telephone VARCHAR(20),
-  adresse VARCHAR(100),
+  adresse VARCHAR(150),
   ville VARCHAR(50),
   code_postal VARCHAR(10),
   actif BOOL DEFAULT TRUE,
@@ -21,10 +21,10 @@ CREATE TABLE utilisateur (
 CREATE TABLE menu (
   menu_id INT AUTO_INCREMENT PRIMARY KEY,
   titre VARCHAR(100) NOT NULL,
-  description_menu TEXT,
+  description_menu VARCHAR(500) NOT NULL,
   nombre_personne_minimum INT NOT NULL,
   prix_par_personne DOUBLE NOT NULL,
-  conditions TEXT,
+  conditions VARCHAR(500) NOT NULL,
   quantite_restante INT,
   actif BOOL DEFAULT TRUE
 );
@@ -104,7 +104,7 @@ CREATE TABLE commande (
   prix_livraison DOUBLE,
   prix_total DOUBLE,
   statut VARCHAR(50) DEFAULT 'en attente',
-  motif_annulation TEXT,
+  motif_annulation VARCHAR(500) NULL,
   mode_contact_annulation VARCHAR(50),
   pret_materiel BOOL DEFAULT FALSE,
   rendu_materiel BOOL DEFAULT FALSE,

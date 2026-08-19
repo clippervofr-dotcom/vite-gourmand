@@ -2,9 +2,9 @@
 // UtilisateurRepositoryMysql.php
 namespace Repositories;
 
-use PDO;
 use Entities\Utilisateur;
 use Interfaces\UtilisateurRepositoryInterface;
+use PDO;
 
 class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
 {
@@ -160,7 +160,7 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
         return $stmt->fetchColumn();
     }
 
-    public function ajoutPassword(string $password, int $utilisateurId): void
+    public function ajoutPassword(int $utilisateurId, string $password): void
     {
         $sql = 'UPDATE utilisateur SET password = :password WHERE utilisateur_id = :utilisateur_id';
         $stmt = $this->pdo->prepare($sql);

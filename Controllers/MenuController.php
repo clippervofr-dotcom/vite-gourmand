@@ -2,10 +2,9 @@
 // MenuControler.php
 namespace Controllers;
 
-use PDOException;
 use Entities\Menu;
 use Interfaces\MenuRepositoryInterface;
-
+use PDOException;
 
 
 class MenuController
@@ -56,6 +55,15 @@ class MenuController
         } catch (PDOException $e) {
             error_log($e->getMessage());
             return ['success' => false, 'message' => 'Une erreur est survenue lors de la suppression, veuillez réessayer.'];
+        }
+    }
+
+    public function filtrerMenus(array $themes = [], array $regimes = [], array $allergenes = [], ?float $prixMin = null, ?float $prixMax = null, ?int $nbrPersonnes = null): array {
+        try {
+            return $this->menuRepository->filtrer($themes, $regimes, $allergenes, $prixMin, $prixMax, $nbrPersonnes);
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            return [];
         }
     }
 }

@@ -6,6 +6,7 @@ use Entities\Utilisateur;
 use includes\Autoloader;
 use Repositories\UtilisateurRepositoryMysql;
 
+
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();
@@ -17,38 +18,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $utilisateurRepository = new UtilisateurRepositoryMysql($pdo);
     $utilisateurController = new UtilisateurController($utilisateurRepository);
 
-    $mdp = $_POST['mdp'] ?? null;
-    $mdp_confirm = $_POST['mdp-confirm'] ?? null;
+    $mdp = $_POST['mdp'] ?? '';
+    $mdp_confirm = $_POST['mdp-confirm'] ?? '';
     $mdpValide = $mdp === $mdp_confirm;
     if (!$mdpValide) {
         $erreurs[] = 'Les mots de passe ne correspondent pas.';
     }
 
-    $nom = trim($_POST['nom'] ?? null);
-    $prenom = trim($_POST['prenom'] ?? null);
-    $adresse = trim($_POST['adresse'] ?? null);
-    $ville = trim($_POST['ville'] ?? null);
+    $nom = trim($_POST['nom'] ?? '');
+    $nomValide = preg_match('/^\\b(?:\\w|-)+\\b$/', $nom);
+    if (!$nomValide) {
+        $erreurs[] = 'Le nom invalide.';
+    }
 
-    $codePostal = trim($_POST['code-postal'] ?? null);
+    $prenom = trim($_POST['prenom'] ?? '');
+    $prenomValide = preg_match('/^\\b(?:\\w|-)+\\b$/', $prenom);
+    if (!$prenomValide) {
+        $erreurs[] = 'Le prenom invalide.';
+    }
+
+    $adresse = trim($_POST['adresse'] ?? '');
+    $adresseValide = mb_strlen($adresse) <= 150;
+    if (!$adresseValide) {
+        $erreurs[] = 'L\'adresse est trop longue.';
+    }
+
+    $ville = trim($_POST['ville'] ?? '');
+    $villeValide = preg_match('/^\\b(?:\\w|-)+\\b$/', $ville);
+    if (!$villeValide) {
+        $erreurs[] = 'Le ville invalide.';
+    }
+
+    $codePostal = trim($_POST['code-postal'] ?? '');
     $codePostalValide = preg_match('/^[0-9]{5}$/', $codePostal);
     if (!$codePostalValide) {
         $erreurs[] = 'Code postal invalide.';
     }
 
-    $telephone = trim($_POST['telephone'] ?? null);
+    $telephone = trim($_POST['telephone'] ?? '');
     $telephoneValide = preg_match('/^[0-9]{10}$/', $telephone);
     if (!$telephoneValide) {
         $erreurs[] = 'Téléphone invalide.';
     }
 
-    $email = trim($_POST['email'] ?? null);
+    $email = trim($_POST['email'] ?? '');
     $emailValide = filter_var($email, FILTER_VALIDATE_EMAIL);
     if (!$emailValide) {
         $erreurs[] = 'Email invalide.';
     }
 
 
-    if ($mdpValide && $emailValide && $telephoneValide && $codePostalValide) {
+    if ($nomValide && $prenomValide && $mdpValide && $emailValide && $telephoneValide && $villeValide && $adresseValide && $codePostalValide) {
         $mdp_hache = password_hash($mdp, PASSWORD_DEFAULT);
 
         $roleId= 1; //role utilisateur
@@ -113,53 +133,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-nom">
                 <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" placeholder="Votre Nom" autocomplete="family-name" required>
+                <input type="text" id="nom" name="nom" placeholder="Votre Nom" autocomplete="family-name" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
             <div class="form-prenom">
                 <label for="prénom">Prénom</label>
-                <input type="text" id="prénom" name="prenom" placeholder="Votre Prénom" autocomplete="given-name" required>
+                <input type="text" id="prénom" name="prenom" placeholder="Votre Prénom" autocomplete="given-name" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
             <div class="form-email">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Votre Email" autocomplete="email" required>
+                <input type="email" id="email" name="email" placeholder="Votre Email" autocomplete="email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" required>
             </div>
 
             <div class="form-tel">
                 <label for="telephone">Téléphone</label>
-                <input type="tel" id="telephone" name="telephone" inputmode="numeric" pattern="[0-9]{10}" maxlength="10"
+                <input type="tel" id="telephone" name="telephone" inputmode="numeric" pattern="^[0-9]{10}$" maxlength="10"
                        placeholder="Votre n° de téléphone" autocomplete="tel" required>
             </div>
 
             <div class="form-adresse">
                 <label for="adresse">Adresse</label>
                 <input type="text" id="adresse" name="adresse" placeholder="Ex: 8 bis rue de la fontaine"
-                       autocomplete="address-line1" required>
+                       autocomplete="address-line1" maxlength="150" required>
             </div>
 
             <div class="form-code-postal">
                 <label for="code-postal">Code Postal</label>
-                <input type="text" id="code-postal" name="code-postal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5"
+                <input type="text" id="code-postal" name="code-postal" inputmode="numeric" pattern="^[0-9]{5}$" maxlength="5"
                        placeholder="Votre Code Postal" autocomplete="postal-code" required>
             </div>
 
             <div class="form-ville">
                 <label for="ville">Ville</label>
-                <input type="text" id="ville" name="ville" placeholder="Votre Ville" autocomplete="address-level2" required>
+                <input type="text" id="ville" name="ville" placeholder="Votre Ville" autocomplete="address-level2" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
             <div class="form-mdp">
                 <label for="mdp">Mot de passe</label>
                 <input type="password" id="mdp" name="mdp"
-                       pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{10,}" minlength="10"
-                       title="Minimum 10 caractères, avec au moins une majuscule, une minuscule, un chiffre et un caractère spécial"
+                       pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+                       minlength="8"
+                       title="Minimum 8 caractères, avec au moins une majuscule, une minuscule, un chiffre et un caractère spécial"
                        placeholder="Mot de passe" autocomplete="new-password" required>
             </div>
 
             <div class="form-mdp-confirm">
                 <label for="mdp-confirm">Confirmation du mot de passe</label>
                 <input type="password" id="mdp-confirm" name="mdp-confirm" placeholder="Confirmer votre mot de passe"
+                       pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+                       minlength="8"
+                       title="Minimum 8 caractères, avec au moins une majuscule, une minuscule, un chiffre et un caractère spécial"
                        autocomplete="new-password" required>
                 <p id="erreur-mdp" class="erreur"></p>
             </div>

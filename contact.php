@@ -11,12 +11,12 @@
 
         <div class="form-nom">
             <label for="nom">Nom :</label>
-            <input type="text" id="nom" pattern="/^\\b(?:\\w|-)+\\b$/" name="contact-nom" required>
+            <input type="text" id="nom" pattern="^\b(?:\w|-)+\b$" name="contact-nom" required>
         </div>
 
         <div class="form-prenom">
             <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" pattern="/^\\b(?:\\w|-)+\\b$/" name="contact-prenom" required>
+            <input type="text" id="prenom" pattern="^\b(?:\w|-)+\b$" name="contact-prenom" required>
         </div>
 
         <div class="form-tel">
@@ -24,7 +24,7 @@
             <input
                     type="tel"
                     inputmode="numeric"
-                    pattern="[0-9]{10}"
+                    pattern="^[0-9]{10}$"
                     id="tel"
                     name="contact-tel"
                     required>
@@ -40,7 +40,7 @@
             <input
                     type="email"
                     id="email"
-                    pattern="/^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/"
+                    pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
                     name="contact-email"
                     required>
         </div>

@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $menuId = $_POST['menu_id'] ?? null;
     $quantite = $_POST['quantite'] ?? null;
 
-    if (!$menuId || !$quantite) {
-        echo json_encode(['success' => false, 'message' => 'Données manquantes.']);
+    if (!$menuId || !is_numeric($quantite) || (int)$quantite <= 0) {
+        echo json_encode(['success' => false, 'message' => 'Données invalide.']);
         exit;
     }
 
@@ -74,13 +74,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         error_log('Image introuvable pour le menu ID: ' . $menu->getId());
     }
 
-    $prixTotal = $menu->getPrixParPersonne() * (int)$quantite;
+    $nouvelleQuantite = max($menu->getNombrePersonneMinimum(), (int)$quantite);
+    $prixTotal = $menu->getPrixParPersonne() * (int)$nouvelleQuantite;
 
     $_SESSION['panier'][] = [
         'uniqueId' => uniqid(),
         'menu_id' => $menu->getId(),
         'titre' => $menu->getTitre(),
-        'quantite' => (int)$quantite,
+        'quantite' => (int)$nouvelleQuantite,
         'description' => $menu->getDescriptionMenu(),
         'conditions' => $menu->getConditions(),
         'prix_par_personne' => $menu->getPrixParPersonne(),

@@ -1,13 +1,14 @@
 <?php
 
-use Repositories\HistoriqueStatutRepositoryMysql;
-use Repositories\UtilisateurRepositoryMysql;
-use Repositories\AvisRepositoryMongoDB;
-use Repositories\CommandesRepositoryMysql;
 use Controllers\AvisController;
 use Controllers\UtilisateurController;
-
 use includes\Autoloader;
+use Repositories\AvisRepositoryMongoDB;
+use Repositories\CommandesRepositoryMysql;
+use Repositories\HistoriqueStatutRepositoryMysql;
+use Repositories\UtilisateurRepositoryMysql;
+
+
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();

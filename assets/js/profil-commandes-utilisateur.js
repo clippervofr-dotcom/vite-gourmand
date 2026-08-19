@@ -195,6 +195,7 @@ if (annulationModal && annulationCheckbox && annulationConfirm && annulationClos
         const donnees = new FormData();
         donnees.append('commande_id', commandeId);
         donnees.append('statut', 'annulée');
+        donnees.append('csrf_token', getCsrfToken());
 
         return fetch('commandes-utilisateur-annuler.php', {
             method: 'POST',
@@ -292,6 +293,7 @@ if (avisModalClose && avisBtnConfirmer && avisModal) {
         donnees.append('commande_id', commandeId);
         donnees.append('etoile_nombre', totalStars);
         donnees.append('commentaire', commentaire.value);
+        donnees.append('csrf_token', getCsrfToken());
 
         const reponse = await fetch('avis-post.php', {
             method: 'POST',

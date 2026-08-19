@@ -9,11 +9,14 @@ use Repositories\UtilisateurRepositoryMysql;
 
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
+require __DIR__ . '/includes/csrf.php';
 Autoloader::register();
 
 $erreurs = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    verifierCsrfPage('inscription.php');
 
     $utilisateurRepository = new UtilisateurRepositoryMysql($pdo);
     $utilisateurController = new UtilisateurController($utilisateurRepository);
@@ -108,6 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <main>
         <form class="form-page" method="post" action="">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
 
             <?php if (count($erreurs) > 0) : ?>
                 <p class="erreur-inscription">
@@ -120,30 +124,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <img src="assets/images/inscription-banner.png" class="inscription-banner" alt="Banner">
             <p class="form-description">Quelques instants suffisent pour créer votre compte et savourer nos spécialités.</p>
 
-            <div class="form-civilite">
-                <div class="infos-mr-mme">
-                    <input class="input-mr-mme" type="radio" id="mr" name="genre" value="mr"
-                           autocomplete="honorific-prefix">
-                    <label for="mr">Mr</label>
-                    <input class="input-mr-mme" type="radio" id="mme" name="genre" value="mme"
-                           autocomplete="honorific-prefix">
-                    <label for="mme">Mme</label>
-                </div>
-            </div>
-
             <div class="form-nom">
                 <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" placeholder="Votre Nom" autocomplete="family-name" pattern="^\b(?:\w|-)+\b$" required>
+                <input type="text" id="nom" name="nom" placeholder="Votre Nom" autocomplete="family-name" maxlength="50" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
             <div class="form-prenom">
                 <label for="prénom">Prénom</label>
-                <input type="text" id="prénom" name="prenom" placeholder="Votre Prénom" autocomplete="given-name" pattern="^\b(?:\w|-)+\b$" required>
+                <input type="text" id="prénom" name="prenom" placeholder="Votre Prénom" autocomplete="given-name" maxlength="50" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
             <div class="form-email">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Votre Email" autocomplete="email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" required>
+                <input type="email" id="email" name="email" placeholder="Votre Email" autocomplete="email" maxlength="100" pattern="^[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$" required>
             </div>
 
             <div class="form-tel">
@@ -166,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-ville">
                 <label for="ville">Ville</label>
-                <input type="text" id="ville" name="ville" placeholder="Votre Ville" autocomplete="address-level2" pattern="^\b(?:\w|-)+\b$" required>
+                <input type="text" id="ville" name="ville" placeholder="Votre Ville" autocomplete="address-level2" maxlength="50" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
             <div class="form-mdp">

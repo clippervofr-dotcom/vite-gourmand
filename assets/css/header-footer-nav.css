@@ -117,6 +117,7 @@ nav ul {
 .dropdown-profil.active {
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
     gap: 10px;
 }
 
@@ -150,6 +151,16 @@ nav ul {
 .nav-links-principal {
     display: flex;
     gap: 2rem;
+}
+
+#btn-admin-administration-panel,
+#btn-admin-deconnexion-panel,
+#btn-employe-commandes-panel,
+#btn-employe-deconnexion-panel,
+#btn-utilisateur-compte-panel,
+#btn-utilisateur-panier-panel,
+#btn-utilisateur-deconnexion-panel {
+    box-shadow: none;
 }
 
 /* header responsive */
@@ -228,6 +239,7 @@ nav ul {
 
         .animated-button {
             width: 160px;
+            box-shadow: none;
         }
     }
 

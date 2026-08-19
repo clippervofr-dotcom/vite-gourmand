@@ -2,12 +2,13 @@
 session_start();
 
 use Controllers\CommandesController;
+use includes\Autoloader;
 use Repositories\CommandesRepositoryMysql;
 use Repositories\HistoriqueStatutRepositoryMysql;
 
-use includes\Autoloader;
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
+require __DIR__ . '/includes/csrf.php';
 Autoloader::register();
 header('Content-Type: application/json');
 
@@ -25,6 +26,8 @@ if (!($_SESSION['utilisateur']['role_id'] === 2 || $_SESSION['utilisateur']['rol
     echo json_encode(['success' => false, 'message' => 'Droits insuffisants.']);
     exit;
 }
+
+verifierCsrf();
 
 $commandeId = $_POST['commande_id'] ?? null;
 $nouveauStatut = $_POST['statut'] ?? null;

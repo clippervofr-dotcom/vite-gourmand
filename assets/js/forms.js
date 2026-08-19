@@ -44,8 +44,9 @@ if (btnDevis && devisModal && devisForm) {
         event.preventDefault();
         
         const donnees = new FormData(devisForm);
-        
-        const reponse = await fetch('devis.php', {method: 'POST', body: donnees});
+        donnees.append('csrf_token', getCsrfToken());
+
+        const reponse = await fetch('traitement-devis.php', {method: 'POST', body: donnees});
 
         const reponseDonnees = await reponse.json();
 
@@ -59,6 +60,30 @@ if (btnDevis && devisModal && devisForm) {
         } else {
             devisErreur.textContent = reponseDonnees.message;
             devisErreur.style.color = "var(--couleur-police-epuiser)";
+        }
+    })
+}
+
+const contactForm = document.querySelector("#formulaire-contact");
+const contactErreur = document.querySelector("#contact-erreur");
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const donnees = new FormData(contactForm);
+        donnees.append('csrf_token', getCsrfToken());
+        const reponse = await fetch('traitement-contact.php', {method: 'POST', body: donnees});
+        const reponseDonnees = await reponse.json();
+
+        if (reponseDonnees.success) {
+            contactErreur.textContent = '';
+            contactForm.reset();
+            confirmationModal.classList.add('active');
+            confirmationModal.style.color = "var(--couleur-police-stock)";
+        } else {
+            contactErreur.textContent = reponseDonnees.message;
+            contactErreur.style.color = "var(--couleur-police-epuiser)";
         }
     })
 }

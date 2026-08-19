@@ -69,7 +69,6 @@ if (navlinksMenus && btnNavHamburger) {
     });
 }
 
-
 // carroussel mobile
 const btnSuivant = document.querySelector('#avis-suiv');
 const btnPrecedent = document.querySelector('#avis-prec');
@@ -190,8 +189,6 @@ if (commMegabox) {
         }
     });
 
-
-
     mettreAJourEchelle();
     chargerAvis().catch(function (erreur) {
         console.error('Erreur lors du chargement des avis :', erreur);
@@ -206,4 +203,15 @@ $(function () {
     });
 });
 
-
+(function () {
+    const bdyHeader = document.querySelector('.body-header');
+    if (!bdyHeader) return;
+    const role = parseInt(bdyHeader.dataset.roleId);
+    if (role === 2 || role === 3) {
+        document.querySelector('#bouton-devis').style.display = 'none';
+        document.querySelector('#bouton-menus').style.display = 'none';
+        document.querySelector('#nav-links-menus').style.gridTemplateColumns = '1fr';
+        document.querySelector('#nav-links-menus').style.gap = '0';
+        document.querySelector('.nav-links-principal').style.flexDirection = 'row';
+    }
+})();

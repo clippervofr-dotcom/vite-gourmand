@@ -101,6 +101,7 @@ if (conteneurCommandes) {
         const donnees = new FormData();
         donnees.append('commande_id', commandeId);
         donnees.append('statut', 'validée');
+        donnees.append('csrf_token', getCsrfToken());
 
         const reponse = await fetch('commandes-employe-valider.php', {
             method: 'POST',
@@ -125,6 +126,7 @@ if (conteneurCommandes) {
 
         const donnees = new FormData();
         donnees.append('commande_id', commandeId);
+        donnees.append('csrf_token', getCsrfToken());
 
         const reponse = await fetch('profil-voir-details-commandes.php', {
             method: 'POST',
@@ -147,6 +149,7 @@ if (conteneurCommandes) {
 
         const donnees = new FormData();
         donnees.append('commande_id', commandeId);
+        donnees.append('csrf_token', getCsrfToken());
 
         const reponse = await fetch('profil-voir-details-commandes.php', {
             method: 'POST',
@@ -212,9 +215,8 @@ if (detailCommandeModalClose && detailCommandeModal) {
         document.querySelector('#commande-detail-date-prestation').textContent = capitalizeFirstLetter(datePrestationString);
         document.querySelector('#commande-detail-heure-prestation').textContent = heurePrestation;
         document.querySelector('#commande-detail-adresse-livraison').textContent = commande['adresse_livraison'];
-        document.querySelector('#commande-detail-pret-materiel').textContent = commande['pret_materiel'];
+        document.querySelector('#commande-detail-pret-materiel').textContent = `${commande['pret_materiel'] ? 'Matériel prêté' : 'Aucun matériel prêté'}`;
         document.querySelector('#commande-detail-prix-total').textContent = `${commande['prix_total'] ?? '-'} €`;
-
         document.querySelector('#commande-detail-nom-client').textContent = commande['utilisateur_nom'];
         document.querySelector('#commande-detail-prenom-client').textContent = commande['utilisateur_prenom'];
         document.querySelector('#commande-detail-email-client').textContent = commande['utilisateur_email'];
@@ -283,6 +285,7 @@ if (annulationModalAdmin && annulationModalAdminClose) {
         donnees.append('statut', 'annulée');
         donnees.append('annulation_type', annulationType);
         donnees.append('motif_annulation', motifAnnulation.value);
+        donnees.append('csrf_token', getCsrfToken());
 
         const reponse = await fetch('commandes-admin-annuler.php', {
             method: 'POST',

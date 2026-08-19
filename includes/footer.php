@@ -26,17 +26,17 @@
 
             <div class="form-nom">
                 <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="contact-nom" required>
+                <input type="text" id="nom" name="contact-nom" maxlength="50" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
             <div class="form-prenom">
                 <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" name="contact-prenom" required>
+                <input type="text" id="prenom" name="contact-prenom" maxlength="50" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
             <div class="form-tel">
                 <label for="tel">Téléphone :</label>
-                <input type="tel" inputmode="numeric" pattern="[0-9]{10}" id="tel" name="contact-tel" required>
+                <input type="tel" inputmode="numeric" id="tel" maxlength="10" pattern="^[0-9]{10}$" name="contact-tel" required>
             </div>
 
             <div class="form-date">
@@ -46,7 +46,8 @@
 
             <div class="form-email">
                 <label for="email">Email :</label>
-                <input type="email" id="email" name="contact-email" required>
+                <input type="email" id="email" name="contact-email" maxlength="100" pattern="^[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$"
+                       required>
             </div>
 
             <div class="form-texte">
@@ -79,7 +80,7 @@
                 aria-label="Fermer la fenêtre">&times;
         </button>
         <h2>Merci !</h2>
-        <p>Votre demande de devis a bien été envoyée. Nous revenons vers vous très vite.</p>
+        <p>Votre demande a bien été envoyée. Nous revenons vers vous très vite.</p>
     </div>
 </div>
 

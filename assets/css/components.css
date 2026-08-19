@@ -697,8 +697,16 @@ header a {
     /*}*/
     #btn-nav-admin-liste-employe:hover .circle,
     #btn-nav-admin-horaires:hover .circle,
-    #btn-nav-admin-commandes:hover .circle {
+    #btn-nav-admin-commandes:hover .circle,
+    #btn-nav-admin-statistiques:hover .circle {
         width: 350px;
+    }
+
+    .btn-voir-detail-commande,
+    .btn-validation-commande,
+    .btn-annulation-commande-admin {
+        width: 100%;
+        justify-content: center;
     }
 }
 
@@ -856,10 +864,13 @@ header a {
 .bouton-2-commander {
     font-family: inherit;
     display: inline-block;
-    width: 6em;
-    height: 2.6em;
+    padding: 0.5rem;
+    width: 60%;
+    text-decoration: none;
     line-height: 2.5em;
     overflow: hidden;
+    text-align: center;
+    font-size: medium;
     cursor: pointer;
     margin: 15px;
     z-index: 1;
@@ -882,6 +893,10 @@ header a {
     background: var(--couleur-police-epuise);
 }
 
+.bouton-2-commander::before {
+    background: var(--couleur-police-reduction);
+}
+
 .bouton-2:hover,
 .bouton-2-supprimer:hover,
 .bouton-2-commander:hover {
@@ -900,7 +915,7 @@ header a {
 .bouton-2-supprimer:hover::before,
 .bouton-2-commander:hover::before {
     top: -30px;
-    left: -30px;
+    left: -24px;
 }
 
 .dropdown-profil.active {
@@ -919,6 +934,12 @@ header a {
             color: white;
         }
     }
+}
+
+.btn-commander-item-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Modale annulation commande admin */

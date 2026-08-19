@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['utilisateur'])) {
+    header('Location: connexion.php');
+    exit;
+}
+
+if ($_SESSION['utilisateur']['role_id'] !== 2) {
+    header('Location: index.php');
+    exit;
+}
+?>
+
+
+
 <?php $css_pages = ['profil']; ?>
 <?php require 'includes/header.php'; ?>
 

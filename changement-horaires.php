@@ -3,9 +3,10 @@ session_start();
 
 use Controllers\HorairesController;
 use Entities\Horaires;
+use includes\Autoloader;
 use Repositories\HorairesRepositoryMysql;
 
-use includes\Autoloader;
+require __DIR__ . '/includes/csrf.php';
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();
@@ -25,6 +26,8 @@ if (!($_SESSION['utilisateur']['role_id'] === 3)) {
     echo json_encode(['success' => false, 'message' => 'Droits insuffisants.']);
     exit;
 }
+
+verifierCsrf();
 
 $jours = [
     1 => 'lundi', 2 => 'mardi', 3 => 'mercredi',

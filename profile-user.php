@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['utilisateur'])) {
+    header('Location: connexion.php');
+    exit;
+}
+
+if ($_SESSION['utilisateur']['role_id'] !== 1) {
+    header('Location: index.php');
+    exit;
+}
+?>
+
+
+
 <?php $css_pages = ['profil']; ?>
 <?php require 'includes/header.php'; ?>
 
@@ -54,21 +70,23 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             <div class="first-ligne-info">
                 <div class="infos-perso">
                     <label for="nom-profil-utilisateur">Nom :</label>
-                    <input type="text" class="input-profil-utilisateur" id="nom-profil-utilisateur" name="nom-profil-utilisateur" pattern="^\b(?:\w|-)+\b$" value="" disabled>
+                    <input type="text" class="input-profil-utilisateur" id="nom-profil-utilisateur" name="nom-profil-utilisateur" maxlength="50" pattern="^\b(?:\w|-)+\b$" value="" disabled>
                 </div>
                 <div class="infos-perso">
                     <label for="prenom-profil-utilisateur">Prénom :</label>
-                    <input type="text" class="input-profil-utilisateur" id="prenom-profil-utilisateur" name="prenom-profil-utilisateur" pattern="^\b(?:\w|-)+\b$" value="" disabled>
+                    <input type="text" class="input-profil-utilisateur" id="prenom-profil-utilisateur" name="prenom-profil-utilisateur" maxlength="50" pattern="^\b(?:\w|-)+\b$" value="" disabled>
                 </div>
             </div>
             <div class="second-ligne-info">
                 <div class="infos-perso">
                     <label for="email-profil-utilisateur">Email :</label>
-                    <input type="email" class="input-profil-utilisateur" id="email-profil-utilisateur" name="email-profil-utilisateur" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" value="" disabled>
+                    <input type="email" class="input-profil-utilisateur" id="email-profil-utilisateur" name="email-profil-utilisateur" maxlength="100" pattern="^[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$"
+
+                           value="" disabled>
                 </div>
                 <div class="infos-perso">
                     <label for="telephone-profil-utilisateur">Téléphone :</label>
-                    <input type="tel" class="input-profil-utilisateur" id="telephone-profil-utilisateur" name="telephone-profil-utilisateur" inputmode="numeric" pattern="^[0-9]{10}$" maxlength="10" value="" disabled>
+                    <input type="tel" class="input-profil-utilisateur" id="telephone-profil-utilisateur" name="telephone-profil-utilisateur"  inputmode="numeric" pattern="^[0-9]{10}$" maxlength="10" value="" disabled>
                 </div>
             </div>
             <div class="fourth-ligne-info">
@@ -84,7 +102,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                 </div>
                 <div class="infos-perso">
                     <label for="ville-profil-utilisateur">Ville :</label>
-                    <input type="text" class="input-profil-utilisateur" id="ville-profil-utilisateur" name="ville-profil-utilisateur" pattern="^\b(?:\w|-)+\b$" value="" disabled>
+                    <input type="text" class="input-profil-utilisateur" id="ville-profil-utilisateur" name="ville-profil-utilisateur" maxlength="50" pattern="^\b(?:\w|-)+\b$" value="" disabled>
                 </div>
             </div>
             <div class="btn-profil-utilisateur-modif">

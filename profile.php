@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-use Repositories\UtilisateurRepositoryMysql;
 use Controllers\UtilisateurController;
-
 use includes\Autoloader;
+use Repositories\UtilisateurRepositoryMysql;
+
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();

@@ -17,11 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = trim($_POST['contact-nom'] ?? '');
     $prenom = trim($_POST['contact-prenom'] ?? '');
     $tel = trim($_POST['contact-tel'] ?? '');
-    $date = trim($_POST['contact-date'] ?? '');
     $email = trim($_POST['contact-email'] ?? '');
     $texte = trim($_POST['contact-texte'] ?? '');
 
-    if (empty($nom) || empty($prenom) || empty($tel) || empty($email) || empty($texte) || empty($date)) {
+    if (empty($nom) || empty($prenom) || empty($tel) || empty($email) || empty($texte)) {
         echo json_encode(['success' => false, 'message' => 'Tous les champs sont requis.']);
         exit;
     }
@@ -50,12 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $sujet = "Demande de devis - $nom $prenom";
+    $sujet = "Mail de contact - $nom $prenom";
 
     $corps = "Nom: $nom\n";
     $corps .= "Prénom: $prenom\n";
     $corps .= "Téléphone: $tel\n";
-    $corps .= "Date: $date\n";
+    $corps .= "Date: " . (new DateTime())->format('Y-m-d H:i:s') . "\n";
     $corps .= "Email: $email\n\n";
     $corps .= "Message:\n$texte\n";
 

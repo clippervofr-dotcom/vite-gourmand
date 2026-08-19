@@ -7,11 +7,15 @@ use Repositories\UtilisateurRepositoryMysql;
 
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
+require __DIR__ . '/includes/csrf.php';
 Autoloader::register();
 
 $erreur = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    verifierCsrfPage();
+
     $email = $_POST['email'] ?? null;
     $password = $_POST['password'] ?? null;
 
@@ -48,9 +52,10 @@ include 'includes/header.php';
         <?php endif; ?>
 
         <form class="se-connecter-box" method="POST" action="connexion.php">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
             <div class="input-connexion">
                 <label for="email">Email</label>
-                <input type="email" id="email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" name="email" placeholder="Votre Email" required>
+                <input type="email" id="email" pattern="^[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$" maxlength="100" name="email" placeholder="Votre Email" required>
 
                 <label for="password">Mot de passe</label>
                 <input type="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" id="password" name="password" placeholder="Votre mot de passe" required>

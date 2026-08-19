@@ -191,6 +191,7 @@ if (menuDetailmodal && btnMenuClose) {
             const donnees = new FormData();
             donnees.append('menu_id', menuId);
             donnees.append('quantite', quantite);
+            donnees.append('csrf_token', getCsrfToken());
 
             console.log(menuId, quantite)
 

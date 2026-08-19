@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['utilisateur'])) {
+    header('Location: connexion.php');
+    exit;
+}
+?>
+
+
 <?php $css_pages = ['forms']; ?>
 <?php require 'includes/header.php'; ?>
 
@@ -15,37 +25,37 @@
                 <div class="first-ligne-info">
                     <div class="infos-perso">
                         <label for="nom-commande">Nom<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="nom-commande" placeholder="Votre Nom" name="nom-commande" required>
+                        <input type="text" id="nom-commande" maxlength="50" pattern="/^\\b(?:\\w|-)+\\b$/" placeholder="Votre Nom" name="nom-commande" required>
                     </div>
                     <div class="infos-perso">
                         <label for="prenom-commande">Prénom<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="prenom-commande" placeholder="Votre Prénom" name="prenom-commande" required>
+                        <input type="text" id="prenom-commande" maxlength="50" pattern="/^\\b(?:\\w|-)+\\b$/" placeholder="Votre Prénom" name="prenom-commande" required>
                     </div>
                 </div>
                 <div class="second-ligne-info">
                     <div class="infos-perso">
                         <label for="email-commande">Email<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="email" id="email-commande" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Votre Email" name="email-commande" required>
+                        <input type="email" id="email-commande" maxlength="100" pattern="^[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$" placeholder="Votre Email" name="email-commande" required>
                     </div>
                     <div class="infos-perso">
                         <label for="telephone-commande">Téléphone<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="tel" id="telephone-commande" placeholder="Votre Téléphone" name="telephone-commande" required>
+                        <input type="tel" id="telephone-commande" maxlength="10" placeholder="Votre Téléphone" pattern="^[0-9]{10}$" name="telephone-commande" required>
                     </div>
                 </div>
                 <div class="third-ligne-info">
                     <div class="infos-perso">
                         <label for="adresse-commande">Adresse<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="adresse-commande" placeholder="Votre Adresse" name="adresse-commande" required>
+                        <input type="text" id="adresse-commande" maxlength="150" placeholder="Votre Adresse" name="adresse-commande" required>
                     </div>
                 </div>
                 <div class="first-ligne-info">
                     <div class="infos-perso">
                         <label for="code-postal-commande">Code Postal<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="number" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" id="code-postal-commande" placeholder="Votre Code Postal" name="code-postal-commande" required>
+                        <input type="number" inputmode="numeric" pattern="^[0-9]{5}$" maxlength="5" id="code-postal-commande" placeholder="Votre Code Postal" name="code-postal-commande" required>
                     </div>
                     <div class="infos-perso">
                         <label for="ville-commande">Ville<span class="requis" aria-hidden="true">*</span></label>
-                        <input type="text" id="ville-commande" placeholder="Votre Ville" name="ville-commande" required>
+                        <input type="text" id="ville-commande" maxlength="50" pattern="/^\\b(?:\\w|-)+\\b$/" placeholder="Votre Ville" name="ville-commande" required>
                     </div>
                 </div>
                 <div class="fourth-ligne-info">

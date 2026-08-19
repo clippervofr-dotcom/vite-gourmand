@@ -2,12 +2,13 @@
 session_start();
 
 use Controllers\CommandesController;
+use includes\Autoloader;
 use Repositories\CommandesRepositoryMysql;
 use Repositories\HistoriqueStatutRepositoryMysql;
 
-use includes\Autoloader;
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
+require __DIR__ . '/includes/csrf.php';
 Autoloader::register();
 header('Content-Type: application/json');
 
@@ -20,6 +21,8 @@ if (!isset($_SESSION['utilisateur'])) {
     echo json_encode(['success' => false, 'message' => 'Non connecté.']);
     exit;
 }
+
+verifierCsrf();
 
 $commandeId = $_POST['commande_id'] ?? null;
 $nouveauStatut = $_POST['statut'] ?? null;

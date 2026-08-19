@@ -3,7 +3,7 @@
 <?php require 'includes/header.php'; ?>
 
 <main>
-    <form class="form-page" action="" method="post">
+    <form class="form-page" id="formulaire-contact" action="" method="post">
 
         <img src="assets/images/contact-banner.png" class="banner-contact" alt="Banner">
         <p class="form-description">Besoin d’informations ?<br>Écrivez-nous, nous vous répondrons avec plaisir.</p>
@@ -11,12 +11,12 @@
 
         <div class="form-nom">
             <label for="nom">Nom :</label>
-            <input type="text" id="nom" pattern="^\b(?:\w|-)+\b$" name="contact-nom" required>
+            <input type="text" id="nom" pattern="^\b(?:\w|-)+\b$" maxlength="50" name="contact-nom" required>
         </div>
 
         <div class="form-prenom">
             <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" pattern="^\b(?:\w|-)+\b$" name="contact-prenom" required>
+            <input type="text" id="prenom" pattern="^\b(?:\w|-)+\b$" maxlength="50" name="contact-prenom" required>
         </div>
 
         <div class="form-tel">
@@ -25,14 +25,10 @@
                     type="tel"
                     inputmode="numeric"
                     pattern="^[0-9]{10}$"
+                    maxlength="10"
                     id="tel"
                     name="contact-tel"
                     required>
-        </div>
-
-        <div class="form-date">
-            <label for="date">Date :</label>
-            <input type="date" id="date" name="contact-date" required>
         </div>
 
         <div class="form-email">
@@ -40,7 +36,8 @@
             <input
                     type="email"
                     id="email"
-                    pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+                    maxlength="100"
+                    pattern="^[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$"
                     name="contact-email"
                     required>
         </div>
@@ -52,16 +49,14 @@
 
         <div class="form-checkbox">
             <label class="checkbox-custom">
-                <input type="checkbox" id="validation">
+                <input type="checkbox" id="validation" required>
                 <div class="checkbox-mark"></div>
                 <span>J'accepte d'etre recontacté.</span>
             </label>
         </div>
 
-
-
         <div class="form-submit">
-            <button type="submit" id="form-submit-button" name="contact-submit-button">
+            <button type="submit" id="form-submit-button" class="btn-contact-submit" name="contact-submit-button">
                 <div class="svg-wrapper-1">
                     <div class="svg-wrapper">
                         <svg
@@ -81,6 +76,7 @@
                 <span>Envoyer !</span>
             </button>
         </div>
+        <p id="contact-erreur" class="erreur"></p>
     </form>
     <div>
         <img src="assets/images/banniere-v&g.png" class="bottom-banner" alt="Banniere Vite & Gourmand">

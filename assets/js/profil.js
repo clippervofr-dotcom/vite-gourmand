@@ -36,6 +36,7 @@ if (btnUtilisateurValider && btnUtilisateurModif) {
             donnees.append('adresse', inputAdresseUtilisateur.value);
             donnees.append('ville', inputVilleUtilisateur.value);
             donnees.append('code_postal', inputCodePostalUtilisateur.value);
+            donnees.append('csrf_token', getCsrfToken());
 
             await fetch ('profile-info-update-utilisateur.php', {
                 method: 'POST',

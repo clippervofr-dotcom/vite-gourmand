@@ -48,6 +48,7 @@ if (panierContainer) {
                     <div class="btn-commander-item-box">
                         <a href="commande.php?item=${item['uniqueId']}" type="button" class="bouton-2-commander">Commander</a>
                     </div>
+                    <div></div>
                     <div class="btn-supprimer-item-box">
                         <button type="button" class="bouton-2-supprimer">Supprimer</button>
                     </div>
@@ -85,6 +86,7 @@ if (panierContainer) {
             const donnees = new FormData();
             donnees.append('action', 'supprimer');
             donnees.append('unique_id', uniqueId);
+            donnees.append('csrf_token', getCsrfToken());
 
             await fetch('panier.php', { method: 'POST', body: donnees });
             await chargerItem().catch(function (erreur) {
@@ -105,6 +107,7 @@ if (panierContainer) {
             donnees.append('action', 'modifier');
             donnees.append('unique_id', uniqueId);
             donnees.append('quantite', quantiteActuelle);
+            donnees.append('csrf_token', getCsrfToken());
 
             await fetch('panier.php', { method: 'POST', body: donnees });
             await chargerItem().catch(function (erreur) {

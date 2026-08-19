@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['utilisateur'])) {
+    header('Location: connexion.php');
+    exit;
+}
+?>
+
+
 <?php $css_pages = ['menus']; ?>
 <?php require 'includes/header.php'; ?>
 

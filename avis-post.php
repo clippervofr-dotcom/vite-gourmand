@@ -2,12 +2,13 @@
 session_start();
 
 use Controllers\AvisController;
-use Repositories\HistoriqueStatutRepositoryMysql;
-use Repositories\CommandesRepositoryMysql;
-use Repositories\AvisRepositoryMongoDB;
 use Entities\Avis;
-
 use includes\Autoloader;
+use Repositories\AvisRepositoryMongoDB;
+use Repositories\CommandesRepositoryMysql;
+use Repositories\HistoriqueStatutRepositoryMysql;
+
+require __DIR__ . '/includes/csrf.php';
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();
@@ -22,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Mauvaise méthode.']);
     exit;
 }
+
+verifierCsrf();
 
 $commandeId = $_POST['commande_id'] ?? null;
 $note = $_POST['etoile_nombre'] ?? null;

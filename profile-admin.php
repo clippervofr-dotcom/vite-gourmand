@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['utilisateur'])) {
+    header('Location: connexion.php');
+    exit;
+}
+
+if ($_SESSION['utilisateur']['role_id'] !== 3) {
+    header('Location: index.php');
+    exit;
+}
+?>
+
+
 <?php $css_pages = ['profil']; ?>
 <?php require 'includes/header.php'; ?>
 
@@ -123,17 +138,18 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
         <div class="first-ligne-info">
             <div class="infos-perso">
                 <label for="nom-creation-admin">Nom :</label>
-                <input type="text" class="input-profil-utilisateur" id="nom-creation-admin" pattern="/^\\b(?:\\w|-)+\\b$/" name="nom-creation-admin" value="" required>
+                <input type="text" class="input-profil-utilisateur" id="nom-creation-admin" maxlength="50" pattern="/^\\b(?:\\w|-)+\\b$/" name="nom-creation-admin" value="" required>
             </div>
             <div class="infos-perso">
                 <label for="prenom-creation-admin">Prénom :</label>
-                <input type="text" class="input-profil-utilisateur" id="prenom-creation-admin" pattern="/^\\b(?:\\w|-)+\\b$/" name="prenom-creation-admin" value="" required>
+                <input type="text" class="input-profil-utilisateur" id="prenom-creation-admin" maxlength="50" pattern="/^\\b(?:\\w|-)+\\b$/" name="prenom-creation-admin" value="" required>
             </div>
         </div>
         <div class="second-ligne-info">
             <div class="infos-perso">
                 <label for="email-creation-admin">Email :</label>
-                <input type="email" class="input-profil-utilisateur" id="email-creation-admin" pattern="/^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/" name="email-creation-admin" value="" required>
+                <input type="email" class="input-profil-utilisateur" id="email-creation-admin" maxlength="100" pattern="^[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$"
+                       name="email-creation-admin" value="" required>
             </div>
             <div class="infos-perso">
                 <label for="telephone-creation-admin">Téléphone :</label>
@@ -147,13 +163,13 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
             </div>
             <div class="infos-perso">
                 <label for="ville-creation-admin">Ville :</label>
-                <input type="text" class="input-profil-utilisateur" pattern="/^\\b(?:\\w|-)+\\b$/" id="ville-creation-admin" name="ville-creation-admin" value="" required>
+                <input type="text" class="input-profil-utilisateur" maxlength="50" pattern="/^\\b(?:\\w|-)+\\b$/" id="ville-creation-admin" name="ville-creation-admin" value="" required>
             </div>
         </div>
         <div class="third-ligne-info">
             <div class="infos-perso">
                 <label for="adresse-creation-admin">Adresse :</label>
-                <input type="text" class="input-profil-utilisateur" id="adresse-creation-admin" name="adresse-creation-admin" value="" required>
+                <input type="text" class="input-profil-utilisateur" maxlength="150" id="adresse-creation-admin" name="adresse-creation-admin" value="" required>
             </div>
         </div>
         <div class="radio-ligne-info">
@@ -289,9 +305,9 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
                 <div class="horaire-container">
                     <div class="modif-horaires-titre">
                         <span></span>
-                        <span class="modif-ouverture-titre">Heure d'ouverture :</span>
-                        <span class="modif-fermeture-titre">Heure de fermeture :</span>
-                        <span class="modif-ouverture-fermeture-mobile">Heure d'ouverture<br> &<br> fermeture</span>
+                        <span class="modif-ouverture-titre">Ouverture :</span>
+                        <span class="modif-fermeture-titre">Fermeture :</span>
+                        <span class="modif-ouverture-fermeture-mobile">Ouverture<br> &<br> Fermeture</span>
                     </div>
                     <div class="modifications-horaires">
                         <span class="jour-titre">Lundi :</span>

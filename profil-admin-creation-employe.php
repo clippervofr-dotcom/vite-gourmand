@@ -9,6 +9,7 @@ use Repositories\UtilisateurRepositoryMysql;
 
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
+require __DIR__ . '/includes/csrf.php';
 Autoloader::register();
 header('Content-Type: application/json');
 
@@ -29,6 +30,8 @@ if ($_SESSION['utilisateur']['role_id'] !== 3) {
     echo json_encode(['success' => false, 'message' => 'Accès refusé.']);
     exit;
 }
+
+verifierCsrf();
 
 $nom = trim($_POST['nom'] ?? null);
 $prenom = trim($_POST['prenom'] ?? null);

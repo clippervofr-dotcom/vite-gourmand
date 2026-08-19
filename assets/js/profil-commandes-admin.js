@@ -53,6 +53,7 @@ if (conteneurListeEmploye) {
         donnees.append('code_postal', codePostalCreation.value);
         donnees.append('ville', villeCreation.value);
         donnees.append('role', roleCreation);
+        donnees.append('csrf_token', getCsrfToken());
 
         const reponse = fetch('profil-admin-creation-employe.php', {
             method: 'POST',
@@ -143,6 +144,7 @@ if (conteneurModifHoraires) {
             donnees.append('vendredi-fermeture', inputVendrediFermeture.value);
             donnees.append('samedi-ouverture', inputSamediOuverture.value);
             donnees.append('samedi-fermeture', inputSamediFermeture.value);
+            donnees.append('csrf_token', getCsrfToken());
 
             await fetch('changement-horaires.php', {
                 method: 'POST',

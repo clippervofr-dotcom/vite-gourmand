@@ -9,3 +9,7 @@ function capitalizeFirstLetter(str) {
     if (!/[a-zA-Z]/.test(str.charAt(0))) return str;
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+function getCsrfToken() {
+    return document.querySelector('meta[name="csrf-token"]').content;
+}

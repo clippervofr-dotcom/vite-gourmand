@@ -1,13 +1,14 @@
 <?php
 session_start();
 
-use Repositories\UtilisateurRepositoryMysql;
 use Controllers\UtilisateurController;
-use Repositories\RoleRepositoryMysql;
-
 use includes\Autoloader;
+use Repositories\RoleRepositoryMysql;
+use Repositories\UtilisateurRepositoryMysql;
+
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
+require __DIR__ . '/includes/csrf.php';
 Autoloader::register();
 header('Content-Type: application/json');
 
@@ -20,6 +21,8 @@ if (!($_SESSION['utilisateur']['role_id'] === 3)) {
     echo json_encode(['success' => false, 'message' => 'Authorisation insuffisante.']);
     exit;
 }
+
+verifierCsrf();
 
 $roleRepository = new RoleRepositoryMysql($pdo);
 $utilisateurRepository = new UtilisateurRepositoryMysql($pdo);

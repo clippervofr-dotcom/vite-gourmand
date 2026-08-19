@@ -2,11 +2,11 @@
 session_start();
 
 use Controllers\CommandesController;
+use includes\Autoloader;
 use Repositories\CommandesRepositoryMysql;
 use Repositories\HistoriqueStatutRepositoryMysql;
 use Repositories\MenuRepositoryMysql;
 
-use includes\Autoloader;
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
 Autoloader::register();
@@ -21,7 +21,6 @@ if (!($_SESSION['utilisateur']['role_id'] === 2 || $_SESSION['utilisateur']['rol
     echo json_encode(['success' => false, 'message' => 'Droits insuffisants.']);
     exit;
 }
-
 
 $statusAutorises = ['en attente', 'validée', 'annulée'];
 $statutDemande = $_GET['statut'] ?? 'en attente';

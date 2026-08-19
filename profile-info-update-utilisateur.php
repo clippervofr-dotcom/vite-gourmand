@@ -8,6 +8,7 @@ use Repositories\UtilisateurRepositoryMysql;
 
 require __DIR__ . '/includes/Autoloader.php';
 require __DIR__ . '/Bootstraps/bootstrap-db.php';
+require __DIR__ . '/includes/csrf.php';
 Autoloader::register();
 header('Content-Type: application/json');
 
@@ -20,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Méthode non autorisée.']);
     exit;
 }
+
+verifierCsrf();
 
 $nom = trim($_POST['nom'] ?? '');
 $prenom = trim($_POST['prenom'] ?? '');

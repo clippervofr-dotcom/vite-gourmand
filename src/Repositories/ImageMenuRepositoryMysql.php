@@ -80,14 +80,6 @@ class ImageMenuRepositoryMysql implements ImageMenuRepositoryInterface
         }
     }
 
-    public function delete(int $imageId): void
-    {
-        $sql = 'DELETE FROM image_menu WHERE image_id = :imageId';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':imageId', $imageId, PDO::PARAM_INT);
-        $stmt->execute();
-    }
-
     private function mapLigneVersImageMenu(array $ligne): ImageMenu
     {
         return new ImageMenu(
@@ -97,5 +89,3 @@ class ImageMenuRepositoryMysql implements ImageMenuRepositoryInterface
         );
     }
 }
-
-?>

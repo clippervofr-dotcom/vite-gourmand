@@ -15,7 +15,6 @@ interface CommandesRepositoryInterface
     public function findByStatut(string $statut): array;
     public function findByPossedeAvis(bool $possedeAvis): array;
     public function findByNumeroCommande(string $numeroCommande): ?Commandes;
-    public function changerDeStatut(int $commandeId, string $nouveauStatut): void;
     public function save(Commandes $commande): void;
     public function delete(int $commandeId): void;
 }

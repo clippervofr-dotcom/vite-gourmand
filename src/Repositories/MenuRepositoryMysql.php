@@ -4,8 +4,6 @@
 namespace Repositories;
 
 use Entities\Menu;
-use Entities\Regime;
-use Entities\Theme;
 use Interfaces\MenuRepositoryInterface;
 use PDO;
 
@@ -99,42 +97,6 @@ class MenuRepositoryMysql implements MenuRepositoryInterface
             quantiteRestante: $ligne['quantite_restante'],
             actif: $ligne['actif']
         );
-    }
-
-    public function getThemeByMenu(int $menuId): array
-    {
-        $sql = 'SELECT theme.theme_id, theme.libelle FROM theme JOIN menu_theme ON theme.theme_id = menu_theme.theme_id WHERE menu_theme.menu_id = :menuId';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':menuId', $menuId, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $resultats = $stmt->fetchAll();
-        $themes = [];
-        foreach ($resultats as $resultat) {
-            $themes[] = new Theme(
-                themeId: $resultat['theme_id'],
-                libelle: $resultat['libelle']
-            );
-        }
-        return $themes;
-    }
-
-    public function getRegimeByMenu(int $menuId): array
-    {
-        $sql = 'SELECT regime.regime_id, regime.libelle FROM regime JOIN menu_regime ON regime.regime_id = menu_regime.regime_id WHERE menu_regime.menu_id = :menuId';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':menuId', $menuId, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $resultats = $stmt->fetchAll();
-        $regimes = [];
-        foreach ($resultats as $resultat) {
-            $regimes[] = new Regime(
-                regimeId: $resultat['regime_id'],
-                libelle: $resultat['libelle']
-            );
-        }
-        return $regimes;
     }
 
     public function filtrer(array $themes = [], array $regimes = [], array $allergenes = [], ?float $prixMin = null, ?float $prixMax = null, ?int $nbrPersonnes = null): array

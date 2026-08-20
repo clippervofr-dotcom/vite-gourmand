@@ -24,5 +24,3 @@ class Role
         $this->roleId = $roleId;
     }
 }
-
-?>

@@ -30,11 +30,4 @@ class ImageMenu
     {
         $this->imageId = $imageId;
     }
-
-    public function setMenuId(int $menuId): void
-    {
-        $this->menuId = $menuId;
-    }
 }
-
-?>

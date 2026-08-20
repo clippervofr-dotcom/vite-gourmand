@@ -44,21 +44,7 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
         }
         return $this->mapLigneVersUtilisateur($ligne);
     }
-
-    public function getByRoleId(int $roleId): ?Utilisateur
-    {
-        $sql = 'SELECT * FROM utilisateur WHERE role_id = :role_id';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':role_id', $roleId, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $ligne = $stmt->fetch();
-        if ($ligne === false) {
-            return null;
-        }
-        return $this->mapLigneVersUtilisateur($ligne);
-    }
-
+    
     public function getAll(): array
     {
         $sql = 'SELECT * FROM utilisateur';
@@ -79,21 +65,6 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
         $sql = 'SELECT * FROM utilisateur WHERE role_id = :role_id';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':role_id', $roleId, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $resultats = $stmt->fetchAll();
-
-        $utilisateurs = [];
-        foreach ($resultats as $resultat) {
-            $utilisateurs[] = $this->mapLigneVersUtilisateur($resultat);
-        }
-        return $utilisateurs;
-    }
-
-    public function estActif(): array
-    {
-        $sql = 'SELECT utilisateur_id, nom, prenom, email, telephone, adresse, ville, code_postal, actif, role_id FROM utilisateur WHERE actif = 1 ORDER BY utilisateur_id ASC';
-        $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
 
         $resultats = $stmt->fetchAll();

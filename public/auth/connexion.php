@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $css_pages = ['forms'];
-include 'includes/header.php';
+require ROOT_PATH . '/src/Views/partials/header.php';
 ?>
 
     <main>
@@ -92,4 +92,4 @@ include 'includes/header.php';
         </form>
     </main>
 
-<?php include 'includes/footer.php'; ?>
+<?php require ROOT_PATH . '/src/Views/partials/footer.php'; ?>

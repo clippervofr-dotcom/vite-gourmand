@@ -1,8 +1,8 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    require_once __DIR__ . '/../../vendor/autoload.php';
-    require_once __DIR__ . '/../../src/Config/bootstrap.php';
-    require_once __DIR__ . '/session.php';
+    require_once __DIR__ . '/../../../vendor/autoload.php';
+    require_once __DIR__ . '/../../Config/bootstrap.php';
+    require_once __DIR__ . '/../../Config/session.php';
     if (empty($_SESSION['csrf_token'])) {
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }

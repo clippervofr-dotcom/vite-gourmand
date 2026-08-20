@@ -225,27 +225,6 @@ class CommandesRepositoryMysql implements CommandesRepositoryInterface
         }
     }
 
-    public function changerDeStatut(int $commandeId, string $nouveauStatut): void
-    {
-        $stmtVerif = $this->pdo->prepare('SELECT statut FROM commande WHERE commande_id = :commande_id');
-        $stmtVerif->bindValue(':commande_id', $commandeId, PDO::PARAM_INT);
-        $stmtVerif->execute();
-        $ancienStatut = $stmtVerif->fetchColumn();
-
-        if ($ancienStatut === $nouveauStatut) {
-            return;
-        }
-
-        $stmt = $this->pdo->prepare('UPDATE commande SET statut = :statut WHERE commande_id = :commande_id');
-        $stmt->bindValue(':statut', $nouveauStatut, PDO::PARAM_STR);
-        $stmt->bindValue(':commande_id', $commandeId, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $this->historiqueRepository->save(
-            new HistoriqueStatut(null, $commandeId, $nouveauStatut, date('Y-m-d H:i:s'))
-        );
-    }
-
     public function delete(int $commandeId): void
     {
         $sql = 'DELETE FROM commande WHERE commande_id = :commande_id';

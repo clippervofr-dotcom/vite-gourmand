@@ -1,6 +1,6 @@
 Obsidian/
 .obsidian/
-includes/.env
+.env
 .vscode/
 .idea/
 images-ressources/
@@ -13,3 +13,5 @@ TEST ONLY/
 __pycache__/
 *.pyc
 node_modules/
+.env.example
+/vendor/

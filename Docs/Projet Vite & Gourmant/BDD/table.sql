@@ -23,7 +23,7 @@ CREATE TABLE menu (
   titre VARCHAR(100) NOT NULL,
   description_menu VARCHAR(500) NOT NULL,
   nombre_personne_minimum INT NOT NULL,
-  prix_par_personne DOUBLE NOT NULL,
+  prix_par_personne  DECIMAL(10,2) NOT NULL,
   conditions VARCHAR(500) NOT NULL,
   quantite_restante INT,
   actif BOOL DEFAULT TRUE
@@ -59,6 +59,7 @@ CREATE TABLE plat (
   plat_id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(100) NOT NULL,
   type_plat VARCHAR(20) NOT NULL,
+  description_plat VARCHAR(500) NOT NULL,
   photo BLOB
 );
 
@@ -100,9 +101,9 @@ CREATE TABLE commande (
   heure_prestation VARCHAR(10),
   adresse_livraison VARCHAR(200),
   nombre_personnes INT NOT NULL,
-  prix_menu DOUBLE,
-  prix_livraison DOUBLE,
-  prix_total DOUBLE,
+  prix_menu DECIMAL(10,2),
+  prix_livraison DECIMAL(10,2),
+  prix_total DECIMAL(10,2),
   statut VARCHAR(50) DEFAULT 'en attente',
   motif_annulation VARCHAR(500) NULL,
   mode_contact_annulation VARCHAR(50),
@@ -121,16 +122,6 @@ CREATE TABLE historique_statut (
   FOREIGN KEY (commande_id) REFERENCES commande(commande_id)
 );
 
-CREATE TABLE avis (
-  avis_id INT AUTO_INCREMENT PRIMARY KEY,
-  utilisateur_id INT NOT NULL,
-  commande_id INT,
-  note INT NOT NULL CHECK (note BETWEEN 1 AND 5),
-  description_avis TEXT,
-  statut VARCHAR(20) DEFAULT 'en attente',
-  FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(utilisateur_id)
-);
-
 CREATE TABLE horaire (
   horaire_id INT AUTO_INCREMENT PRIMARY KEY,
   jour VARCHAR(20) NOT NULL,
@@ -138,4 +129,13 @@ CREATE TABLE horaire (
   heure_fermeture VARCHAR(10)
 );
 
-
+/* DEPRECIATED --- AVIS sur MONGODB --- possede_avis sur table->commande */
+-- CREATE TABLE avis (
+--                       avis_id INT AUTO_INCREMENT PRIMARY KEY,
+--                       utilisateur_id INT NOT NULL,
+--                       commande_id INT,
+--                       note INT NOT NULL CHECK (note BETWEEN 1 AND 5),
+--                       description_avis TEXT,
+--                       statut VARCHAR(20) DEFAULT 'en attente',
+--                       FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(utilisateur_id)
+-- );

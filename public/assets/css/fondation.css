@@ -1,0 +1,103 @@
+/* ----- code couleur + tips taille clamp  ----- */
+:root {
+    --couleur-fond: #FCF1E3;
+    --couleur-header: #EDD9B8;
+    --couleur-footer: #3D2B1A;
+    --couleur-hero-arrow: #C4A882;
+    --couleur-hero-bouton: #C4703A;
+    --couleur-tracer-hero-bouton: #8F491C;
+    --couleur-presentation-box: #EDD9B8;
+    --couleur-presentation-box-tracer: #3D2B1A;
+    --couleur-avis-filtre-banner: #F5E6CE;
+    --couleur-avis-bouton: #EDD9B8;
+    --couleur-box-partenaires: #EDD9B8;
+    --couleur-box-filtre: #FCF1E3;
+    --couleur-boule-commande: #C4703A;
+    --couleur-police-boule-commande: #FFFFFF;
+    --couleur-police-connexion: #8F491C;
+    --couleur-tracer-connexion: #8F491C;
+    --couleur-police-standard: #3D2B1A;
+    --couleur-police-new-adresse: #C4703A;
+    --couleur-police-mail-confirm: #987552;
+    --couleur-police-stock: #C4703A;
+    --couleur-police-reduction: #4E8A5A;
+    --couleur-police-epuise: #B84040;
+    --couleur-police-ml-cgv: #B89878;
+    --couleur-police-horaires: #FCF1E3;
+    --couleur-police-filtre-titre: #3D2B1A;
+    --couleur-police-filtre: #7A5C3A;
+    --couleur-police-email-confirm: #987552;
+    --couleur-ombre-legere: rgba(61, 43, 26, 0.15);
+    --couleur-ombre-forte: rgba(61, 43, 26, 0.25);
+    --couleur-test: #EFD9BA;
+
+    /* CSS Variables for the shape */
+    --corner-shape: round;
+    --border-radius: 100px;
+
+    /* Native property (experimental)
+    corner-shape: var(--corner-shape);
+    border-radius: var(--border-radius); */
+}
+
+/*
+box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+*/
+
+/*
+xxx-large clamp(2rem, 1.5rem + 2vw, 3rem);
+xx-large  clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
+x-large   clamp(1.25rem, 1rem + 1vw, 1.75rem);
+large     clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+small     clamp(0.75rem, 0.6875rem + 0.25vw, 0.875rem);
+x-small   clamp(0.5625rem, 0.5rem + 0.25vw, 0.6875rem);
+*/
+
+/* ----- reset ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+body {
+    background: var(--couleur-fond) linear-gradient(0deg, rgba(252, 241, 227, 1) 80%, rgba(237, 217, 184, 1) 100%);
+    font-family: 'Inter', sans-serif;
+    color: var(--couleur-police-standard);
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("../images/fond-img-body.png");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: -1;
+}
+
+main {
+    flex: 1;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.visually-hidden {
+    display: none;
+}

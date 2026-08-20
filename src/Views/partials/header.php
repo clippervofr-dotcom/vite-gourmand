@@ -22,9 +22,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/fondation.css">
-    <link rel="stylesheet" href="assets/css/header-footer-nav.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/fondation.css">
+    <link rel="stylesheet" href="/assets/css/header-footer-nav.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
 
     <?php if (!empty($css_pages)): ?>
         <?php foreach ($css_pages as $css): ?>
@@ -38,17 +38,17 @@ if (session_status() === PHP_SESSION_NONE) {
 <body class="body-header" data-role-id="<?= htmlspecialchars($_SESSION['utilisateur']['role_id'] ?? ''); ?>">
 <header>
     <div class="header-banner-box">
-        <img src="assets/images/header-banner-bgless.png" class="header-banner" alt="Banniere Vite & Gourmand">
+        <img src="/assets/images/header-banner-bgless.png" class="header-banner" alt="Banniere Vite & Gourmand">
     </div>
 
 
     <nav>
         <div class="nav-logo">
-            <a href="index.php">
-                <img src="assets/images/logo1_background_less.png" alt="Vite & Gourmand"/>
+            <a href="/index.php">
+                <img src="/assets/images/logo1_background_less.png" alt="Vite & Gourmand"/>
             </a>
             <button type="button" class="bouton-nav-hamburger" id="bouton-nav-hamburger">
-                <img src="assets/images/suite.png" alt="Menu">
+                <img src="/assets/images/suite.png" alt="Menu">
             </button>
         </div>
 
@@ -57,7 +57,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="nav-links-principal">
                     <ul>
                         <li>
-                            <a href="menus/menus.php" id="bouton-menus" class="animated-button">
+                            <a href="/menus/menus.php" id="bouton-menus" class="animated-button">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                             d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
@@ -97,10 +97,10 @@ if (session_status() === PHP_SESSION_NONE) {
                     <div class="nav-utilisateur">
                         <div class="profil-box">
                             <button class="bouton-profil" id="btn-profil">
-                                <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
+                                <img src="/assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="profil/profil-admin.php" class="animated-button" id="btn-admin-administration-panel">
+                                <a href="/profil/profil-admin.php" class="animated-button" id="btn-admin-administration-panel">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -114,7 +114,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                         ></path>
                                     </svg>
                                 </a>
-                                <a href="public/auth/deconnexion.php" class="animated-button" id="btn-admin-deconnexion-panel">
+                                <a href="/public/auth/deconnexion.php" class="animated-button" id="btn-admin-deconnexion-panel">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -136,10 +136,10 @@ if (session_status() === PHP_SESSION_NONE) {
                     <div class="nav-utilisateur">
                         <div class="profil-box">
                             <button class="bouton-profil" id="btn-profil">
-                                <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
+                                <img src="/assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="profil/profil-employe.php" class="animated-button" id="btn-employe-commandes-panel">
+                                <a href="/profil/profil-employe.php" class="animated-button" id="btn-employe-commandes-panel">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -153,7 +153,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                         ></path>
                                     </svg>
                                 </a>
-                                <a href="auth/deconnexion.php" class="animated-button" id="btn-employe-deconnexion-panel">
+                                <a href="/auth/deconnexion.php" class="animated-button" id="btn-employe-deconnexion-panel">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -163,7 +163,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                     <span class="circle"></span>
                                     <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                                         <path
-                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.17１６Z"
                                         ></path>
                                     </svg>
                                 </a>
@@ -174,15 +174,15 @@ if (session_status() === PHP_SESSION_NONE) {
                 <?php elseif (isset($_SESSION['utilisateur'])): ?>
 
                     <div class="nav-utilisateur">
-                        <a href="panier/mon-panier.php" id="icone-panier">
-                            <img src="assets/images/panier.png" class="panier-logo" alt="Panier">
+                        <a href="/panier/mon-panier.php" id="icone-panier">
+                            <img src="/assets/images/panier.png" class="panier-logo" alt="Panier">
                         </a>
                         <div class="profil-box">
                             <button class="bouton-profil" id="btn-profil">
-                                <img src="assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
+                                <img src="/assets/images/utilisateur.png" class="profil-logo" alt="Mon profil">
                             </button>
                             <div class="dropdown-profil">
-                                <a href="profil/profil-utilisateur.php" class="animated-button" id="btn-utilisateur-compte-panel">
+                                <a href="/profil/profil-utilisateur.php" class="animated-button" id="btn-utilisateur-compte-panel">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -196,7 +196,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                         ></path>
                                     </svg>
                                 </a>
-                                <a href="panier/mon-panier.php" class="animated-button" id="btn-utilisateur-panier-panel">
+                                <a href="/panier/mon-panier.php" class="animated-button" id="btn-utilisateur-panier-panel">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -206,11 +206,11 @@ if (session_status() === PHP_SESSION_NONE) {
                                     <span class="circle"></span>
                                     <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                                         <path
-                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.17１６Z"
                                         ></path>
                                     </svg>
                                 </a>
-                                <a href="auth/deconnexion.php" class="animated-button" id="btn-utilisateur-deconnexion-panel">
+                                <a href="/auth/deconnexion.php" class="animated-button" id="btn-utilisateur-deconnexion-panel">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -229,7 +229,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     </div>
 
                 <?php else: ?>
-                    <a href="auth/connexion.php" class="animated-button">
+                    <a href="/auth/connexion.php" class="animated-button">
                         <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                             <path
                                     d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"

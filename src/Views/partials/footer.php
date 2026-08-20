@@ -21,7 +21,7 @@
         <button type="button" class="modal-close" id="devis-close" aria-label="Fermer la fenêtre">&times;</button>
 
         <form class="form-page" id="devis-form" action="" method="post">
-            <img src="assets/images/devis-banner.png" alt="Banner">
+            <img src="/assets/images/devis-banner.png" alt="Banner">
             <p class="form-description">Parlons de votre événement<br>Demandez votre devis traiteur en quelques
                 clics.</p>
 
@@ -177,7 +177,7 @@
         <h2>Menu ajouté au panier ✓</h2>
 
         <div class="btn-panier-confirm-box">
-            <a href="panier/mon-panier.php" class="animated-button" id="btn-voir-panier">
+            <a href="/panier/mon-panier.php" class="animated-button" id="btn-voir-panier">
                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                     <path
                             d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
@@ -387,9 +387,9 @@
 
         </div>
         <div class="cgv-ml-footer">
-            <a href="legal/cgv.php">Conditions générales de vente</a>
-            <a href="legal/mentions-legales.php">Mentions légales</a>
-            <a href="contact/contact.php">Contact</a>
+            <a href="/legal/cgv.php">Conditions générales de vente</a>
+            <a href="/legal/mentions-legales.php">Mentions légales</a>
+            <a href="/contact/contact.php">Contact</a>
         </div>
         <div class="footer-local__bottom">
             <p class="footer-local__copyright">&copy; 2026 Vite & Gourmand. All Rights Reserved.</p>
@@ -403,18 +403,18 @@
     </div>
 </footer>
 
-<script src="assets/js/index-hamb-feature.js"></script>
-<script src="assets/js/forms.js"></script>
-<script src="assets/js/menus.js"></script>
-<script src="assets/js/profil.js"></script>
-<script src="assets/js/profil-commandes-employe.js"></script>
-<script src="assets/js/profil-commandes-utilisateur.js"></script>
-<script src="assets/js/profil-commandes-admin.js"></script>
-<script src="assets/js/panier-commande.js"></script>
-<script src="assets/js/panier.js"></script>
-<script src="assets/js/horaires.js"></script>
-<script src="assets/js/fonctions.js"></script>
-<script src="assets/js/profil-statistiques-admin.js"></script>
+<script src="/assets/js/index-hamb-feature.js"></script>
+<script src="/assets/js/forms.js"></script>
+<script src="/assets/js/menus.js"></script>
+<script src="/assets/js/profil.js"></script>
+<script src="/assets/js/profil-commandes-employe.js"></script>
+<script src="/assets/js/profil-commandes-utilisateur.js"></script>
+<script src="/assets/js/profil-commandes-admin.js"></script>
+<script src="/assets/js/panier-commande.js"></script>
+<script src="/assets/js/panier.js"></script>
+<script src="/assets/js/horaires.js"></script>
+<script src="/assets/js/fonctions.js"></script>
+<script src="/assets/js/profil-statistiques-admin.js"></script>
 
 
 

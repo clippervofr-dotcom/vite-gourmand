@@ -370,6 +370,15 @@ img.jose-img {
     .date-avis {
         border-bottom: none;
     }
+
+    .commentaire-content-user-etoiles {
+        padding: 5px 5px;
+    }
+    .commentaires-texte,
+    .auteur,
+    .commentaire-content-user-etoiles {
+        font-size: x-large;
+    }
 }
 
 /* Partenaires + texte + logo + carousel */

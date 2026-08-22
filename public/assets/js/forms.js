@@ -97,6 +97,31 @@ if (contactForm) {
     })
 }
 
+const formMdp = document.querySelector("#form-mdp");
+
+
+if (formMdp) {
+
+    const eyeBtn = document.querySelector('#eye-btn');
+
+    function voirMdpInscription() {
+        const mdpInput = document.querySelector('#mdp');
+        const mdpConfirm = document.querySelector('#mdp-confirm');
+
+        if (mdpInput.type === 'password' && mdpConfirm.type === 'password') {
+            mdpInput.type = 'text';
+            mdpConfirm.type = 'text';
+        } else {
+        mdpInput.type = 'password';
+        mdpConfirm.type = 'password';
+        }
+    }
+    eyeBtn.addEventListener('click', function () {
+        eyeBtn.classList.toggle('visible');
+        voirMdpInscription();
+    });
+}
+
 
 
 

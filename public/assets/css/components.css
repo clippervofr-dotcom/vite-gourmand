@@ -313,7 +313,7 @@ input[disabled] {
 }
 
 .modal-box-petite {
-    background-color: var(--couleur-box-filtre);
+    background-color: var(--couleur-avis-bouton);
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 2.5rem 2rem;
@@ -330,7 +330,7 @@ input[disabled] {
     }
 
     h2 {
-        color: var(--couleur-police-reduction);
+        color: var(--couleur-footer);
     }
 }
 

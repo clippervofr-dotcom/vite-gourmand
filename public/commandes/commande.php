@@ -19,7 +19,9 @@ if (!isset($_SESSION['utilisateur'])) {
         </div>
         <div class="commande-box">
             <div class="commande-box-1">
-                <span class="bubulle">1</span>
+                <div class="bubulle">
+                    <span>1</span>
+                </div>
                 <div class="titre-info-perso">
                     <img src="../assets/images/info-client.png" alt="Informations client">
                 </div>
@@ -67,7 +69,9 @@ if (!isset($_SESSION['utilisateur'])) {
                 </div>
             </div>
             <div class="commande-box-2">
-                <span class="bubulle">2</span>
+                <div class="bubulle">
+                    <span>2</span>
+                </div>
                 <div class="titre-choix-menu">
                     <img src="../assets/images/votre-menu.png" alt="Votre menu">
                 </div>
@@ -101,7 +105,9 @@ if (!isset($_SESSION['utilisateur'])) {
                 </div>
             </div>
             <div class="commande-box-3">
-                <span class="bubulle">3</span>
+                <div class="bubulle">
+                    <span>3</span>
+                </div>
                 <div class="titre-recap-commande">
                     <img src="../assets/images/recap.png" alt="Récapitulatif de la commande">
                 </div>

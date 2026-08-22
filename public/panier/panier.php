@@ -7,6 +7,7 @@ require ROOT_PATH . '/src/Security/csrf.php';
 use Controllers\MenuController;
 use Repositories\ImageMenuRepositoryMysql;
 use Repositories\MenuRepositoryMysql;
+use Services\TarificationService;
 
 ;
 header('Content-Type: application/json');
@@ -18,8 +19,6 @@ if (!isset($_SESSION['panier'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verifierCsrf();
-
-    $reduction = 0.9; // 10% de réduction
 
     //supp la ligne du panier
     if (isset($_POST['action']) && $_POST['action'] === 'supprimer') {
@@ -44,11 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($item['uniqueId'] === $uniqueId) {
                 $nouvelleQuantite = max($item['nombre_personne_minimum'], (int)$nouvelleQuantite);
                 $item['quantite'] = (int)$nouvelleQuantite;
-                if ($nouvelleQuantite >= ($item['nombre_personne_minimum'] + 5)) {
-                    $item['prix_total'] = ($item['prix_par_personne'] * (int)$nouvelleQuantite) * $reduction; // réduction de 10%
-                } else {
-                    $item['prix_total'] = $item['prix_par_personne'] * (int)$nouvelleQuantite;
-                }
+                $item['prix_total'] = TarificationService::appliquerReduction((int)$nouvelleQuantite, $item['nombre_personne_minimum'], $item['prix_par_personne']);
             }
         }
         unset($item);
@@ -86,11 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    if ($nouvelleQuantite >= ($menu->getNombrePersonneMinimum() + 5)) {
-        $prixTotal = ($menu->getPrixParPersonne() * (int)$nouvelleQuantite) * $reduction; // réduction de 10%
-    } else {
-        $prixTotal = $menu->getPrixParPersonne() * (int)$nouvelleQuantite;
-    }
+    $prixTotal = TarificationService::appliquerReduction((int)$nouvelleQuantite, $menu->getNombrePersonneMinimum(), $menu->getPrixParPersonne());
 
     $_SESSION['panier'][] = [
         'uniqueId' => uniqid(),

@@ -30,8 +30,8 @@
     position: absolute;
     top: -30px;
     left: -30px;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border: solid 1px var(--couleur-police-standard);
     z-index: 2;
@@ -40,8 +40,14 @@
     color: #FCF1E3;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-weight: bold;
     font-family: 'Playfair Display', serif;
+
+    span {
+        transform: translateY(-8px);
+    }
+
 }
 
 .first-ligne-choix-menu {
@@ -215,8 +221,53 @@
     margin-bottom: 1rem;
 }
 
-/* Modal erreurs inscription */
+/* form confirmation contact + devis */
 
-/*#erreurs-inscription {*/
-/*    display: none;*/
-/*}*/
+.devis-confirmation-modal-texte {
+    font-size: larger;
+    border-top: 1px solid #0000003b;
+    color: var(--couleur-footer);
+    padding-top: 2rem;
+}
+
+.devis-confirmation-modal-titre {
+    font-style: italic;
+    font-size: xx-large;
+    color: var(--couleur-footer);
+}
+
+/* mdp eyes */
+
+#form-mdp-confirm,
+#form-mdp {
+    position: relative;
+}
+
+#eye,
+#eye-slash {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+#eye-btn {
+    background: none;
+    border: none;
+    cursor: none;
+
+    &.visible .fa-eye {
+        display: none;
+    }
+
+    &.visible .fa-eye-slash {
+        display: inline;
+    }
+}
+
+.fa-eye-slash {
+    display: none;
+}
+

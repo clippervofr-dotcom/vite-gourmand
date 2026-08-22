@@ -80,8 +80,8 @@
         <button type="button" class="modal-close" id="confirmation-close"
                 aria-label="Fermer la fenêtre">&times;
         </button>
-        <h2>Merci !</h2>
-        <p>Votre demande a bien été envoyée. Nous revenons vers vous très vite.</p>
+        <h2 class="devis-confirmation-modal-titre">Merci !</h2>
+        <p class="devis-confirmation-modal-texte">Votre demande a bien été envoyée. Nous revenons vers vous très vite.</p>
     </div>
 </div>
 
@@ -108,7 +108,7 @@
             </div>
 
             <div class="menu-detail-allergenes-box">
-                <i class="fa fa-exclamation-triangle" aria-label="Avertissement allergènes"></i>
+                <i class="fa fa-triangle-exclamation" aria-label="Avertissement allergènes"></i>
                 <p id="menu-detail-allergenes"></p>
             </div>
 

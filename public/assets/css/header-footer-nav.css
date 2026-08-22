@@ -1,6 +1,6 @@
 /* header + nav + bouton connexion + logo header + border */
 header {
-    padding: 20px 40px;
+    padding: 10px 20px;
     position: relative;
 
     .header-banner {
@@ -39,8 +39,7 @@ header {
 }
 
 nav {
-    display: flex;
-    align-items: center;
+    display: grid;
     position: relative;
     z-index: 8;
 }
@@ -56,27 +55,54 @@ nav ul {
 }
 
 .nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-left: auto;
+    margin: 1rem;
 }
 
 .nav-links-menus {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+    display: grid;
+    align-items: baseline;
+    margin-top: 0;
+    position: absolute;
+    top: 57%;
+    right: -20px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+    background-color: #0000009c;
+    padding: 0.75rem;
+    border-top: solid 2px var(--couleur-hero-bouton);
+    border-bottom: solid 2px var(--couleur-hero-bouton);
+    border-radius: 20px 0 0 20px;
     z-index: 2;
-    margin-top: 10em;
+}
+
+.nav-links-menus.active {
+    z-index: 10;
+    background-color: #0000009c;
+    padding: 0.75rem;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
+    border-top: solid 2px var(--couleur-hero-bouton);
+    border-bottom: solid 2px var(--couleur-hero-bouton);
+    border-radius: 20px 0 0 20px;
 }
 
 .nav-utilisateur {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 15px;
+    gap: 0.5rem;
+
+    li {
+        display: grid;
+        gap: 1rem;
+        padding-top: 1rem;
+    }
 }
 
 .panier-logo {
@@ -97,30 +123,6 @@ nav ul {
     position: relative;
 }
 
-.dropdown-profil {
-    display: none;
-    position: absolute;
-    text-align: center;
-    top: 4rem;
-    right: 0;
-    z-index: 2;
-    width: max-content;
-    border: solid 1px #3D2B1A;
-    background-color: var(--couleur-fond);
-    padding: 0.5rem;
-    font-size: clamp(1rem, 0.875rem + 0.4vi, 2rem);
-    transition: all ease-in-out 0.2s;
-    font-family: 'Playfair Display', serif;
-    border-radius: 6px;
-}
-
-.dropdown-profil.active {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
-    gap: 10px;
-}
-
 .bouton-profil {
     background: transparent;
     border: none;
@@ -131,6 +133,8 @@ nav ul {
     font-family: 'Playfair Display', serif;
     white-space: nowrap;
     font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
+    justify-content: space-between;
+    display: flex;
 }
 
 .nav-logo img {
@@ -140,152 +144,70 @@ nav ul {
 }
 
 .bouton-nav-hamburger {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
 
     img {
-        width: 30%;
+        width: 30px;
         height: auto;
     }
 }
 
 .nav-links-principal {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    .animated-button {
+        width: 160px;
+    }
 }
 
 #btn-admin-administration-panel,
 #btn-admin-deconnexion-panel,
 #btn-employe-commandes-panel,
 #btn-employe-deconnexion-panel,
-#btn-utilisateur-compte-panel,
-#btn-utilisateur-panier-panel,
-#btn-utilisateur-deconnexion-panel {
+#btn-utilisateur-panier-panel {
     box-shadow: none;
 }
 
-#btn-connexion-index {
-
+#bouton-menus,
+#bouton-devis,
+#btn-connexion-index,
+#bouton-panier,
+#btn-utilisateur-compte-panel,
+#btn-utilisateur-deconnexion-panel{
+    display: flex;
+    width: 160px;
+    justify-content: center;
+    align-items: center;
+    background: var(--couleur-fond);
 }
+
 
 /* header responsive */
 
 @media (max-width: 900px) {
-    header {
-        padding: 20px 20px;
-
-        .header-banner {
-            display: none;
-        }
-    }
-
-    nav {
-        display: grid;
-
-        .nav-logo {
-            display: flex;
-
-            img {
-                margin: 0;
-            }
-        }
-    }
-
-    #btn-profil,
-    #icone-panier {
-        display: none;
+    .nav-logo img {
+        height: 4rem;
     }
 
     .nav-links-menus {
-        display: grid;
-        align-items: baseline;
-        margin-top: 0;
-        position: absolute;
         top: 100%;
         left: -20px;
         right: -20px;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transform: translateX(100%);
-        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
-        background-color: #0000009c;
-        padding: 0.75rem;
-    }
+        border-radius: 0 0 0 0;
 
-    .nav-links {
-        margin: 1rem;
-    }
-
-    .nav-links-menus.active {
-        z-index: 10;
-        background-color: #0000009c;
-        padding: 0.75rem;
-        box-shadow: 0 4px 12px var(--couleur-ombre-forte);
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transform: translateX(0);
-    }
-
-    .bouton-nav-hamburger {
-        display: flex;
-        align-items: center;
-        justify-content: right;
-        background: transparent;
-        border: none;
-        border-radius: 6px;
-        padding: 8px 12px;
-        cursor: pointer;
-
-        img {
-            width: 15%;
+        &.active {
+            border-radius: 0 0 0 0;
         }
-    }
-
-    .nav-links-principal {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .animated-button {
-            width: 160px;
-        }
-    }
-
-    .nav-utilisateur {
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.5rem;
-    }
-
-    .bouton-profil {
-        display: none;
-    }
-
-    .dropdown-profil {
-        display: flex !important;
-        flex-direction: column;
-        position: static;
-        border: none;
-        padding: 0;
-        gap: 2rem;
-
-        .bouton-2 {
-            width: 10em;
-            height: 3em;
-            line-height: 2.6em;
-        }
-    }
-
-    #bouton-menus,
-    #bouton-devis,
-    #btn-connexion-index,
-    #bouton-panier {
-        display: flex;
-        width: 160px;
-        justify-content: center;
-        align-items: center;
-        background: var(--couleur-fond);
     }
 }
 
@@ -406,13 +328,18 @@ nav ul {
             color: var(--couleur-presentation-box);
         }
     }
-
 }
 
 .footer-local__social svg {
     width: 22px;
     height: 22px;
     fill: currentColor;
+}
+
+@media (max-width: 900px) {
+    .container-footer {
+        padding: 0 3rem
+    }
 }
 
 .cgv-ml-footer {
@@ -439,7 +366,6 @@ nav ul {
     }
 }
 
-/* Media query for larger screens */
 @media (min-width: 992px) {
     .footer-local__main {
         grid-template-columns: 1fr 1.2fr;

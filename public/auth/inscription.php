@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($ajoutMdp['success']) {
                 session_regenerate_id(true);
                 $_SESSION['utilisateur'] = $newUtilisateur->jsonSerialize();
-                header('location: index.php');
+                header('location: /index.php');
                 exit;
             } else {
                 $erreurs[] = 'Erreur d\'ajout du mot de passe.';
@@ -109,10 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php $css_pages = ['forms']; ?>
-<?php include 'includes/header.php'; ?>
+<?php require ROOT_PATH . '/src/Views/partials/header.php'; ?>
 
     <main>
-        <form class="form-page" method="post" action="">
+        <form class="form-page" id="form-inscription" method="post" action="">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
 
             <?php if (count($erreurs) > 0) : ?>
@@ -164,8 +164,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" id="ville" name="ville" placeholder="Votre Ville" autocomplete="address-level2" maxlength="50" pattern="^\b(?:\w|-)+\b$" required>
             </div>
 
-            <div class="form-mdp">
+            <div class="form-mdp" id="form-mdp">
                 <label for="mdp">Mot de passe</label>
+                <button type="button" id="eye-btn"><i class="fa-regular fa-eye" id="eye"></i><i class="fa-regular fa-eye-slash" id="eye-slash"></i></button>
                 <input type="password" id="mdp" name="mdp"
                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
                        minlength="8"
@@ -173,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        placeholder="Mot de passe" autocomplete="new-password" required>
             </div>
 
-            <div class="form-mdp-confirm">
+            <div class="form-mdp-confirm" id="form-mdp-confirm">
                 <label for="mdp-confirm">Confirmation du mot de passe</label>
                 <input type="password" id="mdp-confirm" name="mdp-confirm" placeholder="Confirmer votre mot de passe"
                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"

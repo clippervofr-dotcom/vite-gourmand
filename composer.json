@@ -7,14 +7,16 @@
         "phpmailer/phpmailer": "^7.1",
         "ext-json": "*",
         "ext-pdo": "*",
-        "ext-pdo_mysql": "*"
+        "ext-pdo_mysql": "*",
+        "ext-bcmath": "*"
     },
     "autoload": {
         "psr-4": {
             "Controllers\\": "src/Controllers/",
             "Entities\\": "src/Entities/",
             "Interfaces\\": "src/Interfaces/",
-            "Repositories\\": "src/Repositories/"
+            "Repositories\\": "src/Repositories/",
+            "Services\\": "src/Services/"
         }
     }
 }

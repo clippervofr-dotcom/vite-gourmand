@@ -60,7 +60,7 @@ CREATE TABLE plat (
   nom VARCHAR(100) NOT NULL,
   type_plat VARCHAR(20) NOT NULL,
   description_plat VARCHAR(500) NOT NULL,
-  photo BLOB
+  photo VARCHAR(255)
 );
 
 CREATE TABLE allergene (

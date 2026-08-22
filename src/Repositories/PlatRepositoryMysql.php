@@ -3,7 +3,6 @@
 namespace Repositories;
 
 use Entities\Allergene;
-use Entities\Menu;
 use Entities\Plat;
 use Interfaces\PlatRepositoryInterface;
 use PDO;
@@ -62,6 +61,9 @@ class PlatRepositoryMysql implements PlatRepositoryInterface {
         return $plats;
     }
 
+    /** // lecture IDE
+     * @return Allergene[]
+     */
     public function getAllergeneByPlatId(int $platId): ?array
     {
         $sql = 'SELECT allergene.allergene_id, allergene.libelle FROM allergene JOIN plat_allergene ON allergene.allergene_id = plat_allergene.allergene_id WHERE plat_allergene.plat_id = :plat_id';
@@ -81,29 +83,36 @@ class PlatRepositoryMysql implements PlatRepositoryInterface {
         return $allergenes;
     }
 
-    public function getMenuByPlatId(int $platId): ?array
+    public function getPlatByMenuId(int $menuId): array
     {
-        $sql = 'SELECT menu.* FROM menu JOIN menu_plat ON menu.menu_id = menu_plat.menu_id WHERE menu_plat.plat_id = :plat_id';
+        $sql = 'SELECT plat.* FROM plat JOIN menu_plat ON plat.plat_id = menu_plat.plat_id WHERE menu_plat.menu_id = :menu_id';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':plat_id', $platId, PDO::PARAM_INT);
+        $stmt->bindValue(':menu_id', $menuId, PDO::PARAM_INT);
         $stmt->execute();
 
         $resultats = $stmt->fetchAll();
 
-        $menus = [];
+        $plats = [];
         foreach ($resultats as $resultat) {
-            $menus[] = new Menu(
-                menuId: $resultat['menu_id'],
-                titre: $resultat['titre'],
-                descriptionMenu: $resultat['description_menu'],
-                nombrePersonneMinimum: $resultat['nombre_personne_minimum'],
-                prixParPersonne: $resultat['prix_par_personne'],
-                conditions: $resultat['conditions'],
-                quantiteRestante: $resultat['quantite_restante'],
-                actif: $resultat['actif']
-            );
+            $plats[] = $this->mapLigneVersPlat($resultat);
         }
-        return $menus;
+        return $plats;
+    }
+
+    public function getPlatByAllergeneId(int $allergeneId): array
+    {
+        $sql = 'SELECT plat.* FROM plat JOIN plat_allergene ON plat.plat_id = plat_allergene.plat_id WHERE plat_allergene.allergene_id = :allergene_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':allergene_id', $allergeneId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $resultats = $stmt->fetchAll();
+
+        $plats = [];
+        foreach ($resultats as $resultat) {
+            $plats[] = $this->mapLigneVersPlat($resultat);
+        }
+        return $plats;
     }
 
     public function save(Plat $plat): void
@@ -123,7 +132,7 @@ class PlatRepositoryMysql implements PlatRepositoryInterface {
             $stmt->bindValue(':type_plat', $plat->getTypePlat(), PDO::PARAM_STR);
             $stmt->bindValue(':description_plat', $plat->getDescriptionPlat(), PDO::PARAM_STR);
             $stmt->bindValue(':photo', $plat->getPhoto(), PDO::PARAM_STR);
-            $stmt->bindValue(':plat_id', $plat->getId(), PDO::PARAM_INT);
+            $stmt->bindValue(':plat_id', $plat->getPlatId(), PDO::PARAM_INT);
             $stmt->execute();
         }
     }

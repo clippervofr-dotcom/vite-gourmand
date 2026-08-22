@@ -95,6 +95,23 @@
             <img id="menu-detail-img" src="" alt="">
             <h2 id="menu-detail-titre"></h2>
             <p id="menu-detail-description"></p>
+            <div class="menu-detail-plats">
+                <p>Entrée</p>
+                <p>Plat</p>
+                <p>Dessert</p>
+                <button role="button" class="btn-detail-plats" id="menu-detail-entree-1"></button>
+                <button role="button" class="btn-detail-plats" id="menu-detail-plat-1"></button>
+                <button role="button" class="btn-detail-plats" id="menu-detail-dessert-1"></button>
+                <button role="button" class="btn-detail-plats" id="menu-detail-entree-2"></button>
+                <button role="button" class="btn-detail-plats" id="menu-detail-plat-2"></button>
+                <button role="button" class="btn-detail-plats" id="menu-detail-dessert-2"></button>
+            </div>
+
+            <div class="menu-detail-allergenes-box">
+                <i class="fa fa-exclamation-triangle" aria-label="Avertissement allergènes"></i>
+                <p id="menu-detail-allergenes"></p>
+            </div>
+
             <p id="menu-detail-stock"></p>
             <p id="menu-detail-prix"></p>
 
@@ -108,7 +125,10 @@
 
             <p id="menu-detail-prix-calcule"></p>
 
-            <p id="menu-detail-reduc"></p>
+            <p id="menu-detail-condition"></p>
+
+            <p id="menu-detail-reduc">✓ Réduction de 10% appliquée
+                si +5 personnes au-dessus du minimum</p>
             <button type="button" class="animated-button" id="menu-detail-ajouter">
                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -124,6 +144,17 @@
                 </svg>
             </button>
         </div>
+    </div>
+</div>
+
+<!-- Modale images plats -->
+<div id="menu-detail-img-modal" class="modal-overlay">
+    <div class="modal-box modal-box-moyenne-detail-img">
+        <button type="button" class="modal-close" id="menu-detail-img-close" aria-label="Fermer la fenêtre">&times;</button>
+
+        <p class="menu-detail-titre-img"></p>
+        <p class="menu-detail-description-img"></p>
+        <img id="menu-detail-img-modal-img" src="" alt="">
     </div>
 </div>
 

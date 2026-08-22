@@ -67,6 +67,10 @@ img {
     display: block;
 }
 
+body, html {
+    overflow-x: hidden;
+}
+
 body {
     background: var(--couleur-fond) linear-gradient(0deg, rgba(252, 241, 227, 1) 80%, rgba(237, 217, 184, 1) 100%);
     font-family: 'Inter', sans-serif;
@@ -75,6 +79,7 @@ body {
     flex-direction: column;
     min-height: 100dvh;
     position: relative;
+
 }
 
 body::before {

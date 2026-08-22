@@ -73,7 +73,6 @@ if ($distanceKm === null) {
 
 $distanceKm = round($distanceKm, 0);
 
-$prixTotal = $menuChoisi['prix_total'];
 $prixMateriel = 99;
 $prixSurplusKm = 1.5;
 $prixTotalDistance = 0;
@@ -82,6 +81,8 @@ if ($distanceKm > 5) {
     $distanceSupplementaire = (int)$distanceKm - 5;
     $prixTotalDistance = $distanceSupplementaire * $prixSurplusKm;
 }
+
+$prixTotal = $menuChoisi['prix_total'];
 
 $totalAvecMateriel = $prixTotal + $prixMateriel + $prixTotalDistance;
 $totalSansMateriel = $prixTotal + $prixTotalDistance;
@@ -102,7 +103,7 @@ echo json_encode([
         'prix_materiel' => $prixMateriel,
         'prix_livraison' => $prixTotalDistance,
         'total_avec_materiel' => $totalAvecMateriel,
-        'total_sans_materiel' => $totalSansMateriel
+        'total_sans_materiel' => $totalSansMateriel,
     ]
 ]);
 

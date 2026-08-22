@@ -1,14 +1,15 @@
 <?php
 // Allergene.php
 namespace Entities;
-class Allergene
+
+use JsonSerializable;
+
+class Allergene implements JsonSerializable
 {
     public function __construct(
         private ?int   $allergeneId,
         private string $libelle
-    )
-    {
-    }
+    ) {}
 
     public function getAllergeneId(): ?int
     {
@@ -23,5 +24,13 @@ class Allergene
     public function setAllergeneId(int $allergeneId): void
     {
         $this->allergeneId = $allergeneId;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'allergene_id' => $this->allergeneId,
+            'libelle' => $this->libelle
+        ];
     }
 }

@@ -19,6 +19,8 @@ if (!isset($_SESSION['panier'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verifierCsrf();
 
+    $reduction = 0.9; // 10% de réduction
+
     //supp la ligne du panier
     if (isset($_POST['action']) && $_POST['action'] === 'supprimer') {
         $uniqueId = $_POST['unique_id'] ?? null;
@@ -42,7 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($item['uniqueId'] === $uniqueId) {
                 $nouvelleQuantite = max($item['nombre_personne_minimum'], (int)$nouvelleQuantite);
                 $item['quantite'] = (int)$nouvelleQuantite;
-                $item['prix_total'] = $item['prix_par_personne'] * (int)$nouvelleQuantite;
+                if ($nouvelleQuantite >= ($item['nombre_personne_minimum'] + 5)) {
+                    $item['prix_total'] = ($item['prix_par_personne'] * (int)$nouvelleQuantite) * $reduction; // réduction de 10%
+                } else {
+                    $item['prix_total'] = $item['prix_par_personne'] * (int)$nouvelleQuantite;
+                }
             }
         }
         unset($item);
@@ -80,7 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $prixTotal = $menu->getPrixParPersonne() * (int)$nouvelleQuantite;
+    if ($nouvelleQuantite >= ($menu->getNombrePersonneMinimum() + 5)) {
+        $prixTotal = ($menu->getPrixParPersonne() * (int)$nouvelleQuantite) * $reduction; // réduction de 10%
+    } else {
+        $prixTotal = $menu->getPrixParPersonne() * (int)$nouvelleQuantite;
+    }
 
     $_SESSION['panier'][] = [
         'uniqueId' => uniqid(),

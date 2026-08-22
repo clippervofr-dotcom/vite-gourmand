@@ -67,7 +67,7 @@ nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     z-index: 2;
     margin-top: 10em;
 }
@@ -163,6 +163,10 @@ nav ul {
     box-shadow: none;
 }
 
+#btn-connexion-index {
+
+}
+
 /* header responsive */
 
 @media (max-width: 900px) {
@@ -192,29 +196,35 @@ nav ul {
     }
 
     .nav-links-menus {
-        display: none;
-        margin-top: 0;
+        display: grid;
         align-items: baseline;
+        margin-top: 0;
+        position: absolute;
+        top: 100%;
+        left: -20px;
+        right: -20px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+        background-color: #0000009c;
+        padding: 0.75rem;
     }
 
     .nav-links {
-        position: relative;
         margin: 1rem;
     }
 
     .nav-links-menus.active {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        position: absolute;
-        right: 0;
-        top: 0;
         z-index: 10;
-        margin-top: 0;
-        border: solid 1px var(--couleur-footer);
-        border-radius: 12px;
-        background-color: var(--couleur-fond);
+        background-color: #0000009c;
         padding: 0.75rem;
         box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(0);
     }
 
     .bouton-nav-hamburger {
@@ -239,7 +249,6 @@ nav ul {
 
         .animated-button {
             width: 160px;
-            box-shadow: none;
         }
     }
 
@@ -266,6 +275,17 @@ nav ul {
             height: 3em;
             line-height: 2.6em;
         }
+    }
+
+    #bouton-menus,
+    #bouton-devis,
+    #btn-connexion-index,
+    #bouton-panier {
+        display: flex;
+        width: 160px;
+        justify-content: center;
+        align-items: center;
+        background: var(--couleur-fond);
     }
 }
 

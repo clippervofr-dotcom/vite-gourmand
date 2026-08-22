@@ -356,6 +356,7 @@
 
 #menu-detail-description {
     font-style: italic;
+    padding: 1rem 0;
 }
 
 #menu-detail-stock {
@@ -419,6 +420,116 @@
 
 #btn-continuer-panier {
     width: 80%;
+}
+
+.menu-detail-plats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-detail-plats {
+    background: var(--couleur-avis-filtre-banner);
+    border: none;
+    padding: 0.5rem;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'playfair Display', serif;
+    font-size: medium;
+    height: stretch;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    p {
+        font-family: 'Playfair Display', serif;
+        font-size: x-large;
+    }
+}
+
+
+.menu-detail-allergenes-box {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-exclamation-triangle {
+    color: #f1982c;
+    font-size: 2rem;
+}
+
+.modal-box-moyenne-detail-img {
+    background-color: var(--couleur-header);
+    border-radius: 6px;
+    border: solid 1px var(--couleur-police-connexion);
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    position: relative;
+}
+
+.menu-detail-titre-img {
+    font-size: xx-large;
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    left: 50%;
+    color: var(--couleur-box-filtre);
+    top: 20px;
+    transform: translateX(-50%);
+    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92),
+                0 0 30px rgba(202, 228, 225, 0.34),
+                0 0 12px rgba(30, 132, 242, 0.52),
+                0 0 21px rgba(30, 132, 242, 0.92),
+                0 0 34px rgba(30, 132, 242, 0.78),
+                0 0 54px rgba(30, 132, 242, 0.92);
+}
+
+.menu-detail-description-img {
+    position: absolute;
+    left: 50%;
+    color: var(--couleur-police-boule-commande);
+    transform: translateX(-50%);
+    font-size: xx-large;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to right, rgb(195 162 77 / 22%), rgba(255, 0, 0, 0.7));
+    bottom: 20px;
+    padding: 1rem;
+    border-radius: 30% 70% 70% 30% / 30% 43% 57% 70%;
+    width: 80%;
+
+}
+
+#menu-detail-img-close {
+    right: 20px;
+    color: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+    .modal-box-moyenne-detail-img {
+        max-width: 80%;
+    }
+
+    #menu-detail-img-close {
+        right: 12px;
+        top: 8px;
+    }
+
+    .menu-detail-titre-img {
+        font-size: x-large;
+        width: 80%;
+    }
+
+    .menu-detail-description-img {
+        font-size: medium;
+        padding: 0.6rem;
+    }
+
 }
 
 /* Mon panier */

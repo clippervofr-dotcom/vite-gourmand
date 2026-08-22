@@ -1,3 +1,5 @@
+let dernierMenusAffiches = [];
+
 const sidebarMenu = document.querySelector("#sidebar-menu");
 const btnFiltre = document.querySelector("#bouton-filtre");
 const sidebarClosebtn = document.querySelector("#sidebar-close");
@@ -39,96 +41,65 @@ const menuDetailmodal = document.querySelector("#menu-detail-modal");
 const btnMenuClose = document.querySelector("#menu-detail-close");
 const inputQuantite = document.querySelector("#menu-detail-input");
 
-const menusData = {
-    1: { titre: "Menu de Noël",
-        description: "Des saveurs si festives que même le Père Noël risque d'oublier sa tournée !",
-        prixUnitaire: 30,
-        stock: 50,
-        image: "assets/images/noel.png",
-        reduc: "✓ Réduction de 10% appliquée\n si +5 personnes au-dessus du minimum",
-        value: 10,
-        min: 10,
-    },
-    2: { titre: "Menu de Pâques",
-        description: "Une chasse aux œufs, c'est bien. Une chasse aux bons plats, c'est mieux !",
-        prixUnitaire: 25,
-        stock: 30,
-        image: "assets/images/paques.png",
-        reduc: "✓ Réduction de 10% appliquée\n si +5 personnes au-dessus du minimum",
-        value: 10,
-        min: 10,
-    },
-    3: { titre: "Menu Classique",
-        description: "Les grands classiques : parce qu'on ne change pas une équipe qui régale.",
-        prixUnitaire: 20,
-        stock: 0,
-        image: "assets/images/classique.png",
-        reduc: "✓ Réduction de 10% appliquée\n si +5 personnes au-dessus du minimum",
-        value: 20,
-        min: 20,
-    },
-    4: { titre: "Menu Événementiel",
-        description: "Pour vos grands moments : on s'occupe du festin, vous récoltez les compliments.",
-        prixUnitaire: 50,
-        stock: 100,
-        image: "assets/images/evenement2.png",
-        reduc: "✓ Réduction de 10% appliquée\n si +5 personnes au-dessus du minimum",
-        value: 30,
-        min: 30,
-    },
-    5: { titre: "Menu Végétarien",
-        description: "La preuve qu'un repas peut être complet sans avoir rencontré une vache.",
-        prixUnitaire: 5,
-        stock: 100,
-        image: "assets/images/vege3.png",
-        reduc: "✓ Réduction de 10% appliquée\n si +5 personnes au-dessus du minimum",
-        value: 20,
-        min: 20,
-    }
-};
-
-
 if (menuDetailmodal && btnMenuClose) {
     function remplirModaleMenu(menuId) {
-        const menu = menusData[menuId];
+        const menu = dernierMenusAffiches.find(menu => menu['menu_id'] === parseInt(menuId));
         if (!menu) return;
 
         document.querySelector("#menu-detail-titre").textContent = menu['titre'];
-        document.querySelector("#menu-detail-description").textContent = menu['description'];
-        document.querySelector("#menu-detail-prix").textContent = `${menu['prixUnitaire']}€ / pers.`;
-        document.querySelector('#menu-detail-personne-minimum').textContent = `(minimum : ${menu['min']})`;
+        document.querySelector("#menu-detail-description").textContent = menu['description_menu'];
+
+        document.querySelector('#menu-detail-entree-1').textContent = menu['plats'][0]['nom'];
+        document.querySelector('#menu-detail-entree-2').textContent = menu['plats'][1]['nom'];
+        document.querySelector('#menu-detail-plat-1').textContent = menu['plats'][2]['nom'];
+        document.querySelector('#menu-detail-plat-2').textContent = menu['plats'][3]['nom'];
+        document.querySelector('#menu-detail-dessert-1').textContent = menu['plats'][4]['nom'];
+        document.querySelector('#menu-detail-dessert-2').textContent = menu['plats'][5]['nom'];
+
+        document.querySelector("#menu-detail-prix").textContent = `${menu['prix_par_personne']}€ / pers.`;
+        document.querySelector('#menu-detail-personne-minimum').textContent = `(minimum : ${menu['nombre_personne_minimum']})`;
+        document.querySelector('#menu-detail-condition').textContent = menu['conditions'];
+
+        if (menu['allergenes'].length > 0) {
+            document.querySelector("#menu-detail-allergenes").textContent = menu['allergenes'].length > 1 ? `Présence de ${menu['allergenes'].join(', ')}` : `Présence de ${menu['allergenes']}`;
+        } else {
+            document.querySelector("#menu-detail-allergenes").textContent = "Aucun allergène connu";
+        }
 
         let texteStock;
-        if (menu['stock'] === undefined) {
+        if (menu['quantite_restante'] === undefined) {
             texteStock = "Stock non renseigné";
-        } else if (menu['stock'] === 0) {
+        } else if (menu['quantite_restante'] === 0) {
             texteStock = "Stock épuisé";
             document.querySelector("#menu-detail-stock").style.color = "var(--couleur-police-epuise)";
         } else {
-            texteStock = `Stock : ${menu['stock']} disponibles`;
+            texteStock = `Stock : ${menu['quantite_restante']} disponibles`;
             document.querySelector("#menu-detail-stock").style.color = "var(--couleur-police-stock)";
         }
         document.querySelector("#menu-detail-stock").textContent = texteStock;
-
-        document.querySelector("#menu-detail-reduc").textContent = menu['reduc'] || '';
-        document.querySelector("#menu-detail-img").src = menu['image'];
+        document.querySelector("#menu-detail-img").src = menu['image_url'];
         document.querySelector("#menu-detail-img").alt = menu['titre'];
-        document.querySelector("#menu-detail-input").value = menu['value'];
-        document.querySelector("#menu-detail-input").min = menu['min'];
+        document.querySelector("#menu-detail-input").value = menu['nombre_personne_minimum'];
+        document.querySelector("#menu-detail-input").min = menu['nombre_personne_minimum'];
 
         menuDetailmodal.dataset.menuIdActuel = menuId;
         recalculerPrix();
     }
     function recalculerPrix() {
         const menuId = menuDetailmodal.dataset.menuIdActuel;
-        const menu = menusData[menuId];
-
+        const menu = dernierMenusAffiches.find(menu => menu['menu_id'] === parseInt(menuId));
         if (!menu) return;
 
+        const reduction = 0.10; // 10% de réduction
         const quantite = parseInt(inputQuantite.value) || 0;
-        const prixCalcule = menu['prixUnitaire'] * quantite;
+        const prixCalcule = menu['prix_par_personne'] * quantite;
 
-        document.querySelector("#menu-detail-prix-calcule").textContent = `${prixCalcule}€`;
+        if (quantite >= (parseInt(menu['nombre_personne_minimum']) + 5)) {
+            const prixReduit = prixCalcule - (prixCalcule * reduction);
+            document.querySelector("#menu-detail-prix-calcule").textContent = `${prixReduit}€`;
+        } else {
+            document.querySelector("#menu-detail-prix-calcule").textContent = `${prixCalcule}€`;
+        }
     }
 
     inputQuantite.addEventListener('input', recalculerPrix);
@@ -148,7 +119,7 @@ if (menuDetailmodal && btnMenuClose) {
 
     inputQuantite.addEventListener('blur', function () {
         const menuId = menuDetailmodal.dataset.menuIdActuel;
-        const menu = menusData[menuId];
+        const menu = dernierMenusAffiches.find(menu => menu['menu_id'] === parseInt(menuId));
         if (!menu) return;
 
         const minimum = menu['min'];
@@ -157,12 +128,6 @@ if (menuDetailmodal && btnMenuClose) {
         if (valeurSaisie < minimum) {
             inputQuantite.value = minimum;
             recalculerPrix();
-        }
-    });
-
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-            menuDetailmodal.classList.remove('active');
         }
     });
 
@@ -237,6 +202,79 @@ if (menuDetailmodal && btnMenuClose) {
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
                 panierConfirmationModal.classList.remove('active');
+            }
+        });
+    }
+
+    // modale image plats
+    const imagePlatsModal = document.querySelector('#menu-detail-img-modal');
+    const imagePlatsModalClose = document.querySelector('#menu-detail-img-close');
+
+    const btnImagePlatsE1 = document.querySelector('#menu-detail-entree-1');
+    const btnImagePlatsP1 = document.querySelector('#menu-detail-plat-1');
+    const btnImagePlatsD1 = document.querySelector('#menu-detail-dessert-1');
+
+    const btnImagePlatsE2 = document.querySelector('#menu-detail-entree-2');
+    const btnImagePlatsP2 = document.querySelector('#menu-detail-plat-2');
+    const btnImagePlatsD2 = document.querySelector('#menu-detail-dessert-2');
+
+    if (btnImagePlatsE1 && btnImagePlatsE2 && btnImagePlatsP1 && btnImagePlatsP2 && btnImagePlatsD1 && btnImagePlatsD2) {
+
+        function ouvrirImagePlatsModal(indexPlat) {
+            const menuId = menuDetailmodal.dataset.menuIdActuel;
+            const menu = dernierMenusAffiches.find(menu => menu['menu_id'] === parseInt(menuId));
+            if (!menu) return;
+
+            const titreImage = document.querySelector('.menu-detail-titre-img');
+            const imagePlats = document.querySelector('#menu-detail-img-modal-img');
+            const descriptionPlats = document.querySelector('.menu-detail-description-img');
+
+            imagePlats.src = menu['plats'][indexPlat]['photo'];
+            imagePlats.alt = menu['plats'][indexPlat]['nom'];
+            titreImage.textContent = menu['plats'][indexPlat]['nom'];
+            descriptionPlats.textContent = menu['plats'][indexPlat]['description_plat'];
+
+            imagePlatsModal.classList.add('active');
+        }
+
+        imagePlatsModal.addEventListener('click', function (event) {
+            if (event.target === imagePlatsModal || event.target === imagePlatsModalClose) {
+                imagePlatsModal.classList.remove('active');
+            }
+        });
+
+        btnImagePlatsE1.addEventListener('click', function () {
+            ouvrirImagePlatsModal(0);
+        });
+
+        btnImagePlatsE2.addEventListener('click', function () {
+            ouvrirImagePlatsModal(1);
+        });
+
+        btnImagePlatsP1.addEventListener('click', function () {
+            ouvrirImagePlatsModal(2);
+        });
+
+        btnImagePlatsP2.addEventListener('click', function () {
+            ouvrirImagePlatsModal(3);
+        });
+
+        btnImagePlatsD1.addEventListener('click', function () {
+            ouvrirImagePlatsModal(4);
+        });
+
+        btnImagePlatsD2.addEventListener('click', function () {
+            ouvrirImagePlatsModal(5);
+        });
+
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                if (imagePlatsModal.classList.contains('active')) {
+                    imagePlatsModal.classList.remove('active');
+                } else {
+                    menuDetailmodal.classList.remove('active');
+                }
             }
         });
     }
@@ -361,6 +399,10 @@ function collecterFiltres() {
 }
 
 function afficherMenus(menus) {
+    dernierMenusAffiches = menus;
+
+    console.log(menus);
+
     const grille = document.querySelector('.menus-grid');
     grille.innerHTML = '';
 
@@ -410,6 +452,7 @@ async function filtrerMenus() {
     filtres.allergenes.forEach(function (id) {
         params.append('allergenes[]', id);
     });
+
     params.append('prixMin', filtres.prixMin);
     params.append('prixMax', filtres.prixMax);
     params.append('nbrPersonnes', filtres.nbrPersonnes);
@@ -483,6 +526,10 @@ if (prixMinFiltre && prixMaxFiltre && spanPrixMinValeur && spanPrixMaxValeur) {
         spanPrixMaxValeur.textContent = prixMaxFiltre.value;
     });
 }
+
+// images plats modale
+
+
 
 
 

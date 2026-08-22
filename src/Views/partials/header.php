@@ -91,6 +91,24 @@ if (session_status() === PHP_SESSION_NONE) {
                             </button>
                         </li>
                     </ul>
+                    <ul>
+                        <li>
+                            <a href="/panier/mon-panier.php" class="animated-button" id="bouton-panier">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    ></path>
+                                </svg>
+                                <span class="text">Mon panier</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    ></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
                 <?php if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['role_id'] == 3): ?>
@@ -196,20 +214,20 @@ if (session_status() === PHP_SESSION_NONE) {
                                         ></path>
                                     </svg>
                                 </a>
-                                <a href="/panier/mon-panier.php" class="animated-button" id="btn-utilisateur-panier-panel">
-                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                        ></path>
-                                    </svg>
-                                    <span class="text">Mon panier</span>
-                                    <span class="circle"></span>
-                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.17１６Z"
-                                        ></path>
-                                    </svg>
-                                </a>
+<!--                                <a href="/panier/mon-panier.php" class="animated-button" id="btn-utilisateur-panier-panel">-->
+<!--                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">-->
+<!--                                        <path-->
+<!--                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"-->
+<!--                                        ></path>-->
+<!--                                    </svg>-->
+<!--                                    <span class="text">Mon panier</span>-->
+<!--                                    <span class="circle"></span>-->
+<!--                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">-->
+<!--                                        <path-->
+<!--                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.17１６Z"-->
+<!--                                        ></path>-->
+<!--                                    </svg>-->
+<!--                                </a>-->
                                 <a href="/auth/deconnexion.php" class="animated-button" id="btn-utilisateur-deconnexion-panel">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -229,20 +247,23 @@ if (session_status() === PHP_SESSION_NONE) {
                     </div>
 
                 <?php else: ?>
-                    <a href="/auth/connexion.php" class="animated-button">
-                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                        <span class="text">Connexion</span>
-                        <span class="circle"></span>
-                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                            ></path>
-                        </svg>
-                    </a>
+                    <div class="nav-links-principal">
+                        <a href="/auth/connexion.php" class="animated-button" id="btn-connexion-index">
+                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                ></path>
+                            </svg>
+                            <span class="text">Connexion</span>
+                            <span class="circle"></span>
+                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                ></path>
+                            </svg>
+                        </a>
+                    </div>
+
                 <?php endif; ?>
             </div>
 

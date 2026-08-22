@@ -13,7 +13,7 @@ class Plat implements JsonSerializable {
         private string $nom,
         private string $typePlat,
         private string $descriptionPlat,
-        private string $photo,
+        private ?string $photo,
     ) {}
 
     public function getPlatId(): ?int {
@@ -32,7 +32,7 @@ class Plat implements JsonSerializable {
         return $this->descriptionPlat;
     }
 
-    public function getPhoto(): string {
+    public function getPhoto(): ?string {
         return $this->photo;
     }
 

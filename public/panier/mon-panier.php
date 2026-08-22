@@ -1,11 +1,6 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../../src/Config/root-path.php';
-require_once ROOT_PATH . '/src/Config/session.php';
-if (!isset($_SESSION['utilisateur'])) {
-    header('Location: /auth/connexion.php');
-    exit;
-}
 ?>
 
 

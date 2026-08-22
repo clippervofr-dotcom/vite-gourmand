@@ -201,6 +201,7 @@ document.querySelector('#btn-to-top')?.addEventListener('click', function (event
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+
 (function () {
     const bdyHeader = document.querySelector('.body-header');
     if (!bdyHeader) return;
@@ -208,6 +209,7 @@ document.querySelector('#btn-to-top')?.addEventListener('click', function (event
     if (role === 2 || role === 3) {
         document.querySelector('#bouton-devis').style.display = 'none';
         document.querySelector('#bouton-menus').style.display = 'none';
+        document.querySelector('#bouton-panier').style.display = 'none';
         document.querySelector('#nav-links-menus').style.gridTemplateColumns = '1fr';
         document.querySelector('#nav-links-menus').style.gap = '0';
         document.querySelector('.nav-links-principal').style.flexDirection = 'row';

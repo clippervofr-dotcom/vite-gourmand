@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../../src/Config/bootstrap.php';
 require_once ROOT_PATH . '/src/Config/session.php';
-require ROOT_PATH . '/src/Security/csrf.php';
 
 use Controllers\UtilisateurController;
 use Repositories\RoleRepositoryMysql;
@@ -19,8 +18,6 @@ if (!($_SESSION['utilisateur']['role_id'] === 3)) {
     echo json_encode(['success' => false, 'message' => 'Authorisation insuffisante.']);
     exit;
 }
-
-verifierCsrf();
 
 $roleRepository = new RoleRepositoryMysql($pdo);
 $utilisateurRepository = new UtilisateurRepositoryMysql($pdo);

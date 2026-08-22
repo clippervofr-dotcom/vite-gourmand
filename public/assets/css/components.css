@@ -544,6 +544,7 @@ header a {
 .btn-commentaire-commande .text {
     position: relative;
     z-index: 1;
+    text-align: center;
     transform: translateX(-12px);
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }

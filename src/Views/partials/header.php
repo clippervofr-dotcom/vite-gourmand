@@ -13,10 +13,14 @@ if (session_status() === PHP_SESSION_NONE) {
 <html lang="fr">
 
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="csrf-token" content="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://kit.fontawesome.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
@@ -129,7 +133,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                     ></path>
                                 </svg>
                             </a>
-                            <a href="/public/auth/deconnexion.php" class="animated-button"
+                            <a href="/auth/deconnexion.php" class="animated-button"
                                id="btn-admin-deconnexion-panel">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -157,7 +161,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                             d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
                                     ></path>
                                 </svg>
-                                <span class="text">Commandes en attente</span>
+                                <span class="text">Commandes</span>
                                 <span class="circle"></span>
                                 <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -220,7 +224,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     </ul>
 
                 <?php else: ?>
-                    <div class="nav-links-principal">
+                    <div class="nav-links-principal btn-nav-connexion">
                         <a href="/auth/connexion.php" class="animated-button" id="btn-connexion-index">
                             <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                 <path

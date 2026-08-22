@@ -101,7 +101,7 @@ nav ul {
     li {
         display: grid;
         gap: 1rem;
-        padding-top: 1rem;
+        /*padding-top: 1rem;*/ /* PROFIL ADMIN non */
     }
 }
 
@@ -170,10 +170,11 @@ nav ul {
     }
 }
 
-#btn-admin-administration-panel,
-#btn-admin-deconnexion-panel,
-#btn-employe-commandes-panel,
-#btn-employe-deconnexion-panel,
+.btn-nav-connexion {
+    padding-top: 1rem;
+}
+
+
 #btn-utilisateur-panier-panel {
     box-shadow: none;
 }
@@ -183,7 +184,11 @@ nav ul {
 #btn-connexion-index,
 #bouton-panier,
 #btn-utilisateur-compte-panel,
-#btn-utilisateur-deconnexion-panel{
+#btn-utilisateur-deconnexion-panel,
+#btn-admin-administration-panel,
+#btn-admin-deconnexion-panel,
+#btn-employe-commandes-panel,
+#btn-employe-deconnexion-panel {
     display: flex;
     width: 160px;
     justify-content: center;

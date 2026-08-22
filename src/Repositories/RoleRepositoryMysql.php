@@ -32,6 +32,20 @@ class RoleRepositoryMysql implements RoleRepositoryInterface
         return $roles;
     }
 
+    public function getById(int $roleId): ?Role
+    {
+        $sql = 'SELECT * FROM role WHERE role_id = :role_id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':role_id', $roleId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $resultat = $stmt->fetch();
+        if ($resultat === false) {
+            return null;
+        }
+        return $this->mapLigneVersRole($resultat);
+    }
+
     public function save(Role $role): void
     {
 

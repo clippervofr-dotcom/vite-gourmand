@@ -55,27 +55,6 @@
     font-family: 'Playfair Display', serif;
 }
 
-@media (max-width: 900px) {
-    .btn-profil-utilisateur-modif {
-        padding: 1rem;
-        width: stretch;
-    }
-
-    .titre-profil-utilisateur {
-        padding: 1rem 1rem;
-    }
-
-    .nav-profil-utilisateur,
-    .nav-profil-employe {
-        display: grid;
-        gap: 1.5rem;
-    }
-
-    .btn-profil-utilisateur-modif {
-        gap: 1rem;
-    }
-}
-
 /* FOND SOUS CALQUE*/
 .fond-exterieur,
 .profil-utilisateur-box-info-perso,
@@ -100,42 +79,10 @@
     margin-inline: auto;
     margin-top: -29px;
     transform: translate(-30px, -1px);
-
-    @media (max-width: 900px) {
-        width: 80%;
-        transform: translate(-30px, 0px);
-    }
 }
 
 #fond-exterieur-admin-commande {
     width: 65%;
-}
-
-.profil-utilisateur-box-info-perso,
-.profil-utilisateur-box-commandes,
-.profil-employe-box-commandes,
-.profil-admin-box-liste-employe,
-.profil-admin-box-creation-compte,
-.profil-admin-box-commandes,
-.profil-admin-box-voir-statistiques,
-.profil-admin-box-modif-horaire {
-    display: none;
-    position: relative;
-    z-index: 2;
-    flex-direction: column;
-    gap: 1rem;
-    margin-inline: auto;
-    width: 60%;
-    background-color: var(--couleur-avis-filtre-banner);
-    padding: 2rem;
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    /*margin-top: 2rem;*/
-    margin-bottom: 4rem;
-
-    @media (max-width: 900px) {
-        width: 80%;
-    }
 }
 
 .profil-utilisateur-box-info-perso.active,
@@ -184,9 +131,30 @@
     width: 40%;
 }
 
-@media (max-width: 900px) {
-    .profil-admin-commandes-entete {
-        grid-template-columns: 140px 110px 130px 130px 110px;
+.profil-utilisateur-box-info-perso,
+.profil-utilisateur-box-commandes,
+.profil-employe-box-commandes,
+.profil-admin-box-liste-employe,
+.profil-admin-box-creation-compte,
+.profil-admin-box-commandes,
+.profil-admin-box-voir-statistiques,
+.profil-admin-box-modif-horaire {
+    display: none;
+    position: relative;
+    z-index: 2;
+    flex-direction: column;
+    gap: 1rem;
+    margin-inline: auto;
+    width: 60%;
+    background-color: var(--couleur-avis-filtre-banner);
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /*margin-top: 2rem;*/
+    margin-bottom: 4rem;
+
+    @media (max-width: 900px) {
+        width: 80%;
     }
 }
 
@@ -223,8 +191,6 @@
     display: none;
 }
 
-
-
 .user-nom-menu,
 .user-statut,
 .user-date-prestation,
@@ -234,7 +200,6 @@
 }
 
 /* PROFIL EMPLOYE COMMANDE BOUTON VALIDATION */
-
 #fond-exterieur-employe {
     height: 85%;
 }
@@ -253,7 +218,6 @@
 }
 
 /* PROFIL ADMIN + BOUTONs */
-
 #btn-nav-admin-commandes:hover .circle {
     width: 330px;
 }
@@ -275,12 +239,6 @@
     display: flex;
     justify-content: center;
     gap: 2rem;
-}
-
-@media (max-width: 900px) {
-    .btn-statut-commande-box {
-        display: grid;
-    }
 }
 
 .titre-info-perso {
@@ -307,7 +265,6 @@
 
 /* statistiques */
 /* selecteur */
-
 .profil-admin-statistiques-ligne {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -444,7 +401,6 @@
 }
 
 /* horaires panel Admin */
-
 .modifications-horaires {
     display: grid;
     grid-template-columns: 100px 1fr;
@@ -526,7 +482,6 @@
 
         .input {
             text-align: center;
-
         }
     }
 
@@ -591,4 +546,68 @@
     }
 }
 
+
+@media (max-width: 900px) {
+    .fond-exterieur {
+        width: 80%;
+        transform: translate(-30px, 0px);
+    }
+}
+
+@media (max-width: 900px) {
+    .btn-statut-commande-box {
+        display: grid;
+    }
+}
+
+/* profil admin responsive */
+@media (max-width: 900px) {
+    #profil-admin-box-commandes {
+        width: 83%;
+    }
+
+    .profil-admin-commandes-entete {
+        grid-template-columns: 140px 110px 130px 130px 110px;
+    }
+
+    #fond-exterieur-admin-commande {
+        width: 83%;
+    }
+
+    .commande-detail,
+    .client-detail {
+        justify-items: center;
+    }
+
+    #profil-admin-box-voir-statistiques {
+        width: 91%;
+    }
+
+    .mois-montant-total {
+        display: grid;
+        text-align: center;
+    }
+}
+
+/* profil utilisateur responsive */
+@media (max-width: 900px) {
+    .btn-profil-utilisateur-modif {
+        padding: 1rem;
+        width: stretch;
+    }
+
+    .titre-profil-utilisateur {
+        padding: 1rem 1rem;
+    }
+
+    .nav-profil-utilisateur,
+    .nav-profil-employe {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .btn-profil-utilisateur-modif {
+        gap: 1rem;
+    }
+}
 

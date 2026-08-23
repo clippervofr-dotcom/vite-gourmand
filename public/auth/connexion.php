@@ -57,7 +57,7 @@ require ROOT_PATH . '/src/Views/partials/header.php';
 
 
         <?php if ($erreur): ?>
-            <p class="erreur"><?= htmlspecialchars($erreur, ENT_QUOTES, 'UTF-8') ?></p>
+            <p class="erreur"><i class="fa-solid fa-circle-exclamation"></i><?= htmlspecialchars($erreur, ENT_QUOTES, 'UTF-8') ?></p>
         <?php endif; ?>
 
         <form class="se-connecter-box" method="POST" action="connexion.php">

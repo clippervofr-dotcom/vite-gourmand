@@ -25,16 +25,6 @@ class UtilisateurController
         }
     }
 
-    public function findUtilisateurByRole(int $roleId): ?Utilisateur
-    {
-        try {
-            return $this->utilisateurRepository->getByRoleId($roleId);
-        } catch (PDOException $e) {
-            error_log($e->getMessage());
-            return null;
-        }
-    }
-
     public function findUtilisateurByEmail(string $email): ?Utilisateur
     {
         try {
@@ -59,16 +49,6 @@ class UtilisateurController
     {
         try {
             return $this->utilisateurRepository->getAllByRoleId($roleId);
-        } catch (PDOException $e) {
-            error_log($e->getMessage());
-            return [];
-        }
-    }
-
-    public function listeUtilisateurActif(): array
-    {
-        try {
-            return $this->utilisateurRepository->estActif();
         } catch (PDOException $e) {
             error_log($e->getMessage());
             return [];

@@ -215,3 +215,15 @@ document.querySelector('#btn-to-top')?.addEventListener('click', function (event
         document.querySelector('.nav-links-principal').style.flexDirection = 'row';
     }
 })();
+
+// const conteneur = document.querySelector('.tarteaucitronName');
+//
+// if (conteneur) {
+//
+//     const ligne = document.createElement('div');
+//     ligne.classList.add('tarteaucitronLegal');
+//     ligne.innerHTML =
+//         '<a href="/legal/mentions-legales.php">Voir les mentions légales</a>';
+//
+//     conteneur.appendChild(ligne);
+// }

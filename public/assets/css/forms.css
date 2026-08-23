@@ -221,6 +221,12 @@
     margin-bottom: 1rem;
 }
 
+@media (max-width: 900px) {
+    .input-connexion {
+        width: 80%;
+    }
+}
+
 /* form confirmation contact + devis */
 
 .devis-confirmation-modal-texte {
@@ -251,6 +257,7 @@
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 1.5rem;
+    color: var(--couleur-boule-commande);
 }
 
 #eye-btn {
@@ -269,5 +276,12 @@
 
 .fa-eye-slash {
     display: none;
+}
+
+@media (max-width: 900px) {
+    #eye,
+    #eye-slash {
+        top: 41px;
+    }
 }
 

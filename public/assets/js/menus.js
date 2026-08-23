@@ -61,7 +61,15 @@ if (menuDetailmodal && btnMenuClose) {
         document.querySelector('#menu-detail-condition').textContent = menu['conditions'];
 
         if (menu['allergenes'].length > 0) {
-            document.querySelector("#menu-detail-allergenes").textContent = menu['allergenes'].length > 1 ? `Présence de ${menu['allergenes'].join(', ')}` : `Présence de ${menu['allergenes']}`;
+            if (menu['allergenes'].includes("Oeufs") || menu['allergenes'].includes("Arachides")) {
+                if (menu['allergenes'][1].includes("Arachides") || menu['allergenes'][1].includes("Oeufs")) {
+                    document.querySelector("#menu-detail-allergenes").textContent = menu['allergenes'].length > 1 ? `Présence d'${menu['allergenes'].join(' et d\'')}` : `Présence d'${menu['allergenes']}`;
+                } else {
+                    document.querySelector("#menu-detail-allergenes").textContent = menu['allergenes'].length > 1 ? `Présence d'${menu['allergenes'].join(' et de ')}` : `Présence d'${menu['allergenes']}`;
+                }
+            } else {
+                document.querySelector("#menu-detail-allergenes").textContent = menu['allergenes'].length > 1 ? `Présence de ${menu['allergenes'].join('et de ')}` : `Présence de ${menu['allergenes']}`;
+            }
         } else {
             document.querySelector("#menu-detail-allergenes").textContent = "Aucun allergène connu";
         }

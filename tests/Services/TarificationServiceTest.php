@@ -2,14 +2,14 @@
 // Tests pour TarificationService
 
 
+namespace Services;
+
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Services\TarificationService;
 
 #[CoversClass(TarificationService::class)]
 class TarificationServiceTest extends TestCase
 {
-
 
 
     public function testCalculerDistanceKm()

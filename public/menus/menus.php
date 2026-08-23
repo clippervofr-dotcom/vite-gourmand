@@ -176,8 +176,9 @@ require ROOT_PATH . '/src/Views/partials/header.php';
     <!-- MENU -->
     <div class="main-menu">
         <div class="menu-titre-resultats">
-            <img src="../assets/images/menu-banner.png" alt="Bannière de menu">
+            <h1 class="mes-menus-titre">« À table ... ! »</h1>
             <h2 id="menus-filtre-resultats"></h2>
+
             <div class="filtre-btn-box">
                 <button class="bouton-filtre" id="bouton-filtre">
                     <label for="bouton-filtre">Filtres</label>

@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="form-mdp-confirm" id="form-mdp-confirm">
-                <label for="mdp-confirm">Confirmation du mot de passe</label>
+                <label for="mdp-confirm">Confirmation</label>
                 <input type="password" id="mdp-confirm" name="mdp-confirm" placeholder="Confirmer votre mot de passe"
                        pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
                        minlength="8"

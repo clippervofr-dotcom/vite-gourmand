@@ -209,6 +209,26 @@ input[disabled] {
     margin: 0;
 }
 
+.erreur-inscription {
+    display: grid;
+    gap: 10px;
+    grid-column: 1 / -1;
+}
+
+.erreur {
+    padding-bottom: 1rem;
+    display: flex;
+    font-size: larger;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-circle-exclamation {
+    font-size: xx-large;
+    color: var(--couleur-boule-commande);
+}
+
 /* btn contact envoi message */
 #form-submit-button {
     font-family: inherit;

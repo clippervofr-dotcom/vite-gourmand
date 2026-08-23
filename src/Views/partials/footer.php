@@ -1,9 +1,16 @@
-<!--Modale A MODIF POUR ERREURS CONNEXION -->
-<!--<div id="erreurs-inscription-modal" class="modal-overlay">-->
+<!--Modale cookies-->
+<!--<div id="cookies-modal" class="modal-overlay">-->
 <!--    <div class="modal-box modal-box-petite">-->
-<!--        <button type="button" class="modal-close" id="erreurs-confirmation-close"-->
-<!--                aria-label="Fermer la fenêtre">&times;-->
-<!--        </button>-->
+<!--        <button type="button" class="modal-close" id="cookies-close" aria-label="Fermer la fenêtre">&times;</button>-->
+<!---->
+<!---->
+<!--        logo-->
+<!--        continuer sans accepter-->
+<!--        titre bienvenue-->
+<!--        texte-->
+<!---->
+<!--        btn refuser et fermer -->
+<!--        btn accepter et fermer-->
 <!--        <h2>Ooops !</h2>-->
 <!--        <p class="erreurs-inscription">-->
 <!--            Des erreurs sont survenues.-->
@@ -406,14 +413,12 @@
 
             </div>
             <div class="footer-local__map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1189.374601878703!2d-0.5704800728565587!3d44.84548739799836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca81%3A0x796386037b397a89!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1785103915162!5m2!1sfr!2sfr"
-                        width="600"
-                        height="450"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="strict-origin-when-cross-origin">
-                </iframe>
+                <script>(tarteaucitron.job = tarteaucitron.job || []).push('maps_noapi');</script>
+                <div class="googlemaps_embed"
+                     data-width="600"
+                     data-height="450"
+                     id="!1m18!1m12!1m3!1d1189.374601878703!2d-0.5704800728565587!3d44.84548739799836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca81%3A0x796386037b397a89!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1785103915162!5m2!1sfr!2sfr">
+                </div>
             </div>
 
         </div>
@@ -446,8 +451,6 @@
 <script src="/assets/js/horaires.js"></script>
 <script src="/assets/js/fonctions.js"></script>
 <script src="/assets/js/profil-statistiques-admin.js"></script>
-
-
 
 </div>
 </html>

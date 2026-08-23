@@ -12,19 +12,87 @@ if (session_status() === PHP_SESSION_NONE) {
 <!DOCTYPE html>
 <html lang="fr">
 
-
-
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tarteaucitronjs/1.34.0/tarteaucitron.min.js"></script>
+    <script type="text/javascript">
+        tarteaucitron.init({
+            "privacyUrl": "", /* Url de la politique de confidentialité */
+            "bodyPosition": "top", /* top place le bandeau de consentement au début du code html, mieux pour l'accessibilité */
+
+            "hashtag": "#tarteaucitron", /* Hashtag qui permet d'ouvrir le panneau de contrôle  */
+            "cookieName": "tarteaucitron", /* Nom du cookie (uniquement lettres et chiffres) */
+
+            "orientation": "middle", /* Position de la bannière (top - bottom - popup - banner) */
+
+            "groupServices": true, /* Grouper les services par catégorie */
+            "showDetailsOnClick": true, /* Cliquer pour ouvrir la description */
+            "serviceDefaultState": "wait", /* Statut par défaut (true - wait - false) */
+
+            "showAlertSmall": false, /* Afficher la petite bannière en bas à droite */
+            "showTitleBanner": false, /* Afficher le titre dans le bandeau haut/bas */
+            "cookieslist": false, /* Afficher la liste des cookies via une mini bannière */
+            "cookieslistEmbed": false, /* Afficher la liste des cookies dans le panneau de contrôle */
+
+            "closePopup": true, /* Afficher un X pour fermer la bannière */
+
+            "showIcon": true, /* Afficher un cookie pour ouvrir le panneau */
+            //"iconSrc": "", /* Optionnel: URL ou image en base64 */
+            "iconPosition": "BottomRight", /* Position de l'icons: (BottomRight - BottomLeft - TopRight - TopLeft) */
+
+            "adblocker": false, /* Afficher un message si un Adblocker est détecté */
+
+            "DenyAllCta" : true, /* Afficher le bouton Tout refuser */
+            "AcceptAllCta" : true, /* Afficher le bouton Tout accepter */
+            "highPrivacy": true, /* Attendre le consentement */
+            "alwaysNeedConsent": false, /* Demander le consentement même pour les services "Privacy by design" */
+
+            "handleBrowserDNTRequest": false, /* Refuser tout par défaut si Do Not Track est activé sur le navigateur */
+
+            "removeCredit": false, /* Retirer le lien de crédit vers tarteaucitron.io */
+            "moreInfoLink": true, /* Afficher le lien En savoir plus */
+
+            "useExternalCss": false, /* Mode expert : désactiver le chargement des fichiers .css tarteaucitron */
+            "useExternalJs": false, /* Mode expert : désactiver le chargement des fichiers .js tarteaucitron */
+
+            //"cookieDomain": ".my-multisite-domaine.fr", /* Optionnel: domaine principal pour partager le consentement avec des sous domaines */
+
+            "readmoreLink": "", /* Changer le lien En savoir plus par défaut */
+
+            "mandatory": true, /* Afficher un message pour l'utilisation de cookies obligatoires */
+            "mandatoryCta": false, /* Afficher un bouton pour les cookies obligatoires (déconseillé) */
+
+            //"customCloserId": "", /* Optionnel a11y: ID personnalisé pour ouvrir le panel */
+
+            "googleConsentMode": true, /* Activer le Google Consent Mode v2 pour Google ads & GA4 */
+            "bingConsentMode": true, /* Activer le Bing Consent Mode pour Clarity & Bing Ads */
+            "pianoConsentMode": true, /* Activer le Consent Mode pour Piano Analytics */
+            "pianoConsentModeEssential": false, /* Activer par défaut le mode Essential de Piano */
+            "softConsentMode": false, /* Soft consent mode (le consentement est requis pour charger les tags) */
+
+            "dataLayer": false, /* Envoyer un événement dans dataLayer avec le statut des services */
+            "serverSide": false, /* Server side seulement, les tags ne sont pas chargé côté client */
+
+            "partnersList": true /* Afficher le détail du nombre de partenaires sur la bandeau */
+        });
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="csrf-token" content="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://kit.fontawesome.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+     script-src 'self' https://kit.fontawesome.com https://cdnjs.cloudflare.com 'sha256-U8wlvgw0OvxSJXpCTzuHalTGhjwlyQ56mLf5bBL3mQU=' 'sha256-eUSsXIzUT+4e3V/MOEFkSIuabPsFPDuT2uYCICM8oLI=' 'sha256-IBogtgg3kdZZKyjwNG/+RfZtF3+SB4M2+6gnCVALMvw=' 'sha256-Z2mYiAfi6ZC9loMnPJ9FdH9GavK9hYuDrs7lO4vOar0=';
+     style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'sha256-kdaXPEOwTw3zyiuCzGv1vpohcW9SqOWq8k6gy2OWgtI=' 'sha256-FYY/SGpsd0pQtx3CdPyEn3hkd5YRpeboCePbd04JAXM=' 'unsafe-hashes' 'sha256-/QSh0DyKZIE4f71NhHmeRGlq3RQ7ZHQa1WQMbcA7ufY=' 'sha256-DlfzhjqBiDbZLp9LIFuCkF9v89PG/vrOQpqOYb9NvHU=';
+     font-src 'self' https://fonts.gstatic.com;
+     img-src 'self' data:;
+     connect-src 'self' https://ka-f.fontawesome.com;
+     frame-src https://www.google.com;
+     object-src 'none';
+     base-uri 'self';
+     form-action 'self';">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display+SC&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1860391289.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/fondation.css">
     <link rel="stylesheet" href="/assets/css/header-footer-nav.css">

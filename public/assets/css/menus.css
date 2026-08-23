@@ -194,6 +194,35 @@
     min-width: 0;
 }
 
+.mes-menus-titre {
+    position: relative;
+    background-color: var(--couleur-box-filtre);
+    border-radius: 20px;
+    padding: 30px 150px;
+    box-shadow: 0 4px 12px var(--couleur-ombre-forte);
+
+    @media (max-width: 900px) {
+        padding: 5px 50px;
+        font-size: x-large;
+    }
+}
+
+.mes-menus-titre::before {
+    content: "";
+    position: absolute;
+    bottom: 20%;
+    right: 5%;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--couleur-tracer-hero-bouton);
+    z-index: -1;
+
+    @media (max-width: 900px) {
+        right: 4%;
+    }
+}
+
 .menu-titre-resultats {
     display: flex;
     align-items: center;
@@ -431,7 +460,6 @@
 
 .btn-detail-plats {
     background: var(--couleur-avis-filtre-banner);
-    border: none;
     padding: 0.5rem;
     box-shadow: 0 4px 12px var(--couleur-ombre-forte);
     border-radius: 12px;
@@ -442,6 +470,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    border: solid 1px var(--couleur-hero-bouton);
 
     p {
         font-family: 'Playfair Display', serif;

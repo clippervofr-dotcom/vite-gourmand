@@ -2,7 +2,9 @@ FROM php:8.2-apache
 WORKDIR /var/www/html
 
 RUN pecl install mongodb && docker-php-ext-enable mongodb
-RUN docker-php-ext-install pdo pdo_mysql bcmath
+
+RUN apt-get update && apt-get install -y libzip-dev unzip && docker-php-ext-install pdo pdo_mysql bcmath zip
+
 COPY composer.json .
 COPY composer.lock .
 COPY --from=composer:2.10 /usr/bin/composer /usr/bin/composer

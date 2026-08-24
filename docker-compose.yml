@@ -16,8 +16,8 @@ services:
         source: ./src
         target: /var/www/html/src
       - type: bind
-        source: ./.envtrfhsth
-        target: /var/www/html/.envtrfhsth
+        source: ./.env
+        target: /var/www/html/.env
     depends_on:
       vite_et_gourmand-db:
         condition: service_healthy

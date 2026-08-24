@@ -5,16 +5,17 @@ INSERT INTO role (libelle) VALUES ('Admin');
 INSERT INTO utilisateur (role_id, email, password, nom, prenom, telephone, adresse, ville, code_postal)
 VALUES (3, 'jojo@gmail.com', '$2b$10$Ssxf4wAoxoblQM0LfkgT6.zR4ldp/d/tG58n.KwL1mg.3x/8wLRZm', 'jojo', 'josé', '0633000777', '1 rue de jose', 'Bordeaux', '33000');
 
-
 INSERT INTO utilisateur (role_id, email, password, nom, prenom, telephone, adresse, ville, code_postal)
 VALUES (2, 'juju@gmail.com', '$2b$10$nsP0ROUkPnANl9cKB.pFTeLk4kZ5TATK8R/gdxYzjm/bip9wLTEYq', 'juju', 'julie', '0688888888', '1 rue de julie', 'Bordeaux', '33000');
-
 
 INSERT INTO utilisateur (role_id, email, password, nom, prenom, telephone, adresse, ville, code_postal)
 VALUES (1, 'djodjo@gmail.com', '$2b$10$HdC1jP7MMgpj/uUWVrrlh.wGi3g5hoMSDtTfCOH1Bq5s3gORrUWgi', 'djodjo', 'djo', '0633000999', '1 rue de djo', 'Bordeaux', '33000');
 
+INSERT INTO utilisateur (role_id, email, password, nom, prenom, telephone, adresse, ville, code_postal)
+VALUES (1, 'test@test.fr', '$2y$10$9lcVj4Msk5pikTlWbOY.5OKjdEkeNC3g2ru.hD3p03pwQk5tpUsjO', 'testNOM', 'testPRENOM', '0633000999', '1 rue de test', 'Bordeaux', '33000');
 
-INSERT INTO theme (libelle) VALUES ('Noël'); 
+
+INSERT INTO theme (libelle) VALUES ('Noël');
 INSERT INTO theme (libelle) VALUES ('Pâques');
 INSERT INTO theme (libelle) VALUES ('Classique');
 INSERT INTO theme (libelle) VALUES ('Evénements');
@@ -197,17 +198,45 @@ VALUES (3, 4, 'COMMANDE-280', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 
 INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
 VALUES (3, 4, 'COMMANDE-290', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en annulée');
 
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 1, 'COMMANDE-100', '2026-01-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 100.00, 'validée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 1, 'COMMANDE-101', '2026-02-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 200.00, 'annulée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 1, 'COMMANDE-102', '2026-03-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 300.00, 'terminée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 2, 'COMMANDE-103', '2026-04-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 400.00, 'terminée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 3, 'COMMANDE-104', '2026-05-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 500.00, 'terminée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 4, 'COMMANDE-105', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 600.00, 'terminée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 5, 'COMMANDE-106', '2026-07-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 700.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 1, 'COMMANDE-107', '2026-08-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 800.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 2, 'COMMANDE-108', '2026-09-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 900.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 3, 'COMMANDE-109', '2026-10-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 1000.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 4, 'COMMANDE-110', '2026-11-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 1100.00, 'en attente');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 4, 'COMMANDE-111', '2026-12-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 1200.00, 'en annulée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
+VALUES (3, 4, 'COMMANDE-112', '2025-12-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 100.00, 'en annulée');
 
-INSERT INTO historique_statut (commande_id, statut, date_changement) 
+INSERT INTO historique_statut (commande_id, statut, date_changement)
 VALUES (1, 'en attente', '2026-06-25 12:00:00');
+INSERT INTO historique_statut (commande_id, statut, date_changement)
+VALUES (2, 'validée', '2026-05-25 12:00:00');
+INSERT INTO historique_statut (commande_id, statut, date_changement)
+VALUES (3, 'annulée', '2026-04-25 12:00:00');
 
-
-/* DEPRECIATED --- AVIS sur MONGODB */
-INSERT INTO avis (utilisateur_id, commande_id, note, description_avis, statut)
-VALUES (3, 1, 5, 'Excellent! Nous avons passez un agréable moment!', 'validée');
-
-
-
+INSERT INTO image_menu (menu_id, url) VALUES (1, '../assets/images/noel1.png');
+INSERT INTO image_menu (menu_id, url) VALUES (2, '../assets/images/paques1.png');
+INSERT INTO image_menu (menu_id, url) VALUES (3, '../assets/images/classique1.png');
+INSERT INTO image_menu (menu_id, url) VALUES (4, '../assets/images/evenement.png');
+INSERT INTO image_menu (menu_id, url) VALUES (5, '../assets/images/vegetarien.png');
 
 
 

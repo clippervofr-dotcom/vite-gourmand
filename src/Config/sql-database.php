@@ -1,13 +1,13 @@
 <?php
-if (file_exists(ROOT_PATH . '/.env')) {
-    $env = parse_ini_file(ROOT_PATH . '/.env');
+if (file_exists(ROOT_PATH . '/.envtrfhsth')) {
+    $env = parse_ini_file(ROOT_PATH . '/.envtrfhsth');
     if (array_key_exists('MYSQL_DSN', $env) && array_key_exists('MYSQL_USER', $env) && array_key_exists('MYSQL_PASS', $env)) {
         $pdoSql = $env['MYSQL_DSN'];
         $pdoUser = $env['MYSQL_USER'];
         $pdoPass = $env['MYSQL_PASS'];
     } else {
         header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'Les variables de connexion MYSQL sont introuvables dans le fichier .env.']);
+        echo json_encode(['success' => false, 'message' => 'Les variables de connexion MYSQL sont introuvables dans le fichier .envtrfhsth.']);
         exit;
     }
     try {
@@ -22,7 +22,7 @@ if (file_exists(ROOT_PATH . '/.env')) {
     }
 } else {
     header('Content-Type: application/json');
-    echo json_encode(['success' => false, 'message' => 'Le fichier .env est introuvable.']);
+    echo json_encode(['success' => false, 'message' => 'Le fichier .envtrfhsth est introuvable.']);
     exit;
 }
 

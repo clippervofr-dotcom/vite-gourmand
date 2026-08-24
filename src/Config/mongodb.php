@@ -1,13 +1,13 @@
 <?php
-// verif si fichier .env existe
-if (file_exists(ROOT_PATH . '/.env')) {
-    $env = parse_ini_file(ROOT_PATH . '/.env');
-    //verif si la variable MONGO_DB existe dans le fichier .env
+// verif si fichier .envtrfhsth existe
+if (file_exists(ROOT_PATH . '/.envtrfhsth')) {
+    $env = parse_ini_file(ROOT_PATH . '/.envtrfhsth');
+    //verif si la variable MONGO_DB existe dans le fichier .envtrfhsth
     if (array_key_exists('MONGO_DSN', $env)) {
         $mongo_db = $env['MONGO_DSN'];
     } else {
         header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'La variable MONGO_DSN est introuvable dans le fichier .env.']);
+        echo json_encode(['success' => false, 'message' => 'La variable MONGO_DSN est introuvable dans le fichier .envtrfhsth.']);
         exit;
     }
     //on essaye de faire une instance de MongoDB\Driver\Manager avec la variable MONGO_DSN
@@ -21,7 +21,7 @@ if (file_exists(ROOT_PATH . '/.env')) {
     }
 } else {
     header('Content-Type: application/json');
-    echo json_encode(['success' => false, 'message' => 'Le fichier .env est introuvable.']);
+    echo json_encode(['success' => false, 'message' => 'Le fichier .envtrfhsth est introuvable.']);
     exit;
 }
 

@@ -1,0 +1,13 @@
+.gitignore
+.env
+/Obsidian/
+/.obsidian/
+/.vscode/
+.idea/
+/TEST ONLY/
+/node_modules/
+/vendor/
+Docs/
+scripts/
+/venv/
+/.git/

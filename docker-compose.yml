@@ -1,0 +1,71 @@
+services:
+  php:
+    build: .
+    container_name: djo-php
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - type: bind
+        source: ./public
+        target: /var/www/html/public
+      - type: bind
+        source: ./tests
+        target: /var/www/html/tests
+      - type: bind
+        source: ./src
+        target: /var/www/html/src
+      - type: bind
+        source: ./.envtrfhsth
+        target: /var/www/html/.envtrfhsth
+    depends_on:
+      vite_et_gourmand-db:
+        condition: service_healthy
+      phpmyadmin:
+        condition: service_started
+#    develop:
+#      watch:
+#        - action: sync
+#          path: .
+#          target: /var/www/html
+#        - action: rebuild
+#          path: composer.json
+
+
+
+  vite_et_gourmand-db:
+    image: mariadb:10.4.32-focal
+    container_name: djo-mysql
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASS}
+      - MARIADB_DATABASE=vite_et_gourmand
+      - MARIADB_USER=${MYSQL_USER}
+      - MARIADB_PASSWORD=${MYSQL_PASS}
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - type: bind
+        source: ./src/Config/a-table.sql
+        target: /docker-entrypoint-initdb.d/a-table.sql
+      - type: bind
+        source: ./src/Config/b-donnee_test.sql
+        target: /docker-entrypoint-initdb.d/b-donnee_test.sql
+      - sql-data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:5.2-apache
+    container_name: djo-phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=vite_et_gourmand-db
+
+volumes:
+  sql-data:

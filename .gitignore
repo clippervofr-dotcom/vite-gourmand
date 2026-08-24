@@ -3,15 +3,10 @@ Obsidian/
 .env
 .vscode/
 .idea/
-images-ressources/
-test-devis.css
-style.css
-OLD-forms.css
-OLD-style.css
-a faire.php
 TEST ONLY/
 __pycache__/
 *.pyc
 node_modules/
-.env.example
 /vendor/
+/node_modules/
+/venv/

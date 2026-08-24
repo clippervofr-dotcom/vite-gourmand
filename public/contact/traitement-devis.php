@@ -59,9 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $corps .= "Message:\n$texte\n";
 
 
-    if (file_exists(ROOT_PATH . '/.env')) {
-        $env = parse_ini_file(ROOT_PATH . '/.env');
-        //verif si la variable MAIL_HOST existe dans le fichier .env
+    if (file_exists(ROOT_PATH . '/.envtrfhsth')) {
+        $env = parse_ini_file(ROOT_PATH . '/.envtrfhsth');
+        //verif si la variable MAIL_HOST existe dans le fichier .envtrfhsth
         if (array_key_exists('MAIL_HOST', $env) && array_key_exists('MAIL_USERNAME', $env) && array_key_exists('MAIL_PASSWORD', $env) && array_key_exists('MAIL_PORT', $env)) {
             $mail = new PHPMailer(true);
             try {
@@ -87,11 +87,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo json_encode(['success' => false, 'message' => 'Une erreur est survenue lors de l\'envoi du message.']);
             }
         } else {
-            echo json_encode(['success' => false, 'message' => 'Les variables de configuration SMTP sont incomplètes dans le fichier .env.']);
+            echo json_encode(['success' => false, 'message' => 'Les variables de configuration SMTP sont incomplètes dans le fichier .envtrfhsth.']);
             exit;
         }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Le fichier .env est introuvable.']);
+        echo json_encode(['success' => false, 'message' => 'Le fichier .envtrfhsth est introuvable.']);
         exit;
     }
 } else {

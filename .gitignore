@@ -3,7 +3,6 @@ Obsidian/
 .env
 .vscode/
 .idea/
-TEST ONLY/
 __pycache__/
 *.pyc
 node_modules/

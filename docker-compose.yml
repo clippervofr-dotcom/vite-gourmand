@@ -23,15 +23,6 @@ services:
         condition: service_healthy
       phpmyadmin:
         condition: service_started
-#    develop:
-#      watch:
-#        - action: sync
-#          path: .
-#          target: /var/www/html
-#        - action: rebuild
-#          path: composer.json
-
-
 
   vite_et_gourmand-db:
     image: mariadb:10.4.32-focal

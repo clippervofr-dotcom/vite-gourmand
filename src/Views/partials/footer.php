@@ -439,6 +439,7 @@
     </div>
 </footer>
 
+<script src="/assets/js/fonctions.js"></script>
 <script src="/assets/js/index-hamb-feature.js"></script>
 <script src="/assets/js/forms.js"></script>
 <script src="/assets/js/menus.js"></script>
@@ -449,7 +450,6 @@
 <script src="/assets/js/panier-commande.js"></script>
 <script src="/assets/js/panier.js"></script>
 <script src="/assets/js/horaires.js"></script>
-<script src="/assets/js/fonctions.js"></script>
 <script src="/assets/js/profil-statistiques-admin.js"></script>
 
 </div>

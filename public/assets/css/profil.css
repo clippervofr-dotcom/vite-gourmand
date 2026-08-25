@@ -5,7 +5,7 @@
 .nav-profil-employe {
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    padding: 2rem 1rem;
     text-align: center;
 }
 
@@ -63,7 +63,7 @@
 .profil-admin-box-liste-employe,
 .profil-admin-box-commandes,
 .profil-admin-box-modif-horaire,
-.profil-admin-box-statistiques {
+.profil-admin-box-voir-statistiques {
     grid-column: 1;
     grid-row: 1;
 }
@@ -125,7 +125,7 @@
 }
 
 #fond-exterieur-admin {
-    width: 40%;
+    width: 60%;
 }
 .profil-admin-box-liste-employe {
     width: 40%;
@@ -527,6 +527,11 @@
     }
 
     .profil-admin-box-liste-employe,
+    #profil-admin-box-commandes,
+    .profil-admin-box-modif-horaire {
+        width: 91%;
+    }
+
     #fond-exterieur-admin {
         width: 80%;
     }
@@ -562,9 +567,6 @@
 
 /* profil admin responsive */
 @media (max-width: 900px) {
-    #profil-admin-box-commandes {
-        width: 83%;
-    }
 
     .profil-admin-commandes-entete {
         grid-template-columns: 140px 110px 130px 130px 110px;
@@ -581,6 +583,20 @@
 
     #profil-admin-box-voir-statistiques {
         width: 91%;
+    }
+
+    #fond-exterieur-admin-commande,
+    #fond-exterieur-admin,
+    #fond-exterieur-admin-horaire,
+    #fond-exterieur-admin-statistiques {
+        width: 89%;
+        height: 90%;
+        margin-right: 10px;
+        margin-top: -17px;
+    }
+
+    #fond-exterieur-admin-statistiques {
+        height: 98%;
     }
 
     .mois-montant-total {

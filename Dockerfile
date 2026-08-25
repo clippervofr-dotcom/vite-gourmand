@@ -1,9 +1,11 @@
 FROM php:8.2-apache
 WORKDIR /var/www/html
 
+RUN apt-get update && apt-get install -y pkg-config libssl-dev libzip-dev unzip
+
 RUN pecl install mongodb && docker-php-ext-enable mongodb
 
-RUN apt-get update && apt-get install -y libzip-dev unzip && docker-php-ext-install pdo pdo_mysql bcmath zip
+RUN docker-php-ext-install pdo pdo_mysql bcmath zip
 
 COPY composer.json .
 COPY composer.lock .

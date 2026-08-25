@@ -372,7 +372,7 @@ $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bons
 
     <!-- ADMIN STATISTIQUES -->
     <div class="profil-box-fond">
-        <div class="fond-exterieur" id="fond-exterieur-admin-commande"></div>
+        <div class="fond-exterieur" id="fond-exterieur-admin-statistiques"></div>
         <div class="profil-admin-box-voir-statistiques" id="profil-admin-box-voir-statistiques">
             <div class="titre-info-perso">
                 <img src="../assets/images/voir-stats.png" alt="Statistiques">

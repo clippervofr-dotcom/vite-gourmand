@@ -9,8 +9,8 @@ class Horaires implements JsonSerializable
     public function __construct(
         private ?int   $horaireId,
         private string $jour,
-        private string $heureOuverture,
-        private string $heureFermeture
+        private ?string $heureOuverture,
+        private ?string $heureFermeture
     ) {}
     public function getHoraireId(): ?int
     {

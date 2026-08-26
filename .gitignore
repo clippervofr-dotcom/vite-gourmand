@@ -9,5 +9,3 @@ node_modules/
 /vendor/
 /node_modules/
 /venv/
-docker-entrypoint.sh
-/docker-locale-config/

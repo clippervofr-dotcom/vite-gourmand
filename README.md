@@ -103,11 +103,11 @@ docker compose up --build
 ```
 - Import de l'image vers GitHub
 ```bash
-docker tag vite-gourmand ghcr.io/<username>/vite-gourmand:latest (Modification du nom pour correspondre à GitHub)
-docker push ghcr.io/<username>/vite-gourmand:latest 
+docker tag vite-gourmand-php ghcr.io/<username>/vite-gourmand-php:latest (Modification du nom pour correspondre à GitHub)
+docker push ghcr.io/<username>/vite-gourmand-php:latest 
 ```
 - Création d'un projet Railway et Database MySQL native de Railway
-- Import de l'image Docker depuis GitHub (`ghcr.io/<username>/vite-gourmand:latest`)
+- Import de l'image Docker depuis GitHub (`ghcr.io/<username>/vite-gourmand-php:latest`)
 - Ajout des variables d'environnement dans le service PHP dans Railway (MONGO_DSN, MYSQL_DSN, MYSQL_USER, MYSQL_PASS)
 - Déploiement du service PHP sur Railway
 

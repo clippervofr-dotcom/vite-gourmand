@@ -26,7 +26,7 @@ Le site dispose aussi d'un espace client (profil, authentification) et d'un back
 - **Outillage** : 
 - Composer pour les dépendances PHP
 
-- **Déploiement locale** : 
+- **Déploiement local** : 
 - Docker Compose pour le déploiement local (PHP, MariaDB, PHPMyAdmin)
 
 ## Architecture du projet
@@ -46,7 +46,7 @@ public/              Point d'entrée web (index.php) et pages par fonctionnalit�
 ├── admin/ auth/  avis/  commandes/  contact/  horaires/  legal/  menus/  panier/  profil/
 └── assets/          CSS, JS et images statiques
 
-tests/               Emplacement prévu pour les tests (Controllers, Repositories)
+tests/               Emplacement pour les tests (Controllers, Repositories, Services)
 ```
 
 ## Tests

@@ -17,7 +17,7 @@ if (file_exists(ROOT_PATH . '/.env')) {
     } catch (PDOException $e) {
         error_log('Erreur connexion BDD : ' . $e->getMessage());
         header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'Le service est momentanément indisponible, veuillez réessayer plus tard.']);
+        echo json_encode(['success' => false, 'message' => 'Le service SQL est momentanément indisponible, veuillez réessayer plus tard.']);
         exit;
     }
 } else {

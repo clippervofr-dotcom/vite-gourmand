@@ -1,5 +1,4 @@
-<?php $css_pages = ['menus']; ?>
-<?php
+<?php $css_pages = ['menus'];
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../../src/Config/root-path.php';
 require ROOT_PATH . '/src/Views/partials/header.php'; 

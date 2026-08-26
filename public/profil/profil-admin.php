@@ -6,18 +6,12 @@ if (!isset($_SESSION['utilisateur'])) {
     header('Location: /auth/connexion.php');
     exit;
 }
-
 if ($_SESSION['utilisateur']['role_id'] !== 3) {
     header('Location: /index.php');
     exit;
 }
-?>
-
-
-<?php $css_pages = ['profil']; ?>
-<?php require ROOT_PATH . '/src/Views/partials/header.php'; ?>
-
-<?php
+$css_pages = ['profil'];
+require ROOT_PATH . '/src/Views/partials/header.php';
 $heure = (int) date('H');
 $salutation = $heure < 12 ? 'Bonjour' : ($heure < 18 ? 'Bon après-midi' : 'Bonsoir');
 ?>

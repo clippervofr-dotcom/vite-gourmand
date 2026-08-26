@@ -3,6 +3,8 @@ WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y pkg-config libssl-dev libzip-dev unzip
 
+RUN a2dismod mpm_event mpm_worker 2>/dev/null; a2enmod mpm_prefork
+
 RUN pecl install mongodb && docker-php-ext-enable mongodb
 
 RUN docker-php-ext-install pdo pdo_mysql bcmath zip
@@ -22,4 +24,3 @@ COPY . /var/www/html/
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
-

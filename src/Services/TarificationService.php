@@ -13,9 +13,16 @@ class TarificationService
 
     public static function calculerDistanceKm(string $adresse): ?float
     {
-        $url = 'https://nominatim.openstreetmap.org/search?' . http_build_query(['q' => $adresse, 'format' => 'json', 'limit' => 1]);
-        $ctx = stream_context_create(['http' => ['header' => "User-Agent: vite-et-gourmand/1.0\r\n"]]);
-        $reponse = @file_get_contents($url, false, $ctx);
+        $env = parse_ini_file(\ROOT_PATH . '/.env');
+        $cle = $env['LOCATIONIQ_KEY'] ?? '';
+
+        $url = 'https://us1.locationiq.com/v1/search?' . http_build_query([
+                'key' => $cle,
+                'q' => $adresse,
+                'format' => 'json',
+                'limit' => 1,
+            ]);
+        $reponse = @file_get_contents($url);
         if ($reponse === false) return null;
         $resultats = json_decode($reponse, true);
         if (empty($resultats[0]['lat']) || empty($resultats[0]['lon'])) return null;

@@ -3,16 +3,16 @@ INSERT INTO role (libelle) VALUES ('Employe');
 INSERT INTO role (libelle) VALUES ('Admin');
 
 INSERT INTO utilisateur (role_id, email, password, nom, prenom, telephone, adresse, ville, code_postal)
-VALUES (3, 'jojo@gmail.com', '$2b$10$Ssxf4wAoxoblQM0LfkgT6.zR4ldp/d/tG58n.KwL1mg.3x/8wLRZm', 'jojo', 'josé', '0633000777', '1 rue de jose', 'Bordeaux', '33000');
+VALUES (3, 'jojo@gmail.com', '$2b$10$Ssxf4wAoxoblQM0LfkgT6.zR4ldp/d/tG58n.KwL1mg.3x/8wLRZm', 'jojo', 'josé', '0633000777', '107 avenue du Dr Schinazi', 'Bordeaux', '33300');
 
 INSERT INTO utilisateur (role_id, email, password, nom, prenom, telephone, adresse, ville, code_postal)
-VALUES (2, 'juju@gmail.com', '$2b$10$nsP0ROUkPnANl9cKB.pFTeLk4kZ5TATK8R/gdxYzjm/bip9wLTEYq', 'juju', 'julie', '0688888888', '1 rue de julie', 'Bordeaux', '33000');
+VALUES (2, 'juju@gmail.com', '$2b$10$nsP0ROUkPnANl9cKB.pFTeLk4kZ5TATK8R/gdxYzjm/bip9wLTEYq', 'juju', 'julie', '0688888888', '107 avenue du Dr Schinazi', 'Bordeaux', '33300');
 
 INSERT INTO utilisateur (role_id, email, password, nom, prenom, telephone, adresse, ville, code_postal)
-VALUES (1, 'djodjo@gmail.com', '$2b$10$HdC1jP7MMgpj/uUWVrrlh.wGi3g5hoMSDtTfCOH1Bq5s3gORrUWgi', 'djodjo', 'djo', '0633000999', '1 rue de djo', 'Bordeaux', '33000');
+VALUES (1, 'djodjo@gmail.com', '$2b$10$HdC1jP7MMgpj/uUWVrrlh.wGi3g5hoMSDtTfCOH1Bq5s3gORrUWgi', 'djodjo', 'djo', '0633000999', '107 avenue du Dr Schinazi', 'Bordeaux', '33300');
 
 INSERT INTO utilisateur (role_id, email, password, nom, prenom, telephone, adresse, ville, code_postal)
-VALUES (1, 'test@test.fr', '$2y$10$9lcVj4Msk5pikTlWbOY.5OKjdEkeNC3g2ru.hD3p03pwQk5tpUsjO', 'testNOM', 'testPRENOM', '0633000999', '1 rue de test', 'Bordeaux', '33000');
+VALUES (1, 'test@test.fr', '$2y$10$9lcVj4Msk5pikTlWbOY.5OKjdEkeNC3g2ru.hD3p03pwQk5tpUsjO', 'testNOM', 'testPRENOM', '0633000999', '6 Route de Monsidun', 'Houmeau', '17137');
 
 
 INSERT INTO theme (libelle) VALUES ('Noël'); 

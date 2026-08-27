@@ -12,7 +12,9 @@ require ROOT_PATH . '/src/Views/partials/header.php';
     </section>
 
     <img src="assets/images/border2.png" alt="Bordure décorative" class="border">
-
+    <div  class="equipe-passion">
+        <img src="assets/images/equipe-passionnee.png" alt="Une équipe passionnée à votre service">
+    </div>
     <section class="presentation">
 
         <div class="presentation-jose">
@@ -23,9 +25,6 @@ require ROOT_PATH . '/src/Views/partials/header.php';
         </div>
 
         <div class="presentation-texte">
-            <div  class="equipe-passion">
-                <img src="assets/images/equipe-passionnee.png" alt="Une équipe passionnée à votre service">
-            </div>
             <div class="presentation-detail">
                 <div class="presentation-produits-frais">
                     <h3>Des produits frais !</h3>

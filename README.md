@@ -99,16 +99,16 @@ docker compose up --build
 - Création d'un token GitHub (Token Classic)
 - Association Docker-GitHub 
 ```bash
-`docker login ghcr.io --username <username> --password <token>`
+`docker login ghcr.io --username <username> --password <git_hub_token>`
 ```
 - Import de l'image vers GitHub
 ```bash
-docker tag vite-gourmand-php ghcr.io/<username>/vite-gourmand-php:latest (Modification du nom pour correspondre à GitHub)
-docker push ghcr.io/<username>/vite-gourmand-php:latest 
+docker tag vite-gourmand-php ghcr.io/<username>/<nom_de_l\'image> (Modification du nom pour correspondre à GitHub)
+docker push ghcr.io/<username>/<nom_de_l\'image>
 ```
 - Création d'un projet Railway et Database MySQL native de Railway
-- Import de l'image Docker depuis GitHub (`ghcr.io/<username>/vite-gourmand-php:latest`)
-- Ajout des variables d'environnement dans le service PHP dans Railway (MONGO_DSN, MYSQL_DSN, MYSQL_USER, MYSQL_PASS)
+- Import de l'image Docker depuis GitHub (`ghcr.io/<username>/<nom_de_l\'image>>`)
+- Ajout des variables d'environnement dans le service PHP dans Railway (MONGO_DSN, MYSQL_DSN, MYSQL_USER, MYSQL_PASS, LOCATIONIQ_KEY)
 - Déploiement du service PHP sur Railway
 
 ## Licence

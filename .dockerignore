@@ -9,3 +9,4 @@
 Docs/
 /venv/
 /.git/
+.env.RailwayVars

@@ -96,13 +96,7 @@ nav ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-
-    li {
-        display: grid;
-        gap: 1rem;
-        /*padding-top: 1rem;*/ /* PROFIL ADMIN non */
-    }
+    gap: 1rem;
 }
 
 .panier-logo {
@@ -164,7 +158,6 @@ nav ul {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding-bottom: 1rem;
 
     .animated-button {
         width: 160px;
@@ -172,7 +165,7 @@ nav ul {
 }
 
 .btn-nav-connexion {
-    padding-top: 1rem;
+    padding-bottom: 0;
 }
 
 
@@ -195,6 +188,29 @@ nav ul {
     justify-content: center;
     align-items: center;
     background: var(--couleur-fond);
+}
+
+.btn-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.fa-cart-shopping,
+.fa-champagne-glasses,
+.fa-envelope,
+.fa-plug,
+.fa-circle-user,
+.fa-right-from-bracket,
+.fa-list-check,
+.fa-screwdriver-wrench {
+    font-size: xx-large;
+    color: var(--couleur-fond);
+}
+
+.nav-panier-ul{
+    padding-bottom: 1rem;
 }
 
 

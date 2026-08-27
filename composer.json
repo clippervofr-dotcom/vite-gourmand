@@ -10,7 +10,8 @@
         "ext-pdo_mysql": "*",
         "ext-mongodb": "*",
         "ext-bcmath": "*",
-        "ext-zip": "*"
+        "ext-zip": "*",
+        "ext-mbstring": "*"
     },
     "autoload": {
         "psr-4": {

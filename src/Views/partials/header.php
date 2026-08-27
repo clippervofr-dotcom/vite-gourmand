@@ -128,7 +128,8 @@ if (session_status() === PHP_SESSION_NONE) {
             <div class="nav-links-menus" id="nav-links-menus">
                 <div class="nav-links-principal">
                     <ul>
-                        <li>
+                        <li class="btn-nav-header nav-bouton-visiteur-menus">
+                            <i class="fa-solid fa-champagne-glasses"></i>
                             <a href="/menus/menus.php" id="bouton-menus" class="animated-button">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -146,7 +147,8 @@ if (session_status() === PHP_SESSION_NONE) {
                         </li>
                     </ul>
                     <ul>
-                        <li>
+                        <li class="btn-nav-header nav-bouton-visiteur-devis">
+                            <i class="fa-solid fa-envelope"></i>
                             <button class="animated-button" id="bouton-devis">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -163,8 +165,9 @@ if (session_status() === PHP_SESSION_NONE) {
                             </button>
                         </li>
                     </ul>
-                    <ul>
-                        <li>
+                    <ul class="nav-panier-ul">
+                        <li class="btn-nav-header nav-bouton-visiteur-panier">
+                            <i class="fa-solid fa-cart-shopping"></i>
                             <a href="/panier/mon-panier.php" class="animated-button" id="bouton-panier">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -182,10 +185,11 @@ if (session_status() === PHP_SESSION_NONE) {
                         </li>
                     </ul>
                 </div>
-
+                <div class="nav-admin-container">
                 <?php if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['role_id'] == 3): ?>
                     <ul class="nav-utilisateur">
-                        <li class="profil-box">
+                        <li class="btn-nav-header">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
                             <a href="/profil/profil-admin.php" class="animated-button"
                                id="btn-admin-administration-panel">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -201,6 +205,9 @@ if (session_status() === PHP_SESSION_NONE) {
                                     ></path>
                                 </svg>
                             </a>
+                        </li>
+                        <li class="btn-nav-header">
+                            <i class="fa-solid fa-right-from-bracket"></i>
                             <a href="/auth/deconnexion.php" class="animated-button"
                                id="btn-admin-deconnexion-panel">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -218,10 +225,12 @@ if (session_status() === PHP_SESSION_NONE) {
                             </a>
                         </li>
                     </ul>
-
+                </div>
+                <div class="nav-employe-container">
                 <?php elseif (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['role_id'] == 2): ?>
                     <ul class="nav-utilisateur">
-                        <li>
+                        <li class="btn-nav-header">
+                            <i class="fa-solid fa-list-check"></i>
                             <a href="/profil/profil-employe.php" class="animated-button"
                                id="btn-employe-commandes-panel">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -237,6 +246,9 @@ if (session_status() === PHP_SESSION_NONE) {
                                     ></path>
                                 </svg>
                             </a>
+                        </li>
+                        <li class="btn-nav-header">
+                            <i class="fa-solid fa-right-from-bracket"></i>
                             <a href="/auth/deconnexion.php" class="animated-button"
                                id="btn-employe-deconnexion-panel">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -254,10 +266,12 @@ if (session_status() === PHP_SESSION_NONE) {
                             </a>
                         </li>
                     </ul>
-
+                </div>
+                <div class="nav-utilisateur-container">
                 <?php elseif (isset($_SESSION['utilisateur'])): ?>
                     <ul class="nav-utilisateur">
-                        <li>
+                        <li class="btn-nav-header">
+                            <i class="fa-solid fa-circle-user"></i>
                             <a href="/profil/profil-utilisateur.php" class="animated-button"
                                id="btn-utilisateur-compte-panel">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -273,6 +287,9 @@ if (session_status() === PHP_SESSION_NONE) {
                                     ></path>
                                 </svg>
                             </a>
+                        </li>
+                        <li class="btn-nav-header">
+                            <i class="fa-solid fa-right-from-bracket"></i>
                             <a href="/auth/deconnexion.php" class="animated-button"
                                id="btn-utilisateur-deconnexion-panel">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
@@ -290,26 +307,30 @@ if (session_status() === PHP_SESSION_NONE) {
                             </a>
                         </li>
                     </ul>
-
+                </div>
+                <div class="nav-visiteur-container">
                 <?php else: ?>
-                    <div class="nav-links-principal btn-nav-connexion">
-                        <a href="/auth/connexion.php" class="animated-button" id="btn-connexion-index">
-                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                            <span class="text">Connexion</span>
-                            <span class="circle"></span>
-                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                        </a>
-                    </div>
-
+                    <ul class="nav-links-principal btn-nav-connexion">
+                        <li class="btn-nav-header">
+                            <i class="fa-solid fa-plug"></i>
+                            <a href="/auth/connexion.php" class="animated-button" id="btn-connexion-index">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    ></path>
+                                </svg>
+                                <span class="text">Connexion</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    ></path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
                 <?php endif; ?>
+                </div>
             </div>
         </div>
     </nav>

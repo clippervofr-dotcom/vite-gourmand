@@ -201,29 +201,15 @@ document.querySelector('#btn-to-top')?.addEventListener('click', function (event
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-
+// modif role employe / admin dans le header
 (function () {
     const bdyHeader = document.querySelector('.body-header');
     if (!bdyHeader) return;
     const role = parseInt(bdyHeader.dataset.roleId);
     if (role === 2 || role === 3) {
-        document.querySelector('#bouton-devis').style.display = 'none';
-        document.querySelector('#bouton-menus').style.display = 'none';
-        document.querySelector('#bouton-panier').style.display = 'none';
+        document.querySelector('.nav-links-principal').style.display = 'none';
         document.querySelector('#nav-links-menus').style.gridTemplateColumns = '1fr';
         document.querySelector('#nav-links-menus').style.gap = '0';
         document.querySelector('.nav-links-principal').style.flexDirection = 'row';
     }
 })();
-
-// const conteneur = document.querySelector('.tarteaucitronName');
-//
-// if (conteneur) {
-//
-//     const ligne = document.createElement('div');
-//     ligne.classList.add('tarteaucitronLegal');
-//     ligne.innerHTML =
-//         '<a href="/legal/mentions-legales.php">Voir les mentions légales</a>';
-//
-//     conteneur.appendChild(ligne);
-// }

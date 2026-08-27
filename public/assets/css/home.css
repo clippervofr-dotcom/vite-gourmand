@@ -89,8 +89,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
-    margin-top: -40px;
+    margin-bottom: 1rem;
 }
 
 .presentation-jose-img {
@@ -147,7 +146,6 @@ img.jose-img {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
 .presentation-produits-frais-deff-bulle, .presentation-livraison-deff-bulle {
@@ -187,17 +185,18 @@ img.jose-img {
 
     .presentation-produits-frais h3 {
         rotate: 340deg;
+        padding-top: 1rem;
         justify-content: flex-start;
         font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
     }
 
     .presentation-livraison h3 {
-        rotate: 20deg;
+        rotate: 9deg;
         justify-content: flex-end;
         font-size: clamp(1.625rem, 1.3125rem + 1.25vw, 2.25rem);
     }
     .equipe-passion {
-        padding-top: 20px;
+        padding: 1rem 1rem;
     }
 
     .jose-img, .julie-img {
@@ -211,6 +210,10 @@ img.jose-img {
 
     img.jose-img {
         rotate: 15deg;
+    }
+
+    .presentation-texte {
+        padding: 0;
     }
 }
 

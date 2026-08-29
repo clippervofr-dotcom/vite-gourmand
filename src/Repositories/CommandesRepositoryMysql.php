@@ -257,5 +257,3 @@ class CommandesRepositoryMysql implements CommandesRepositoryInterface
         );
     }
 }
-
-?>

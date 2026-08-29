@@ -79,5 +79,3 @@ class ThemeRepositoryMysql implements ThemeRepositoryInterface
         );
     }
 }
-
-?>

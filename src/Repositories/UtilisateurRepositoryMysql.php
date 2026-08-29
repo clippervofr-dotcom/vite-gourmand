@@ -136,8 +136,8 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
     {
         $sql = 'UPDATE utilisateur SET password = :password WHERE utilisateur_id = :utilisateur_id';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':utilisateur_id', $utilisateurId, PDO::PARAM_INT);
         $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        $stmt->bindValue(':utilisateur_id', $utilisateurId, PDO::PARAM_INT);
         $stmt->execute();
     }
 

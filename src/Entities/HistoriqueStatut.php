@@ -37,5 +37,3 @@ class HistoriqueStatut
         $this->historiqueStatutId = $historiqueStatutId;
     }
 }
-
-?>

@@ -79,5 +79,3 @@ class AllergeneRepositoryMysql implements AllergeneRepositoryInterface
         );
     }
 }
-
-?>

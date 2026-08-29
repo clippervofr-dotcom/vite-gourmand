@@ -128,14 +128,3 @@ CREATE TABLE horaire (
   heure_ouverture VARCHAR(10),
   heure_fermeture VARCHAR(10)
 );
-
-/* DEPRECIATED --- AVIS sur MONGODB --- possede_avis sur table->commande */
--- CREATE TABLE avis (
---                       avis_id INT AUTO_INCREMENT PRIMARY KEY,
---                       utilisateur_id INT NOT NULL,
---                       commande_id INT,
---                       note INT NOT NULL CHECK (note BETWEEN 1 AND 5),
---                       description_avis TEXT,
---                       statut VARCHAR(20) DEFAULT 'en attente',
---                       FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(utilisateur_id)
--- );

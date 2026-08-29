@@ -79,5 +79,3 @@ class RegimeRepositoryMysql implements RegimeRepositoryInterface
         );
     }
 }
-
-?>

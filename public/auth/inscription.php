@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($nomValide && $prenomValide && $mdpValide && $emailValide && $telephoneValide && $villeValide && $adresseValide && $codePostalValide) {
         $mdp_hache = password_hash($mdp, PASSWORD_DEFAULT);
 
-        $roleId= 1; //role utilisateur
+        $roleId = 1; //role utilisateur
 
         $newUtilisateur = new Utilisateur(
                 null,
@@ -90,19 +90,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $roleId
         );
 
-        $inscriptionUtilisateur = $utilisateurController->ajouterUtilisateur($newUtilisateur);
+        $inscriptionUtilisateur = $utilisateurController->ajouterUtilisateur($newUtilisateur, (string)$mdp_hache);
         if (!$inscriptionUtilisateur['success']) {
             $erreurs[] = 'Erreur d\'enregistrement.';
         } else {
-            $ajoutMdp = $utilisateurController->ajouterPassword($newUtilisateur->getId(), $mdp_hache);
-            if ($ajoutMdp['success']) {
-                session_regenerate_id(true);
-                $_SESSION['utilisateur'] = $newUtilisateur->jsonSerialize();
-                header('location: /index.php');
-                exit;
-            } else {
-                $erreurs[] = 'Erreur d\'ajout du mot de passe.';
-            }
+            session_regenerate_id(true);
+            $_SESSION['utilisateur'] = $newUtilisateur->jsonSerialize();
+            header('location: /index.php');
+            exit;
         }
     }
 }

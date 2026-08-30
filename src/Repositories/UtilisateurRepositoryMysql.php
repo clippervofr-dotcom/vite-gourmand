@@ -76,10 +76,10 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
         return $utilisateurs;
     }
 
-    public function save(Utilisateur $utilisateur): void
+    public function save(Utilisateur $utilisateur, string $password): void
     {
         if ($utilisateur->getId() === null) {
-            $sql = 'INSERT INTO utilisateur (nom, prenom, email, adresse, code_postal, ville, telephone, actif, role_id) VALUES (:nom, :prenom, :email, :adresse, :code_postal, :ville, :telephone, :actif, :role_id)';
+            $sql = 'INSERT INTO utilisateur (nom, prenom, email, adresse, code_postal, ville, telephone, actif, role_id, password) VALUES (:nom, :prenom, :email, :adresse, :code_postal, :ville, :telephone, :actif, :role_id, :password)';
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(':nom', $utilisateur->getNom(), PDO::PARAM_STR);
@@ -91,6 +91,7 @@ class UtilisateurRepositoryMysql implements UtilisateurRepositoryInterface
             $stmt->bindValue(':telephone', $utilisateur->getTelephone(), PDO::PARAM_STR);
             $stmt->bindValue(':actif', $utilisateur->getActif(), PDO::PARAM_BOOL);
             $stmt->bindValue(':role_id', $utilisateur->getRoleId(), PDO::PARAM_INT);
+            $stmt->bindValue(':password', $password, PDO::PARAM_STR);
             $stmt->execute();
 
             $utilisateur->setId((int)$this->pdo->lastInsertId());

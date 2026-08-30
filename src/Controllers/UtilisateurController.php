@@ -55,10 +55,10 @@ class UtilisateurController
         }
     }
 
-    public function ajouterUtilisateur(Utilisateur $utilisateur): array
+    public function ajouterUtilisateur(Utilisateur $utilisateur, string $password): array
     {
         try {
-            $this->utilisateurRepository->save($utilisateur);
+            $this->utilisateurRepository->save($utilisateur, $password);
             return ['success' => true, 'message' => 'Utilisateur créé avec succès.'];
         } catch (PDOException $e) {
             error_log($e->getMessage());
@@ -102,40 +102,34 @@ class UtilisateurController
         }
     }
 
-        public function ajouterEmployeAvecMotDePasse(Utilisateur $utilisateur): array
-        {
-            $resultatCreation = $this->ajouterUtilisateur($utilisateur);
-            if (!$resultatCreation['success']) {
-                return $resultatCreation;
-            }
+    public function ajouterEmployeAvecMotDePasse(Utilisateur $utilisateur): array
+    {
+        $motDePasse = $this->genererMotDePasseAleatoire();
+        $motDePasseHache = password_hash($motDePasse, PASSWORD_DEFAULT);
 
-            $motDePasse = $this->genererMotDePasseAleatoire();
-            $motDePasseHache = password_hash($motDePasse, PASSWORD_DEFAULT);
-
-            $resultatMdp = $this->ajouterPassword($utilisateur->getId(), $motDePasseHache);
-            if (!$resultatMdp['success']) {
-                error_log('Utilisateur créé mais échec de l\'ajout du mot de passe.');
-                return [
-                    'success' => false,
-                    'message' => 'Utilisateur créé mais échec de l\'ajout du mot de passe.'
-                ];
-            }
-
+        $resultatCreation = $this->ajouterUtilisateur($utilisateur, (string)$motDePasseHache);
+        if (!$resultatCreation['success']) {
+            error_log('Echec de l\'ajout de l\'employe.');
             return [
-                'success' => true,
-                'message' => 'Utilisateur créé avec succès.',
-                'mot_de_passe' => $motDePasse
+                'success' => false,
+                'message' => 'Echec de l\'ajout de l\'employe.'
             ];
         }
-
-        private function genererMotDePasseAleatoire(int $longueur = 12): string
-        {
-            $caracteres = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%';
-            $motDePasse = '';
-            $max = strlen($caracteres) - 1;
-            for ($i = 0; $i < $longueur; $i++) {
-                $motDePasse .= $caracteres[random_int(0, $max)];
-            }
-            return $motDePasse;
-        }
+        error_log('Employé créé avec succès. Mot de passe généré : ' . $motDePasse);
+        return [
+            'success' => true,
+            'message' => 'Employé créé avec succès.'
+        ];
     }
+
+    private function genererMotDePasseAleatoire(int $longueur = 12): string
+    {
+        $caracteres = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%';
+        $motDePasse = '';
+        $max = strlen($caracteres) - 1;
+        for ($i = 0; $i < $longueur; $i++) {
+            $motDePasse .= $caracteres[random_int(0, $max)];
+        }
+        return $motDePasse;
+    }
+}

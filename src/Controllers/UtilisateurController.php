@@ -115,10 +115,10 @@ class UtilisateurController
                 'message' => 'Echec de l\'ajout de l\'employe.'
             ];
         }
-        error_log('Employé créé avec succès. Mot de passe généré : ' . $motDePasse);
         return [
             'success' => true,
-            'message' => 'Employé créé avec succès.'
+            'message' => 'Employé créé avec succès.',
+            'mot_de_passe' => $motDePasse
         ];
     }
 

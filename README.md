@@ -109,6 +109,16 @@ docker pull phpmyadmin:5.2-apache
 docker pull composer:2.10
 ```
 
+Variables d'environnement à renseigner dans le fichier `.env` :
+- `MYSQL_DSN`
+- `MYSQL_USER`
+- `MYSQL_PASS`
+- `LOCATIONIQ_KEY`
+- `MONGO_DSN`
+
+Penser à faire une clé gratuite sur [LocationIQ](https://locationiq.com/) pour la géolocalisation.
+Clé MONGODB gratuite sur [MongoDB Atlas](https://www.mongodb.com/fr-fr/cloud/atlas/register).
+
 **Lancement local** :
 ```bash
 git clone https://github.com/clippervofr-dotcom/vite-gourmand.git

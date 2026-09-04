@@ -33,27 +33,50 @@ Le site dispose aussi d'un espace client (profil, authentification) et d'un back
 
 ```
 src/
-├── Config/         Configuration (connexion MySQL, MongoDB, session, chemin racine, bootstrap)
-├── Controllers/     Logique de traitement des requêtes
-├── Entities/        Objets métier (représentation des données)
-├── Interfaces/       Contrats/interfaces PHP
-├── Repositories/     Accès aux données (requêtes MySQL / MongoDB)
-├── Security/         Éléments liés à la sécurité (auth, protections)
-├── Services/         Logique métier réutilisable
-└── Views/           Templates et partials affichés (header, footer, etc.)
+    Config/         Configuration (connexion MySQL, MongoDB, session, chemin racine (root_path), bootstrap)
+    Controllers/     Logique de traitement des requêtes
+    Entities/        Objets métier 
+    Interfaces/       Contrats/interfaces PHP
+    Repositories/     Accès aux données (requêtes MySQL / MongoDB)
+    Security/         Éléments liés à la sécurité (csrf)
+    Services/         Logique métier réutilisable (Tarifications diverses et distance)
+    Views/           Partials affichés (header, footer)
 
 public/              Point d'entrée web (index.php) et pages par fonctionnalité
-├── admin/ auth/  avis/  commandes/  contact/  horaires/  legal/  menus/  panier/  profil/
-└── assets/          CSS, JS et images statiques
+    admin/ 
+    assets/        CSS, JS et images statiques
+        css/
+        js/
+        images/
+    auth/  
+    avis/  
+    commandes/  
+    contact/  
+    horaires/  
+    legal/  
+    menus/  
+    panier/  
+    profil/
 
-tests/               Emplacement pour les tests (Controllers, Repositories, Services)
+tests/               Emplacement pour divers tests
+    Constrollers/
+    Repositories/
+    Services/
+    dev/             Utiliser pour des tests lors du developpement
+    .phpunit.cache/   Cache pour PHPUnit
+
+Docs/                    Dossiers regroupant les documents relatifs au projet
+    Projet../
+        BDD/
+        Diagramme/      Emplacement des diagrammes de classes, de séquence, MCD et MLD
+        Maquettes/      WIREFRAME et MOCKUP
 ```
 
 ## Tests
 
 - **Tests** : 
-- les dossiers `/tests/Controllers`, `/tests/Repositories` et `/tests/Services` pour les tests PHPUnit.
-- les tests sont enregistrés dans `/tests/.phpunit.cache` .
+- Les dossiers `/tests/Controllers`, `/tests/Repositories` et `/tests/Services` pour les tests PHPUnit.
+- Les tests sont enregistrés dans `/tests/.phpunit.cache` .
 
 - **Commandes de tests** : 
 **Controllers**
@@ -110,6 +133,19 @@ docker push ghcr.io/<username>/<nom_de_l\'image>
 - Import de l'image Docker depuis GitHub (`ghcr.io/<username>/<nom_de_l\'image>>`)
 - Ajout des variables d'environnement dans le service PHP dans Railway (MONGO_DSN, MYSQL_DSN, MYSQL_USER, MYSQL_PASS, LOCATIONIQ_KEY)
 - Déploiement du service PHP sur Railway
+
+## Informations supplémentaires
+
+J'ai utilisé XAMPP pour le développement local, et utilisé Docker vers la fin du développement, 
+notamment pour la simplicité lors du déploiement. 
+Le projet est déployé via une image Docker sur Railway, avec une base de données MySQL native de Railway et une base de données MongoDB hébergée sur MongoDB Atlas.
+
+Une version de démonstration est disponible sur Railway (offre gratuite, arrêt automatique à partir du 25/09/2026) :
+https://v-g-5-production.up.railway.app/
+
+Une image Docker est également disponible sur GitHub :
+https://github.com/clippervofr-dotcom/vite-gourmand/pkgs/container/v-g-5
+
 
 ## Licence
 

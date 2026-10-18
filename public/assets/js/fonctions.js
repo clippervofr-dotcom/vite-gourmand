@@ -1,7 +1,11 @@
 function echapperHTML(texte) {
     const div = document.createElement('div');
-    div.textContent = texte;
-    return div.innerHTML;
+    div.textContent = texte ?? '';
+    return div.innerHTML.replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+}
+
+function formaterPrix(montant) {
+    return Number(montant).toFixed(2);
 }
 
 function capitalizeFirstLetter(str) {

@@ -61,15 +61,10 @@ if (menuDetailmodal && btnMenuClose) {
         document.querySelector('#menu-detail-condition').textContent = menu['conditions'];
 
         if (menu['allergenes'].length > 0) {
-            if (menu['allergenes'].includes("Oeufs") || menu['allergenes'].includes("Arachides")) {
-                if (menu['allergenes'][1].includes("Arachides") || menu['allergenes'][1].includes("Oeufs")) {
-                    document.querySelector("#menu-detail-allergenes").textContent = menu['allergenes'].length > 1 ? `Présence d'${menu['allergenes'].join(' et d\'')}` : `Présence d'${menu['allergenes']}`;
-                } else {
-                    document.querySelector("#menu-detail-allergenes").textContent = menu['allergenes'].length > 1 ? `Présence d'${menu['allergenes'].join(' et de ')}` : `Présence d'${menu['allergenes']}`;
-                }
-            } else {
-                document.querySelector("#menu-detail-allergenes").textContent = menu['allergenes'].length > 1 ? `Présence de ${menu['allergenes'].join('et de ')}` : `Présence de ${menu['allergenes']}`;
-            }
+            const avecArticle = function (nom) {
+                return /^[aeiouyéèê]/i.test(nom) ? `d'${nom}` : `de ${nom}`;
+            };
+            document.querySelector("#menu-detail-allergenes").textContent = 'Présence ' + menu['allergenes'].map(avecArticle).join(' et ');
         } else {
             document.querySelector("#menu-detail-allergenes").textContent = "Aucun allergène connu";
         }
@@ -104,9 +99,9 @@ if (menuDetailmodal && btnMenuClose) {
 
         if (quantite >= (parseInt(menu['nombre_personne_minimum']) + 5)) {
             const prixReduit = prixCalcule - (prixCalcule * reduction);
-            document.querySelector("#menu-detail-prix-calcule").textContent = `${prixReduit}€`;
+            document.querySelector("#menu-detail-prix-calcule").textContent = `${formaterPrix(prixReduit)}€`;
         } else {
-            document.querySelector("#menu-detail-prix-calcule").textContent = `${prixCalcule}€`;
+            document.querySelector("#menu-detail-prix-calcule").textContent = `${formaterPrix(prixCalcule)}€`;
         }
     }
 
@@ -130,7 +125,7 @@ if (menuDetailmodal && btnMenuClose) {
         const menu = dernierMenusAffiches.find(menu => menu['menu_id'] === parseInt(menuId));
         if (!menu) return;
 
-        const minimum = menu['min'];
+        const minimum = parseInt(menu['nombre_personne_minimum']);
         const valeurSaisie = parseInt(inputQuantite.value) || 0;
 
         if (valeurSaisie < minimum) {
@@ -165,8 +160,6 @@ if (menuDetailmodal && btnMenuClose) {
             donnees.append('menu_id', menuId);
             donnees.append('quantite', quantite);
             donnees.append('csrf_token', getCsrfToken());
-
-            console.log(menuId, quantite)
 
             try {
                 const reponse = await fetch('/panier/panier.php', {
@@ -409,8 +402,6 @@ function collecterFiltres() {
 function afficherMenus(menus) {
     dernierMenusAffiches = menus;
 
-    console.log(menus);
-
     const grille = document.querySelector('.menus-grid');
     grille.innerHTML = '';
 
@@ -433,11 +424,11 @@ function afficherMenus(menus) {
         carte.classList.add('menus-box');
 
         carte.innerHTML = `
-            <img src="${menu['image_url']}" alt="${menu['titre']}">
+            <img src="${echapperHTML(menu['image_url'])}" alt="${echapperHTML(menu['titre'])}">
             <div class="menus-box-titre-visible">
                 <h3>${echapperHTML(menu['titre'])}</h3>
                 <div class="menus-voir-detail-bouton">
-                    <button type="button" class="bouton-voir-detail" data-menu-id="${menu['menu_id']}">Voir le détail</button>
+                    <button type="button" class="bouton-voir-detail" data-menu-id="${echapperHTML(menu['menu_id'])}">Voir le détail</button>
                 </div>
             </div>
         `;
@@ -528,14 +519,13 @@ const spanPrixMaxValeur = document.querySelector('#prix-max-valeur');
 
 if (prixMinFiltre && prixMaxFiltre && spanPrixMinValeur && spanPrixMaxValeur) {
     prixMinFiltre.addEventListener('input', function () {
-        spanPrixMinValeur.textContent = prixMinFiltre.value;
+        spanPrixMinValeur.textContent = prixMinFiltre.value + '€';
     });
     prixMaxFiltre.addEventListener('input', function () {
-        spanPrixMaxValeur.textContent = prixMaxFiltre.value;
+        spanPrixMaxValeur.textContent = prixMaxFiltre.value + '€';
     });
 }
 
-// images plats modale
 
 
 

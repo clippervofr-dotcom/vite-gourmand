@@ -16,17 +16,15 @@ if (conteneurHoraires) {
             ligne.remove();
         });
 
-        console.log(horairesChargement);
-
         const ligne = document.createElement('ul');
         ligne.classList.add('footer-local__hours-list');
         ligne.innerHTML = `
-                    <li><span class="day">Lundi :</span> <span class="time">${horairesChargement[0]['heure_ouverture'] + " - " + horairesChargement[0]['heure_fermeture']}</span></li>
-                    <li><span class="day">Mardi :</span> <span class="time">${horairesChargement[1]['heure_ouverture'] + " - " + horairesChargement[1]['heure_fermeture']}</span></li>
-                    <li><span class="day">Mercredi :</span> <span class="time">${horairesChargement[2]['heure_ouverture'] + " - " + horairesChargement[2]['heure_fermeture']}</span></li>
-                    <li><span class="day">Jeudi :</span> <span class="time">${horairesChargement[3]['heure_ouverture'] + " - " + horairesChargement[3]['heure_fermeture']}</span></li>
-                    <li><span class="day">Vendredi :</span> <span class="time">${horairesChargement[4]['heure_ouverture'] + " - " + horairesChargement[4]['heure_fermeture']}</span></li>
-                    <li><span class="day">Samedi :</span> <span class="time">${horairesChargement[5]['heure_ouverture'] + " - " + horairesChargement[5]['heure_fermeture']}</span></li>
+                    <li><span class="day">Lundi :</span> <span class="time">${echapperHTML(horairesChargement[0]['heure_ouverture'])} - ${echapperHTML(horairesChargement[0]['heure_fermeture'])}</span></li>
+                    <li><span class="day">Mardi :</span> <span class="time">${echapperHTML(horairesChargement[1]['heure_ouverture'])} - ${echapperHTML(horairesChargement[1]['heure_fermeture'])}</span></li>
+                    <li><span class="day">Mercredi :</span> <span class="time">${echapperHTML(horairesChargement[2]['heure_ouverture'])} - ${echapperHTML(horairesChargement[2]['heure_fermeture'])}</span></li>
+                    <li><span class="day">Jeudi :</span> <span class="time">${echapperHTML(horairesChargement[3]['heure_ouverture'])} - ${echapperHTML(horairesChargement[3]['heure_fermeture'])}</span></li>
+                    <li><span class="day">Vendredi :</span> <span class="time">${echapperHTML(horairesChargement[4]['heure_ouverture'])} - ${echapperHTML(horairesChargement[4]['heure_fermeture'])}</span></li>
+                    <li><span class="day">Samedi :</span> <span class="time">${echapperHTML(horairesChargement[5]['heure_ouverture'])} - ${echapperHTML(horairesChargement[5]['heure_fermeture'])}</span></li>
                     <li><span class="day">Dimanche :</span> <span class="time">Fermé</span></li>
         `;
         conteneur.appendChild(ligne);

@@ -42,7 +42,7 @@ if (commandeBox) {
 
         function calculerTotal() {
             document.querySelector('.recap-prix p').textContent =
-                `Total : ${locationMaterielCheckbox.checked ? utilisateur['total_avec_materiel'] : utilisateur['total_sans_materiel']} €`;
+                `Total : ${formaterPrix(locationMaterielCheckbox.checked ? utilisateur['total_avec_materiel'] : utilisateur['total_sans_materiel'])} €`;
         }
 
         function dateLivraisonRecap() {
@@ -57,7 +57,7 @@ if (commandeBox) {
 
         function modifPrixMateriel() {
             document.querySelector('#recap-forfait-materiel').textContent =
-                locationMaterielCheckbox.checked ? `${utilisateur['prix_materiel']} €` : 'Non sélectionné';
+                locationMaterielCheckbox.checked ? `${formaterPrix(utilisateur['prix_materiel'])} €` : 'Non sélectionné';
         }
 
         const ligne = document.createElement('div');
@@ -86,7 +86,7 @@ if (commandeBox) {
                 </div>
                 <div class="recap-liste">
                     <p class="recap-intitule">Prix de la livraison :</p>
-                    <p class="recap-resultat" id="recap-prix-livraison">${utilisateur['prix_livraison']} €</p>
+                    <p class="recap-resultat" id="recap-prix-livraison">${formaterPrix(utilisateur['prix_livraison'])} €</p>
                 </div>
             </div>
             <div class="recap-prix">

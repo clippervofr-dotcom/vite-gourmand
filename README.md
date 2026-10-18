@@ -32,15 +32,26 @@ Le site dispose aussi d'un espace client (profil, authentification) et d'un back
 ## Architecture du projet
 
 ```
+(racine)
+    Dockerfile              Image PHP 8.2 + Apache
+    docker-compose.yml      Site + MariaDB + phpMyAdmin
+    docker-entrypoint.sh    Crée le .env au démarrage du conteneur
+    composer.json           Dépendances et autoload PSR-4
+    phpunit.xml             Configuration des tests
+    .env.example            Modèle des variables (sans secrets)
+    .gitignore              Exclut .env, vendor/, notes
+    Docs/                   Diagrammes, maquettes, BDD (si tu le gardes dans le dépôt)
+
 src/
-    Config/         Configuration (connexion MySQL, MongoDB, session, chemin racine (root_path), bootstrap)
+    Config/          Configuration (connexion MySQL, MongoDB, session, chemin racine (root_path), bootstrap, scripts SQL (tables, données de test))
     Controllers/     Logique de traitement des requêtes
-    Entities/        Objets métier 
-    Interfaces/       Contrats/interfaces PHP
-    Repositories/     Accès aux données (requêtes MySQL / MongoDB)
-    Security/         Éléments liés à la sécurité (csrf)
-    Services/         Logique métier réutilisable (Tarifications diverses et distance)
+    Entities/        objets métier (Utilisateur, Menu, Commandes…) sans SQL
+    Interfaces/      Contrats/interfaces PHP
+    Repositories/    Accès aux données (requêtes MySQL / MongoDB), la seule couche qui parle à la base de données
+    Security/        Éléments liés à la sécurité (csrf)
+    Services/        Logique métier réutilisable (calculs de prix (réduction, livraison) et distance (Haversine))
     Views/           Partials affichés (header, footer)
+    .htaccess        (Require all denied) pour interdire l’accès direct aux fichiers du dossier src/ (Elle s’applique aux sous-dossiers (Controllers/, Repositories/…))
 
 public/              Point d'entrée web (index.php) et pages par fonctionnalité
     admin/ 
@@ -59,11 +70,12 @@ public/              Point d'entrée web (index.php) et pages par fonctionnalit�
     profil/
 
 tests/               Emplacement pour divers tests
-    Constrollers/
-    Repositories/
-    Services/
-    dev/             Utiliser pour des tests lors du developpement
-    .phpunit.cache/   Cache pour PHPUnit
+    Controllers/     tests du contrôleur utilisateur
+    Repositories/    tests d’accès aux données (nécessitent la base Docker)
+    Services/        tests des calculs de tarification
+    dev/             utiliser pour des tests lors du developpement
+    .phpunit.cache/  Cache pour PHPUnit
+    bootstrap.php    Bootstrap pour les tests (charge autoload et ROOT_PATH)
 
 Docs/                    Dossiers regroupant les documents relatifs au projet
     Projet../

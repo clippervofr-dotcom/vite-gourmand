@@ -1,11 +1,12 @@
 <?php
 // UtilisateurRepositoryMysqlTest.php
 
+namespace Repositories;
 
 use Entities\Utilisateur;
+use PDO;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Repositories\UtilisateurRepositoryMysql;
 
 #[CoversClass(UtilisateurRepositoryMysql::class)]
 class UtilisateurRepositoryMysqlTest extends TestCase
@@ -27,13 +28,13 @@ class UtilisateurRepositoryMysqlTest extends TestCase
 
     public function testGetById()
     {
-        $utilisateur = $this->utilisateurRepository->getById(7);
+        $utilisateur = $this->utilisateurRepository->getById(4);
         $this->assertInstanceOf(Utilisateur::class, $utilisateur);
     }
 
     public function testGetByEmail()
     {
-        $utilisateur = $this->utilisateurRepository->getByEmail('djotest@gmail.com');
+        $utilisateur = $this->utilisateurRepository->getByEmail('test@test.fr');
         $this->assertInstanceOf(Utilisateur::class, $utilisateur);
     }
 }

@@ -26,27 +26,27 @@ if (panierContainer) {
             ligne.dataset.minimum = item['nombre_personne_minimum'];
             ligne.innerHTML = `
                 <div class="img-panier-box">
-                <img src="${item['image_url']}" alt="Image du Produit">
+                <img src="${echapperHTML(item['image_url'])}" alt="${echapperHTML(item['titre'])}">
                 </div>
                 <div class="item-card">
                     <div class="item-info">
                         <div class="item-details">
-                            <h2 data-label="nom du produit">${item['titre']}</h2>
+                            <h2 data-label="nom du produit">${echapperHTML(item['titre'])}</h2>
                             <p class="item-quantite" data-label="quantite">Quantité de repas préparés :<br>
                                 <button type="button" class="btn-moins">−</button>
                                 <span class="quantite-valeur">${echapperHTML(item['quantite'])}</span>
                                 <button type="button" class="btn-plus">+</button>
                             </p>
                             <p>Indique le nombre de repas préparés lors de votre evenement.<br>Veuillez-vous referer au nombre minimum de personnes.</p>
-                            <p class="item-condition" data-label="conditions">Information de réservation :<br><span class="conditions-text">=> ${item['conditions']}</span></p>
-                            <p class="item-nrb-min" data-label="nombre_personne_minimum">Nombre minimum de personnes :<br><span class="nrb-min-valeur">=> ${item['nombre_personne_minimum']}</span></p>
-                            <p class="item-description" data-label="description">${item['description']}</p>
+                            <p class="item-condition" data-label="conditions">Information de réservation :<br><span class="conditions-text">=> ${echapperHTML(item['conditions'])}</span></p>
+                            <p class="item-nrb-min" data-label="nombre_personne_minimum">Nombre minimum de personnes :<br><span class="nrb-min-valeur">=> ${echapperHTML(item['nombre_personne_minimum'])}</span></p>
+                            <p class="item-description" data-label="description">${echapperHTML(item['description'])}</p>
                         </div>
                     </div>
-                    <div class="item-prix" data-label="prix_par_personne">Prix par personne :<br><span class="prix-valeur">=> ${item['prix_par_personne']} €</span></div>
+                    <div class="item-prix" data-label="prix_par_personne">Prix par personne :<br><span class="prix-valeur">=> ${formaterPrix(item['prix_par_personne'])} €</span></div>
                     <div></div>
                     <div class="btn-commander-item-box">
-                        <a href="/commandes/commande.php?item=${item['uniqueId']}" class="bouton-2-commander">Commander</a>
+                        <a href="/commandes/commande.php?item=${encodeURIComponent(item['uniqueId'])}" class="bouton-2-commander">Commander</a>
                     </div>
                     <div></div>
                     <div class="btn-supprimer-item-box">
@@ -63,7 +63,7 @@ if (panierContainer) {
         const recap = document.createElement('div');
         recap.classList.add('card-recap');
         recap.innerHTML = `
-                <h2>Total : ${totalGeneral} €</h2>
+                <h2>Total : ${formaterPrix(totalGeneral)} €</h2>
             `;
         conteneur.appendChild(recap);
     }

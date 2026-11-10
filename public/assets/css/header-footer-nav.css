@@ -63,8 +63,9 @@ nav ul {
     align-items: baseline;
     margin-top: 0;
     position: absolute;
-    top: 57%;
+    top: 100%;
     right: -20px;
+    left: -20px;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -74,7 +75,7 @@ nav ul {
     padding: 0.75rem;
     border-top: solid 2px var(--couleur-hero-bouton);
     border-bottom: solid 2px var(--couleur-hero-bouton);
-    border-radius: 20px 0 0 20px;
+    border-radius: 0 0 0 0;
     z-index: 2;
 }
 
@@ -89,7 +90,7 @@ nav ul {
     transform: translateX(0);
     border-top: solid 2px var(--couleur-hero-bouton);
     border-bottom: solid 2px var(--couleur-hero-bouton);
-    border-radius: 20px 0 0 20px;
+    border-radius: 0 0 0 0;
 }
 
 .nav-utilisateur {
@@ -132,7 +133,7 @@ nav ul {
 }
 
 .nav-logo img {
-    height: 6rem;
+    height: 4rem;
     object-fit: contain;
     margin-bottom: 20px;
 }
@@ -213,29 +214,34 @@ nav ul {
     padding-bottom: 1rem;
 }
 
-
 /* header responsive */
-
-@media (max-width: 900px) {
+@media (min-width: 901px) {
     .nav-logo img {
-        height: 4rem;
+        height: 6rem;
     }
 
     .nav-links-menus {
-        top: 100%;
-        left: -20px;
+        top: 57%;
+        left: auto;
         right: -20px;
-        border-radius: 0 0 0 0;
+        border-radius: 20px 0 0 20px;
 
         &.active {
-            border-radius: 0 0 0 0;
+            border-radius: 20px 0 0 20px;
         }
     }
 }
 
+
 /* footer test */
 .container-footer {
-    padding: 0 5rem;
+    padding: 0 3rem;
+}
+
+@media (min-width: 901px) {
+    .container-footer {
+        padding: 0 5rem
+    }
 }
 
 .footer-local {
@@ -256,7 +262,6 @@ nav ul {
 }
 
 .footer-local__details {
-
     h3 {
         color: var(--couleur-box-partenaires);
         font-size: 2rem;
@@ -271,8 +276,8 @@ nav ul {
 
     a {
         color: var(--couleur-police-boule-commande);
-        text-decoration: none;
         transition: color 0.2s;
+        text-decoration: underline;
 
         &:hover {
             color: var(--couleur-presentation-box);
@@ -363,21 +368,16 @@ nav ul {
     fill: currentColor;
 }
 
-@media (max-width: 900px) {
-    .container-footer {
-        padding: 0 3rem
-    }
-}
-
 .cgv-ml-footer {
-    display: flex;
+    display: grid;
     justify-content: space-evenly;
     padding-top: 1.5rem;
     text-align: center;
+    gap: 2rem;
 
     a {
         color: var(--couleur-police-boule-commande);
-        text-decoration: none;
+        text-decoration: underline;
         transition: 0.3s ease;
 
         &:hover {
@@ -387,9 +387,9 @@ nav ul {
         }
     }
 
-    @media (max-width: 900px) {
-        display: grid;
-        gap: 2rem;
+    @media (min-width: 901px) {
+        display: flex;
+        gap: 0;
     }
 }
 
@@ -404,10 +404,10 @@ nav ul {
     }
 }
 
-@media (max-width: 900px) {
+@media (min-width: 901px) {
     .cgv-ml-footer a,
     .footer-local__details a {
-        text-decoration: underline;
+        text-decoration: none;
     }
 }
 

@@ -171,10 +171,32 @@ INSERT INTO horaire (jour, heure_ouverture, heure_fermeture) VALUES ('Vendredi',
 INSERT INTO horaire (jour, heure_ouverture, heure_fermeture) VALUES ('Samedi', '09:00', '13:00');
 INSERT INTO horaire (jour, heure_ouverture, heure_fermeture) VALUES ('Dimanche', NULL, NULL);
 
-INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
-VALUES (3, 1, 'COMMANDE-343', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'en attente');
-INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
-VALUES (3, 1, 'COMMANDE-320', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'validée');
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation,heure_prestation, adresse_livraison, nombre_personnes, prix_menu,prix_livraison, prix_total, statut)
+VALUES (3,
+        1,
+        'COMMANDE-343',
+        '2026-06-25 12:00:00',
+        '2026-07-13',
+        '19:00', '26 rue du potager, 33000 Bordeaux',
+        20,
+        600.00,
+        5.00,
+        605.00,
+        'en attente');
+
+INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation,heure_prestation, adresse_livraison, nombre_personnes, prix_menu,prix_livraison, prix_total, statut)
+VALUES (3,
+        1,
+        'COMMANDE-320',
+        '2026-06-25 12:00:00',
+        '2026-07-13', '19:00',
+        '26 rue du potager, 33000 Bordeaux',
+        20,
+        600.00,
+        5.00,
+        605.00,
+        'validée');
+
 INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
 VALUES (3, 1, 'COMMANDE-310', '2026-06-25 12:00:00', '2026-07-13', '19:00', '26 rue du potager, 33000 Bordeaux', 20, 600.00, 5.00, 605.00, 'annulée');
 INSERT INTO commande (utilisateur_id, menu_id, numero_commande, date_commande, date_prestation, heure_prestation, adresse_livraison, nombre_personnes, prix_menu, prix_livraison, prix_total, statut)
